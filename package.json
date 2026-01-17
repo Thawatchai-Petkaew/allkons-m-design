@@ -13,7 +13,7 @@
     "db:studio": "prisma studio",
     "db:seed": "tsx prisma/seed.ts",
     "db:test": "node prisma/test-connection.js",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate || true"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
