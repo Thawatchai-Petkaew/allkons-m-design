@@ -35,7 +35,7 @@ export default function AdminLoginPage() {
         try {
           result = await sendSupabaseOTP(phoneNumber);
           if (!result.success) {
-            const errorMsg = (result.error || '').toLowerCase();
+            const errorMsg = (('error' in result ? result.error : undefined) || '').toLowerCase();
             if (errorMsg.includes('twilio') || 
                 errorMsg.includes('sms provider') || 
                 errorMsg.includes('invalid username')) {
@@ -55,7 +55,7 @@ export default function AdminLoginPage() {
       if (result.success) {
         setStep('otp');
       } else {
-        setError(result.error || 'ไม่สามารถส่ง OTP ได้ กรุณาลองใหม่อีกครั้ง');
+        setError(('error' in result ? result.error : undefined) || 'ไม่สามารถส่ง OTP ได้ กรุณาลองใหม่อีกครั้ง');
       }
     } catch (err: any) {
       console.error('Error sending OTP:', err);

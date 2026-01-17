@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en" style={{ backgroundColor: '#ffffff' }}>
       <body className={inter.className} style={{ backgroundColor: '#ffffff' }}>
         <AntdRegistry>
-          <ConfigProvider theme={theme} cssVar={{ key: 'antd' }}>
+          <ConfigProvider theme={theme}>
             {children}
           </ConfigProvider>
         </AntdRegistry>

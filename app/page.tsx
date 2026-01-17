@@ -74,7 +74,7 @@ export default function LoginPage() {
       if (result.success) {
         setStep('otp');
       } else {
-        setError(result.error || 'ไม่สามารถส่ง OTP ได้ กรุณาลองใหม่อีกครั้ง');
+        setError(('error' in result ? result.error : undefined) || 'ไม่สามารถส่ง OTP ได้ กรุณาลองใหม่อีกครั้ง');
       }
     } catch (err: any) {
       console.error('Error sending OTP:', err);

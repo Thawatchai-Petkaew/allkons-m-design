@@ -153,7 +153,7 @@ export default function ComponentsPage() {
               >
                 Brand
               </Text>
-              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
+              <Space wrap size={[ds.spacing('6') as any, ds.spacing('6') as any]}>
                 <Button variant="primary" color="brand" size="small">Button</Button>
                 <Button variant="primary" color="brand" size="middle">Button</Button>
                 <Button variant="primary" color="brand" size="large">Button</Button>
@@ -185,7 +185,7 @@ export default function ComponentsPage() {
               >
                 Error
               </Text>
-              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
+              <Space wrap size={[ds.spacing('6') as any, ds.spacing('6') as any]}>
                 <Button variant="primary" color="error" size="small">Button</Button>
                 <Button variant="primary" color="error" size="middle">Button</Button>
                 <Button variant="primary" color="error" size="large">Button</Button>
@@ -225,7 +225,7 @@ export default function ComponentsPage() {
               >
                 Brand
               </Text>
-              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
+              <Space wrap size={[ds.spacing('6') as any, ds.spacing('6') as any]}>
                 <Button variant="secondary" color="brand" size="small">Button</Button>
                 <Button variant="secondary" color="brand" size="middle">Button</Button>
                 <Button variant="secondary" color="brand" size="large">Button</Button>
@@ -248,7 +248,7 @@ export default function ComponentsPage() {
               >
                 Neutral
               </Text>
-              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
+              <Space wrap size={[ds.spacing('6') as any, ds.spacing('6') as any]}>
                 <Button variant="secondary" color="neutral" size="small">Button</Button>
                 <Button variant="secondary" color="neutral" size="middle">Button</Button>
                 <Button variant="secondary" color="neutral" size="large">Button</Button>
@@ -271,7 +271,7 @@ export default function ComponentsPage() {
               >
                 Error
               </Text>
-              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
+              <Space wrap size={[ds.spacing('6') as any, ds.spacing('6') as any]}>
                 <Button variant="secondary" color="error" size="small">Button</Button>
                 <Button variant="secondary" color="error" size="middle">Button</Button>
                 <Button variant="secondary" color="error" size="large">Button</Button>
@@ -311,7 +311,7 @@ export default function ComponentsPage() {
               >
                 Brand
               </Text>
-              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
+              <Space wrap size={[ds.spacing('6') as any, ds.spacing('6') as any]}>
                 <Button variant="tertiary" color="brand" size="small">Button</Button>
                 <Button variant="tertiary" color="brand" size="middle">Button</Button>
                 <Button variant="tertiary" color="brand" size="large">Button</Button>
@@ -334,7 +334,7 @@ export default function ComponentsPage() {
               >
                 Neutral
               </Text>
-              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
+              <Space wrap size={[ds.spacing('6') as any, ds.spacing('6') as any]}>
                 <Button variant="tertiary" color="neutral" size="small">Button</Button>
                 <Button variant="tertiary" color="neutral" size="middle">Button</Button>
                 <Button variant="tertiary" color="neutral" size="large">Button</Button>
@@ -357,7 +357,7 @@ export default function ComponentsPage() {
               >
                 Error
               </Text>
-              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
+              <Space wrap size={[ds.spacing('6') as any, ds.spacing('6') as any]}>
                 <Button variant="tertiary" color="error" size="small">Button</Button>
                 <Button variant="tertiary" color="error" size="middle">Button</Button>
                 <Button variant="tertiary" color="error" size="large">Button</Button>

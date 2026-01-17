@@ -3,7 +3,7 @@
 import React from "react";
 import { ds } from "@/design-system";
 
-export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {
+export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "type" | "onChange"> {
   /**
    * Checkbox size
    */

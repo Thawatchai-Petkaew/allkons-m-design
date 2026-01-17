@@ -30,7 +30,7 @@ import { colorUtils } from './colors';
 import { typographyUtils } from './typography';
 import { radius, radiusUtils } from './radius';
 import { common } from './common';
-import { button, input, toggle, checkbox, radio, alert, icon, select, textarea, modal, componentToken } from './components';
+import { button, input, toggle, checkbox, radio, alert, icon, select, textarea, modal, illustration, componentToken } from './components';
 
 /**
  * Design System utilities
@@ -80,6 +80,7 @@ export const ds = {
     select,
     textarea,
     modal,
+    illustration,
   },
 } as const;
 
@@ -89,5 +90,5 @@ export { colorUtils as color } from './colors';
 export { typographyUtils as typography } from './typography';
 export { radius, radiusUtils } from './radius';
 export { common } from './common';
-export { button, input, toggle, checkbox, radio, alert, icon, select, textarea, modal, componentToken } from './components';
+export { button, input, toggle, checkbox, radio, alert, icon, select, textarea, modal, illustration, componentToken } from './components';
 export * from './tokens';
