@@ -14,7 +14,7 @@ import { ds } from '@/design-system';
 
 ```tsx
 // ใช้ spacing token
-<div style={{ padding: ds.spacing(8), margin: ds.spacing(4) }}>
+<div style={{ padding: ds.spacing('8'), margin: ds.spacing('4') }}>
   Content
 </div>
 
@@ -144,8 +144,8 @@ import { ds } from '@/design-system';
 import { ds } from '@/design-system';
 
 <div style={{ 
-  padding: ds.spacing(4), 
-  margin: ds.spacing(2), 
+  padding: ds.spacing('4'), 
+  margin: ds.spacing('2'), 
   color: ds.color.text('primary') 
 }}>
   Content
@@ -160,7 +160,7 @@ import { ds } from '@/design-system';
 export const Card = ({ children }) => {
   return (
     <div style={{
-      padding: ds.spacing(6),
+      padding: ds.spacing('6'),
       borderRadius: ds.radius('md'),
       backgroundColor: ds.color.background('primary'),
       borderWidth: ds.common.borderWidth.thin,

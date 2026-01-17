@@ -148,8 +148,8 @@ app/
 import { ds } from "@/design-system";
 
 // Spacing
-padding: ds.spacing(8)
-margin: ds.spacing(4)
+padding: ds.spacing('8')
+margin: ds.spacing('4')
 
 // Colors
 color: ds.color.text('primary')
