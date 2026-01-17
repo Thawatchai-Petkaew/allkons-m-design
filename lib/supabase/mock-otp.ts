@@ -87,7 +87,7 @@ export async function verifyOTP(phoneNumber: string, code: string): Promise<bool
   // If not found, try normalized phone number
   if (!stored) {
     // Try to find by matching normalized phone numbers
-    for (const [storedPhone, storedData] of mockOtpStore.entries()) {
+    for (const [storedPhone, storedData] of Array.from(mockOtpStore.entries())) {
       const storedPhoneNormalized = storedPhone.replace(/\D/g, '');
       if (storedPhoneNormalized === normalizedPhone) {
         stored = storedData;
@@ -141,7 +141,7 @@ export async function verifyOTP(phoneNumber: string, code: string): Promise<bool
  */
 export function clearExpiredOTPs(): void {
   const now = Date.now();
-  for (const [phone, data] of mockOtpStore.entries()) {
+  for (const [phone, data] of Array.from(mockOtpStore.entries())) {
     if (now > data.expiresAt) {
       mockOtpStore.delete(phone);
     }

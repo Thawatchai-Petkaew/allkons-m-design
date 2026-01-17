@@ -3,7 +3,7 @@
 import React from "react";
 import { ds } from "@/design-system";
 
-export interface ToggleProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {
+export interface ToggleProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "type" | "onChange"> {
   /**
    * Toggle variant
    * - circular: Circular track with sliding thumb (default)

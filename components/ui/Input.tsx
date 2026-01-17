@@ -3,7 +3,7 @@
 import React from "react";
 import { ds } from "@/design-system";
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "onChange"> {
   /**
    * Input label text
    */
