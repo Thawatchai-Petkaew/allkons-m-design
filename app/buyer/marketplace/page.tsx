@@ -110,7 +110,7 @@ export default function BuyerMarketplacePage() {
               fontSize: ds.typography.size('4xl'),
               fontWeight: ds.typography.weight('bold'),
               color: ds.color.text('primary'),
-              marginBottom: ds.spacing(2),
+              marginBottom: ds.spacing('2'),
             }}
           >
             Marketplace
@@ -188,7 +188,7 @@ export default function BuyerMarketplacePage() {
                   fontSize: ds.typography.size('md'),
                   fontWeight: ds.typography.weight('medium'),
                   color: ds.color.text('primary'),
-                  marginBottom: ds.spacing(2),
+                  marginBottom: ds.spacing('2'),
                   lineHeight: ds.typography.lineHeight('md'),
                   display: '-webkit-box',
                   WebkitLineClamp: 2,
