@@ -117,9 +117,9 @@ export default function LoginPage() {
                 // For MVP, still use phone number check (will be replaced with role check later)
                 const phone = phoneNumber.replace(/\D/g, '');
                 if (phone === '0812345678' || phone === '0823456789') {
-                  router.push('/seller/dashboard');
+                  router.push('/dashboard/seller');
                 } else if (phone === '0834567890') {
-                  router.push('/admin/dashboard');
+                  router.push('/dashboard/admin');
                 } else {
                   router.push('/buyer/marketplace');
                 }
@@ -129,9 +129,9 @@ export default function LoginPage() {
                 // Still redirect even if sync fails (for MVP)
                 const phone = phoneNumber.replace(/\D/g, '');
                 if (phone === '0812345678' || phone === '0823456789') {
-                  router.push('/seller/dashboard');
+                  router.push('/dashboard/seller');
                 } else if (phone === '0834567890') {
-                  router.push('/admin/dashboard');
+                  router.push('/dashboard/admin');
                 } else {
                   router.push('/buyer/marketplace');
                 }
@@ -142,9 +142,9 @@ export default function LoginPage() {
               // Still redirect even if sync fails (for MVP)
               const phone = phoneNumber.replace(/\D/g, '');
               if (phone === '0812345678' || phone === '0823456789') {
-                router.push('/seller/dashboard');
+                router.push('/dashboard/seller');
               } else if (phone === '0834567890') {
-                router.push('/admin/dashboard');
+                router.push('/dashboard/admin');
               } else {
                 router.push('/buyer/marketplace');
               }
@@ -165,11 +165,11 @@ export default function LoginPage() {
                 const seller1Normalized = MOCK_PHONE_NUMBERS.SELLER_1.replace(/\D/g, '');
                 const seller2Normalized = MOCK_PHONE_NUMBERS.SELLER_2.replace(/\D/g, '');
                 const adminNormalized = MOCK_PHONE_NUMBERS.ADMIN.replace(/\D/g, '');
-                
+
                 if (phoneNormalized === seller1Normalized || phoneNormalized === seller2Normalized) {
-                  router.push('/seller/dashboard');
+                  router.push('/dashboard/seller');
                 } else if (phoneNormalized === adminNormalized) {
-                  router.push('/admin/dashboard');
+                  router.push('/dashboard/admin');
                 } else {
                   router.push('/buyer/marketplace');
                 }
@@ -189,11 +189,11 @@ export default function LoginPage() {
                 const seller1Normalized = MOCK_PHONE_NUMBERS.SELLER_1.replace(/\D/g, '');
                 const seller2Normalized = MOCK_PHONE_NUMBERS.SELLER_2.replace(/\D/g, '');
                 const adminNormalized = MOCK_PHONE_NUMBERS.ADMIN.replace(/\D/g, '');
-                
+
                 if (phoneNormalized === seller1Normalized || phoneNormalized === seller2Normalized) {
-                  router.push('/seller/dashboard');
+                  router.push('/dashboard/seller');
                 } else if (phoneNormalized === adminNormalized) {
-                  router.push('/admin/dashboard');
+                  router.push('/dashboard/admin');
                 } else {
                   router.push('/buyer/marketplace');
                 }
@@ -215,18 +215,18 @@ export default function LoginPage() {
             if (isValid) {
               // Determine user type and redirect
               // Normalize phone number for comparison
-              const phoneNormalized = phoneNumber.replace(/\D/g, '');
-              const seller1Normalized = MOCK_PHONE_NUMBERS.SELLER_1.replace(/\D/g, '');
-              const seller2Normalized = MOCK_PHONE_NUMBERS.SELLER_2.replace(/\D/g, '');
-              const adminNormalized = MOCK_PHONE_NUMBERS.ADMIN.replace(/\D/g, '');
-              
-              if (phoneNormalized === seller1Normalized || phoneNormalized === seller2Normalized) {
-                router.push('/seller/dashboard');
-              } else if (phoneNormalized === adminNormalized) {
-                router.push('/admin/dashboard');
-              } else {
-                router.push('/buyer/marketplace');
-              }
+                const phoneNormalized = phoneNumber.replace(/\D/g, '');
+                const seller1Normalized = MOCK_PHONE_NUMBERS.SELLER_1.replace(/\D/g, '');
+                const seller2Normalized = MOCK_PHONE_NUMBERS.SELLER_2.replace(/\D/g, '');
+                const adminNormalized = MOCK_PHONE_NUMBERS.ADMIN.replace(/\D/g, '');
+
+                if (phoneNormalized === seller1Normalized || phoneNormalized === seller2Normalized) {
+                  router.push('/dashboard/seller');
+                } else if (phoneNormalized === adminNormalized) {
+                  router.push('/dashboard/admin');
+                } else {
+                  router.push('/buyer/marketplace');
+                }
               return; // Success with Mock OTP
             } else {
               setError('รหัส OTP ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง');

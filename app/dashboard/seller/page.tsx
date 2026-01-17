@@ -227,7 +227,7 @@ export default function SellerDashboardPage() {
                   color: ds.color.text('primary'),
                 }}
               >
-                {userData.organization.name}
+                {userData.organization?.name || 'N/A'}
               </p>
             </div>
             <div>
@@ -247,7 +247,7 @@ export default function SellerDashboardPage() {
                   color: ds.color.text('primary'),
                 }}
               >
-                {userData.organization.tax_id}
+                {userData.organization?.tax_id || 'N/A'}
               </p>
             </div>
             <div>
@@ -267,15 +267,15 @@ export default function SellerDashboardPage() {
                   borderRadius: ds.radius('full'),
                   fontSize: ds.typography.size('xs'),
                   fontWeight: ds.typography.weight('medium'),
-                  backgroundColor: userData.organization.kyb_status === 'APPROVE' 
+                  backgroundColor: userData.organization?.kyb_status === 'APPROVE' 
                     ? '#e5f7ec' 
                     : '#fff5f5',
-                  color: userData.organization.kyb_status === 'APPROVE'
+                  color: userData.organization?.kyb_status === 'APPROVE'
                     ? ds.color.system('success')
                     : ds.color.system('error'),
                 }}
               >
-                {userData.organization.kyb_status === 'APPROVE' ? 'อนุมัติแล้ว' : userData.organization.kyb_status}
+                {userData.organization?.kyb_status === 'APPROVE' ? 'อนุมัติแล้ว' : userData.organization?.kyb_status || 'N/A'}
               </span>
             </div>
           </div>
