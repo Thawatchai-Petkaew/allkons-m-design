@@ -8,7 +8,7 @@
  * ```tsx
  * import { ds } from '@/design-system';
  * 
- * <div style={{ padding: ds.spacing(8) }}>Content</div>
+ * <div style={{ padding: ds.spacing('8') }}>Content</div>
  * // Returns: "var(--spacing-8)"
  * ```
  */

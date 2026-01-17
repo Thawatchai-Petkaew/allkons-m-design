@@ -62,16 +62,16 @@ export default function ComponentsPage() {
       style={{ 
         maxWidth: ds.common.layout.containerMaxWidth,
         margin: "0 auto",
-        padding: `${ds.spacing(12)} ${ds.spacing(8)}`,
+        padding: `${ds.spacing('12')} ${ds.spacing('8')}`,
         backgroundColor: ds.color.background('primary')
       }}
     >
       {/* Header */}
-      <div style={{ marginBottom: ds.spacing(16) }}>
+      <div style={{ marginBottom: ds.spacing('16') }}>
         <Title 
           level={1} 
           style={{ 
-            marginBottom: ds.spacing(4),
+            marginBottom: ds.spacing('4'),
             fontSize: ds.typography.size('6xl'),
             fontWeight: ds.typography.weight('bold'),
             color: ds.color.text('primary')
@@ -91,12 +91,12 @@ export default function ComponentsPage() {
       </div>
 
       {/* Button Section */}
-      <section style={{ marginBottom: ds.spacing(16) }}>
-        <div style={{ marginBottom: ds.spacing(8) }}>
+      <section style={{ marginBottom: ds.spacing('16') }}>
+        <div style={{ marginBottom: ds.spacing('8') }}>
           <Title 
             level={2} 
             style={{ 
-              marginBottom: ds.spacing(2),
+              marginBottom: ds.spacing('2'),
               fontSize: ds.typography.size('4xl'),
               fontWeight: ds.typography.weight('bold'),
               color: ds.color.text('primary')
@@ -119,17 +119,17 @@ export default function ComponentsPage() {
           styles={{ 
             body: { 
               backgroundColor: ds.color.background('primary'),
-              padding: ds.spacing(8),
+              padding: ds.spacing('8'),
               borderRadius: ds.radius('lg')
             } 
           }}
         >
           {/* Primary Variant */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -139,11 +139,11 @@ export default function ComponentsPage() {
             </Title>
             
             {/* Brand */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -153,7 +153,7 @@ export default function ComponentsPage() {
               >
                 Brand
               </Text>
-              <Space wrap size={[ds.spacing(6), ds.spacing(6)]}>
+              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
                 <Button variant="primary" color="brand" size="small">Button</Button>
                 <Button variant="primary" color="brand" size="middle">Button</Button>
                 <Button variant="primary" color="brand" size="large">Button</Button>
@@ -171,11 +171,11 @@ export default function ComponentsPage() {
             </div>
 
             {/* Error */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -185,7 +185,7 @@ export default function ComponentsPage() {
               >
                 Error
               </Text>
-              <Space wrap size={[ds.spacing(6), ds.spacing(6)]}>
+              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
                 <Button variant="primary" color="error" size="small">Button</Button>
                 <Button variant="primary" color="error" size="middle">Button</Button>
                 <Button variant="primary" color="error" size="large">Button</Button>
@@ -194,14 +194,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Secondary Variant */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -211,11 +211,11 @@ export default function ComponentsPage() {
             </Title>
             
             {/* Brand */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -225,7 +225,7 @@ export default function ComponentsPage() {
               >
                 Brand
               </Text>
-              <Space wrap size={[ds.spacing(6), ds.spacing(6)]}>
+              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
                 <Button variant="secondary" color="brand" size="small">Button</Button>
                 <Button variant="secondary" color="brand" size="middle">Button</Button>
                 <Button variant="secondary" color="brand" size="large">Button</Button>
@@ -234,11 +234,11 @@ export default function ComponentsPage() {
             </div>
 
             {/* Neutral */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -248,7 +248,7 @@ export default function ComponentsPage() {
               >
                 Neutral
               </Text>
-              <Space wrap size={[ds.spacing(6), ds.spacing(6)]}>
+              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
                 <Button variant="secondary" color="neutral" size="small">Button</Button>
                 <Button variant="secondary" color="neutral" size="middle">Button</Button>
                 <Button variant="secondary" color="neutral" size="large">Button</Button>
@@ -257,11 +257,11 @@ export default function ComponentsPage() {
             </div>
 
             {/* Error */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -271,7 +271,7 @@ export default function ComponentsPage() {
               >
                 Error
               </Text>
-              <Space wrap size={[ds.spacing(6), ds.spacing(6)]}>
+              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
                 <Button variant="secondary" color="error" size="small">Button</Button>
                 <Button variant="secondary" color="error" size="middle">Button</Button>
                 <Button variant="secondary" color="error" size="large">Button</Button>
@@ -280,14 +280,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Tertiary Variant */}
           <div>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -297,11 +297,11 @@ export default function ComponentsPage() {
             </Title>
             
             {/* Brand */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -311,7 +311,7 @@ export default function ComponentsPage() {
               >
                 Brand
               </Text>
-              <Space wrap size={[ds.spacing(6), ds.spacing(6)]}>
+              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
                 <Button variant="tertiary" color="brand" size="small">Button</Button>
                 <Button variant="tertiary" color="brand" size="middle">Button</Button>
                 <Button variant="tertiary" color="brand" size="large">Button</Button>
@@ -320,11 +320,11 @@ export default function ComponentsPage() {
             </div>
 
             {/* Neutral */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -334,7 +334,7 @@ export default function ComponentsPage() {
               >
                 Neutral
               </Text>
-              <Space wrap size={[ds.spacing(6), ds.spacing(6)]}>
+              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
                 <Button variant="tertiary" color="neutral" size="small">Button</Button>
                 <Button variant="tertiary" color="neutral" size="middle">Button</Button>
                 <Button variant="tertiary" color="neutral" size="large">Button</Button>
@@ -347,7 +347,7 @@ export default function ComponentsPage() {
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -357,7 +357,7 @@ export default function ComponentsPage() {
               >
                 Error
               </Text>
-              <Space wrap size={[ds.spacing(6), ds.spacing(6)]}>
+              <Space wrap size={[ds.spacing('6'), ds.spacing('6')]}>
                 <Button variant="tertiary" color="error" size="small">Button</Button>
                 <Button variant="tertiary" color="error" size="middle">Button</Button>
                 <Button variant="tertiary" color="error" size="large">Button</Button>
@@ -370,11 +370,11 @@ export default function ComponentsPage() {
 
       {/* Input Section */}
       <section>
-        <div style={{ marginBottom: ds.spacing(8) }}>
+        <div style={{ marginBottom: ds.spacing('8') }}>
           <Title 
             level={2} 
             style={{ 
-              marginBottom: ds.spacing(2),
+              marginBottom: ds.spacing('2'),
               fontSize: ds.typography.size('4xl'),
               fontWeight: ds.typography.weight('bold'),
               color: ds.color.text('primary')
@@ -397,17 +397,17 @@ export default function ComponentsPage() {
           styles={{ 
             body: { 
               backgroundColor: ds.color.background('primary'),
-              padding: ds.spacing(8),
+              padding: ds.spacing('8'),
               borderRadius: ds.radius('lg')
             } 
           }}
         >
           {/* Default State */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -419,7 +419,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -443,14 +443,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Success/Active State */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -462,7 +462,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -482,14 +482,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Error State */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -501,7 +501,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -521,14 +521,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Disabled State */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -540,7 +540,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -560,14 +560,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Sizes */}
           <div>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -579,7 +579,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -599,12 +599,12 @@ export default function ComponentsPage() {
       </section>
 
       {/* Select Section */}
-      <section style={{ marginTop: ds.spacing(16) }}>
-        <div style={{ marginBottom: ds.spacing(8) }}>
+      <section style={{ marginTop: ds.spacing('16') }}>
+        <div style={{ marginBottom: ds.spacing('8') }}>
           <Title 
             level={2} 
             style={{ 
-              marginBottom: ds.spacing(2),
+              marginBottom: ds.spacing('2'),
               fontSize: ds.typography.size('4xl'),
               fontWeight: ds.typography.weight('bold'),
               color: ds.color.text('primary')
@@ -627,17 +627,17 @@ export default function ComponentsPage() {
           styles={{ 
             body: { 
               backgroundColor: ds.color.background('primary'),
-              padding: ds.spacing(8),
+              padding: ds.spacing('8'),
               borderRadius: ds.radius('lg')
             } 
           }}
         >
           {/* Default State */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -649,7 +649,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -695,14 +695,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Success/Active State */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -714,7 +714,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -744,14 +744,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Error State */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -763,7 +763,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -793,14 +793,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Disabled State */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -812,7 +812,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -842,14 +842,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Sizes */}
           <div>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -861,7 +861,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -901,12 +901,12 @@ export default function ComponentsPage() {
       </section>
 
       {/* Textarea Section */}
-      <section style={{ marginTop: ds.spacing(16) }}>
-        <div style={{ marginBottom: ds.spacing(8) }}>
+      <section style={{ marginTop: ds.spacing('16') }}>
+        <div style={{ marginBottom: ds.spacing('8') }}>
           <Title 
             level={2} 
             style={{ 
-              marginBottom: ds.spacing(2),
+              marginBottom: ds.spacing('2'),
               fontSize: ds.typography.size('4xl'),
               fontWeight: ds.typography.weight('bold'),
               color: ds.color.text('primary')
@@ -929,17 +929,17 @@ export default function ComponentsPage() {
           styles={{ 
             body: { 
               backgroundColor: ds.color.background('primary'),
-              padding: ds.spacing(8),
+              padding: ds.spacing('8'),
               borderRadius: ds.radius('lg')
             } 
           }}
         >
           {/* Default State */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -951,7 +951,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -975,14 +975,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Success/Active State */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -994,7 +994,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -1016,14 +1016,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Error State */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -1035,7 +1035,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -1056,14 +1056,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Disabled State */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -1075,7 +1075,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -1097,14 +1097,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Sizes */}
           <div>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -1116,7 +1116,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6), 
+                gap: ds.spacing('6'), 
                 maxWidth: ds.common.layout.inputContainerWidth 
               }}
             >
@@ -1144,12 +1144,12 @@ export default function ComponentsPage() {
       </section>
 
       {/* Toggle Section */}
-      <section style={{ marginTop: ds.spacing(16) }}>
-        <div style={{ marginBottom: ds.spacing(8) }}>
+      <section style={{ marginTop: ds.spacing('16') }}>
+        <div style={{ marginBottom: ds.spacing('8') }}>
           <Title 
             level={2} 
             style={{ 
-              marginBottom: ds.spacing(2),
+              marginBottom: ds.spacing('2'),
               fontSize: ds.typography.size('4xl'),
               fontWeight: ds.typography.weight('bold'),
               color: ds.color.text('primary')
@@ -1172,17 +1172,17 @@ export default function ComponentsPage() {
           styles={{ 
             body: { 
               backgroundColor: ds.color.background('primary'),
-              padding: ds.spacing(8),
+              padding: ds.spacing('8'),
               borderRadius: ds.radius('lg')
             } 
           }}
         >
           {/* Circular Variant */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -1192,11 +1192,11 @@ export default function ComponentsPage() {
             </Title>
             
             {/* Default States */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1210,7 +1210,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(6) 
+                  gap: ds.spacing('6') 
                 }}
               >
                 <Toggle variant="circular" checked={toggleCircular1} onChange={(checked) => setToggleCircular1(checked)} />
@@ -1221,11 +1221,11 @@ export default function ComponentsPage() {
             </div>
 
             {/* With Labels */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1239,7 +1239,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(6) 
+                  gap: ds.spacing('6') 
                 }}
               >
                 <Toggle 
@@ -1286,11 +1286,11 @@ export default function ComponentsPage() {
             </div>
 
             {/* Label Position */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1304,7 +1304,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(6) 
+                  gap: ds.spacing('6') 
                 }}
               >
                 <Toggle 
@@ -1329,7 +1329,7 @@ export default function ComponentsPage() {
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1343,7 +1343,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(6) 
+                  gap: ds.spacing('6') 
                 }}
               >
                 <Toggle variant="circular" size="small" checked={toggleCircular9} onChange={(checked) => setToggleCircular9(checked)} label="Small" />
@@ -1354,11 +1354,11 @@ export default function ComponentsPage() {
           </div>
 
           {/* Rectangular Variant - Hidden */}
-          {false && <div style={{ marginBottom: ds.spacing(12) }}>
+          {false && <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -1368,11 +1368,11 @@ export default function ComponentsPage() {
             </Title>
             
             {/* Default States */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1386,7 +1386,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(6) 
+                  gap: ds.spacing('6') 
                 }}
               >
                 <Toggle variant="rectangular" checked={toggleRectangular1} onChange={(checked) => setToggleRectangular1(checked)} />
@@ -1397,11 +1397,11 @@ export default function ComponentsPage() {
             </div>
 
             {/* With Labels */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1415,7 +1415,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(6) 
+                  gap: ds.spacing('6') 
                 }}
               >
                 <Toggle 
@@ -1462,11 +1462,11 @@ export default function ComponentsPage() {
             </div>
 
             {/* Label Position */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1480,7 +1480,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(6) 
+                  gap: ds.spacing('6') 
                 }}
               >
                 <Toggle 
@@ -1505,7 +1505,7 @@ export default function ComponentsPage() {
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1519,7 +1519,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(6) 
+                  gap: ds.spacing('6') 
                 }}
               >
                 <Toggle variant="rectangular" size="small" checked={toggleRectangular11} onChange={(checked) => setToggleRectangular11(checked)} label="Small" />
@@ -1532,12 +1532,12 @@ export default function ComponentsPage() {
       </section>
 
       {/* Checkbox Section */}
-      <section style={{ marginTop: ds.spacing(16) }}>
-        <div style={{ marginBottom: ds.spacing(8) }}>
+      <section style={{ marginTop: ds.spacing('16') }}>
+        <div style={{ marginBottom: ds.spacing('8') }}>
           <Title 
             level={2} 
             style={{ 
-              marginBottom: ds.spacing(2),
+              marginBottom: ds.spacing('2'),
               fontSize: ds.typography.size('4xl'),
               fontWeight: ds.typography.weight('bold'),
               color: ds.color.text('primary')
@@ -1560,17 +1560,17 @@ export default function ComponentsPage() {
           styles={{ 
             body: { 
               backgroundColor: ds.color.background('primary'),
-              padding: ds.spacing(8),
+              padding: ds.spacing('8'),
               borderRadius: ds.radius('lg')
             } 
           }}
         >
           {/* Visual States */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -1580,11 +1580,11 @@ export default function ComponentsPage() {
             </Title>
             
             {/* Unchecked */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1598,7 +1598,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(6) 
+                  gap: ds.spacing('6') 
                 }}
               >
                 <Checkbox checked={checkbox1} onChange={(checked) => setCheckbox1(checked)} />
@@ -1623,11 +1623,11 @@ export default function ComponentsPage() {
             </div>
 
             {/* Checked */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1641,7 +1641,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(6) 
+                  gap: ds.spacing('6') 
                 }}
               >
                 <Checkbox checked={checkbox4} onChange={(checked) => setCheckbox4(checked)} />
@@ -1670,7 +1670,7 @@ export default function ComponentsPage() {
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1684,7 +1684,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(6) 
+                  gap: ds.spacing('6') 
                 }}
               >
                 <Checkbox indeterminate={true} />
@@ -1707,14 +1707,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Sizes */}
           <div>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -1726,7 +1726,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6) 
+                gap: ds.spacing('6') 
               }}
             >
               <Checkbox size="small" checked={true} label="Small" />
@@ -1738,12 +1738,12 @@ export default function ComponentsPage() {
       </section>
 
       {/* Radio Section */}
-      <section style={{ marginTop: ds.spacing(16) }}>
-        <div style={{ marginBottom: ds.spacing(8) }}>
+      <section style={{ marginTop: ds.spacing('16') }}>
+        <div style={{ marginBottom: ds.spacing('8') }}>
           <Title 
             level={2} 
             style={{ 
-              marginBottom: ds.spacing(2),
+              marginBottom: ds.spacing('2'),
               fontSize: ds.typography.size('4xl'),
               fontWeight: ds.typography.weight('bold'),
               color: ds.color.text('primary')
@@ -1766,17 +1766,17 @@ export default function ComponentsPage() {
           styles={{ 
             body: { 
               backgroundColor: ds.color.background('primary'),
-              padding: ds.spacing(8),
+              padding: ds.spacing('8'),
               borderRadius: ds.radius('lg')
             } 
           }}
         >
           {/* Visual States */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -1786,11 +1786,11 @@ export default function ComponentsPage() {
             </Title>
             
             {/* Unchecked */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1804,7 +1804,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(6) 
+                  gap: ds.spacing('6') 
                 }}
               >
                 <Radio checked={radioValue === "unchecked1"} onChange={(checked) => checked && setRadioValue("unchecked1")} value="unchecked1" name="radio-group-1" />
@@ -1833,11 +1833,11 @@ export default function ComponentsPage() {
             </div>
 
             {/* Checked */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1851,7 +1851,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(6) 
+                  gap: ds.spacing('6') 
                 }}
               >
                 <Radio checked={radioValue2 === "checked1"} onChange={(checked) => checked && setRadioValue2("checked1")} value="checked1" name="radio-group-2" />
@@ -1880,14 +1880,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Sizes */}
           <div>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -1899,7 +1899,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                gap: ds.spacing(6) 
+                gap: ds.spacing('6') 
               }}
             >
               <Radio size="small" checked={radioValue2 === "size-small"} onChange={(checked) => checked && setRadioValue2("size-small")} value="size-small" name="radio-group-sizes" label="Small" />
@@ -1911,12 +1911,12 @@ export default function ComponentsPage() {
       </section>
 
       {/* Alert Section */}
-      <section style={{ marginTop: ds.spacing(16) }}>
-        <div style={{ marginBottom: ds.spacing(8) }}>
+      <section style={{ marginTop: ds.spacing('16') }}>
+        <div style={{ marginBottom: ds.spacing('8') }}>
           <Title 
             level={2} 
             style={{ 
-              marginBottom: ds.spacing(2),
+              marginBottom: ds.spacing('2'),
               fontSize: ds.typography.size('4xl'),
               fontWeight: ds.typography.weight('bold'),
               color: ds.color.text('primary')
@@ -1939,17 +1939,17 @@ export default function ComponentsPage() {
           styles={{ 
             body: { 
               backgroundColor: ds.color.background('primary'),
-              padding: ds.spacing(8),
+              padding: ds.spacing('8'),
               borderRadius: ds.radius('lg')
             } 
           }}
         >
           {/* Variants */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -1959,11 +1959,11 @@ export default function ComponentsPage() {
             </Title>
             
             {/* Compact */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -1977,7 +1977,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(4) 
+                  gap: ds.spacing('4') 
                 }}
               >
                 <Alert 
@@ -2016,7 +2016,7 @@ export default function ComponentsPage() {
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -2030,7 +2030,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexDirection: "column", 
-                  gap: ds.spacing(4) 
+                  gap: ds.spacing('4') 
                 }}
               >
                 <Alert 
@@ -2076,12 +2076,12 @@ export default function ComponentsPage() {
       </section>
 
       {/* Modal Section */}
-      <section style={{ marginTop: ds.spacing(16) }}>
-        <div style={{ marginBottom: ds.spacing(8) }}>
+      <section style={{ marginTop: ds.spacing('16') }}>
+        <div style={{ marginBottom: ds.spacing('8') }}>
           <Title 
             level={2} 
             style={{ 
-              marginBottom: ds.spacing(2),
+              marginBottom: ds.spacing('2'),
               fontSize: ds.typography.size('4xl'),
               fontWeight: ds.typography.weight('bold'),
               color: ds.color.text('primary')
@@ -2104,17 +2104,17 @@ export default function ComponentsPage() {
           styles={{ 
             body: { 
               backgroundColor: ds.color.background('primary'),
-              padding: ds.spacing(8),
+              padding: ds.spacing('8'),
               borderRadius: ds.radius('lg')
             } 
           }}
         >
           {/* Basic Modal */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -2140,14 +2140,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Modal with Footer */}
           <div>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -2186,12 +2186,12 @@ export default function ComponentsPage() {
       </section>
 
       {/* Icon Section */}
-      <section style={{ marginTop: ds.spacing(16) }}>
-        <div style={{ marginBottom: ds.spacing(8) }}>
+      <section style={{ marginTop: ds.spacing('16') }}>
+        <div style={{ marginBottom: ds.spacing('8') }}>
           <Title 
             level={2} 
             style={{ 
-              marginBottom: ds.spacing(2),
+              marginBottom: ds.spacing('2'),
               fontSize: ds.typography.size('4xl'),
               fontWeight: ds.typography.weight('bold'),
               color: ds.color.text('primary')
@@ -2214,17 +2214,17 @@ export default function ComponentsPage() {
           styles={{ 
             body: { 
               backgroundColor: ds.color.background('primary'),
-              padding: ds.spacing(8),
+              padding: ds.spacing('8'),
               borderRadius: ds.radius('lg')
             } 
           }}
         >
           {/* Shapes */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -2234,11 +2234,11 @@ export default function ComponentsPage() {
             </Title>
             
             {/* Circle */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -2252,7 +2252,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexWrap: "wrap",
-                  gap: ds.spacing(6),
+                  gap: ds.spacing('6'),
                   alignItems: "center"
                 }}
               >
@@ -2266,11 +2266,11 @@ export default function ComponentsPage() {
             </div>
 
             {/* Square */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -2284,7 +2284,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexWrap: "wrap",
-                  gap: ds.spacing(6),
+                  gap: ds.spacing('6'),
                   alignItems: "center"
                 }}
               >
@@ -2302,7 +2302,7 @@ export default function ComponentsPage() {
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -2316,7 +2316,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexWrap: "wrap",
-                  gap: ds.spacing(6),
+                  gap: ds.spacing('6'),
                   alignItems: "center"
                 }}
               >
@@ -2330,14 +2330,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Variants */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -2347,11 +2347,11 @@ export default function ComponentsPage() {
             </Title>
             
             {/* Filled */}
-            <div style={{ marginBottom: ds.spacing(8) }}>
+            <div style={{ marginBottom: ds.spacing('8') }}>
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -2365,7 +2365,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexWrap: "wrap",
-                  gap: ds.spacing(6),
+                  gap: ds.spacing('6'),
                   alignItems: "center"
                 }}
               >
@@ -2382,7 +2382,7 @@ export default function ComponentsPage() {
               <Text 
                 style={{ 
                   display: "block",
-                  marginBottom: ds.spacing(4),
+                  marginBottom: ds.spacing('4'),
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('semibold'),
                   color: ds.color.text('secondary'),
@@ -2396,7 +2396,7 @@ export default function ComponentsPage() {
                 style={{ 
                   display: "flex", 
                   flexWrap: "wrap",
-                  gap: ds.spacing(6),
+                  gap: ds.spacing('6'),
                   alignItems: "center"
                 }}
               >
@@ -2409,14 +2409,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Colors */}
-          <div style={{ marginBottom: ds.spacing(12) }}>
+          <div style={{ marginBottom: ds.spacing('12') }}>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -2428,7 +2428,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexWrap: "wrap",
-                gap: ds.spacing(6),
+                gap: ds.spacing('6'),
                 alignItems: "center"
               }}
             >
@@ -2440,14 +2440,14 @@ export default function ComponentsPage() {
             </div>
           </div>
 
-          <Divider style={{ margin: `${ds.spacing(8)} 0` }} />
+          <Divider style={{ margin: `${ds.spacing('8')} 0` }} />
 
           {/* Sizes */}
           <div>
             <Title 
               level={4} 
               style={{ 
-                marginBottom: ds.spacing(6),
+                marginBottom: ds.spacing('6'),
                 fontSize: ds.typography.size('2xl'),
                 fontWeight: ds.typography.weight('semibold'),
                 color: ds.color.text('secondary')
@@ -2459,7 +2459,7 @@ export default function ComponentsPage() {
               style={{ 
                 display: "flex", 
                 flexWrap: "wrap",
-                gap: ds.spacing(6),
+                gap: ds.spacing('6'),
                 alignItems: "center"
               }}
             >

@@ -9,7 +9,7 @@
  * import { ds } from '@/design-system';
  * 
  * // Spacing
- * <div style={{ padding: ds.spacing(8), margin: ds.spacing(4) }}>Content</div>
+ * <div style={{ padding: ds.spacing('8'), margin: ds.spacing('4') }}>Content</div>
  * 
  * // Colors
  * <div style={{ color: ds.color.text('primary'), backgroundColor: ds.color.background('secondary') }}>Text</div>
