@@ -121,7 +121,7 @@ export default function AdminLoginPage() {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: ds.color.background('secondary'),
-        padding: ds.spacing(4),
+        padding: ds.spacing('4'),
       }}
     >
       <div
@@ -130,7 +130,7 @@ export default function AdminLoginPage() {
           maxWidth: '400px',
           backgroundColor: ds.color.background('primary'),
           borderRadius: ds.radius('md'),
-          padding: ds.spacing(8),
+          padding: ds.spacing('8'),
           boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
         }}
       >
@@ -139,7 +139,7 @@ export default function AdminLoginPage() {
             fontSize: ds.typography.size('4xl'),
             fontWeight: ds.typography.weight('bold'),
             color: ds.color.text('primary'),
-            marginBottom: ds.spacing(2),
+            marginBottom: ds.spacing('2'),
             textAlign: 'center',
           }}
         >
@@ -149,7 +149,7 @@ export default function AdminLoginPage() {
           style={{
             fontSize: ds.typography.size('md'),
             color: ds.color.text('secondary'),
-            marginBottom: ds.spacing(8),
+            marginBottom: ds.spacing('8'),
             textAlign: 'center',
           }}
         >
@@ -159,8 +159,8 @@ export default function AdminLoginPage() {
         {error && (
           <div
             style={{
-              padding: ds.spacing(3),
-              marginBottom: ds.spacing(4),
+              padding: ds.spacing('3'),
+              marginBottom: ds.spacing('4'),
               backgroundColor: '#fff5f5',
               border: `1px solid ${ds.color.system('error')}`,
               borderRadius: ds.radius('sm'),
@@ -174,14 +174,14 @@ export default function AdminLoginPage() {
 
         {step === 'phone' ? (
           <form onSubmit={handlePhoneSubmit}>
-            <div style={{ marginBottom: ds.spacing(6) }}>
+            <div style={{ marginBottom: ds.spacing('6') }}>
               <label
                 style={{
                   display: 'block',
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('medium'),
                   color: ds.color.text('secondary'),
-                  marginBottom: ds.spacing(2),
+                  marginBottom: ds.spacing('2'),
                 }}
               >
                 เบอร์โทรศัพท์
@@ -205,14 +205,14 @@ export default function AdminLoginPage() {
           </form>
         ) : (
           <form onSubmit={handleOTPSubmit}>
-            <div style={{ marginBottom: ds.spacing(6) }}>
+            <div style={{ marginBottom: ds.spacing('6') }}>
               <label
                 style={{
                   display: 'block',
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('medium'),
                   color: ds.color.text('secondary'),
-                  marginBottom: ds.spacing(2),
+                  marginBottom: ds.spacing('2'),
                 }}
               >
                 รหัส OTP
@@ -232,7 +232,7 @@ export default function AdminLoginPage() {
                 }}
               />
             </div>
-            <div style={{ display: 'flex', gap: ds.spacing(3) }}>
+            <div style={{ display: 'flex', gap: ds.spacing('3') }}>
               <Button
                 type="button"
                 variant="secondary"

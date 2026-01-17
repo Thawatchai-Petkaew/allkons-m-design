@@ -276,7 +276,7 @@ export default function LoginPage() {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: ds.color.background('secondary'),
-        padding: ds.spacing(4),
+        padding: ds.spacing('4'),
       }}
     >
       <div
@@ -285,7 +285,7 @@ export default function LoginPage() {
           maxWidth: '400px',
           backgroundColor: ds.color.background('primary'),
           borderRadius: ds.radius('md'),
-          padding: ds.spacing(8),
+          padding: ds.spacing('8'),
           boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
         }}
       >
@@ -294,7 +294,7 @@ export default function LoginPage() {
             fontSize: ds.typography.size('4xl'),
             fontWeight: ds.typography.weight('bold'),
             color: ds.color.text('primary'),
-            marginBottom: ds.spacing(2),
+            marginBottom: ds.spacing('2'),
             textAlign: 'center',
           }}
         >
@@ -304,7 +304,7 @@ export default function LoginPage() {
           style={{
             fontSize: ds.typography.size('md'),
             color: ds.color.text('secondary'),
-            marginBottom: ds.spacing(8),
+            marginBottom: ds.spacing('8'),
             textAlign: 'center',
           }}
         >
@@ -314,8 +314,8 @@ export default function LoginPage() {
         {error && (
           <div
             style={{
-              padding: ds.spacing(3),
-              marginBottom: ds.spacing(4),
+              padding: ds.spacing('3'),
+              marginBottom: ds.spacing('4'),
               backgroundColor: '#fff5f5',
               border: `1px solid ${ds.color.system('error')}`,
               borderRadius: ds.radius('sm'),
@@ -329,14 +329,14 @@ export default function LoginPage() {
 
         {step === 'phone' ? (
           <form onSubmit={handlePhoneSubmit}>
-            <div style={{ marginBottom: ds.spacing(6) }}>
+            <div style={{ marginBottom: ds.spacing('6') }}>
               <label
                 style={{
                   display: 'block',
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('medium'),
                   color: ds.color.text('secondary'),
-                  marginBottom: ds.spacing(2),
+                  marginBottom: ds.spacing('2'),
                 }}
               >
                 เบอร์โทรศัพท์
@@ -355,7 +355,7 @@ export default function LoginPage() {
                 style={{
                   fontSize: ds.typography.size('xs'),
                   color: ds.color.text('tertiary'),
-                  marginTop: ds.spacing(2),
+                  marginTop: ds.spacing('2'),
                 }}
               >
                 สำหรับทดสอบ: {MOCK_PHONE_NUMBERS.SELLER_1} (Seller 1), {MOCK_PHONE_NUMBERS.SELLER_2} (Seller 2), {MOCK_PHONE_NUMBERS.ADMIN} (Admin)
@@ -373,14 +373,14 @@ export default function LoginPage() {
           </form>
         ) : (
           <form onSubmit={handleOTPSubmit}>
-            <div style={{ marginBottom: ds.spacing(6) }}>
+            <div style={{ marginBottom: ds.spacing('6') }}>
               <label
                 style={{
                   display: 'block',
                   fontSize: ds.typography.size('sm'),
                   fontWeight: ds.typography.weight('medium'),
                   color: ds.color.text('secondary'),
-                  marginBottom: ds.spacing(2),
+                  marginBottom: ds.spacing('2'),
                 }}
               >
                 รหัส OTP
@@ -403,7 +403,7 @@ export default function LoginPage() {
                 style={{
                   fontSize: ds.typography.size('xs'),
                   color: ds.color.text('tertiary'),
-                  marginTop: ds.spacing(2),
+                  marginTop: ds.spacing('2'),
                 }}
               >
                 {phoneNumber in MOCK_OTP_CODES
@@ -413,7 +413,7 @@ export default function LoginPage() {
                   : 'กรุณาตรวจสอบ SMS หรือใช้ Mock OTP'}
               </p>
             </div>
-            <div style={{ display: 'flex', gap: ds.spacing(3) }}>
+            <div style={{ display: 'flex', gap: ds.spacing('3') }}>
               <Button
                 type="button"
                 variant="secondary"

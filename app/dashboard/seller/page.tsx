@@ -134,7 +134,7 @@ export default function SellerDashboardPage() {
         style={{
           backgroundColor: ds.color.background('primary'),
           borderBottom: `1px solid ${ds.color.border('primary')}`,
-          padding: `${ds.spacing(4)} ${ds.spacing(8)}`,
+          padding: `${ds.spacing('4')} ${ds.spacing('8')}`,
         }}
       >
         <div
@@ -160,7 +160,7 @@ export default function SellerDashboardPage() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: ds.spacing(4),
+              gap: ds.spacing('4'),
             }}
           >
             <span
@@ -180,7 +180,7 @@ export default function SellerDashboardPage() {
         style={{
           maxWidth: ds.common.layout.containerMaxWidth,
           margin: '0 auto',
-          padding: ds.spacing(8),
+          padding: ds.spacing('8'),
         }}
       >
         {/* Organization Info */}
@@ -188,8 +188,8 @@ export default function SellerDashboardPage() {
           style={{
             backgroundColor: ds.color.background('primary'),
             borderRadius: ds.radius('md'),
-            padding: ds.spacing(6),
-            marginBottom: ds.spacing(6),
+            padding: ds.spacing('6'),
+            marginBottom: ds.spacing('6'),
             border: `1px solid ${ds.color.border('primary')}`,
           }}
         >
@@ -198,7 +198,7 @@ export default function SellerDashboardPage() {
               fontSize: ds.typography.size('xl'),
               fontWeight: ds.typography.weight('bold'),
               color: ds.color.text('primary'),
-              marginBottom: ds.spacing(4),
+              marginBottom: ds.spacing('4'),
             }}
           >
             ข้อมูลองค์กร
@@ -207,7 +207,7 @@ export default function SellerDashboardPage() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-              gap: ds.spacing(4),
+              gap: ds.spacing('4'),
             }}
           >
             <div>
@@ -215,7 +215,7 @@ export default function SellerDashboardPage() {
                 style={{
                   fontSize: ds.typography.size('sm'),
                   color: ds.color.text('tertiary'),
-                  marginBottom: ds.spacing(1),
+                  marginBottom: ds.spacing('1'),
                 }}
               >
                 ชื่อองค์กร
@@ -235,7 +235,7 @@ export default function SellerDashboardPage() {
                 style={{
                   fontSize: ds.typography.size('sm'),
                   color: ds.color.text('tertiary'),
-                  marginBottom: ds.spacing(1),
+                  marginBottom: ds.spacing('1'),
                 }}
               >
                 เลขประจำตัวผู้เสียภาษี
@@ -255,7 +255,7 @@ export default function SellerDashboardPage() {
                 style={{
                   fontSize: ds.typography.size('sm'),
                   color: ds.color.text('tertiary'),
-                  marginBottom: ds.spacing(1),
+                  marginBottom: ds.spacing('1'),
                 }}
               >
                 สถานะ KYB
@@ -263,7 +263,7 @@ export default function SellerDashboardPage() {
               <span
                 style={{
                   display: 'inline-block',
-                  padding: `${ds.spacing(1)} ${ds.spacing(3)}`,
+                  padding: `${ds.spacing('1')} ${ds.spacing('3')}`,
                   borderRadius: ds.radius('full'),
                   fontSize: ds.typography.size('xs'),
                   fontWeight: ds.typography.weight('medium'),
@@ -287,8 +287,8 @@ export default function SellerDashboardPage() {
             style={{
               backgroundColor: ds.color.background('primary'),
               borderRadius: ds.radius('md'),
-              padding: ds.spacing(6),
-              marginBottom: ds.spacing(6),
+              padding: ds.spacing('6'),
+              marginBottom: ds.spacing('6'),
               border: `1px solid ${ds.color.border('primary')}`,
             }}
           >
@@ -297,7 +297,7 @@ export default function SellerDashboardPage() {
                 fontSize: ds.typography.size('xl'),
                 fontWeight: ds.typography.weight('bold'),
                 color: ds.color.text('primary'),
-                marginBottom: ds.spacing(4),
+                marginBottom: ds.spacing('4'),
               }}
             >
               ข้อมูลร้าน
@@ -306,7 +306,7 @@ export default function SellerDashboardPage() {
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                gap: ds.spacing(4),
+                gap: ds.spacing('4'),
               }}
             >
               <div>
@@ -314,7 +314,7 @@ export default function SellerDashboardPage() {
                   style={{
                     fontSize: ds.typography.size('sm'),
                     color: ds.color.text('tertiary'),
-                    marginBottom: ds.spacing(1),
+                    marginBottom: ds.spacing('1'),
                   }}
                 >
                   ชื่อร้าน
@@ -334,7 +334,7 @@ export default function SellerDashboardPage() {
                   style={{
                     fontSize: ds.typography.size('sm'),
                     color: ds.color.text('tertiary'),
-                    marginBottom: ds.spacing(1),
+                    marginBottom: ds.spacing('1'),
                   }}
                 >
                   Subdomain
@@ -354,7 +354,7 @@ export default function SellerDashboardPage() {
                   style={{
                     fontSize: ds.typography.size('sm'),
                     color: ds.color.text('tertiary'),
-                    marginBottom: ds.spacing(1),
+                    marginBottom: ds.spacing('1'),
                   }}
                 >
                   สถานะ
@@ -362,7 +362,7 @@ export default function SellerDashboardPage() {
                 <span
                   style={{
                     display: 'inline-block',
-                    padding: `${ds.spacing(1)} ${ds.spacing(3)}`,
+                    padding: `${ds.spacing('1')} ${ds.spacing('3')}`,
                     borderRadius: ds.radius('full'),
                     fontSize: ds.typography.size('xs'),
                     fontWeight: ds.typography.weight('medium'),
@@ -385,7 +385,7 @@ export default function SellerDashboardPage() {
             style={{
               backgroundColor: ds.color.background('primary'),
               borderRadius: ds.radius('md'),
-              padding: ds.spacing(6),
+              padding: ds.spacing('6'),
               border: `1px solid ${ds.color.border('primary')}`,
             }}
           >
@@ -394,7 +394,7 @@ export default function SellerDashboardPage() {
                 fontSize: ds.typography.size('xl'),
                 fontWeight: ds.typography.weight('bold'),
                 color: ds.color.text('primary'),
-                marginBottom: ds.spacing(4),
+                marginBottom: ds.spacing('4'),
               }}
             >
               สาขา ({userData.branches.length} สาขา)
@@ -403,14 +403,14 @@ export default function SellerDashboardPage() {
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-                gap: ds.spacing(4),
+                gap: ds.spacing('4'),
               }}
             >
               {userData.branches.map((branch) => (
                 <div
                   key={branch.id}
                   style={{
-                    padding: ds.spacing(4),
+                    padding: ds.spacing('4'),
                     border: `1px solid ${ds.color.border('primary')}`,
                     borderRadius: ds.radius('sm'),
                     backgroundColor: branch.is_main ? '#f0f9ff' : ds.color.background('primary'),
@@ -421,7 +421,7 @@ export default function SellerDashboardPage() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      marginBottom: ds.spacing(2),
+                      marginBottom: ds.spacing('2'),
                     }}
                   >
                     <h3
@@ -437,7 +437,7 @@ export default function SellerDashboardPage() {
                     {branch.is_main && (
                       <span
                         style={{
-                          padding: `${ds.spacing(1)} ${ds.spacing(2)}`,
+                          padding: `${ds.spacing('1')} ${ds.spacing('2')}`,
                           borderRadius: ds.radius('xs'),
                           fontSize: ds.typography.size('xs'),
                           fontWeight: ds.typography.weight('medium'),
@@ -454,7 +454,7 @@ export default function SellerDashboardPage() {
                       style={{
                         fontSize: ds.typography.size('sm'),
                         color: ds.color.text('secondary'),
-                        marginBottom: ds.spacing(1),
+                        marginBottom: ds.spacing('1'),
                       }}
                     >
                       {branch.address_line1}
@@ -466,7 +466,7 @@ export default function SellerDashboardPage() {
                       style={{
                         fontSize: ds.typography.size('sm'),
                         color: ds.color.text('secondary'),
-                        marginBottom: ds.spacing(1),
+                        marginBottom: ds.spacing('1'),
                       }}
                     >
                       {branch.city} {branch.province} {branch.postal_code}
