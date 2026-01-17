@@ -3,6 +3,8 @@
  * This file contains mock data for testing without database
  */
 
+import type { Product } from '@/types';
+
 // Note: uuid will be used when connecting to real database
 // For MVP, we use hardcoded IDs
 
@@ -185,7 +187,7 @@ export const mockSeller2 = {
 };
 
 // Mock Products (for Buyer Marketplace - Guest Mode)
-export const mockProducts = [
+export const mockProducts: Product[] = [
   {
     id: 'product-1',
     shop_id: 'seller-1-shop-id',
@@ -199,7 +201,7 @@ export const mockProducts = [
     image_url: null,
     category: 'ปูนและซีเมนต์',
     brand: 'ตราช้าง',
-    stock_status: 'STOCKED',
+    stock_status: 'STOCKED' as const,
     is_active: true,
   },
   {
@@ -215,7 +217,7 @@ export const mockProducts = [
     image_url: null,
     category: 'อิฐและบล็อก',
     brand: 'ท้องถิ่น',
-    stock_status: 'STOCKED',
+    stock_status: 'STOCKED' as const,
     is_active: true,
   },
   {
@@ -231,7 +233,7 @@ export const mockProducts = [
     image_url: null,
     category: 'เหล็กและโลหะ',
     brand: 'มาตรฐาน',
-    stock_status: 'STOCKED',
+    stock_status: 'STOCKED' as const,
     is_active: true,
   },
   {
@@ -247,7 +249,7 @@ export const mockProducts = [
     image_url: null,
     category: 'กระเบื้องและหิน',
     brand: 'ท้องถิ่น',
-    stock_status: 'STOCKED',
+    stock_status: 'STOCKED' as const,
     is_active: true,
   },
 ];
