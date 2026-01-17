@@ -51,7 +51,7 @@ export default function BuyerMarketplacePage() {
         style={{
           backgroundColor: ds.color.background('primary'),
           borderBottom: `1px solid ${ds.color.border('primary')}`,
-          padding: `${ds.spacing(4)} ${ds.spacing(8)}`,
+          padding: `${ds.spacing('4')} ${ds.spacing('8')}`,
           position: 'sticky',
           top: 0,
           zIndex: 100,
@@ -80,7 +80,7 @@ export default function BuyerMarketplacePage() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: ds.spacing(4),
+              gap: ds.spacing('4'),
             }}
           >
             <span
@@ -100,11 +100,11 @@ export default function BuyerMarketplacePage() {
         style={{
           maxWidth: ds.common.layout.containerMaxWidth,
           margin: '0 auto',
-          padding: ds.spacing(8),
+          padding: ds.spacing('8'),
         }}
       >
         {/* Page Title */}
-        <div style={{ marginBottom: ds.spacing(8) }}>
+        <div style={{ marginBottom: ds.spacing('8') }}>
           <h2
             style={{
               fontSize: ds.typography.size('4xl'),
@@ -130,7 +130,7 @@ export default function BuyerMarketplacePage() {
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-            gap: ds.spacing(6),
+            gap: ds.spacing('6'),
           }}
         >
           {products.map((product) => (
@@ -139,7 +139,7 @@ export default function BuyerMarketplacePage() {
               style={{
                 backgroundColor: ds.color.background('primary'),
                 borderRadius: ds.radius('md'),
-                padding: ds.spacing(4),
+                padding: ds.spacing('4'),
                 border: `1px solid ${ds.color.border('primary')}`,
                 transition: 'transform 0.2s, box-shadow 0.2s',
                 cursor: 'pointer',
@@ -160,7 +160,7 @@ export default function BuyerMarketplacePage() {
                   aspectRatio: '1',
                   backgroundColor: ds.color.background('secondary'),
                   borderRadius: ds.radius('sm'),
-                  marginBottom: ds.spacing(3),
+                  marginBottom: ds.spacing('3'),
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -176,7 +176,7 @@ export default function BuyerMarketplacePage() {
                 style={{
                   fontSize: ds.typography.size('xs'),
                   color: ds.color.text('tertiary'),
-                  marginBottom: ds.spacing(1),
+                  marginBottom: ds.spacing('1'),
                 }}
               >
                 {product.shop_name}
@@ -200,7 +200,7 @@ export default function BuyerMarketplacePage() {
               </h3>
 
               {/* Price */}
-              <div style={{ marginBottom: ds.spacing(2) }}>
+              <div style={{ marginBottom: ds.spacing('2') }}>
                 {product.special_price ? (
                   <div>
                     <span
@@ -208,7 +208,7 @@ export default function BuyerMarketplacePage() {
                         fontSize: ds.typography.size('sm'),
                         color: ds.color.text('tertiary'),
                         textDecoration: 'line-through',
-                        marginRight: ds.spacing(2),
+                        marginRight: ds.spacing('2'),
                       }}
                     >
                       {formatPrice(product.price)}
@@ -240,14 +240,14 @@ export default function BuyerMarketplacePage() {
               <div
                 style={{
                   display: 'flex',
-                  gap: ds.spacing(2),
+                  gap: ds.spacing('2'),
                   flexWrap: 'wrap',
-                  marginBottom: ds.spacing(2),
+                  marginBottom: ds.spacing('2'),
                 }}
               >
                 <span
                   style={{
-                    padding: `${ds.spacing(1)} ${ds.spacing(2)}`,
+                    padding: `${ds.spacing('1')} ${ds.spacing('2')}`,
                     borderRadius: ds.radius('xs'),
                     fontSize: ds.typography.size('xs'),
                     backgroundColor: ds.color.background('secondary'),
@@ -259,7 +259,7 @@ export default function BuyerMarketplacePage() {
                 {product.brand && (
                   <span
                     style={{
-                      padding: `${ds.spacing(1)} ${ds.spacing(2)}`,
+                      padding: `${ds.spacing('1')} ${ds.spacing('2')}`,
                       borderRadius: ds.radius('xs'),
                       fontSize: ds.typography.size('xs'),
                       backgroundColor: ds.color.background('secondary'),
@@ -275,7 +275,7 @@ export default function BuyerMarketplacePage() {
               <div>
                 <span
                   style={{
-                    padding: `${ds.spacing(1)} ${ds.spacing(2)}`,
+                    padding: `${ds.spacing('1')} ${ds.spacing('2')}`,
                     borderRadius: ds.radius('xs'),
                     fontSize: ds.typography.size('xs'),
                     fontWeight: ds.typography.weight('medium'),
@@ -308,7 +308,7 @@ export default function BuyerMarketplacePage() {
           <div
             style={{
               textAlign: 'center',
-              padding: ds.spacing(16),
+              padding: ds.spacing('16'),
               color: ds.color.text('secondary'),
             }}
           >
