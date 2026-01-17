@@ -119,8 +119,8 @@ export interface Product {
   name_en?: string;
   description?: string;
   price: number;
-  special_price?: number;
-  image_url?: string;
+  special_price?: number | null;
+  image_url?: string | null;
   category: string;
   brand?: string;
   stock_status: 'STOCKED' | 'OUT_OF_STOCK_CAN_SALE' | 'OUT_OF_STOCK_CANNOT_SALE';
