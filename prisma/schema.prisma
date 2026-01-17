@@ -1,0 +1,614 @@
+// Prisma Schema for Allkons M
+// Auto-generated from SQL schema
+// Database: Supabase (PostgreSQL)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum CustomerStatus {
+  VISITOR
+  CUSTOMER
+}
+
+enum CustomerProfileType {
+  PERSONAL
+}
+
+enum OrganizeType {
+  HEAD_OFFICE
+  BRANCH
+}
+
+enum KycStatus {
+  NONE
+  WAIT_FOR_APPROVE
+  REQUEST_MORE
+  APPROVE
+  REJECT
+}
+
+enum PermissionAction {
+  VIEW
+  CREATE
+  UPDATE
+  DELETE
+}
+
+enum PermissionCategory {
+  ORGANIZATION_INFO
+  MEMBER_MANAGEMENT
+  ROLE_PERMISSION
+  ORGANIZATION_NUMBER
+  PAYMENT
+  BANK_ACCOUNT
+  PROMPTPAY_ACCOUNT
+  STORE_BRANCH
+  PRODUCT
+  PRODUCT_IMPORT
+  ORDER
+  PO
+  INVOICE
+  REPORT
+}
+
+enum RoleLayer {
+  ORGANIZATION
+  APPLICATION
+}
+
+enum ApplicationType {
+  BUYER
+  SELLER
+  BOTH
+}
+
+// ============================================================================
+// MASTER DATA: JURISTIC TYPES
+// ============================================================================
+
+model JuristicType {
+  id           String   @id @default(uuid()) @db.Uuid
+  code         String   @unique @db.VarChar(50)
+  prefixTh     String?  @map("prefix_th") @db.VarChar(255)
+  suffixTh     String?  @map("suffix_th") @db.VarChar(255)
+  descriptionTh String  @map("description_th") @db.Text
+  prefixEn     String?  @map("prefix_en") @db.VarChar(255)
+  suffixEn     String?  @map("suffix_en") @db.VarChar(255)
+  descriptionEn String? @map("description_en") @db.Text
+  isActive     Boolean  @default(true) @map("is_active")
+  displayOrder Int      @default(0) @map("display_order")
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt    DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  accounts       Account[]
+  organizations  Organization[]
+
+  @@map("juristic_types")
+  @@index([code])
+  @@index([isActive])
+  @@index([displayOrder])
+}
+
+// ============================================================================
+// REFERENCE TABLES
+// ============================================================================
+
+model HighestAuthority {
+  id            String   @id @default(uuid()) @db.Uuid
+  firstName     String   @map("first_name") @db.VarChar(100)
+  lastName      String   @map("last_name") @db.VarChar(100)
+  idCardNumber  String?  @map("id_card_number") @db.VarChar(20)
+  passportNumber String? @map("passport_number") @db.VarChar(50)
+  idCardType    String?  @map("id_card_type") @db.VarChar(50)
+  dateOfBirth   DateTime? @map("date_of_birth") @db.Date
+  nationality   String?  @default("Thai") @db.VarChar(100)
+  addressLine1  String?  @map("address_line1") @db.Text
+  addressLine2  String?  @map("address_line2") @db.Text
+  city          String?  @db.VarChar(100)
+  province      String?  @db.VarChar(100)
+  postalCode    String?  @map("postal_code") @db.VarChar(10)
+  country       String?  @default("Thailand") @db.VarChar(100)
+  phoneNumber   String?  @map("phone_number") @db.VarChar(20)
+  email         String?  @db.VarChar(255)
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  accounts       Account[]
+  organizations  Organization[]
+
+  @@map("highest_authority")
+  @@index([idCardNumber])
+  @@index([passportNumber])
+}
+
+model Contact {
+  id              String   @id @default(uuid()) @db.Uuid
+  firstName       String   @map("first_name") @db.VarChar(100)
+  lastName        String   @map("last_name") @db.VarChar(100)
+  idCardNumber    String?  @map("id_card_number") @db.VarChar(20)
+  passportNumber  String?  @map("passport_number") @db.VarChar(50)
+  idCardType      String?  @map("id_card_type") @db.VarChar(50)
+  dateOfBirth     DateTime? @map("date_of_birth") @db.Date
+  nationality     String?  @default("Thai") @db.VarChar(100)
+  addressLine1    String?  @map("address_line1") @db.Text
+  addressLine2    String?  @map("address_line2") @db.Text
+  city            String?  @db.VarChar(100)
+  province        String?  @db.VarChar(100)
+  postalCode      String?  @map("postal_code") @db.VarChar(10)
+  country         String?  @default("Thailand") @db.VarChar(100)
+  phoneNumber     String?  @map("phone_number") @db.VarChar(20)
+  email           String?  @db.VarChar(255)
+  position        String?  @db.VarChar(100)
+  isAuthorizedPerson Boolean @default(false) @map("is_authorized_person")
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  accounts       Account[]
+  organizations  Organization[]
+
+  @@map("contact")
+  @@index([idCardNumber])
+  @@index([phoneNumber])
+  @@index([email])
+}
+
+// ============================================================================
+// ACCOUNT TABLE
+// ============================================================================
+
+model Account {
+  id                      String              @id @default(uuid()) @db.Uuid
+  userId                  String              @unique @map("user_id") @db.Uuid // References auth.users(id)
+  appId                   String              @map("app_id") @db.VarChar(100)
+  allkonsId               String?             @unique @map("allkons_id") @db.VarChar(100)
+  customerCode            String?             @unique @map("customer_code") @db.VarChar(100)
+  customerProfileType     CustomerProfileType @default(PERSONAL) @map("customer_profile_type")
+  customerStatus          CustomerStatus      @default(VISITOR) @map("customer_status")
+  juristicName            String?             @map("juristic_name") @db.VarChar(255)
+  juristicTypeId          String?             @map("juristic_type_id") @db.Uuid
+  juristicTypeRemark      String?             @map("juristic_type_remark") @db.Text
+  organizeType            OrganizeType        @map("organize_type")
+  taxId                   String              @map("tax_id") @db.VarChar(50)
+  branchNumber            String?             @map("branch_number") @db.VarChar(50)
+  contactShownHighestAuthority Boolean @default(false) @map("contact_shown_highest_authority")
+  isDopa                  Boolean             @default(false) @map("is_dopa")
+  isDbd                   Boolean             @default(false) @map("is_dbd")
+  kycStatus               KycStatus           @default(NONE) @map("kyc_status")
+  activeStatus            Boolean?            @map("active_status")
+  highestAuthorityId      String?             @map("highest_authority_id") @db.Uuid
+  contactId               String?             @map("contact_id") @db.Uuid
+  createdAt               DateTime            @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt               DateTime            @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  juristicType      JuristicType?      @relation(fields: [juristicTypeId], references: [id], onDelete: SetNull)
+  highestAuthority  HighestAuthority?  @relation(fields: [highestAuthorityId], references: [id], onDelete: SetNull)
+  contact           Contact?           @relation(fields: [contactId], references: [id], onDelete: SetNull)
+  organizations     Organization[]
+  userOrganizations UserOrganization[]
+  userRegistration  UserRegistration?
+  userAttributes    UserAttribute[]
+  userPreferences   UserPreference[]
+  kyc               Kyc?
+
+  @@map("accounts")
+  @@index([userId])
+  @@index([appId])
+  @@index([allkonsId])
+  @@index([customerCode])
+  @@index([customerStatus])
+  @@index([kycStatus])
+  @@index([taxId])
+  @@index([activeStatus])
+  @@index([juristicTypeId])
+}
+
+// ============================================================================
+// ORGANIZATION TABLE
+// ============================================================================
+
+model Organization {
+  id                        String          @id @default(uuid()) @db.Uuid
+  accountId                 String          @map("account_id") @db.Uuid
+  allkonsOrgId              String?         @unique @map("allkons_org_id") @db.VarChar(100)
+  organizationCode          String?         @unique @map("organization_code") @db.VarChar(100)
+  name                      String          @db.VarChar(255)
+  nameEn                    String?         @map("name_en") @db.VarChar(255)
+  juristicName              String          @map("juristic_name") @db.VarChar(255)
+  juristicTypeId            String          @map("juristic_type_id") @db.Uuid
+  juristicTypeRemark        String?         @map("juristic_type_remark") @db.Text
+  organizeType              OrganizeType    @map("organize_type")
+  taxId                     String          @map("tax_id") @db.VarChar(50)
+  branchNumber              String?         @map("branch_number") @db.VarChar(50)
+  businessRegistrationNumber String? @map("business_registration_number") @db.VarChar(100)
+  contactShownHighestAuthority Boolean @default(false) @map("contact_shown_highest_authority")
+  isDopa                    Boolean         @default(false) @map("is_dopa")
+  isDbd                     Boolean         @default(false) @map("is_dbd")
+  kybStatus                 KycStatus       @default(NONE) @map("kyb_status")
+  isVerified                Boolean         @default(false) @map("is_verified")
+  activeStatus              Boolean?        @map("active_status")
+  highestAuthorityId        String?         @map("highest_authority_id") @db.Uuid
+  contactId                 String?         @map("contact_id") @db.Uuid
+  createdAt                 DateTime        @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt                 DateTime        @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  account           Account             @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  juristicType      JuristicType        @relation(fields: [juristicTypeId], references: [id], onDelete: Restrict)
+  highestAuthority  HighestAuthority?   @relation(fields: [highestAuthorityId], references: [id], onDelete: SetNull)
+  contact           Contact?            @relation(fields: [contactId], references: [id], onDelete: SetNull)
+  userOrganizations UserOrganization[]
+  orgRoles          OrgRole[]
+  appRoles          AppRole[]
+  shop              Shop?
+  profile           OrganizationProfile?
+
+  @@map("organizations")
+  @@index([accountId])
+  @@index([allkonsOrgId])
+  @@index([organizationCode])
+  @@index([taxId])
+  @@index([kybStatus])
+  @@index([isVerified])
+  @@index([activeStatus])
+  @@index([juristicTypeId])
+}
+
+// ============================================================================
+// ORGANIZATION PROFILE
+// ============================================================================
+
+model OrganizationProfile {
+  id          String   @id @default(uuid()) @db.Uuid
+  organizationId String @unique @map("organization_id") @db.Uuid
+  addressLine1 String? @map("address_line1") @db.Text
+  addressLine2 String? @map("address_line2") @db.Text
+  city        String?  @db.VarChar(100)
+  province    String?  @db.VarChar(100)
+  postalCode  String?  @map("postal_code") @db.VarChar(10)
+  country     String   @default("Thailand") @db.VarChar(100)
+  phoneNumber String?  @map("phone_number") @db.VarChar(20)
+  email       String?  @db.VarChar(255)
+  website     String?  @db.VarChar(255)
+  description String?  @db.Text
+  logoUrl     String?  @map("logo_url") @db.Text
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@map("organization_profiles")
+  @@index([organizationId])
+}
+
+// ============================================================================
+// USER ORGANIZATIONS (Team Members)
+// ============================================================================
+
+model UserOrganization {
+  id          String   @id @default(uuid()) @db.Uuid
+  accountId   String   @map("account_id") @db.Uuid
+  organizationId String @map("organization_id") @db.Uuid
+  orgRoleId   String?  @map("org_role_id") @db.Uuid
+  appRoleId   String?  @map("app_role_id") @db.Uuid
+  isActive    Boolean  @default(true) @map("is_active")
+  joinedAt    DateTime @default(now()) @map("joined_at") @db.Timestamptz(6)
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  account      Account      @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  orgRole      OrgRole?     @relation(fields: [orgRoleId], references: [id], onDelete: SetNull)
+  appRole      AppRole?     @relation(fields: [appRoleId], references: [id], onDelete: SetNull)
+
+  @@map("user_organizations")
+  @@unique([accountId, organizationId])
+  @@index([accountId])
+  @@index([organizationId])
+  @@index([orgRoleId])
+  @@index([appRoleId])
+  @@index([isActive])
+}
+
+// ============================================================================
+// SHOP (Seller only - 1:1 with Organization)
+// ============================================================================
+
+model Shop {
+  id          String   @id @default(uuid()) @db.Uuid
+  organizationId String @unique @map("organization_id") @db.Uuid
+  subdomain   String   @unique @db.VarChar(255)
+  name        String   @db.VarChar(255)
+  nameEn      String?  @map("name_en") @db.VarChar(255)
+  description String?  @db.Text
+  logoUrl     String?  @map("logo_url") @db.Text
+  bannerUrl   String?  @map("banner_url") @db.Text
+  themeColor  String?  @map("theme_color") @db.VarChar(50)
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  branches     Branch[]
+
+  @@map("shops")
+  @@index([organizationId])
+  @@index([subdomain])
+  @@index([isActive])
+}
+
+// ============================================================================
+// BRANCH
+// ============================================================================
+
+model Branch {
+  id          String   @id @default(uuid()) @db.Uuid
+  shopId      String   @map("shop_id") @db.Uuid
+  name        String   @db.VarChar(255)
+  nameEn      String?  @map("name_en") @db.VarChar(255)
+  addressLine1 String? @map("address_line1") @db.Text
+  addressLine2 String? @map("address_line2") @db.Text
+  city        String?  @db.VarChar(100)
+  province    String?  @db.VarChar(100)
+  postalCode  String?  @map("postal_code") @db.VarChar(10)
+  phoneNumber String?  @map("phone_number") @db.VarChar(20)
+  email       String?  @db.VarChar(255)
+  isMain      Boolean  @default(false) @map("is_main")
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  shop Shop @relation(fields: [shopId], references: [id], onDelete: Cascade)
+
+  @@map("branches")
+  @@index([shopId])
+  @@index([isMain])
+  @@index([isActive])
+}
+
+// ============================================================================
+// MASTER DATA: PERMISSIONS
+// ============================================================================
+
+model Permission {
+  id              String            @id @default(uuid()) @db.Uuid
+  code            String            @unique @db.VarChar(100)
+  nameTh          String            @map("name_th") @db.VarChar(255)
+  nameEn          String?           @map("name_en") @db.VarChar(255)
+  descriptionTh   String?           @map("description_th") @db.Text
+  descriptionEn   String?           @map("description_en") @db.Text
+  category        PermissionCategory
+  action          PermissionAction
+  layer           RoleLayer
+  applicationType ApplicationType?  @map("application_type")
+  isSystem        Boolean           @default(true) @map("is_system")
+  isActive        Boolean           @default(true) @map("is_active")
+  displayOrder    Int               @default(0) @map("display_order")
+  createdAt       DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt       DateTime          @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  orgRolePermissions OrgRolePermission[]
+  appRolePermissions AppRolePermission[]
+
+  @@map("permissions")
+  @@index([code])
+  @@index([category])
+  @@index([layer])
+  @@index([applicationType])
+  @@index([isActive])
+}
+
+// ============================================================================
+// ORGANIZATION LEVEL ROLES
+// ============================================================================
+
+model OrgRole {
+  id          String   @id @default(uuid()) @db.Uuid
+  organizationId String @map("organization_id") @db.Uuid
+  code        String   @db.VarChar(50)
+  nameTh      String   @map("name_th") @db.VarChar(255)
+  nameEn      String?  @map("name_en") @db.VarChar(255)
+  descriptionTh String? @map("description_th") @db.Text
+  descriptionEn String? @map("description_en") @db.Text
+  isSystem    Boolean  @default(false) @map("is_system")
+  isDefault   Boolean  @default(false) @map("is_default")
+  isActive    Boolean  @default(true) @map("is_active")
+  displayOrder Int     @default(0) @map("display_order")
+  createdBy   String?  @map("created_by") @db.Uuid
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  organization       Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  orgRolePermissions OrgRolePermission[]
+  userOrganizations  UserOrganization[]
+
+  @@map("org_roles")
+  @@unique([organizationId, code])
+  @@index([organizationId])
+  @@index([code])
+  @@index([isSystem])
+  @@index([isActive])
+}
+
+// ============================================================================
+// APPLICATION LEVEL ROLES
+// ============================================================================
+
+model AppRole {
+  id              String          @id @default(uuid()) @db.Uuid
+  organizationId  String          @map("organization_id") @db.Uuid
+  code            String          @db.VarChar(50)
+  nameTh          String          @map("name_th") @db.VarChar(255)
+  nameEn          String?         @map("name_en") @db.VarChar(255)
+  descriptionTh   String?         @map("description_th") @db.Text
+  descriptionEn   String?         @map("description_en") @db.Text
+  applicationType ApplicationType @map("application_type")
+  isSystem        Boolean         @default(false) @map("is_system")
+  isDefault       Boolean         @default(false) @map("is_default")
+  isActive        Boolean         @default(true) @map("is_active")
+  displayOrder    Int             @default(0) @map("display_order")
+  createdBy       String?         @map("created_by") @db.Uuid
+  createdAt       DateTime        @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt       DateTime        @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  organization       Organization          @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  appRolePermissions AppRolePermission[]
+  userOrganizations  UserOrganization[]
+
+  @@map("app_roles")
+  @@unique([organizationId, code])
+  @@index([organizationId])
+  @@index([code])
+  @@index([applicationType])
+  @@index([isSystem])
+  @@index([isActive])
+}
+
+// ============================================================================
+// ROLE PERMISSIONS (Many-to-Many)
+// ============================================================================
+
+model OrgRolePermission {
+  id          String   @id @default(uuid()) @db.Uuid
+  orgRoleId   String   @map("org_role_id") @db.Uuid
+  permissionId String  @map("permission_id") @db.Uuid
+  granted     Boolean  @default(true)
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  // Relations
+  orgRole     OrgRole     @relation(fields: [orgRoleId], references: [id], onDelete: Cascade)
+  permission  Permission  @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@map("org_role_permissions")
+  @@unique([orgRoleId, permissionId])
+  @@index([orgRoleId])
+  @@index([permissionId])
+  @@index([granted])
+}
+
+model AppRolePermission {
+  id          String   @id @default(uuid()) @db.Uuid
+  appRoleId   String   @map("app_role_id") @db.Uuid
+  permissionId String  @map("permission_id") @db.Uuid
+  granted     Boolean  @default(true)
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  // Relations
+  appRole     AppRole     @relation(fields: [appRoleId], references: [id], onDelete: Cascade)
+  permission  Permission  @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@map("app_role_permissions")
+  @@unique([appRoleId, permissionId])
+  @@index([appRoleId])
+  @@index([permissionId])
+  @@index([granted])
+}
+
+// ============================================================================
+// USER REGISTRATION
+// ============================================================================
+
+model UserRegistration {
+  id                String   @id @default(uuid()) @db.Uuid
+  accountId         String   @unique @map("account_id") @db.Uuid
+  registrationType  String   @map("registration_type") @db.VarChar(50) // email_password, oauth_google, phone_otp, etc.
+  registrationSource String? @map("registration_source") @db.VarChar(50) // web, mobile, etc.
+  ipAddress         String?  @map("ip_address") @db.VarChar(45)
+  userAgent         String?  @map("user_agent") @db.Text
+  createdAt         DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@map("user_registration")
+  @@index([accountId])
+  @@index([registrationType])
+}
+
+// ============================================================================
+// USER ATTRIBUTES
+// ============================================================================
+
+model UserAttribute {
+  id            String   @id @default(uuid()) @db.Uuid
+  accountId     String   @map("account_id") @db.Uuid
+  attributeKey  String   @map("attribute_key") @db.VarChar(100)
+  attributeValue String  @map("attribute_value") @db.Text
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@map("user_attributes")
+  @@unique([accountId, attributeKey])
+  @@index([accountId])
+  @@index([attributeKey])
+}
+
+// ============================================================================
+// USER PREFERENCES
+// ============================================================================
+
+model UserPreference {
+  id            String   @id @default(uuid()) @db.Uuid
+  accountId     String   @map("account_id") @db.Uuid
+  preferenceKey String   @map("preference_key") @db.VarChar(100)
+  preferenceValue String @map("preference_value") @db.Text
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt     DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@map("user_preferences")
+  @@unique([accountId, preferenceKey])
+  @@index([accountId])
+  @@index([preferenceKey])
+}
+
+// ============================================================================
+// KYC
+// ============================================================================
+
+model Kyc {
+  id                String    @id @default(uuid()) @db.Uuid
+  accountId         String    @unique @map("account_id") @db.Uuid
+  documentType      String    @map("document_type") @db.VarChar(50) // id_card, passport, driver_license
+  documentNumber    String    @map("document_number") @db.VarChar(100)
+  documentExpiry    DateTime? @map("document_expiry") @db.Date
+  verificationStatus KycStatus @default(NONE) @map("verification_status")
+  verifiedAt        DateTime? @map("verified_at") @db.Timestamptz(6)
+  verifiedBy        String?   @map("verified_by") @db.Uuid
+  documentUrl       String?   @map("document_url") @db.Text
+  createdAt         DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime  @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  // Relations
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@map("kyc")
+  @@index([accountId])
+  @@index([verificationStatus])
+  @@index([documentNumber])
+}
