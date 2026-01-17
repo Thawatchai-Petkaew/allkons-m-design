@@ -1,4 +1,4 @@
-# Allkons M - B2B Pre-Construction Materials Marketplace
+# Allkons M Design - B2B Pre-Construction Materials Marketplace
 
 A modern B2B-first marketplace platform for pre-construction materials, featuring multi-store capabilities, personalized recommendations, and comprehensive team management.
 
@@ -153,7 +153,7 @@ See [docs/setup/DEPLOYMENT.md](./docs/setup/DEPLOYMENT.md) for detailed deployme
 
 ## 📝 License
 
-Private - Allkons M
+Private - Allkons M Design
 
 ## 👥 Team
 

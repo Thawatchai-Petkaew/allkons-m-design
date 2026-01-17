@@ -50,7 +50,7 @@ DATABASE_URL="postgresql://postgres:Qq-1330400466932@db.hpmantglkqwoceteeuno.sup
 
 # App Configuration
 NEXT_PUBLIC_APP_URL=http://localhost:3000
-NEXT_PUBLIC_APP_NAME=Allkons M
+NEXT_PUBLIC_APP_NAME=Allkons M Design
 ```
 
 **วิธีหา DATABASE_URL**:

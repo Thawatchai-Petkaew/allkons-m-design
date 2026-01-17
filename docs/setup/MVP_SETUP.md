@@ -36,7 +36,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 # App Configuration
 NEXT_PUBLIC_APP_URL=http://localhost:3000
-NEXT_PUBLIC_APP_NAME=Allkons M
+NEXT_PUBLIC_APP_NAME=Allkons M Design
 ```
 
 **Note**: สำหรับ MVP สามารถใช้ mock data ได้โดยไม่ต้อง setup Supabase

@@ -5,7 +5,7 @@
 
 set -e
 
-echo "🚀 Pushing Allkons M to GitHub..."
+echo "🚀 Pushing Allkons M Design to GitHub..."
 echo ""
 
 # Check if git is initialized
@@ -37,7 +37,7 @@ if git diff --staged --quiet; then
     echo "✅ No changes to commit (everything is already committed)"
 else
     echo "💾 Committing changes..."
-    git commit -m "Initial commit: Allkons M MVP
+    git commit -m "Initial commit: Allkons M Design MVP
 
 - Next.js 15 + React 19 + TypeScript
 - Supabase Auth (Phone OTP) + Prisma Database

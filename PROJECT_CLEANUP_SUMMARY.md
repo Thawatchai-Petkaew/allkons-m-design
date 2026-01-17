@@ -1,4 +1,4 @@
-# Project Cleanup & GitHub/Vercel Preparation Summary
+# Allkons M Design - Project Cleanup & GitHub/Vercel Preparation Summary
 
 ## ✅ Completed Tasks
 

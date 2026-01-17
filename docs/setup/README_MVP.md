@@ -203,7 +203,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
 # App
 NEXT_PUBLIC_APP_URL=http://localhost:3000
-NEXT_PUBLIC_APP_NAME=Allkons M
+NEXT_PUBLIC_APP_NAME=Allkons M Design
 ```
 
 ---
