@@ -147,6 +147,10 @@ npm run db:seed      # Seed database
 
 See [docs/setup/DEPLOYMENT.md](./docs/setup/DEPLOYMENT.md) for detailed deployment guide.
 
+## 🔗 Repository
+
+**GitHub**: https://github.com/Thawatchai-Petkaew/allkons-m-design
+
 ## 📝 License
 
 Private - Allkons M
@@ -159,3 +163,18 @@ Private - Allkons M
 ---
 
 **Status**: 🚧 MVP Development
+
+## 🚀 Quick Start
+
+### Push to GitHub
+
+```bash
+# Use the provided script
+./scripts/push-to-github.sh
+
+# Or manually
+git remote set-url origin https://github.com/Thawatchai-Petkaew/allkons-m-design.git
+git push -u origin main
+```
+
+See [GITHUB_SETUP.md](./GITHUB_SETUP.md) for detailed instructions.
