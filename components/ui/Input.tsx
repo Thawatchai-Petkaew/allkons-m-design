@@ -3,7 +3,7 @@
 import React from "react";
 import { ds } from "@/design-system";
 
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "onChange"> {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "onChange" | "prefix" | "suffix"> {
   /**
    * Input label text
    */
@@ -43,6 +43,10 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
    * Whether the input is disabled
    */
   disabled?: boolean;
+  /**
+   * Callback fired when input value changes
+   */
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input: React.FC<InputProps> = ({
