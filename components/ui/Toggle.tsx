@@ -86,8 +86,8 @@ export const Toggle: React.FC<ToggleProps> = ({
       rectangular: {
         fontSize: ds.typography.size('sm'),
         lineHeight: ds.typography.lineHeight('sm'),
-        paddingLeft: ds.spacing(3),
-        paddingRight: ds.spacing(3),
+        paddingLeft: ds.spacing('3'),
+        paddingRight: ds.spacing('3'),
         minWidth: ds.common.width.toggleRectangularSmall,
         height: ds.common.height.toggleSmall,
       },
@@ -109,8 +109,8 @@ export const Toggle: React.FC<ToggleProps> = ({
       rectangular: {
         fontSize: ds.typography.size('md'),
         lineHeight: ds.typography.lineHeight('md'),
-        paddingLeft: ds.spacing(4),
-        paddingRight: ds.spacing(4),
+        paddingLeft: ds.spacing('4'),
+        paddingRight: ds.spacing('4'),
         minWidth: ds.common.width.toggleRectangularMiddle,
         height: ds.common.height.toggleMiddle,
       },
@@ -132,8 +132,8 @@ export const Toggle: React.FC<ToggleProps> = ({
       rectangular: {
         fontSize: ds.typography.size('lg'),
         lineHeight: ds.typography.lineHeight('lg'),
-        paddingLeft: ds.spacing(6),
-        paddingRight: ds.spacing(6),
+        paddingLeft: ds.spacing('6'),
+        paddingRight: ds.spacing('6'),
         minWidth: ds.common.width.toggleRectangularLarge,
         height: ds.common.height.toggleLarge,
       },
@@ -217,13 +217,13 @@ export const Toggle: React.FC<ToggleProps> = ({
     };
 
     const toggleElement = (
-      <div style={{ display: "inline-flex", flexDirection: "column", gap: ds.spacing(1) }}>
+      <div style={{ display: "inline-flex", flexDirection: "column", gap: ds.spacing('1') }}>
         <label
           htmlFor={toggleId}
           style={{
             display: "flex",
             alignItems: "flex-start",
-            gap: ds.spacing(3),
+            gap: ds.spacing('3'),
             cursor: disabled ? ds.common.cursor.notAllowed : ds.common.cursor.pointer,
             flexDirection: labelPosition === "left" ? "row-reverse" : "row",
           }}
@@ -258,7 +258,7 @@ export const Toggle: React.FC<ToggleProps> = ({
             <div style={{ ...thumbStyles, zIndex: 0 }} />
           </div>
           {label && (
-            <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing(1) }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing('1') }}>
               <span
                 id={labelId}
                 style={{
@@ -320,13 +320,13 @@ export const Toggle: React.FC<ToggleProps> = ({
   };
 
   const toggleElement = (
-    <div style={{ display: "inline-flex", flexDirection: "column", gap: ds.spacing(1) }}>
+    <div style={{ display: "inline-flex", flexDirection: "column", gap: ds.spacing('1') }}>
       <label
         htmlFor={toggleId}
         style={{
           display: "flex",
           alignItems: "flex-start",
-          gap: ds.spacing(3),
+          gap: ds.spacing('3'),
           cursor: disabled ? ds.common.cursor.notAllowed : ds.common.cursor.pointer,
           flexDirection: labelPosition === "left" ? "row-reverse" : "row",
         }}
@@ -361,7 +361,7 @@ export const Toggle: React.FC<ToggleProps> = ({
           <span style={{ position: "relative", zIndex: 0, pointerEvents: "none", userSelect: "none" }}>{isChecked ? "ON" : "OFF"}</span>
         </div>
         {label && (
-          <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing(1) }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing('1') }}>
             <span
               id={labelId}
               style={{

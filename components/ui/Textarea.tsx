@@ -79,8 +79,8 @@ export const Textarea: React.FC<TextareaProps> = ({
       lineHeight: ds.typography.lineHeight('sm'), // 20px
       paddingTop: ds.common.padding.inputVerticalSmall,    // 5px
       paddingBottom: ds.common.padding.inputVerticalSmall, // 5px
-      paddingLeft: ds.spacing(3),              // 12px horizontal
-      paddingRight: ds.spacing(3),             // 12px horizontal
+      paddingLeft: ds.spacing('3'),              // 12px horizontal
+      paddingRight: ds.spacing('3'),             // 12px horizontal
       minHeight: ds.common.height.inputSmall,     // 32px minimum
     },
     middle: {
@@ -88,8 +88,8 @@ export const Textarea: React.FC<TextareaProps> = ({
       lineHeight: ds.typography.lineHeight('md'), // 24px
       paddingTop: ds.common.padding.inputVerticalMiddle,   // 7px
       paddingBottom: ds.common.padding.inputVerticalMiddle, // 7px
-      paddingLeft: ds.spacing(4),              // 16px horizontal
-      paddingRight: ds.spacing(4),             // 16px horizontal
+      paddingLeft: ds.spacing('4'),              // 16px horizontal
+      paddingRight: ds.spacing('4'),             // 16px horizontal
       minHeight: ds.common.height.inputMiddle,    // 40px minimum
     },
     large: {
@@ -97,8 +97,8 @@ export const Textarea: React.FC<TextareaProps> = ({
       lineHeight: ds.typography.lineHeight('lg'), // 24px
       paddingTop: ds.common.padding.inputVerticalLarge,    // 11px
       paddingBottom: ds.common.padding.inputVerticalLarge, // 11px
-      paddingLeft: ds.spacing(6),              // 24px horizontal
-      paddingRight: ds.spacing(6),             // 24px horizontal
+      paddingLeft: ds.spacing('6'),              // 24px horizontal
+      paddingRight: ds.spacing('6'),             // 24px horizontal
       minHeight: ds.common.height.inputLarge,     // 48px minimum
     },
   };
@@ -276,12 +276,12 @@ export const Textarea: React.FC<TextareaProps> = ({
             lineHeight: ds.typography.lineHeight('sm'),
             fontWeight: ds.typography.weight('regular'),
             color: labelColor,
-            marginBottom: ds.spacing(2),
+            marginBottom: ds.spacing('2'),
           }}
         >
           {label}
           {required && (
-            <span style={{ color: ds.component.textarea.label('error'), marginLeft: ds.spacing(1) }}>*</span>
+            <span style={{ color: ds.component.textarea.label('error'), marginLeft: ds.spacing('1') }}>*</span>
           )}
         </label>
       )}
@@ -312,7 +312,7 @@ export const Textarea: React.FC<TextareaProps> = ({
       {displayHelperText && (
         <div
           style={{
-            marginTop: ds.spacing(2),
+            marginTop: ds.spacing('2'),
             fontSize: ds.typography.size('sm'),
             lineHeight: ds.typography.lineHeight('sm'),
             fontWeight: ds.typography.weight('regular'),

@@ -116,8 +116,8 @@ export const Select: React.FC<SelectProps> = ({
       lineHeight: ds.typography.lineHeight('sm'),
       paddingTop: ds.common.padding.inputVerticalSmall,
       paddingBottom: ds.common.padding.inputVerticalSmall,
-      paddingLeft: ds.spacing(3),
-      paddingRight: `calc(${ds.spacing(3)} + ${ds.common.icon.large} + ${ds.spacing(2)})`, // Space for arrow icon
+      paddingLeft: ds.spacing('3'),
+      paddingRight: `calc(${ds.spacing('3')} + ${ds.common.icon.large} + ${ds.spacing('2')})`, // Space for arrow icon
       height: ds.common.height.inputSmall,
     },
     middle: {
@@ -125,8 +125,8 @@ export const Select: React.FC<SelectProps> = ({
       lineHeight: ds.typography.lineHeight('md'),
       paddingTop: ds.common.padding.inputVerticalMiddle,
       paddingBottom: ds.common.padding.inputVerticalMiddle,
-      paddingLeft: ds.spacing(4),
-      paddingRight: `calc(${ds.spacing(4)} + ${ds.common.icon.large} + ${ds.spacing(2)})`, // Space for arrow icon
+      paddingLeft: ds.spacing('4'),
+      paddingRight: `calc(${ds.spacing('4')} + ${ds.common.icon.large} + ${ds.spacing('2')})`, // Space for arrow icon
       height: ds.common.height.inputMiddle,
     },
     large: {
@@ -134,8 +134,8 @@ export const Select: React.FC<SelectProps> = ({
       lineHeight: ds.typography.lineHeight('lg'),
       paddingTop: ds.common.padding.inputVerticalLarge,
       paddingBottom: ds.common.padding.inputVerticalLarge,
-      paddingLeft: ds.spacing(6),
-      paddingRight: `calc(${ds.spacing(6)} + ${ds.common.icon.large} + ${ds.spacing(2)})`, // Space for arrow icon
+      paddingLeft: ds.spacing('6'),
+      paddingRight: `calc(${ds.spacing('6')} + ${ds.common.icon.large} + ${ds.spacing('2')})`, // Space for arrow icon
       height: ds.common.height.inputLarge,
     },
   };
@@ -341,10 +341,10 @@ export const Select: React.FC<SelectProps> = ({
   // Adjust padding if prefix exists
   if (prefix) {
     selectStyles.paddingLeft = size === "small"
-      ? `calc(${ds.spacing(3)} + ${ds.common.icon.large} + ${ds.spacing(2)})`
+      ? `calc(${ds.spacing('3')} + ${ds.common.icon.large} + ${ds.spacing('2')})`
       : size === "middle"
-      ? `calc(${ds.spacing(4)} + ${ds.common.icon.large} + ${ds.spacing(2)})`
-      : `calc(${ds.spacing(6)} + ${ds.common.icon.large} + ${ds.spacing(2)})`;
+      ? `calc(${ds.spacing('4')} + ${ds.common.icon.large} + ${ds.spacing('2')})`
+      : `calc(${ds.spacing('6')} + ${ds.common.icon.large} + ${ds.spacing('2')})`;
   }
 
   // Display text
@@ -366,12 +366,12 @@ export const Select: React.FC<SelectProps> = ({
             lineHeight: ds.typography.lineHeight('sm'),
             fontWeight: ds.typography.weight('regular'),
             color: labelColor,
-            marginBottom: ds.spacing(2),
+            marginBottom: ds.spacing('2'),
           }}
         >
           {label}
           {required && (
-            <span style={{ color: ds.component.select.label('error'), marginLeft: ds.spacing(1) }}>*</span>
+            <span style={{ color: ds.component.select.label('error'), marginLeft: ds.spacing('1') }}>*</span>
           )}
         </label>
       )}
@@ -393,10 +393,10 @@ export const Select: React.FC<SelectProps> = ({
             style={{
               position: "absolute",
               left: size === "small"
-                ? ds.spacing(3)
+                ? ds.spacing('3')
                 : size === "middle"
-                ? ds.spacing(4)
-                : ds.spacing(6),
+                ? ds.spacing('4')
+                : ds.spacing('6'),
               display: "flex",
               alignItems: "center",
               color: iconColor,
@@ -443,10 +443,10 @@ export const Select: React.FC<SelectProps> = ({
           style={{
             position: "absolute",
             right: size === "small"
-              ? ds.spacing(3)
+              ? ds.spacing('3')
               : size === "middle"
-              ? ds.spacing(4)
-              : ds.spacing(6),
+              ? ds.spacing('4')
+              : ds.spacing('6'),
             display: "flex",
             alignItems: "center",
             color: arrowColor,
@@ -469,7 +469,7 @@ export const Select: React.FC<SelectProps> = ({
             top: "100%",
             left: 0,
             right: 0,
-            marginTop: ds.spacing(1),
+            marginTop: ds.spacing('1'),
             backgroundColor: ds.component.select.dropdown.bg(),
             border: `${ds.common.borderWidth.thin} solid ${ds.component.select.dropdown.border()}`,
             borderRadius: ds.common.borderRadius.input,
@@ -478,13 +478,13 @@ export const Select: React.FC<SelectProps> = ({
             maxHeight: "240px",
             overflowY: "auto",
             overflowX: "hidden",
-            padding: ds.spacing(1),
+            padding: ds.spacing('1'),
           }}
         >
           {options.length === 0 ? (
             <div
               style={{
-                padding: ds.spacing(4),
+                padding: ds.spacing('4'),
                 textAlign: "center",
                 color: ds.component.select.text('placeholder'),
                 fontSize: ds.typography.size('sm'),
@@ -499,7 +499,7 @@ export const Select: React.FC<SelectProps> = ({
 
               // Base styles for all options
               const baseOptionStyle: React.CSSProperties = {
-                padding: `${ds.spacing(3)} ${ds.spacing(4)}`,
+                padding: `${ds.spacing('3')} ${ds.spacing('4')}`,
                 cursor: isDisabled ? ds.common.cursor.notAllowed : ds.common.cursor.pointer,
                 fontSize: ds.typography.size('md'),
                 lineHeight: ds.typography.lineHeight('md'),
@@ -508,8 +508,8 @@ export const Select: React.FC<SelectProps> = ({
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                gap: ds.spacing(2),
-                marginBottom: ds.spacing(1),
+                gap: ds.spacing('2'),
+                marginBottom: ds.spacing('1'),
                 borderRadius: ds.common.borderRadius.input,
               };
 
@@ -568,7 +568,7 @@ export const Select: React.FC<SelectProps> = ({
       {displayHelperText && (
         <div
           style={{
-            marginTop: ds.spacing(2),
+            marginTop: ds.spacing('2'),
             fontSize: ds.typography.size('sm'),
             lineHeight: ds.typography.lineHeight('sm'),
             fontWeight: ds.typography.weight('regular'),

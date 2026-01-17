@@ -89,9 +89,9 @@ export const Alert: React.FC<AlertProps> = ({
       position: "relative",
       display: "flex",
       alignItems: variant === "compact" ? "center" : "flex-start",
-      padding: variant === "compact" ? ds.spacing(3) : ds.spacing(4),
+      padding: variant === "compact" ? ds.spacing('3') : ds.spacing('4'),
       borderRadius: ds.common.borderRadius.alert,
-      gap: ds.spacing(3),
+      gap: ds.spacing('3'),
     };
 
     // Special handling for error expanded - use error-bg-compact
@@ -205,8 +205,8 @@ export const Alert: React.FC<AlertProps> = ({
   // Expanded variant
   return (
     <div className={className} style={{ ...alertStyles, ...style }}>
-      <i className={iconMap[type]} style={{ ...iconStyles, marginTop: ds.spacing(1) }} />
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: ds.spacing(2) }}>
+      <i className={iconMap[type]} style={{ ...iconStyles, marginTop: ds.spacing('1') }} />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: ds.spacing('2') }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <span
             style={{
@@ -241,7 +241,7 @@ export const Alert: React.FC<AlertProps> = ({
           </span>
         )}
         {onViewDetails && (
-          <div style={{ display: "flex", alignItems: "center", gap: ds.spacing(2) }}>
+          <div style={{ display: "flex", alignItems: "center", gap: ds.spacing('2') }}>
             <span
               style={{
                 fontSize: ds.typography.size('md'),
@@ -263,7 +263,7 @@ export const Alert: React.FC<AlertProps> = ({
                 cursor: ds.common.cursor.pointer,
                 display: "inline-flex",
                 alignItems: "center",
-                gap: ds.spacing(1),
+                gap: ds.spacing('1'),
               }}
             >
               {detailsText}

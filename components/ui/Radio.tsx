@@ -260,13 +260,13 @@ export const Radio: React.FC<RadioProps> = ({
   };
 
   const radioElement = (
-    <div style={{ display: "inline-flex", flexDirection: "column", gap: ds.spacing(1) }}>
+    <div style={{ display: "inline-flex", flexDirection: "column", gap: ds.spacing('1') }}>
       <label
         htmlFor={radioId}
         style={{
           display: "flex",
           alignItems: "flex-start",
-          gap: labelPosition === "right" ? ds.spacing(3) : ds.spacing(3),
+          gap: labelPosition === "right" ? ds.spacing('3') : ds.spacing('3'),
           cursor: disabled ? ds.common.cursor.notAllowed : ds.common.cursor.pointer,
           flexDirection: labelPosition === "left" ? "row-reverse" : "row",
         }}
@@ -303,7 +303,7 @@ export const Radio: React.FC<RadioProps> = ({
           {isChecked && <div style={dotStyles} />}
         </div>
         {label && (
-          <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing(1) }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing('1') }}>
             <span
               id={labelId}
               style={{

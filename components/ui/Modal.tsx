@@ -107,7 +107,7 @@ export const Modal: React.FC<ModalProps> = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: ds.spacing(4),
+        padding: ds.spacing('4'),
       }}
       onClick={handleOverlayClick}
     >
@@ -149,7 +149,7 @@ export const Modal: React.FC<ModalProps> = ({
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              padding: `${ds.spacing(6)} ${ds.spacing(6)} ${ds.spacing(4)}`,
+              padding: `${ds.spacing('6')} ${ds.spacing('6')} ${ds.spacing('4')}`,
               borderTop: "none",
               borderBottom: "none",
               borderTopWidth: 0,
@@ -198,7 +198,7 @@ export const Modal: React.FC<ModalProps> = ({
                   borderColor: ds.common.transparent,
                   padding: 0,
                   margin: 0,
-                  marginLeft: ds.spacing(4),
+                  marginLeft: ds.spacing('4'),
                   flexShrink: 0,
                   transition: `all ${ds.common.animation.fast} ease`,
                 }}
@@ -214,7 +214,7 @@ export const Modal: React.FC<ModalProps> = ({
         <div
           style={{
             flex: 1,
-            padding: title ? ds.spacing(6) : `${ds.spacing(6)} ${ds.spacing(6)} ${ds.spacing(4)}`,
+            padding: title ? ds.spacing('6') : `${ds.spacing('6')} ${ds.spacing('6')} ${ds.spacing('4')}`,
             overflowY: "auto",
             color: ds.component.modal.text(),
             fontSize: ds.typography.size('md'),
@@ -231,8 +231,8 @@ export const Modal: React.FC<ModalProps> = ({
               display: "flex",
               alignItems: "center",
               justifyContent: "flex-end",
-              gap: ds.spacing(3),
-              padding: `${ds.spacing(4)} ${ds.spacing(6)} ${ds.spacing(6)}`,
+              gap: ds.spacing('3'),
+              padding: `${ds.spacing('4')} ${ds.spacing('6')} ${ds.spacing('6')}`,
               borderTop: "none",
               borderTopWidth: 0,
               borderTopColor: "rgba(0, 0, 0, 0)",

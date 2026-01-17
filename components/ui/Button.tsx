@@ -70,30 +70,30 @@ export const Button: React.FC<ButtonProps> = ({
       lineHeight: ds.typography.lineHeight('lg'), // 24px
       paddingTop: ds.common.padding.buttonVerticalSmall,    // 3px
       paddingBottom: ds.common.padding.buttonVerticalSmall, // 3px
-      paddingLeft: ds.spacing(4),               // 16px horizontal
-      paddingRight: ds.spacing(4),              // 16px horizontal
+      paddingLeft: ds.spacing('4'),               // 16px horizontal
+      paddingRight: ds.spacing('4'),              // 16px horizontal
       height: ds.common.height.buttonSmall,     // 32px (total: 24px lineHeight + 6px padding + 2px border)
-      gap: ds.spacing(2),
+      gap: ds.spacing('2'),
     },
     middle: {
       fontSize: ds.typography.size('md'),
       lineHeight: ds.typography.lineHeight('lg'), // 24px
       paddingTop: ds.common.padding.buttonVerticalMiddle,   // 7px
       paddingBottom: ds.common.padding.buttonVerticalMiddle, // 7px
-      paddingLeft: ds.spacing(6),               // 24px horizontal
-      paddingRight: ds.spacing(6),              // 24px horizontal
+      paddingLeft: ds.spacing('6'),               // 24px horizontal
+      paddingRight: ds.spacing('6'),              // 24px horizontal
       height: ds.common.height.buttonMiddle,    // 40px (total: 24px lineHeight + 14px padding + 2px border)
-      gap: ds.spacing(2),
+      gap: ds.spacing('2'),
     },
     large: {
       fontSize: ds.typography.size('lg'),
       lineHeight: ds.typography.lineHeight('lg'), // 24px
       paddingTop: ds.common.padding.buttonVerticalLarge,    // 11px
       paddingBottom: ds.common.padding.buttonVerticalLarge, // 11px
-      paddingLeft: ds.spacing(8),               // 32px horizontal
-      paddingRight: ds.spacing(8),              // 32px horizontal
+      paddingLeft: ds.spacing('8'),               // 32px horizontal
+      paddingRight: ds.spacing('8'),              // 32px horizontal
       height: ds.common.height.buttonLarge,     // 48px (total: 24px lineHeight + 22px padding + 2px border)
-      gap: ds.spacing(2),
+      gap: ds.spacing('2'),
     },
   };
 
@@ -424,7 +424,7 @@ export const Button: React.FC<ButtonProps> = ({
             borderTopColor: ds.common.transparent,
             borderRadius: ds.radius('full'),
             animation: `spin ${ds.common.animation.normal} linear infinite`,
-            marginRight: children ? ds.spacing(2) : 0,
+            marginRight: children ? ds.spacing('2') : 0,
           }}
         />
       )}

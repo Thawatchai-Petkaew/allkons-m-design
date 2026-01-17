@@ -289,13 +289,13 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   };
 
   const checkboxElement = (
-    <div style={{ display: "inline-flex", flexDirection: "column", gap: ds.spacing(1) }}>
+    <div style={{ display: "inline-flex", flexDirection: "column", gap: ds.spacing('1') }}>
       <label
         htmlFor={toggleId}
         style={{
           display: "flex",
           alignItems: "flex-start",
-          gap: labelPosition === "right" ? ds.spacing(3) : ds.spacing(3),
+          gap: labelPosition === "right" ? ds.spacing('3') : ds.spacing('3'),
           cursor: disabled ? ds.common.cursor.notAllowed : ds.common.cursor.pointer,
           flexDirection: labelPosition === "left" ? "row-reverse" : "row",
         }}
@@ -338,7 +338,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           </div>
         </div>
         {label && (
-          <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing(1) }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing('1') }}>
             <span
               id={labelId}
               style={{

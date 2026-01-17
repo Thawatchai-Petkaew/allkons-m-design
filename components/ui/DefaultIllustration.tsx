@@ -61,7 +61,7 @@ export const DefaultIllustration: React.FC<DefaultIllustrationProps> = ({
         width: typeof width === "number" ? `${width}px` : width,
         height: typeof height === "number" ? `${height}px` : height,
         minHeight: height === "auto" ? "200px" : undefined,
-        padding: ds.spacing(8),
+        padding: ds.spacing('8'),
         backgroundColor: ds.component.illustration.bg(),
         borderRadius: ds.common.borderRadius.illustration,
         overflow: "hidden",

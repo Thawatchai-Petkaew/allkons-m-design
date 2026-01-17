@@ -70,7 +70,7 @@ export const Illustration: React.FC<IllustrationProps> = ({
         width: typeof width === "number" ? `${width}px` : width,
         height: typeof height === "number" ? `${height}px` : height,
         minHeight: height === "auto" ? "200px" : undefined,
-        padding: ds.spacing(8),
+        padding: ds.spacing('8'),
         backgroundColor: ds.component.illustration.bg(),
         borderRadius: ds.common.borderRadius.illustration,
         ...style,
@@ -83,7 +83,7 @@ export const Illustration: React.FC<IllustrationProps> = ({
           display: "inline-flex",
           alignItems: "center",
           justifyContent: "center",
-          marginBottom: title || description ? ds.spacing(6) : 0,
+          marginBottom: title || description ? ds.spacing('6') : 0,
         }}
       >
         {/* Icon Component */}
@@ -132,7 +132,7 @@ export const Illustration: React.FC<IllustrationProps> = ({
             fontWeight: ds.typography.weight('semibold'),
             color: ds.component.illustration.title(),
             margin: 0,
-            marginBottom: description ? ds.spacing(2) : 0,
+            marginBottom: description ? ds.spacing('2') : 0,
             textAlign: "center",
           }}
         >

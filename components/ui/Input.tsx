@@ -77,8 +77,8 @@ export const Input: React.FC<InputProps> = ({
       lineHeight: ds.typography.lineHeight('sm'), // 20px
       paddingTop: ds.common.padding.inputVerticalSmall,    // 5px
       paddingBottom: ds.common.padding.inputVerticalSmall, // 5px
-      paddingLeft: ds.spacing(3),              // 12px horizontal (default, will be overridden if prefix exists)
-      paddingRight: ds.spacing(3),             // 12px horizontal (default, will be overridden if suffix exists)
+      paddingLeft: ds.spacing('3'),              // 12px horizontal (default, will be overridden if prefix exists)
+      paddingRight: ds.spacing('3'),             // 12px horizontal (default, will be overridden if suffix exists)
       height: ds.common.height.inputSmall,     // 32px (total: 20px lineHeight + 10px padding + 2px border)
     },
     middle: {
@@ -86,8 +86,8 @@ export const Input: React.FC<InputProps> = ({
       lineHeight: ds.typography.lineHeight('md'), // 24px
       paddingTop: ds.common.padding.inputVerticalMiddle,   // 7px
       paddingBottom: ds.common.padding.inputVerticalMiddle, // 7px
-      paddingLeft: ds.spacing(4),              // 16px horizontal (default, will be overridden if prefix exists)
-      paddingRight: ds.spacing(4),             // 16px horizontal (default, will be overridden if suffix exists)
+      paddingLeft: ds.spacing('4'),              // 16px horizontal (default, will be overridden if prefix exists)
+      paddingRight: ds.spacing('4'),             // 16px horizontal (default, will be overridden if suffix exists)
       height: ds.common.height.inputMiddle,    // 40px (total: 24px lineHeight + 14px padding + 2px border)
     },
     large: {
@@ -95,8 +95,8 @@ export const Input: React.FC<InputProps> = ({
       lineHeight: ds.typography.lineHeight('lg'), // 24px
       paddingTop: ds.common.padding.inputVerticalLarge,    // 11px
       paddingBottom: ds.common.padding.inputVerticalLarge, // 11px
-      paddingLeft: ds.spacing(6),              // 24px horizontal (default, will be overridden if prefix exists)
-      paddingRight: ds.spacing(6),             // 24px horizontal (default, will be overridden if suffix exists)
+      paddingLeft: ds.spacing('6'),              // 24px horizontal (default, will be overridden if prefix exists)
+      paddingRight: ds.spacing('6'),             // 24px horizontal (default, will be overridden if suffix exists)
       height: ds.common.height.inputLarge,     // 48px (total: 24px lineHeight + 22px padding + 2px border)
     },
   };
@@ -287,12 +287,12 @@ export const Input: React.FC<InputProps> = ({
             lineHeight: ds.typography.lineHeight('sm'),
             fontWeight: ds.typography.weight('regular'),
             color: labelColor,
-            marginBottom: ds.spacing(2),
+            marginBottom: ds.spacing('2'),
           }}
         >
           {label}
           {required && (
-            <span style={{ color: ds.component.input.label('error'), marginLeft: ds.spacing(1) }}>*</span>
+            <span style={{ color: ds.component.input.label('error'), marginLeft: ds.spacing('1') }}>*</span>
           )}
         </label>
       )}
@@ -313,10 +313,10 @@ export const Input: React.FC<InputProps> = ({
             style={{
               position: "absolute",
               left: size === "small" 
-                ? ds.spacing(3)   // 12px
+                ? ds.spacing('3')   // 12px
                 : size === "middle"
-                ? ds.spacing(4)   // 16px
-                : ds.spacing(6),  // 24px (large)
+                ? ds.spacing('4')   // 16px
+                : ds.spacing('6'),  // 24px (large)
               display: "flex",
               alignItems: "center",
               color: iconColor,
@@ -343,17 +343,17 @@ export const Input: React.FC<InputProps> = ({
             // Gap: 8px (spacing-2) to prevent text from overlapping with icon
             ...(prefix ? {
               paddingLeft: size === "small"
-                ? `calc(${ds.spacing(3)} + ${ds.common.icon.large} + ${ds.spacing(2)})`   // 12px + 20px + 8px = 40px
+                ? `calc(${ds.spacing('3')} + ${ds.common.icon.large} + ${ds.spacing('2')})`   // 12px + 20px + 8px = 40px
                 : size === "middle"
-                ? `calc(${ds.spacing(4)} + ${ds.common.icon.large} + ${ds.spacing(2)})`   // 16px + 20px + 8px = 44px
-                : `calc(${ds.spacing(6)} + ${ds.common.icon.large} + ${ds.spacing(2)})`,  // 24px + 20px + 8px = 52px (large)
+                ? `calc(${ds.spacing('4')} + ${ds.common.icon.large} + ${ds.spacing('2')})`   // 16px + 20px + 8px = 44px
+                : `calc(${ds.spacing('6')} + ${ds.common.icon.large} + ${ds.spacing('2')})`,  // 24px + 20px + 8px = 52px (large)
             } : {}),
             ...(suffix ? {
               paddingRight: size === "small"
-                ? `calc(${ds.spacing(3)} + ${ds.common.icon.large} + ${ds.spacing(2)})`   // 12px + 20px + 8px = 40px
+                ? `calc(${ds.spacing('3')} + ${ds.common.icon.large} + ${ds.spacing('2')})`   // 12px + 20px + 8px = 40px
                 : size === "middle"
-                ? `calc(${ds.spacing(4)} + ${ds.common.icon.large} + ${ds.spacing(2)})`   // 16px + 20px + 8px = 44px
-                : `calc(${ds.spacing(6)} + ${ds.common.icon.large} + ${ds.spacing(2)})`,  // 24px + 20px + 8px = 52px (large)
+                ? `calc(${ds.spacing('4')} + ${ds.common.icon.large} + ${ds.spacing('2')})`   // 16px + 20px + 8px = 44px
+                : `calc(${ds.spacing('6')} + ${ds.common.icon.large} + ${ds.spacing('2')})`,  // 24px + 20px + 8px = 52px (large)
             } : {}),
           }}
           disabled={disabled}
@@ -369,10 +369,10 @@ export const Input: React.FC<InputProps> = ({
             style={{
               position: "absolute",
               right: size === "small"
-                ? ds.spacing(3)   // 12px
+                ? ds.spacing('3')   // 12px
                 : size === "middle"
-                ? ds.spacing(4)   // 16px
-                : ds.spacing(6),  // 24px (large)
+                ? ds.spacing('4')   // 16px
+                : ds.spacing('6'),  // 24px (large)
               display: "flex",
               alignItems: "center",
               color: iconColor,
@@ -389,7 +389,7 @@ export const Input: React.FC<InputProps> = ({
       {displayHelperText && (
         <div
           style={{
-            marginTop: ds.spacing(2),
+            marginTop: ds.spacing('2'),
             fontSize: ds.typography.size('sm'),
             lineHeight: ds.typography.lineHeight('sm'),
             fontWeight: ds.typography.weight('regular'),
