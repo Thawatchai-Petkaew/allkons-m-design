@@ -4,9 +4,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input, Button } from "@/components";
 import { ds } from "@/design-system";
-import { sendOTP as sendSupabaseOTP, verifyOTP as verifySupabaseOTP } from "./lib/supabase/auth";
-import { sendOTP as sendMockOTP, verifyOTP as verifyMockOTP } from "./lib/supabase/mock-otp";
-import { MOCK_PHONE_NUMBERS, MOCK_OTP_CODES } from "./lib/supabase/mock-data";
+import { sendOTP as sendSupabaseOTP, verifyOTP as verifySupabaseOTP } from "@/lib/supabase/auth";
+import { sendOTP as sendMockOTP, verifyOTP as verifyMockOTP } from "@/lib/supabase/mock-otp";
+import { MOCK_PHONE_NUMBERS, MOCK_OTP_CODES } from "@/lib/supabase/mock-data";
 
 // Check if Supabase is configured
 const USE_SUPABASE_AUTH = !!(
