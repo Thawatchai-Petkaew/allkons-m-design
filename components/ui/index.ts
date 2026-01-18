@@ -8,3 +8,7 @@ export { Icon, type IconProps } from "./Icon";
 export { Select, type SelectProps, type SelectOption } from "./Select";
 export { Textarea, type TextareaProps } from "./Textarea";
 export { Modal, type ModalProps } from "./Modal";
+export { BottomSheet, type BottomSheetProps } from "./BottomSheet";
+export { Confirmation, type ConfirmationProps } from "./Confirmation";
+export { Illustration, type IllustrationProps } from "./Illustration";
+export { Badge, type BadgeProps } from "./Badge";
