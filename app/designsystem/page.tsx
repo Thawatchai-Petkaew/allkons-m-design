@@ -2278,7 +2278,7 @@ export default function DesignSystemPage() {
                               fontFamily: "monospace",
                             }}
                           >
-                            {ds.breakpoint.get(bp.token)}
+                            {ds.breakpoint.get(bp.token as any)}
                           </Text>
                         </div>
                       </div>
@@ -2326,7 +2326,7 @@ export default function DesignSystemPage() {
                               fontFamily: "monospace",
                             }}
                           >
-                            {ds.breakpoint.value(bp.token)}
+                            {ds.breakpoint.value(bp.token as any)}
                           </Text>
                         </div>
                         <div>
@@ -2347,7 +2347,7 @@ export default function DesignSystemPage() {
                               fontFamily: "monospace",
                             }}
                           >
-                            {ds.breakpoint.rem(bp.token)}
+                            {ds.breakpoint.rem(bp.token as any)}
                           </Text>
                         </div>
                         <div>
@@ -2368,7 +2368,7 @@ export default function DesignSystemPage() {
                               fontFamily: "monospace",
                             }}
                           >
-                            {ds.breakpoint.pixel(bp.token)}px
+                            {ds.breakpoint.pixel(bp.token as any)}px
                           </Text>
                         </div>
                       </div>
@@ -2729,7 +2729,7 @@ export default function DesignSystemPage() {
                               color: ds.color.text("primary"),
                             }}
                           >
-                            {ds.breakpoint.value(bp.token)}
+                            {ds.breakpoint.value(bp.token as any)}
                           </Text>
                         </td>
                         <td
@@ -2744,7 +2744,7 @@ export default function DesignSystemPage() {
                               color: ds.color.text("primary"),
                             }}
                           >
-                            {ds.breakpoint.rem(bp.token)}
+                            {ds.breakpoint.rem(bp.token as any)}
                           </Text>
                         </td>
                         <td
@@ -2759,7 +2759,7 @@ export default function DesignSystemPage() {
                               color: ds.color.text("secondary"),
                             }}
                           >
-                            {ds.breakpoint.get(bp.token)}
+                            {ds.breakpoint.get(bp.token as any)}
                           </Text>
                         </td>
                         <td
