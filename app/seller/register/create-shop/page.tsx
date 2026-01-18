@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ShopSetupModal } from "@/components/ShopSetupModal";
+import { ShopSetupModal } from "@/components";
 import { ds } from "@/design-system";
 
 function SellerRegisterCreateShopPageContent() {

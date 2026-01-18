@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Input as AntInput, Radio, Checkbox, Select } from "antd";
 import { Button } from "@/components";
-import { ConsentModal } from "@/components/ConsentModal";
+import { ConsentModal } from "@/components";
 import { ds } from "@/design-system";
 
 type BusinessProfileType = "individual" | "juristic";

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { DesignSystemSidebar } from "@/components/Layout/DesignSystemSidebar";
+import { DesignSystemSidebar } from "@/components";
 import { Button, Input, Toggle, Checkbox, Radio, Alert, Icon, Select, Textarea, Modal, Confirmation, BottomSheet, Illustration, Badge } from "@/components";
 import { Space, Typography } from "antd";
 import { ds } from "@/design-system";
