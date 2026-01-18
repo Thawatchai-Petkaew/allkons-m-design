@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Input, Button } from "@/components";
+import { Input, Button, Alert } from "@/components";
 import { ds } from "@/design-system";
 import { sendOTP as sendSupabaseOTP, verifyOTP as verifySupabaseOTP } from "@/lib/supabase/auth";
 import { sendOTP as sendMockOTP, verifyOTP as verifyMockOTP } from "@/lib/supabase/mock-otp";
@@ -312,18 +312,8 @@ export default function LoginPage() {
         </p>
 
         {error && (
-          <div
-            style={{
-              padding: ds.spacing('3'),
-              marginBottom: ds.spacing('4'),
-              backgroundColor: '#fff5f5',
-              border: `1px solid ${ds.color.system('error')}`,
-              borderRadius: ds.radius('sm'),
-              color: ds.color.system('error'),
-              fontSize: ds.typography.size('sm'),
-            }}
-          >
-            {error}
+          <div style={{ marginBottom: ds.spacing('4') }}>
+            <Alert type="error" title={error} variant="compact" />
           </div>
         )}
 

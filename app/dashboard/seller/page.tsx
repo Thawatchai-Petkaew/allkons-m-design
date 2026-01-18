@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ds } from "@/design-system";
+// import { SellerHeader } from "@/components"; // TODO: Create SellerHeader component
 import { getUser } from "@/lib/supabase/auth";
 import { mockSeller1, mockSeller2, MOCK_PHONE_NUMBERS } from "@/lib/supabase/mock-data";
 import type { UserSession } from "@/types";
@@ -169,58 +170,42 @@ export default function SellerDashboardPage() {
     return null;
   }
 
+  // Extract account info for header
+  const accountInfo = userData.account.phone_number
+    ? {
+        firstName: "เดชวิทย์", // TODO: Get from account data
+        lastName: "มงคลจิต", // TODO: Get from account data
+        email: userData.account.email || "dechwit@gmail.com", // TODO: Get from account data
+        phoneNumber: userData.account.phone_number,
+      }
+    : undefined;
+
   return (
     <div
       style={{
         minHeight: '100vh',
         backgroundColor: ds.color.background('secondary'),
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       {/* Header */}
-      <header
-        style={{
-          backgroundColor: ds.color.background('primary'),
-          borderBottom: `1px solid ${ds.color.border('primary')}`,
-          padding: `${ds.spacing('4')} ${ds.spacing('8')}`,
-        }}
-      >
-        <div
-          style={{
-            maxWidth: ds.common.layout.containerMaxWidth,
-            margin: '0 auto',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
-          <h1
-            style={{
-              fontSize: ds.typography.size('2xl'),
-              fontWeight: ds.typography.weight('bold'),
-              color: ds.color.text('primary'),
-              margin: 0,
-            }}
-          >
-            Seller Dashboard
-          </h1>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: ds.spacing('4'),
-            }}
-          >
-            <span
-              style={{
-                fontSize: ds.typography.size('sm'),
-                color: ds.color.text('secondary'),
-              }}
-            >
-              {userData.account.phone_number}
-            </span>
-          </div>
-        </div>
-      </header>
+      {/* TODO: Create SellerHeader component */}
+      {/* <SellerHeader
+        shop={userData.shop ? {
+          id: userData.shop.id,
+          name: userData.shop.name,
+          subdomain: userData.shop.subdomain,
+          isActive: userData.shop.is_active,
+        } : undefined}
+        organization={userData.organization ? {
+          id: userData.organization.id,
+          name: userData.organization.name,
+          isVerified: userData.organization.is_verified,
+        } : undefined}
+        account={accountInfo}
+        notificationCount={99} // Mock notification count
+      /> */}
 
       {/* Main Content */}
       <main

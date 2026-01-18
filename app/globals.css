@@ -446,6 +446,33 @@
   --button-tertiary-error-text-hover: var(--red-rd-20);
   --button-tertiary-error-text-disabled: var(--text-disabled);
 
+  --button-primary-warning-bg: var(--system-warning-00);
+  --button-primary-warning-bg-hover: var(--refreshing-orange-ro-20);
+  --button-primary-warning-bg-disabled: var(--global-neutral-light-90);
+  --button-primary-warning-text: var(--text-white);
+  --button-primary-warning-text-hover: var(--refreshing-orange-ro90);
+  --button-primary-warning-text-disabled: var(--text-disabled);
+  --button-primary-warning-border: var(--system-warning-00);
+  --button-primary-warning-border-hover: var(--refreshing-orange-ro-20);
+  --button-primary-warning-border-disabled: var(--global-neutral-light-95);
+
+  --button-secondary-warning-bg: var(--background-primary);
+  --button-secondary-warning-bg-hover: var(--refreshing-orange-ro90);
+  --button-secondary-warning-bg-disabled: var(--global-neutral-light-90);
+  --button-secondary-warning-text: var(--system-warning-00);
+  --button-secondary-warning-text-hover: var(--refreshing-orange-ro-20);
+  --button-secondary-warning-text-disabled: var(--text-disabled);
+  --button-secondary-warning-border: var(--system-warning-00);
+  --button-secondary-warning-border-hover: var(--refreshing-orange-ro-20);
+  --button-secondary-warning-border-disabled: var(--global-neutral-light-95);
+
+  --button-tertiary-warning-bg: var(--transparent);
+  --button-tertiary-warning-bg-hover: var(--refreshing-orange-ro90);
+  --button-tertiary-warning-bg-disabled: var(--global-neutral-light-90);
+  --button-tertiary-warning-text: var(--system-warning-00);
+  --button-tertiary-warning-text-hover: var(--refreshing-orange-ro-20);
+  --button-tertiary-warning-text-disabled: var(--text-disabled);
+
   /* Input Colors */
   --input-bg: var(--background-primary);
   --input-bg-disabled: var(--background-secondary);
@@ -736,6 +763,7 @@
   --animation-duration-fast: 0.2s;
   --animation-duration-normal: 0.6s;
   --letter-spacing-normal: 0;
+  --letter-spacing-tight: 0.5px;
   --cursor-pointer: pointer;
   --cursor-not-allowed: not-allowed;
   /* Component Heights - Total height including padding and border */
@@ -824,9 +852,137 @@
   --modal-text: var(--text-secondary);
   --modal-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 
+  /* Illustration Colors - Ring (darker colors for more visible rings) */
+  --illustration-ring-color-brand: var(--brand-m-primary-00);
+  --illustration-ring-color-error: var(--system-error-00);
+  --illustration-ring-color-info: var(--system-info-00);
+  --illustration-ring-color-warning: var(--system-warning-00);
+  --illustration-ring-color-neutral: var(--global-neutral-light-40);
+
+  /* Illustration Colors - Background */
+  --illustration-bg-color-brand: var(--brand-m-primary-00);
+  --illustration-bg-color-error: var(--system-error-00);
+  --illustration-bg-color-info: var(--system-info-00);
+  --illustration-bg-color-warning: var(--system-warning-00);
+  --illustration-bg-color-neutral: var(--global-neutral-light-80);
+
+  /* Illustration Colors - Icon */
+  --illustration-icon-color-brand: var(--brand-m-primary-00);
+  --illustration-icon-color-error: var(--system-error-00);
+  --illustration-icon-color-info: var(--system-info-00);
+  --illustration-icon-color-warning: var(--system-warning-00);
+  --illustration-icon-color-neutral: var(--global-neutral-dark-60);
+
+  /* Badge Component Tokens */
+  /* Badge Sizes - Padding */
+  --badge-xs-padding-horizontal: var(--spacing-1);  /* 4px */
+  --badge-xs-padding-vertical: var(--spacing-1);      /* 4px */
+  --badge-sm-padding-horizontal: var(--spacing-2);   /* 8px */
+  --badge-sm-padding-vertical: var(--spacing-1);      /* 4px */
+  --badge-md-padding-horizontal: var(--spacing-3);   /* 12px */
+  --badge-md-padding-vertical: var(--spacing-2);      /* 8px */
+
+  /* Badge Sizes - Typography */
+  --badge-xs-font-size: var(--size-xs);              /* 12px */
+  --badge-xs-line-height: var(--line-height-xs);      /* 16px */
+  --badge-sm-font-size: var(--size-sm);              /* 14px */
+  --badge-sm-line-height: var(--line-height-sm);     /* 20px */
+  --badge-md-font-size: var(--size-md);              /* 16px */
+  --badge-md-line-height: var(--line-height-md);     /* 24px */
+
+  /* Badge Border Radius */
+  --badge-border-radius: var(--radius-full);         /* 9999px */
+
+  /* Badge Icon Spacing */
+  --badge-icon-gap: var(--spacing-1);                /* 4px */
+
+  /* Badge Colors - Brand */
+  --badge-brand-filled-bg: var(--special-green-sg90);      /* #e5f7ec */
+  --badge-brand-filled-text: var(--special-green-sg-20);    /* #008c36 */
+  --badge-brand-filled-icon: var(--special-green-sg-20);    /* #008c36 */
+  --badge-brand-outlined-border: var(--special-green-sg-00); /* #00af43 */
+  --badge-brand-outlined-text: var(--special-green-sg-20);  /* #008c36 */
+  --badge-brand-outlined-icon: var(--special-green-sg-20);   /* #008c36 */
+  --badge-brand-subtle-bg: var(--special-green-sg90);       /* #e5f7ec */
+  --badge-brand-subtle-text: var(--special-green-sg-20);    /* #008c36 */
+  --badge-brand-subtle-icon: var(--special-green-sg-20);     /* #008c36 */
+
+  /* Badge Colors - Error */
+  --badge-error-filled-bg: var(--red-rd90);                 /* #fbe8e7 */
+  --badge-error-filled-text: var(--red-rd-20);              /* #ae1a0c */
+  --badge-error-filled-icon: var(--red-rd-20);              /* #ae1a0c */
+  --badge-error-outlined-border: var(--red-rd-00);          /* #da2110 */
+  --badge-error-outlined-text: var(--red-rd-20);            /* #ae1a0c */
+  --badge-error-outlined-icon: var(--red-rd-20);           /* #ae1a0c */
+  --badge-error-subtle-bg: var(--red-rd90);                 /* #fbe8e7 */
+  --badge-error-subtle-text: var(--red-rd-20);              /* #ae1a0c */
+  --badge-error-subtle-icon: var(--red-rd-20);              /* #ae1a0c */
+
+  /* Badge Colors - Info */
+  --badge-info-filled-bg: var(--blue-be90);                 /* #eff7fc */
+  --badge-info-filled-text: var(--blue-be-20);              /* #508eb9 */
+  --badge-info-filled-icon: var(--blue-be-20);              /* #508eb9 */
+  --badge-info-outlined-border: var(--blue-be-00);          /* #65b2e8 */
+  --badge-info-outlined-text: var(--blue-be-20);           /* #508eb9 */
+  --badge-info-outlined-icon: var(--blue-be-20);           /* #508eb9 */
+  --badge-info-subtle-bg: var(--blue-be90);                 /* #eff7fc */
+  --badge-info-subtle-text: var(--blue-be-20);              /* #508eb9 */
+  --badge-info-subtle-icon: var(--blue-be-20);              /* #508eb9 */
+
+  /* Badge Colors - Success */
+  --badge-success-filled-bg: var(--green-gn90);            /* #e8f8ed */
+  --badge-success-filled-text: var(--green-gn-20);         /* #16873a */
+  --badge-success-filled-icon: var(--green-gn-20);         /* #16873a */
+  --badge-success-outlined-border: var(--green-gn-00);      /* #1eb950 */
+  --badge-success-outlined-text: var(--green-gn-20);       /* #16873a */
+  --badge-success-outlined-icon: var(--green-gn-20);       /* #16873a */
+  --badge-success-subtle-bg: var(--green-gn90);            /* #e8f8ed */
+  --badge-success-subtle-text: var(--green-gn-20);         /* #16873a */
+  --badge-success-subtle-icon: var(--green-gn-20);         /* #16873a */
+
+  /* Badge Colors - Warning */
+  --badge-warning-filled-bg: var(--refreshing-orange-ro90); /* #fff7e6 */
+  --badge-warning-filled-text: var(--refreshing-orange-ro-20); /* #cc8906 */
+  --badge-warning-filled-icon: var(--refreshing-orange-ro-20); /* #cc8906 */
+  --badge-warning-outlined-border: var(--refreshing-orange-ro-00); /* #ffab08 */
+  --badge-warning-outlined-text: var(--refreshing-orange-ro-20); /* #cc8906 */
+  --badge-warning-outlined-icon: var(--refreshing-orange-ro-20); /* #cc8906 */
+  --badge-warning-subtle-bg: var(--refreshing-orange-ro90); /* #fff7e6 */
+  --badge-warning-subtle-text: var(--refreshing-orange-ro-20); /* #cc8906 */
+  --badge-warning-subtle-icon: var(--refreshing-orange-ro-20); /* #cc8906 */
+
+  /* Badge Colors - Neutral */
+  --badge-neutral-filled-bg: var(--gray-gy95);             /* #f7f8f9 */
+  --badge-neutral-filled-text: var(--gray-gy-40);          /* #37404f */
+  --badge-neutral-filled-icon: var(--gray-gy-40);          /* #37404f */
+  --badge-neutral-outlined-border: var(--gray-gy-00);      /* #5b6a83 */
+  --badge-neutral-outlined-text: var(--gray-gy-40);       /* #37404f */
+  --badge-neutral-outlined-icon: var(--gray-gy-40);        /* #37404f */
+  --badge-neutral-subtle-bg: var(--gray-gy95);              /* #f7f8f9 */
+  --badge-neutral-subtle-text: var(--gray-gy-40);          /* #37404f */
+  --badge-neutral-subtle-icon: var(--gray-gy-40);           /* #37404f */
+
+  /* Badge Colors - Lavender Purple */
+  --badge-lavender-filled-bg: #f6f6fc;
+  --badge-lavender-filled-text: #8282b1;
+  --badge-lavender-filled-icon: #8282b1;
+  --badge-lavender-outlined-border: #a3a2dd;
+  --badge-lavender-outlined-text: #8282b1;
+  --badge-lavender-outlined-icon: #8282b1;
+  --badge-lavender-subtle-bg: #f6f6fc;
+  --badge-lavender-subtle-text: #8282b1;
+  --badge-lavender-subtle-icon: #8282b1;
+
   /* Layout */
   --container-max-width: 1280px;
   --input-container-width: 400px;
+
+  /* Breakpoints (based on Tailwind CSS defaults) */
+  --breakpoint-sm: 640px;   /* 40rem */
+  --breakpoint-md: 768px;  /* 48rem */
+  --breakpoint-lg: 1024px; /* 64rem */
+  --breakpoint-xl: 1280px; /* 80rem */
+  --breakpoint-2xl: 1536px; /* 96rem */
 
   --font-weight-thin: 100;
   --font-weight-extralight: 200;
@@ -949,4 +1105,65 @@ body {
   display: flex !important;
   flex-wrap: nowrap !important;
   gap: 16px !important;
+}
+
+/* Ant Design Typography Component Overrides - Use Design System Font Family */
+.ant-typography,
+.ant-typography h1,
+.ant-typography h2,
+.ant-typography h3,
+.ant-typography h4,
+.ant-typography h5,
+.ant-typography h6,
+.ant-typography p,
+.ant-typography span,
+.ant-typography div {
+  font-family: var(--font-family-noto-sans) !important;
+}
+
+/* Illustration Component Styles */
+.illustration {
+  position: relative;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Illustration SVG Color Overrides (when using CSS variables in SVG) */
+.illustration img[src*="ring"] {
+  filter: none;
+}
+
+/* Apply colors to illustration SVG based on color prop */
+/* Apply CSS variables to illustration container for inline SVG */
+.illustration-brand {
+  --illustration-ring-color: var(--illustration-ring-color-brand);
+  --illustration-bg-color: var(--illustration-bg-color-brand);
+}
+
+.illustration-error {
+  --illustration-ring-color: var(--illustration-ring-color-error);
+  --illustration-bg-color: var(--illustration-bg-color-error);
+}
+
+.illustration-info {
+  --illustration-ring-color: var(--illustration-ring-color-info);
+  --illustration-bg-color: var(--illustration-bg-color-info);
+}
+
+.illustration-warning {
+  --illustration-ring-color: var(--illustration-ring-color-warning);
+  --illustration-bg-color: var(--illustration-bg-color-warning);
+}
+
+.illustration-neutral {
+  --illustration-ring-color: var(--illustration-ring-color-neutral);
+  --illustration-bg-color: var(--illustration-bg-color-neutral);
 }
