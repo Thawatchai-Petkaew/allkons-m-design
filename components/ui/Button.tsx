@@ -16,8 +16,9 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
    * - brand: Green color scheme
    * - neutral: Gray color scheme
    * - error: Red color scheme
+   * - warning: Orange color scheme
    */
-  color?: "brand" | "neutral" | "error";
+  color?: "brand" | "neutral" | "error" | "warning";
   /**
    * Button size
    */
@@ -97,6 +98,13 @@ export const Button: React.FC<ButtonProps> = ({
     },
   };
 
+  // Check if this is an icon-only button (has icon but no children)
+  const isIconOnly = icon && !children;
+
+  // Ensure size is valid, default to "middle" if invalid
+  const validSize = (size === "small" || size === "middle" || size === "large") ? size : "middle";
+  const currentSizeStyles = sizeStyles[validSize];
+
   // Base styles (without custom style prop to avoid override issues)
   const baseStyles: React.CSSProperties = {
     fontFamily: ds.typography.fontFamily.notoSans,
@@ -110,7 +118,13 @@ export const Button: React.FC<ButtonProps> = ({
     justifyContent: "center",
     outline: ds.common.none,
     boxSizing: 'border-box', // Ensure height includes padding and border
-    ...sizeStyles[size],
+    ...currentSizeStyles,
+    // For icon-only buttons, make them square (width = height)
+    ...(isIconOnly && currentSizeStyles ? {
+      width: currentSizeStyles.height,
+      paddingLeft: 0,
+      paddingRight: 0,
+    } : {}),
   };
 
   /**
@@ -182,6 +196,33 @@ export const Button: React.FC<ButtonProps> = ({
           borderStyle: 'solid',
           borderWidth: ds.common.borderWidth.thin,
           borderColor: ds.component.button.primaryError.border(),
+        };
+      }
+      if (color === "warning") {
+        if (state === "disabled") {
+          return {
+            backgroundColor: ds.component.button.primaryWarning.bg('disabled'),
+            color: ds.component.button.primaryWarning.text('disabled'),
+            borderStyle: 'solid',
+            borderWidth: ds.common.borderWidth.thin,
+            borderColor: ds.component.button.primaryWarning.border('disabled'),
+          };
+        }
+        if (state === "hover") {
+          return {
+            backgroundColor: ds.component.button.primaryWarning.bg('hover'),
+            color: ds.component.button.primaryWarning.text('hover'),
+            borderStyle: 'solid',
+            borderWidth: ds.common.borderWidth.thin,
+            borderColor: ds.component.button.primaryWarning.border('hover'),
+          };
+        }
+        return {
+          backgroundColor: ds.component.button.primaryWarning.bg(),
+          color: ds.component.button.primaryWarning.text(),
+          borderStyle: 'solid',
+          borderWidth: ds.common.borderWidth.thin,
+          borderColor: ds.component.button.primaryWarning.border(),
         };
       }
     }
@@ -269,6 +310,33 @@ export const Button: React.FC<ButtonProps> = ({
           borderColor: ds.component.button.secondaryError.border(),
         };
       }
+      if (color === "warning") {
+        if (state === "disabled") {
+          return {
+            backgroundColor: ds.component.button.secondaryWarning.bg('disabled'),
+            color: ds.component.button.secondaryWarning.text('disabled'),
+            borderStyle: 'solid',
+            borderWidth: ds.common.borderWidth.thin,
+            borderColor: ds.component.button.secondaryWarning.border('disabled'),
+          };
+        }
+        if (state === "hover") {
+          return {
+            backgroundColor: ds.component.button.secondaryWarning.bg('hover'),
+            color: ds.component.button.secondaryWarning.text('hover'),
+            borderStyle: 'solid',
+            borderWidth: ds.common.borderWidth.thin,
+            borderColor: ds.component.button.secondaryWarning.border('hover'),
+          };
+        }
+        return {
+          backgroundColor: ds.component.button.secondaryWarning.bg(),
+          color: ds.component.button.secondaryWarning.text(),
+          borderStyle: 'solid',
+          borderWidth: ds.common.borderWidth.thin,
+          borderColor: ds.component.button.secondaryWarning.border(),
+        };
+      }
     }
 
     // Tertiary variant - Text-only buttons, no border
@@ -349,6 +417,33 @@ export const Button: React.FC<ButtonProps> = ({
         return {
           backgroundColor: ds.component.button.tertiaryError.bg(),
           color: ds.component.button.tertiaryError.text(),
+          borderStyle: 'none',
+          borderWidth: 0,
+          borderColor: ds.common.transparent,
+        };
+      }
+      if (color === "warning") {
+        if (state === "disabled") {
+          return {
+            backgroundColor: ds.component.button.tertiaryWarning.bg('disabled'),
+            color: ds.component.button.tertiaryWarning.text('disabled'),
+            borderStyle: 'none',
+            borderWidth: 0,
+            borderColor: ds.common.transparent,
+          };
+        }
+        if (state === "hover") {
+          return {
+            backgroundColor: ds.component.button.tertiaryWarning.bg('hover'),
+            color: ds.component.button.tertiaryWarning.text('hover'),
+            borderStyle: 'none',
+            borderWidth: 0,
+            borderColor: ds.common.transparent,
+          };
+        }
+        return {
+          backgroundColor: ds.component.button.tertiaryWarning.bg(),
+          color: ds.component.button.tertiaryWarning.text(),
           borderStyle: 'none',
           borderWidth: 0,
           borderColor: ds.common.transparent,

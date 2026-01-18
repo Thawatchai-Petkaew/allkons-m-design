@@ -86,8 +86,8 @@ export const Toggle: React.FC<ToggleProps> = ({
       rectangular: {
         fontSize: ds.typography.size('sm'),
         lineHeight: ds.typography.lineHeight('sm'),
-        paddingLeft: ds.spacing('3'),
-        paddingRight: ds.spacing('3'),
+        paddingLeft: ds.spacing('1'),
+        paddingRight: ds.spacing('1'),
         minWidth: ds.common.width.toggleRectangularSmall,
         height: ds.common.height.toggleSmall,
       },
@@ -109,8 +109,8 @@ export const Toggle: React.FC<ToggleProps> = ({
       rectangular: {
         fontSize: ds.typography.size('md'),
         lineHeight: ds.typography.lineHeight('md'),
-        paddingLeft: ds.spacing('4'),
-        paddingRight: ds.spacing('4'),
+        paddingLeft: ds.spacing('1'),
+        paddingRight: ds.spacing('1'),
         minWidth: ds.common.width.toggleRectangularMiddle,
         height: ds.common.height.toggleMiddle,
       },
@@ -132,8 +132,8 @@ export const Toggle: React.FC<ToggleProps> = ({
       rectangular: {
         fontSize: ds.typography.size('lg'),
         lineHeight: ds.typography.lineHeight('lg'),
-        paddingLeft: ds.spacing('6'),
-        paddingRight: ds.spacing('6'),
+        paddingLeft: ds.spacing('1'),
+        paddingRight: ds.spacing('1'),
         minWidth: ds.common.width.toggleRectangularLarge,
         height: ds.common.height.toggleLarge,
       },
@@ -296,27 +296,75 @@ export const Toggle: React.FC<ToggleProps> = ({
   }
 
   // Rectangular variant
+  // Extract minWidth and height from sizeStyles, but override padding
+  const { paddingLeft: _, paddingRight: __, ...restRectangularStyles } = sizeStyles[size].rectangular;
+  
   const rectangularStyles: React.CSSProperties = {
     position: "relative",
-    display: "inline-flex",
+    display: "flex",
     alignItems: "center",
-    justifyContent: "center",
     cursor: disabled ? ds.common.cursor.notAllowed : ds.common.cursor.pointer,
     transition: `all ${ds.common.animation.fast} ease`,
-    borderRadius: ds.radius('sm'),
+    borderRadius: ds.radius('full'), // Full rounded
     fontWeight: ds.typography.weight('semibold'),
-    ...sizeStyles[size].rectangular,
+    ...restRectangularStyles, // Use size styles except padding
     backgroundColor: disabled
       ? (isChecked ? ds.component.toggle.rectangular.bg('checked', 'disabled') : ds.component.toggle.rectangular.bg('unchecked', 'disabled'))
       : isChecked
       ? ds.component.toggle.rectangular.bg('checked')
       : ds.component.toggle.rectangular.bg('unchecked'),
+    ...(isHovered && !disabled && !isChecked ? { backgroundColor: ds.component.toggle.rectangular.bg('unchecked', 'hover') } : {}),
+    overflow: "hidden", // Ensure text doesn't overflow when knob moves
+    paddingLeft: ds.spacing('1'), // Balanced padding from left edge (4px)
+    paddingRight: ds.spacing('1'), // Balanced padding from right edge (4px)
+    gap: ds.spacing('none'), // No gap between text and knob
+  };
+
+  // Rectangular knob styles (similar to circular variant but moves horizontally)
+  const knobWidth = sizeStyles[size].thumb.width;
+  
+  const rectangularKnobStyles: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: ds.radius('full'),
+    backgroundColor: ds.component.toggle.circular.thumbBg(),
+    transition: `all ${ds.common.animation.fast} ease`,
+    pointerEvents: "none",
+    flexShrink: 0, // Prevent knob from shrinking
+    ...sizeStyles[size].thumb,
+    boxShadow: ds.component.modal.shadow(), // Shadow for elevation (using modal shadow token)
+  };
+
+  // Text container styles - fills available space and centers text
+  const textContainerStyles: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1, // Fill available space to push knob out
+    height: "100%",
+    minWidth: 0, // Allow shrinking if needed
+  };
+
+  // Text styles for ON/OFF - fills container and centers text
+  const textStyles: React.CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
+    fontWeight: ds.typography.weight('semibold'),
+    fontSize: sizeStyles[size].rectangular.fontSize,
+    lineHeight: sizeStyles[size].rectangular.lineHeight,
     color: disabled
       ? (isChecked ? ds.component.toggle.rectangular.text('checked', 'disabled') : ds.component.toggle.rectangular.text('unchecked', 'disabled'))
       : isChecked
       ? ds.component.toggle.rectangular.text('checked')
       : ds.component.toggle.rectangular.text('unchecked'),
-    ...(isHovered && !disabled && !isChecked ? { backgroundColor: ds.component.toggle.rectangular.bg('unchecked', 'hover') } : {}),
+    pointerEvents: "none",
+    userSelect: "none",
+    whiteSpace: "nowrap", // Prevent text wrapping
+    textAlign: "center", // Center align text
   };
 
   const toggleElement = (
@@ -353,12 +401,29 @@ export const Toggle: React.FC<ToggleProps> = ({
               margin: 0,
               padding: 0,
               cursor: disabled ? ds.common.cursor.notAllowed : ds.common.cursor.pointer,
-              zIndex: 2,
+              zIndex: 3,
               pointerEvents: disabled ? "none" : "auto",
             }}
             {...props}
           />
-          <span style={{ position: "relative", zIndex: 0, pointerEvents: "none", userSelect: "none" }}>{isChecked ? "ON" : "OFF"}</span>
+          {/* Layout: ON state = [Text Container (flex:1)] [Knob], OFF state = [Knob] [Text Container (flex:1)] */}
+          {isChecked ? (
+            <>
+              {/* ON: Text container fills left side, Knob on right */}
+              <div style={textContainerStyles}>
+                <span style={textStyles}>ON</span>
+              </div>
+              <div style={rectangularKnobStyles} />
+            </>
+          ) : (
+            <>
+              {/* OFF: Knob on left, Text container fills right side */}
+              <div style={rectangularKnobStyles} />
+              <div style={textContainerStyles}>
+                <span style={textStyles}>OFF</span>
+              </div>
+            </>
+          )}
         </div>
         {label && (
           <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing('1') }}>

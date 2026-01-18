@@ -37,3 +37,10 @@ export type TypographyToken =
   | 'button-big' | 'button-middle' | 'button-small'
   | 'link-big' | 'link-middle' | 'link-small'
   | 'all-caps' | 'error';
+
+export type BadgeColorToken = 
+  | 'brand' | 'error' | 'info' | 'success' | 'warning' | 'neutral' | 'lavender';
+
+export type BadgeSizeToken = 'xs' | 'sm' | 'md';
+
+export type BadgeVariantToken = 'filled' | 'outlined' | 'subtle';

@@ -67,6 +67,18 @@ export const button = {
   },
   
   /**
+   * Primary Warning Button
+   */
+  primaryWarning: {
+    bg: (state?: 'hover' | 'disabled') => 
+      componentToken('button', 'primary', 'warning', 'bg', state),
+    text: (state?: 'hover' | 'disabled') => 
+      componentToken('button', 'primary', 'warning', 'text', state),
+    border: (state?: 'hover' | 'disabled') => 
+      componentToken('button', 'primary', 'warning', 'border', state),
+  },
+  
+  /**
    * Secondary Brand Button
    */
   secondaryBrand: {
@@ -103,6 +115,18 @@ export const button = {
   },
   
   /**
+   * Secondary Warning Button
+   */
+  secondaryWarning: {
+    bg: (state?: 'hover' | 'disabled') => 
+      componentToken('button', 'secondary', 'warning', 'bg', state),
+    text: (state?: 'hover' | 'disabled') => 
+      componentToken('button', 'secondary', 'warning', 'text', state),
+    border: (state?: 'hover' | 'disabled') => 
+      componentToken('button', 'secondary', 'warning', 'border', state),
+  },
+  
+  /**
    * Tertiary Brand Button
    */
   tertiaryBrand: {
@@ -130,6 +154,16 @@ export const button = {
       componentToken('button', 'tertiary', 'error', 'bg', state),
     text: (state?: 'hover' | 'disabled') => 
       componentToken('button', 'tertiary', 'error', 'text', state),
+  },
+  
+  /**
+   * Tertiary Warning Button
+   */
+  tertiaryWarning: {
+    bg: (state?: 'hover' | 'disabled') => 
+      componentToken('button', 'tertiary', 'warning', 'bg', state),
+    text: (state?: 'hover' | 'disabled') => 
+      componentToken('button', 'tertiary', 'warning', 'text', state),
   },
 } as const;
 
@@ -623,4 +657,187 @@ export const illustration = {
    * Ring color
    */
   ringColor: () => componentToken('illustration', undefined, undefined, 'ring-color', undefined),
+} as const;
+
+/**
+ * Badge component tokens
+ */
+export const badge = {
+  /**
+   * Get badge token
+   * @example badge.token('brand', 'filled', 'bg')
+   */
+  token: (color: string, variant: string, property: string) =>
+    componentToken('badge', color, variant, property, undefined),
+  
+  /**
+   * Get badge size token
+   */
+  size: {
+    paddingHorizontal: (size: 'xs' | 'sm' | 'md') => 
+      `var(--badge-${size}-padding-horizontal)`,
+    paddingVertical: (size: 'xs' | 'sm' | 'md') => 
+      `var(--badge-${size}-padding-vertical)`,
+    fontSize: (size: 'xs' | 'sm' | 'md') => 
+      `var(--badge-${size}-font-size)`,
+    lineHeight: (size: 'xs' | 'sm' | 'md') => 
+      `var(--badge-${size}-line-height)`,
+  },
+  
+  /**
+   * Get badge border radius
+   */
+  borderRadius: () => 'var(--badge-border-radius)',
+  
+  /**
+   * Get badge icon gap
+   */
+  iconGap: () => 'var(--badge-icon-gap)',
+  
+  /**
+   * Brand Badge
+   */
+  brand: {
+    filled: {
+      bg: () => 'var(--badge-brand-filled-bg)',
+      text: () => 'var(--badge-brand-filled-text)',
+      icon: () => 'var(--badge-brand-filled-icon)',
+    },
+    outlined: {
+      border: () => 'var(--badge-brand-outlined-border)',
+      text: () => 'var(--badge-brand-outlined-text)',
+      icon: () => 'var(--badge-brand-outlined-icon)',
+    },
+    subtle: {
+      bg: () => 'var(--badge-brand-subtle-bg)',
+      text: () => 'var(--badge-brand-subtle-text)',
+      icon: () => 'var(--badge-brand-subtle-icon)',
+    },
+  },
+  
+  /**
+   * Error Badge
+   */
+  error: {
+    filled: {
+      bg: () => 'var(--badge-error-filled-bg)',
+      text: () => 'var(--badge-error-filled-text)',
+      icon: () => 'var(--badge-error-filled-icon)',
+    },
+    outlined: {
+      border: () => 'var(--badge-error-outlined-border)',
+      text: () => 'var(--badge-error-outlined-text)',
+      icon: () => 'var(--badge-error-outlined-icon)',
+    },
+    subtle: {
+      bg: () => 'var(--badge-error-subtle-bg)',
+      text: () => 'var(--badge-error-subtle-text)',
+      icon: () => 'var(--badge-error-subtle-icon)',
+    },
+  },
+  
+  /**
+   * Info Badge
+   */
+  info: {
+    filled: {
+      bg: () => 'var(--badge-info-filled-bg)',
+      text: () => 'var(--badge-info-filled-text)',
+      icon: () => 'var(--badge-info-filled-icon)',
+    },
+    outlined: {
+      border: () => 'var(--badge-info-outlined-border)',
+      text: () => 'var(--badge-info-outlined-text)',
+      icon: () => 'var(--badge-info-outlined-icon)',
+    },
+    subtle: {
+      bg: () => 'var(--badge-info-subtle-bg)',
+      text: () => 'var(--badge-info-subtle-text)',
+      icon: () => 'var(--badge-info-subtle-icon)',
+    },
+  },
+  
+  /**
+   * Success Badge
+   */
+  success: {
+    filled: {
+      bg: () => 'var(--badge-success-filled-bg)',
+      text: () => 'var(--badge-success-filled-text)',
+      icon: () => 'var(--badge-success-filled-icon)',
+    },
+    outlined: {
+      border: () => 'var(--badge-success-outlined-border)',
+      text: () => 'var(--badge-success-outlined-text)',
+      icon: () => 'var(--badge-success-outlined-icon)',
+    },
+    subtle: {
+      bg: () => 'var(--badge-success-subtle-bg)',
+      text: () => 'var(--badge-success-subtle-text)',
+      icon: () => 'var(--badge-success-subtle-icon)',
+    },
+  },
+  
+  /**
+   * Warning Badge
+   */
+  warning: {
+    filled: {
+      bg: () => 'var(--badge-warning-filled-bg)',
+      text: () => 'var(--badge-warning-filled-text)',
+      icon: () => 'var(--badge-warning-filled-icon)',
+    },
+    outlined: {
+      border: () => 'var(--badge-warning-outlined-border)',
+      text: () => 'var(--badge-warning-outlined-text)',
+      icon: () => 'var(--badge-warning-outlined-icon)',
+    },
+    subtle: {
+      bg: () => 'var(--badge-warning-subtle-bg)',
+      text: () => 'var(--badge-warning-subtle-text)',
+      icon: () => 'var(--badge-warning-subtle-icon)',
+    },
+  },
+  
+  /**
+   * Neutral Badge
+   */
+  neutral: {
+    filled: {
+      bg: () => 'var(--badge-neutral-filled-bg)',
+      text: () => 'var(--badge-neutral-filled-text)',
+      icon: () => 'var(--badge-neutral-filled-icon)',
+    },
+    outlined: {
+      border: () => 'var(--badge-neutral-outlined-border)',
+      text: () => 'var(--badge-neutral-outlined-text)',
+      icon: () => 'var(--badge-neutral-outlined-icon)',
+    },
+    subtle: {
+      bg: () => 'var(--badge-neutral-subtle-bg)',
+      text: () => 'var(--badge-neutral-subtle-text)',
+      icon: () => 'var(--badge-neutral-subtle-icon)',
+    },
+  },
+  
+  /**
+   * Lavender Badge
+   */
+  lavender: {
+    filled: {
+      bg: () => 'var(--badge-lavender-filled-bg)',
+      text: () => 'var(--badge-lavender-filled-text)',
+      icon: () => 'var(--badge-lavender-filled-icon)',
+    },
+    outlined: {
+      border: () => 'var(--badge-lavender-outlined-border)',
+      text: () => 'var(--badge-lavender-outlined-text)',
+      icon: () => 'var(--badge-lavender-outlined-icon)',
+    },
+    subtle: {
+      bg: () => 'var(--badge-lavender-subtle-bg)',
+      text: () => 'var(--badge-lavender-subtle-text)',
+      icon: () => 'var(--badge-lavender-subtle-icon)',
+    },
+  },
 } as const;

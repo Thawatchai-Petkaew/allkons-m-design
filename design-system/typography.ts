@@ -71,4 +71,12 @@ export const typographyUtils = {
     notoSans: 'var(--font-family-noto-sans)',
     monospace: 'monospace',
   },
+  
+  /**
+   * Letter spacing
+   */
+  letterSpacing: {
+    normal: 'var(--letter-spacing-normal)',
+    tight: 'var(--letter-spacing-tight)',
+  },
 } as const;

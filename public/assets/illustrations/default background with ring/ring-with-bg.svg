@@ -1,0 +1,15 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_40016005_16508)">
+<circle opacity="0.25" cx="120" cy="120" r="45.9038" stroke="var(--illustration-ring-color)" stroke-width="0.5"/>
+<circle opacity="0.2" cx="120" cy="120" r="64.3654" stroke="var(--illustration-ring-color)" stroke-width="0.5"/>
+<circle opacity="0.15" cx="120" cy="120" r="82.8269" stroke="var(--illustration-ring-color)" stroke-width="0.5"/>
+<path opacity="0.1" d="M120 18.7115C175.94 18.7115 221.289 64.0597 221.289 120C221.289 175.94 175.94 221.289 120 221.289C64.0597 221.288 18.7115 175.94 18.7115 120C18.7117 64.0599 64.0599 18.7117 120 18.7115Z" stroke="var(--illustration-ring-color)" stroke-width="0.5"/>
+<path opacity="0.05" d="M120 0.25C186.136 0.25 239.75 53.8639 239.75 120C239.75 186.136 186.136 239.75 120 239.75C53.8639 239.75 0.250004 186.136 0.25 120C0.25 53.8639 53.8639 0.25 120 0.25Z" stroke="var(--illustration-ring-color)" stroke-width="0.5"/>
+<ellipse cx="120" cy="120" rx="120" ry="120" fill="var(--illustration-bg-color)" fill-opacity="0.05"/>
+</g>
+<defs>
+<clipPath id="clip0_40016005_16508">
+<rect width="240" height="240" fill="white"/>
+</clipPath>
+</defs>
+</svg>

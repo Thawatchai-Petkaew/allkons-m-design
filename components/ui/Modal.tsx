@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { ds } from "@/design-system";
 import { Button } from "./Button";
+import { Illustration, type IllustrationProps } from "./Illustration";
 
 export interface ModalProps {
   /**
@@ -18,6 +19,10 @@ export interface ModalProps {
    * Modal title
    */
   title?: string;
+  /**
+   * Supporting text below title
+   */
+  supportingText?: string;
   /**
    * Modal content
    */
@@ -35,7 +40,14 @@ export interface ModalProps {
    */
   closable?: boolean;
   /**
-   * Modal width
+   * Modal size preset
+   * - small: 600px (for confirm/notification/error)
+   * - middle: 720px (default, for standard dialogs)
+   * - large: 960px (for complex operations)
+   */
+  size?: "small" | "middle" | "large";
+  /**
+   * Modal width (overrides size if provided)
    */
   width?: number | string;
   /**
@@ -46,20 +58,44 @@ export interface ModalProps {
    * Custom style
    */
   style?: React.CSSProperties;
+  /**
+   * Illustration props (for modal with illustration)
+   */
+  illustration?: {
+    type: IllustrationProps["type"];
+    icon?: IllustrationProps["icon"];
+    color?: IllustrationProps["color"];
+    variant?: IllustrationProps["variant"];
+    size?: IllustrationProps["size"];
+  };
 }
 
 export const Modal: React.FC<ModalProps> = ({
   open = false,
   onClose,
   title,
+  supportingText,
   children,
   footer,
   maskClosable = true,
   closable = true,
-  width = 520,
+  size = "middle",
+  width,
   className = "",
   style,
+  illustration,
 }) => {
+  // Size presets in pixels (matching Figma design)
+  const sizePresets: Record<"small" | "middle" | "large", number> = {
+    small: 600,   // For confirm/notification/error
+    middle: 720,  // Default, for standard dialogs
+    large: 960,   // For complex operations
+  };
+
+  // Calculate modal width
+  const modalWidth = width 
+    ? (typeof width === "number" ? `${width}px` : width)
+    : `${sizePresets[size]}px`;
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (open) {
@@ -128,7 +164,7 @@ export const Modal: React.FC<ModalProps> = ({
         className={className}
         style={{
           position: "relative",
-          width: typeof width === "number" ? `${width}px` : width,
+          width: modalWidth,
           maxWidth: "90vw",
           maxHeight: "90vh",
           backgroundColor: ds.component.modal.bg(),
@@ -142,14 +178,43 @@ export const Modal: React.FC<ModalProps> = ({
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        {title && (
+        {/* Close button - Absolute positioned (always available if closable) */}
+        {closable && onClose && (
+          <Button
+            variant="secondary"
+            color="neutral"
+            size="middle"
+            icon={<i className="ri-close-line" />}
+            onClick={onClose}
+            aria-label="Close"
+            style={{
+              position: "absolute",
+              top: ds.spacing('5'),
+              right: ds.spacing('5'),
+              zIndex: 10,
+              minWidth: ds.common.height.buttonMiddle,
+              width: ds.common.height.buttonMiddle,
+              height: ds.common.height.buttonMiddle,
+              padding: 0,
+              flexShrink: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          />
+        )}
+
+        {/* Header - Optional, only show if no illustration and has title/supportingText */}
+        {!illustration && (title || supportingText) && (
           <div
             style={{
               display: "flex",
-              alignItems: "center",
+              alignItems: "flex-start",
               justifyContent: "space-between",
-              padding: `${ds.spacing('6')} ${ds.spacing('6')} ${ds.spacing('4')}`,
+              paddingTop: ds.spacing('5'),
+              paddingRight: closable ? `calc(${ds.spacing('5')} + ${ds.common.height.buttonSmall} + ${ds.spacing('4')})` : ds.spacing('5'),
+              paddingBottom: ds.spacing('4'),
+              paddingLeft: ds.spacing('6'),
               borderTop: "none",
               borderBottom: "none",
               borderTopWidth: 0,
@@ -162,51 +227,34 @@ export const Modal: React.FC<ModalProps> = ({
               borderWidth: 0,
             }}
           >
-            <h2
-              style={{
-                fontSize: ds.typography.size('2xl'),
-                lineHeight: ds.typography.lineHeight('2xl'),
-                fontWeight: ds.typography.weight('bold'),
-                color: ds.component.modal.title(),
-                margin: 0,
-              }}
-            >
-              {title}
-            </h2>
-            {closable && onClose && (
-              <button
-                onClick={onClose}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = ds.component.button.tertiaryNeutral.bg('hover');
-                  e.currentTarget.style.color = ds.component.button.tertiaryNeutral.text('hover');
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = ds.component.button.tertiaryNeutral.bg();
-                  e.currentTarget.style.color = ds.component.button.tertiaryNeutral.text();
-                }}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: ds.common.cursor.pointer,
-                  color: ds.component.button.tertiaryNeutral.text(),
-                  fontSize: ds.common.size.alertCloseIcon,
-                  backgroundColor: ds.component.button.tertiaryNeutral.bg(),
-                  border: "none",
-                  borderStyle: "none",
-                  borderWidth: 0,
-                  borderColor: ds.common.transparent,
-                  padding: 0,
-                  margin: 0,
-                  marginLeft: ds.spacing('4'),
-                  flexShrink: 0,
-                  transition: `all ${ds.common.animation.fast} ease`,
-                }}
-                aria-label="Close"
-              >
-                <i className="ri-close-line" />
-              </button>
-            )}
+            <div style={{ flex: 1, minWidth: 0 }}>
+              {title && (
+                <h2
+                  style={{
+                    fontSize: ds.typography.size('2xl'),
+                    lineHeight: ds.typography.lineHeight('2xl'),
+                    fontWeight: ds.typography.weight('bold'),
+                    color: ds.component.modal.title(),
+                    margin: 0,
+                    marginBottom: supportingText ? ds.spacing('1') : 0,
+                  }}
+                >
+                  {title}
+                </h2>
+              )}
+              {supportingText && (
+                <p
+                  style={{
+                    fontSize: ds.typography.size('md'),
+                    lineHeight: ds.typography.lineHeight('md'),
+                    color: ds.color.text('secondary'),
+                    margin: 0,
+                  }}
+                >
+                  {supportingText}
+                </p>
+              )}
+            </div>
           </div>
         )}
 
@@ -214,13 +262,92 @@ export const Modal: React.FC<ModalProps> = ({
         <div
           style={{
             flex: 1,
-            padding: title ? ds.spacing('6') : `${ds.spacing('6')} ${ds.spacing('6')} ${ds.spacing('4')}`,
+            ...(!illustration && title 
+              ? { padding: ds.spacing('6') }
+              : illustration 
+                ? { 
+                    paddingTop: ds.spacing('6'),
+                    paddingRight: 0,
+                    paddingBottom: ds.spacing('1'),
+                    paddingLeft: 0,
+                  }
+                : { 
+                    paddingTop: ds.spacing('6'),
+                    paddingRight: ds.spacing('6'),
+                    paddingBottom: ds.spacing('4'),
+                    paddingLeft: ds.spacing('6'),
+                  }
+            ),
             overflowY: "auto",
             color: ds.component.modal.text(),
             fontSize: ds.typography.size('md'),
             lineHeight: ds.typography.lineHeight('md'),
           }}
         >
+          {/* Illustration with title/supportingText below (if provided) */}
+          {illustration && (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+                gap: ds.spacing('none'),
+                paddingBottom: ds.spacing('none'),
+                paddingLeft: ds.spacing('6'),
+                paddingRight: ds.spacing('6'),
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  marginBottom: (title || supportingText || children) ? 0 : 0,
+                }}
+              >
+                <Illustration
+                  type={illustration.type}
+                  icon={illustration.icon}
+                  color={illustration.color || "neutral"}
+                  variant={illustration.variant || "withoutBackground"}
+                  size={illustration.size || "xl"}
+                />
+              </div>
+              {/* Title below illustration - no gap */}
+              {title && (
+                <h2
+                  style={{
+                    fontSize: ds.typography.size('2xl'),
+                    lineHeight: ds.typography.lineHeight('2xl'),
+                    fontWeight: ds.typography.weight('bold'),
+                    color: ds.component.modal.title(),
+                    margin: 0,
+                    marginTop: "12px",
+                    marginBottom: 0,
+                    textAlign: "center",
+                  }}
+                >
+                  {title}
+                </h2>
+              )}
+              {/* Supporting text below title */}
+              {supportingText && (
+                <p
+                  style={{
+                    fontSize: ds.typography.size('md'),
+                    lineHeight: ds.typography.lineHeight('md'),
+                    color: ds.color.text('quaternary'),
+                    margin: 0,
+                    marginBottom: children ? ds.spacing('4') : 0,
+                    textAlign: "center",
+                  }}
+                >
+                  {supportingText}
+                </p>
+              )}
+            </div>
+          )}
           {children}
         </div>
 
