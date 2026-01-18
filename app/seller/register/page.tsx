@@ -45,7 +45,7 @@ export default function SellerRegisterWelcomePage() {
           borderRadius: ds.radius("lg"),
           overflow: "hidden",
           display: "flex",
-          boxShadow: "0 4px 24px rgba(0, 0, 0, 0.08)",
+          boxShadow: ds.component.modal.shadow(), // Use design system shadow
         }}
       >
         {/* Left Section - Illustration & Branding */}
@@ -137,7 +137,7 @@ export default function SellerRegisterWelcomePage() {
               width: "100%",
               maxWidth: "300px",
               height: "300px",
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
+              backgroundColor: "rgba(255, 255, 255, 0.1)", // Overlay color - consider adding to design system
               borderRadius: ds.radius("lg"),
               display: "flex",
               alignItems: "center",

@@ -226,7 +226,7 @@ function SellerRegisterVerifyPhonePageContent() {
           borderRadius: ds.radius("lg"),
           overflow: "hidden",
           display: "flex",
-          boxShadow: "0 4px 24px rgba(0, 0, 0, 0.08)",
+          boxShadow: ds.component.modal.shadow(), // Use design system shadow
         }}
       >
         {/* Left Section - Illustration & Branding */}

@@ -300,8 +300,8 @@ export default function SellerDashboardPage() {
                   fontSize: ds.typography.size('xs'),
                   fontWeight: ds.typography.weight('medium'),
                   backgroundColor: userData.organization?.kyb_status === 'APPROVE' 
-                    ? '#e5f7ec' 
-                    : '#fff5f5',
+                    ? 'var(--special-green-sg90)' // #e5f7ec - success light background
+                    : 'var(--red-rd90)', // #fbe8e7 - error light background
                   color: userData.organization?.kyb_status === 'APPROVE'
                     ? ds.color.system('success')
                     : ds.color.system('error'),
@@ -398,7 +398,7 @@ export default function SellerDashboardPage() {
                     borderRadius: ds.radius('full'),
                     fontSize: ds.typography.size('xs'),
                     fontWeight: ds.typography.weight('medium'),
-                    backgroundColor: userData.shop.is_active ? '#e5f7ec' : '#fff5f5',
+                    backgroundColor: userData.shop.is_active ? 'var(--special-green-sg90)' : 'var(--red-rd90)', // success/error light backgrounds
                     color: userData.shop.is_active
                       ? ds.color.system('success')
                       : ds.color.system('error'),
@@ -445,7 +445,7 @@ export default function SellerDashboardPage() {
                     padding: ds.spacing('4'),
                     border: `1px solid ${ds.color.border('primary')}`,
                     borderRadius: ds.radius('sm'),
-                    backgroundColor: branch.is_main ? '#f0f9ff' : ds.color.background('primary'),
+                    backgroundColor: branch.is_main ? 'var(--blue-be90)' : ds.color.background('primary'), // #eff7fc - info light background
                   }}
                 >
                   <div
@@ -474,7 +474,7 @@ export default function SellerDashboardPage() {
                           fontSize: ds.typography.size('xs'),
                           fontWeight: ds.typography.weight('medium'),
                           backgroundColor: ds.color.system('info'),
-                          color: '#fff',
+                          color: ds.color.text('white'),
                         }}
                       >
                         สำนักงานใหญ่

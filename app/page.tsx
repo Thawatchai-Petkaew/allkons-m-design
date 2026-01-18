@@ -286,7 +286,7 @@ export default function LoginPage() {
           backgroundColor: ds.color.background('primary'),
           borderRadius: ds.radius('md'),
           padding: ds.spacing('8'),
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+          boxShadow: ds.component.modal.shadow(), // Use design system shadow
         }}
       >
         <h1

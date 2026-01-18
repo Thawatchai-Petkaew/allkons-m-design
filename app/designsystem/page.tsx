@@ -14,6 +14,10 @@ const formatSizeValue = (cssVar: string, pxValue: number): string => {
 };
 
 const formatRemValue = (cssVar: string, remValue: string): string => {
+  // Handle "full" radius case (9999px)
+  if (remValue.includes('px')) {
+    return `${remValue} (${cssVar})`;
+  }
   const remNum = parseFloat(remValue.replace('rem', ''));
   const pxValue = remNum * 16; // 1rem = 16px
   return `${remValue} / ${pxValue}px (${cssVar})`;
@@ -2115,9 +2119,7 @@ export default function DesignSystemPage() {
                         fontFamily: "monospace",
                       }}
                     >
-                      {size === "full"
-                        ? "9999px (var(--radius-full))"
-                        : RADIUS_VALUES[size]
+                      {RADIUS_VALUES[size]
                         ? formatRemValue(ds.radius(size as any), RADIUS_VALUES[size])
                         : ds.radius(size as any)}
                     </div>

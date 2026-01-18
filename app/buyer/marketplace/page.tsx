@@ -146,7 +146,7 @@ export default function BuyerMarketplacePage() {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                e.currentTarget.style.boxShadow = ds.component.modal.shadow(); // Use design system shadow
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
@@ -281,10 +281,10 @@ export default function BuyerMarketplacePage() {
                     fontWeight: ds.typography.weight('medium'),
                     backgroundColor:
                       product.stock_status === 'STOCKED'
-                        ? '#e5f7ec'
+                        ? 'var(--special-green-sg90)' // success light background
                         : product.stock_status === 'OUT_OF_STOCK_CAN_SALE'
-                        ? '#fff5e6'
-                        : '#fff5f5',
+                        ? 'var(--refreshing-orange-ro90)' // warning light background
+                        : 'var(--red-rd90)', // #fbe8e7 - error light background
                     color:
                       product.stock_status === 'STOCKED'
                         ? ds.color.system('success')

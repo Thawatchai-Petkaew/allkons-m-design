@@ -74,7 +74,7 @@ export default function SellerLoginPage() {
           style={{
             width: "100%",
             height: "100%",
-            background: "linear-gradient(to bottom, #e5f7ec, #bdf5d2)",
+            background: `linear-gradient(to bottom, var(--special-green-sg90), var(--special-green-sg30))`, // Use design system brand colors
             borderRadius: ds.radius('xl'),
             display: "flex",
             alignItems: "center",
