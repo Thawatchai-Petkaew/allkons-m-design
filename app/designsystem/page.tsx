@@ -189,7 +189,7 @@ const ShowcaseCard: React.FC<ShowcaseCardProps> = ({ title, children, isMobile =
           fontWeight: ds.typography.weight("semibold"),
           color: ds.color.text("secondary"),
           textTransform: "uppercase",
-          letterSpacing: ds.typography.letterSpacing.tight, // 0.5px
+          letterSpacing: "0.5px", // Using direct value since letterSpacing may not be in type
           marginBottom: ds.spacing("6"),
           fontFamily: ds.typography.fontFamily.notoSans,
         }}
@@ -389,7 +389,7 @@ export default function DesignSystemPage() {
               fontWeight: ds.typography.weight("semibold"),
               color: ds.color.text("tertiary"),
               textTransform: "uppercase",
-              letterSpacing: ds.typography.letterSpacing.tight, // 0.5px
+              letterSpacing: "0.5px", // Using direct value since letterSpacing may not be in type
               marginBottom: ds.spacing("8"),
             }}
           >
@@ -3094,7 +3094,7 @@ export default function DesignSystemPage() {
               fontWeight: ds.typography.weight("semibold"),
               color: ds.color.text("tertiary"),
               textTransform: "uppercase",
-              letterSpacing: ds.typography.letterSpacing.tight, // 0.5px
+              letterSpacing: "0.5px", // Using direct value since letterSpacing may not be in type
               marginBottom: ds.spacing("8"),
             }}
           >
@@ -5113,7 +5113,7 @@ export default function DesignSystemPage() {
               fontWeight: ds.typography.weight("semibold"),
               color: ds.color.text("tertiary"),
               textTransform: "uppercase",
-              letterSpacing: ds.typography.letterSpacing.tight, // 0.5px
+              letterSpacing: "0.5px", // Using direct value since letterSpacing may not be in type
               marginBottom: ds.spacing("8"),
             }}
           >
