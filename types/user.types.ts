@@ -10,6 +10,7 @@ export type VerificationStatus = 'pending' | 'verified' | 'failed' | 'expired';
 export type DeviceType = 'web' | 'mobile' | 'tablet' | 'desktop';
 export type Theme = 'light' | 'dark' | 'auto';
 export type UserRole = 'BUYER' | 'SELLER' | 'ADMIN';
+export type UserProfileType = 'individual_consumer' | 'registered_individual_merchant' | 'legal_entity';
 
 /**
  * Core User Data
@@ -20,6 +21,7 @@ export interface User {
     emailVerified: boolean;
     phone?: string;
     phoneVerified: boolean;
+    profileType: UserProfileType;
     firstName: string;
     lastName: string;
     displayName?: string;

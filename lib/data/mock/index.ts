@@ -13,6 +13,9 @@ export * from './organizations';
 // Shop Module
 export * from './shops';
 
+// RBAC Module
+export * from './rbac';
+
 // Product Module
 export * from './products';
 
@@ -32,6 +35,7 @@ export {
 export * from '@/types/user.types';
 export * from '@/types/organization.types';
 export * from '@/types/shop.types';
+export * from '@/types/rbac.types';
 export * from '@/types/product.types';
 export * from '@/types/order.types';
 

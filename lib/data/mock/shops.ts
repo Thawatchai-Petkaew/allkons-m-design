@@ -26,6 +26,21 @@ export const mockShops: Shop[] = [
         updatedAt: new Date('2025-10-15T09:00:00Z'),
     },
     {
+        id: 'shop-dechwit-personal-001',
+        orgId: 'org-dechwit-personal-001',
+        name: 'เดชวิทย์การค้า',
+        nameEn: 'Dechwit Trading',
+        subdomain: 'dechwit-trading',
+        description: 'ร้านเดชวิทย์ (บุคคลธรรมดา จดทะเบียนพาณิชย์)',
+        logoUrl: '/uploads/logos/dechwit-personal-shop-logo.png',
+        bannerUrl: undefined,
+        themeColor: '#00af43',
+        isActive: true,
+        type: 'retail',
+        createdAt: new Date('2026-01-01T09:10:00Z'),
+        updatedAt: new Date('2026-01-01T09:10:00Z'),
+    },
+    {
         id: 'shop-somchai-001',
         orgId: 'org-somchai-001',
         name: 'สมชายการค้า (วัสดุก่อสร้าง)',
@@ -41,7 +56,7 @@ export const mockShops: Shop[] = [
     {
         id: 'shop-thammasorn-001',
         orgId: 'org-thammasorn-001',
-        name: 'Thammasorn Mega Store',
+        name: 'ธรรมสรณ์',
         nameEn: 'Thammasorn Mega Store',
         subdomain: 'thammasorn',
         description: 'ผู้นำด้านวัสดุก่อสร้างและของตกแต่งบ้านรายใหญ่ที่สุด',
@@ -87,6 +102,33 @@ export const mockBranches: Branch[] = [
         postalCode: '10310',
         isActive: true,
         createdAt: new Date('2026-01-05T08:00:00Z'),
+    },
+
+    // Dechwit Personal (Registered Individual Merchant) - Branches
+    {
+        id: 'branch-dechwit-personal-hq',
+        shopId: 'shop-dechwit-personal-001',
+        name: 'สำนักงานใหญ่ (ลาดพร้าว)',
+        isMain: true,
+        addressLine1: '11/1 ถนนลาดพร้าว',
+        city: 'เขตลาดพร้าว',
+        province: 'กรุงเทพมหานคร',
+        postalCode: '10230',
+        phone: '093-831-1673',
+        isActive: true,
+        createdAt: new Date('2026-01-01T09:15:00Z'),
+    },
+    {
+        id: 'branch-dechwit-personal-bangkoknoi',
+        shopId: 'shop-dechwit-personal-001',
+        name: 'บางกอกน้อย',
+        isMain: false,
+        addressLine1: '22 ถนนอรุณอมรินทร์',
+        city: 'เขตบางกอกน้อย',
+        province: 'กรุงเทพมหานคร',
+        postalCode: '10700',
+        isActive: true,
+        createdAt: new Date('2026-01-10T08:00:00Z'),
     },
 
     // Somchai's Shop Branches
@@ -144,7 +186,7 @@ export const mockBranches: Branch[] = [
     {
         id: 'branch-thammasorn-chiangmai',
         shopId: 'shop-thammasorn-001',
-        name: 'เชียงใหม่ (Superhighway)',
+        name: 'เชียงใหม่',
         isMain: false,
         addressLine1: '55 ถนนซุปเปอร์ไฮเวย์',
         city: 'เมือง',

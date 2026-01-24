@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ds } from "@/design-system";
 import "remixicon/fonts/remixicon.css";
 
@@ -39,6 +39,10 @@ export function Avatar({
     customTextColor,
 }: AvatarProps) {
     const [imageError, setImageError] = useState(false);
+
+    useEffect(() => {
+        setImageError(false);
+    }, [src]);
 
     // Size mappings (in pixels)
     const sizeMap = {

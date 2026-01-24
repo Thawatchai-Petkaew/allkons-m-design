@@ -73,7 +73,7 @@ export const SellerAppShell: React.FC<SellerAppShellProps> = ({ children, header
                     backgroundColor: ds.color.background("secondary")
                 }}>
                     <div style={{
-                        maxWidth: ds.breakpoint.value('xl'), // 1280px
+                        maxWidth: ds.breakpoint.value('2xl'), // 1536px
                         margin: "0 auto",
                         padding: isMobile ? ds.spacing("4") : ds.spacing("6"),
                         boxSizing: "border-box"

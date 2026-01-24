@@ -1,13 +1,19 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { Row, Col, Card, Typography, Button, Space, Input, Upload, message, Divider, Tag, List, Avatar } from "antd";
+import { Row, Col, Card, Typography, Button, Space, Input, Upload, message, Divider, Tag, List, Avatar, Tooltip } from "antd";
 import { ds } from "@/design-system";
 import { mockShops, mockOrganizations, mockUploadFile, getShopBranches } from "@/lib/data/mock";
+import { useSellerSession } from "@/lib/hooks/useSellerSession";
+import { canSellerAbility, getNoPermissionText } from "@/lib/access/sellerAbility";
 
 const { Title, Text } = Typography;
 
 export default function ShopManagementPage() {
+    const { orgRoleCode } = useSellerSession();
+    const canManageShop = canSellerAbility({ orgRoleCode }, "SHOP_MANAGE");
+    const tooltipNoPermission = getNoPermissionText();
+
     // Simulated selection: In a real app, this comes from URL params or a global state
     // For now, let's find Thammasorn if it exists, otherwise use the first one
     const [selectedShopId, setSelectedShopId] = useState(
@@ -23,6 +29,12 @@ export default function ShopManagementPage() {
 
     const handleLogoUpload = async (options: any) => {
         const { file, onSuccess, onError } = options;
+
+        if (!canManageShop) {
+            message.warning(tooltipNoPermission);
+            onError(new Error(tooltipNoPermission));
+            return;
+        }
 
         try {
             setUploading(true);
@@ -57,17 +69,21 @@ export default function ShopManagementPage() {
                     <Space>
                         <Text type="secondary">สลับร้านค้า:</Text>
                         {mockShops.map(s => (
-                            <Button
-                                key={s.id}
-                                type={selectedShopId === s.id ? "primary" : "default"}
-                                size="small"
-                                onClick={() => {
-                                    setSelectedShopId(s.id);
-                                    setLogoUrl(s.logoUrl || "");
-                                }}
-                            >
-                                {s.name}
-                            </Button>
+                            <Tooltip key={s.id} title={!canManageShop ? tooltipNoPermission : undefined}>
+                                <span>
+                                    <Button
+                                        type={selectedShopId === s.id ? "primary" : "default"}
+                                        size="small"
+                                        disabled={!canManageShop}
+                                        onClick={() => {
+                                            setSelectedShopId(s.id);
+                                            setLogoUrl(s.logoUrl || "");
+                                        }}
+                                    >
+                                        {s.name}
+                                    </Button>
+                                </span>
+                            </Tooltip>
                         ))}
                     </Space>
                 )}
@@ -88,6 +104,7 @@ export default function ShopManagementPage() {
                                     listType="picture-circle"
                                     showUploadList={false}
                                     customRequest={handleLogoUpload}
+                                    disabled={!canManageShop}
                                 >
                                     {logoUrl ? (
                                         <img src={logoUrl} alt="logo" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
@@ -138,7 +155,13 @@ export default function ShopManagementPage() {
                         </div>
 
                         <div style={{ marginTop: 24, textAlign: 'right' }}>
-                            <Button type="primary" size="large">บันทึกการเปลี่ยนแปลง</Button>
+                            <Tooltip title={!canManageShop ? tooltipNoPermission : undefined}>
+                                <span>
+                                    <Button type="primary" size="large" disabled={!canManageShop}>
+                                        บันทึกการเปลี่ยนแปลง
+                                    </Button>
+                                </span>
+                            </Tooltip>
                         </div>
                     </Card>
 
@@ -146,7 +169,13 @@ export default function ShopManagementPage() {
                     <Card
                         title={<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <span>สาขาที่เปิดให้บริการ ({branches.length})</span>
-                            <Button type="link" icon={<i className="ri-add-circle-line" />}>เพิ่มสาขา</Button>
+                            <Tooltip title={!canManageShop ? tooltipNoPermission : undefined}>
+                                <span>
+                                    <Button type="link" icon={<i className="ri-add-circle-line" />} disabled={!canManageShop}>
+                                        เพิ่มสาขา
+                                    </Button>
+                                </span>
+                            </Tooltip>
                         </div>}
                         bordered={false}
                         style={{ borderRadius: ds.radius("lg"), boxShadow: 'var(--shadow-sm)' }}
@@ -156,7 +185,15 @@ export default function ShopManagementPage() {
                             dataSource={branches}
                             renderItem={(branch) => (
                                 <List.Item
-                                    actions={[<Button key="edit" type="link">แก้ไข</Button>]}
+                                    actions={[
+                                        <Tooltip key="edit_tip" title={!canManageShop ? tooltipNoPermission : undefined}>
+                                            <span>
+                                                <Button key="edit" type="link" disabled={!canManageShop}>
+                                                    แก้ไข
+                                                </Button>
+                                            </span>
+                                        </Tooltip>
+                                    ]}
                                 >
                                     <List.Item.Meta
                                         avatar={

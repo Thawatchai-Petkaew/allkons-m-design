@@ -9,6 +9,8 @@ export interface ShopInfo {
     logo?: string;
     isActive: boolean;
     type: "shop" | "branch";
+    isMain?: boolean;
+    shopName?: string;
 }
 
 export interface OrgInfo {

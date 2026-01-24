@@ -29,7 +29,16 @@ export default function RootLayout({
       <body className={inter.className} style={{ backgroundColor: ds.color.background('primary') }} suppressHydrationWarning>
         <AntdRegistry>
           <ConfigProvider theme={theme}>
-            {children}
+            <div
+              style={{
+                width: "100%",
+                maxWidth: ds.breakpoint.value('2xl'),
+                margin: `${ds.spacing('none')} auto`,
+                boxSizing: "border-box",
+              }}
+            >
+              {children}
+            </div>
           </ConfigProvider>
         </AntdRegistry>
       </body>

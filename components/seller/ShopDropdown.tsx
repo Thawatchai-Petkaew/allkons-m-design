@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
-import { Tag } from "antd";
 import { ds } from "@/design-system";
 import { Avatar } from "@/components/ui/Avatar";
+import { Badge } from "@/components/ui/Badge";
 import { Dot } from "@/components/ui/Dot";
 import { BottomSheet } from "@/components/ui/BottomSheet";
 import { useIsMobile } from "@/lib/hooks/useIsMobile";
@@ -112,8 +112,13 @@ export function ShopDropdown({
                                         whiteSpace: "nowrap",
                                     }}
                                 >
-                                    {shop.name}
+                                    {shop.type === "branch" && shop.isMain ? (shop.shopName || shop.name) : shop.name}
                                 </span>
+                                {shop.type === "branch" && shop.isMain && (
+                                    <Badge color="brand" variant="outlined" size="2xs">
+                                        สำนักงานใหญ่
+                                    </Badge>
+                                )}
                             </div>
                             <div style={{ display: "flex", alignItems: "center", gap: ds.spacing("2") }}>
                                 <Dot size="sm" active={shop.isActive} />
@@ -125,11 +130,6 @@ export function ShopDropdown({
                                 >
                                     {shop.isActive ? "เปิดขาย" : "ปิดขาย"}
                                 </span>
-                                {shop.type === "branch" && (
-                                    <Tag color="default" style={{ fontSize: '10px', height: '16px', lineHeight: '14px', margin: 0 }}>
-                                        สาขา
-                                    </Tag>
-                                )}
                             </div>
                         </div>
 

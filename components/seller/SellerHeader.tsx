@@ -84,7 +84,7 @@ export function SellerHeader({
             <div
                 className="header-container"
                 style={{
-                    maxWidth: ds.breakpoint.value('xl'),
+                    maxWidth: ds.breakpoint.value('2xl'),
                     margin: "0 auto",
                     display: "flex",
                     alignItems: "center",
@@ -156,7 +156,9 @@ export function SellerHeader({
                                                     whiteSpace: "nowrap",
                                                 }}
                                             >
-                                                {currentShop.name}
+                                                {currentShop.isMain
+                                                    ? `ร้าน${currentShop.shopName || currentShop.name}`
+                                                    : `สาขา${currentShop.name}`}
                                             </span>
                                             <div style={{ display: "flex", alignItems: "center", gap: ds.spacing("1") }}>
                                                 <Dot size="sm" active={currentShop.isActive} />

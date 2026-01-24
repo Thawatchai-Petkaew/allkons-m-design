@@ -2,11 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { ds } from "@/design-system";
-import { mockProducts } from "@/lib/supabase/mock-data";
-import type { Product } from "@/types";
+import { mockProducts } from "@/lib/data/mock";
 
 export default function BuyerMarketplacePage() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

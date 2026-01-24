@@ -4,15 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input, Button } from "@/components";
 import { ds } from "@/design-system";
-import { sendOTP as sendSupabaseOTP, verifyOTP as verifySupabaseOTP } from "@/lib/supabase/auth";
-import { sendOTP as sendMockOTP, verifyOTP as verifyMockOTP } from "@/lib/supabase/mock-otp";
-import { MOCK_PHONE_NUMBERS, MOCK_OTP_CODES } from "@/lib/supabase/mock-data";
-
-// Check if Supabase is configured
-const USE_SUPABASE_AUTH = !!(
-  process.env.NEXT_PUBLIC_SUPABASE_URL &&
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
+import { sendOTP, verifyOTP } from "@/lib/auth/mockAuth";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -21,7 +13,6 @@ export default function AdminLoginPage() {
   const [otpCode, setOtpCode] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [usedMockOTP, setUsedMockOTP] = useState(false);
 
   const handlePhoneSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,37 +20,15 @@ export default function AdminLoginPage() {
     setLoading(true);
 
     try {
-      let result;
-
-      if (USE_SUPABASE_AUTH) {
-        try {
-          result = await sendSupabaseOTP(phoneNumber);
-          if (!result.success) {
-            const errorMsg = String(('error' in result ? result.error : undefined) || '').toLowerCase();
-            if (errorMsg.includes('twilio') ||
-              errorMsg.includes('sms provider') ||
-              errorMsg.includes('invalid username')) {
-              result = await sendMockOTP(phoneNumber);
-              setUsedMockOTP(true);
-            }
-          }
-        } catch (err: any) {
-          result = await sendMockOTP(phoneNumber);
-          setUsedMockOTP(true);
-        }
-      } else {
-        result = await sendMockOTP(phoneNumber);
-        setUsedMockOTP(true);
-      }
+      const result = await sendOTP(phoneNumber);
 
       if (result.success) {
         setStep('otp');
       } else {
-        setError(String(('error' in result ? result.error : undefined) || 'ไม่สามารถส่ง OTP ได้ กรุณาลองใหม่อีกครั้ง'));
+        setError(result.error || 'ไม่สามารถส่ง OTP ได้');
       }
     } catch (err: any) {
-      console.error('Error sending OTP:', err);
-      setError(err.message || 'เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+      setError(err.message || 'เกิดข้อผิดพลาด');
     } finally {
       setLoading(false);
     }
@@ -71,43 +40,15 @@ export default function AdminLoginPage() {
     setLoading(true);
 
     try {
-      let result;
+      const result = await verifyOTP(phoneNumber, otpCode);
 
-      if (USE_SUPABASE_AUTH && !usedMockOTP) {
-        try {
-          result = await verifySupabaseOTP(phoneNumber, otpCode);
-          if (result.success && result.session) {
-            router.push('/dashboard/admin');
-            return;
-          }
-        } catch (err: any) {
-          const isValid = await verifyMockOTP(phoneNumber, otpCode);
-          if (isValid) {
-            const phoneNormalized = phoneNumber.replace(/\D/g, '');
-            const adminNormalized = MOCK_PHONE_NUMBERS.ADMIN.replace(/\D/g, '');
-            if (phoneNormalized === adminNormalized) {
-              router.push('/dashboard/admin');
-            }
-            return;
-          }
-        }
+      if (result.success) {
+        router.push('/dashboard/admin');
       } else {
-        const isValid = await verifyMockOTP(phoneNumber, otpCode);
-        if (isValid) {
-          const phoneNormalized = phoneNumber.replace(/\D/g, '');
-          const adminNormalized = MOCK_PHONE_NUMBERS.ADMIN.replace(/\D/g, '');
-          if (phoneNormalized === adminNormalized) {
-            router.push('/dashboard/admin');
-          } else {
-            router.push('/dashboard/admin');
-          }
-        } else {
-          setError('รหัส OTP ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง');
-        }
+        setError(result.error || 'รหัส OTP ไม่ถูกต้อง');
       }
     } catch (err: any) {
-      console.error('Error verifying OTP:', err);
-      setError(err.message || 'เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+      setError(err.message || 'เกิดข้อผิดพลาด');
     } finally {
       setLoading(false);
     }

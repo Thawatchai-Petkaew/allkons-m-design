@@ -5,15 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Input, Button, Alert, Illustration } from "@/components";
 import { ds } from "@/design-system";
-import { sendOTP as sendSupabaseOTP, verifyOTP as verifySupabaseOTP } from "@/lib/supabase/auth";
-import { sendOTP as sendMockOTP, verifyOTP as verifyMockOTP } from "@/lib/supabase/mock-otp";
-import { MOCK_PHONE_NUMBERS, MOCK_OTP_CODES } from "@/lib/supabase/mock-data";
-
-// Check if Supabase is configured
-const USE_SUPABASE_AUTH = !!(
-  process.env.NEXT_PUBLIC_SUPABASE_URL &&
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
+import { sendOTP, verifyOTP } from "@/lib/auth/mockAuth";
 
 type LoginMethod = "phone" | "username";
 
@@ -26,7 +18,6 @@ export default function SellerLoginPage() {
   const [otpCode, setOtpCode] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [usedMockOTP, setUsedMockOTP] = useState(false);
 
   // UI State
   const [loginMethod, setLoginMethod] = useState<LoginMethod>("phone");
@@ -119,31 +110,12 @@ export default function SellerLoginPage() {
     setLoading(true);
 
     try {
-      let result;
-
-      if (USE_SUPABASE_AUTH) {
-        try {
-          result = await sendSupabaseOTP(phoneNumber);
-          if (!result.success) {
-            // Simple fallback check
-            console.warn('[Auth] Supabase failed, using Mock fallback');
-            result = await sendMockOTP(phoneNumber);
-            setUsedMockOTP(true);
-          }
-        } catch (err) {
-          console.warn('[Auth] Supabase error, using Mock fallback');
-          result = await sendMockOTP(phoneNumber);
-          setUsedMockOTP(true);
-        }
-      } else {
-        result = await sendMockOTP(phoneNumber);
-        setUsedMockOTP(true);
-      }
+      const result = await sendOTP(phoneNumber);
 
       if (result.success) {
         setStep('otp');
       } else {
-        setError(String(('error' in result ? result.error : undefined) || 'ไม่สามารถส่ง OTP ได้'));
+        setError(result.error || 'ไม่สามารถส่ง OTP ได้');
       }
     } catch (err: any) {
       setError(err.message || 'เกิดข้อผิดพลาด');
@@ -160,37 +132,12 @@ export default function SellerLoginPage() {
     setLoading(true);
 
     try {
-      let result;
-      let isValid = false;
+      const result = await verifyOTP(phoneNumber, otpCode);
 
-      // Verification Logic
-      if (USE_SUPABASE_AUTH && !usedMockOTP) {
-        try {
-          result = await verifySupabaseOTP(phoneNumber, otpCode);
-          if (result.success && result.session) {
-            isValid = true;
-          } else {
-            // Fallback
-            isValid = await verifyMockOTP(phoneNumber, otpCode);
-          }
-        } catch (err) {
-          isValid = await verifyMockOTP(phoneNumber, otpCode);
-        }
+      if (result.success) {
+        router.push('/seller/admin/analytics');
       } else {
-        isValid = await verifyMockOTP(phoneNumber, otpCode);
-      }
-
-      if (isValid) {
-        // Redirection Logic
-        const phone = phoneNumber.replace(/\D/g, '');
-        if (phone === '0834567890') { // Preecha (Admin)
-          router.push('/analytics'); // For now, all go to analytics in the seller group
-        } else {
-          // All other mock sellers (Dechwit, Somchai, Somsri)
-          router.push('/analytics');
-        }
-      } else {
-        setError('รหัส OTP ไม่ถูกต้อง');
+        setError(result.error || 'รหัส OTP ไม่ถูกต้อง');
       }
     } catch (err: any) {
       setError(err.message || 'เกิดข้อผิดพลาด');

@@ -5,14 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components";
 import { ds } from "@/design-system";
-import { sendOTP as sendMockOTP, verifyOTP as verifyMockOTP } from "@/lib/supabase/mock-otp";
-import { sendOTP as sendSupabaseOTP, verifyOTP as verifySupabaseOTP } from "@/lib/supabase/auth";
-
-// Check if Supabase is configured
-const USE_SUPABASE_AUTH = !!(
-  process.env.NEXT_PUBLIC_SUPABASE_URL &&
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
+import { sendOTP, verifyOTP } from "@/lib/auth/mockAuth";
 
 function SellerRegisterVerifyPhonePageContent() {
   const router = useRouter();
@@ -119,47 +112,15 @@ function SellerRegisterVerifyPhonePageContent() {
     setError("");
 
     try {
-      let result;
+      const result = await verifyOTP(phoneNumber, otpCode);
 
-      if (USE_SUPABASE_AUTH) {
-        try {
-          result = await verifySupabaseOTP(phoneNumber, otpCode);
-          if (!result.success) {
-            // Fallback to mock OTP
-            const isValid = await verifyMockOTP(phoneNumber, otpCode);
-            if (isValid) {
-              router.push(`/seller/register/set-password?phone=${encodeURIComponent(phoneNumber)}`);
-              return;
-            } else {
-              setError("รหัส OTP ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง");
-            }
-          } else {
-            // Success - navigate to next step
-            router.push(`/seller/register/set-password?phone=${encodeURIComponent(phoneNumber)}`);
-            return;
-          }
-        } catch (err: any) {
-          // Fallback to mock OTP
-          const isValid = await verifyMockOTP(phoneNumber, otpCode);
-          if (isValid) {
-            router.push(`/seller/register/set-password?phone=${encodeURIComponent(phoneNumber)}`);
-            return;
-          } else {
-            setError("รหัส OTP ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง");
-          }
-        }
+      if (result.success) {
+        router.push(`/seller/register/set-password?phone=${encodeURIComponent(phoneNumber)}`);
       } else {
-        // Use Mock OTP
-        const isValid = await verifyMockOTP(phoneNumber, otpCode);
-        if (isValid) {
-          router.push(`/seller/register/set-password?phone=${encodeURIComponent(phoneNumber)}`);
-        } else {
-          setError("รหัส OTP ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง");
-        }
+        setError(result.error || "รหัส OTP ไม่ถูกต้อง");
       }
     } catch (err: any) {
-      console.error("Error verifying OTP:", err);
-      setError(err.message || "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง");
+      setError(err.message || "เกิดข้อผิดพลาด");
     } finally {
       setIsLoading(false);
     }
@@ -172,34 +133,19 @@ function SellerRegisterVerifyPhonePageContent() {
     setError("");
 
     try {
-      let result;
-
-      if (USE_SUPABASE_AUTH) {
-        try {
-          result = await sendSupabaseOTP(phoneNumber);
-          if (!result.success) {
-            result = await sendMockOTP(phoneNumber);
-          }
-        } catch (err) {
-          result = await sendMockOTP(phoneNumber);
-        }
-      } else {
-        result = await sendMockOTP(phoneNumber);
-      }
+      const result = await sendOTP(phoneNumber);
 
       if (result.success) {
         setTimer(30);
         setCanResend(false);
         setOtp(["", "", "", "", "", ""]);
         inputRefs.current[0]?.focus();
-        // Generate new reference code (mock)
         setReferenceCode(Math.random().toString(36).substring(2, 7).toUpperCase());
       } else {
-        setError("ไม่สามารถส่ง OTP ได้ กรุณาลองใหม่อีกครั้ง");
+        setError(result.error || "ไม่สามารถส่ง OTP ได้");
       }
     } catch (err: any) {
-      console.error("Error resending OTP:", err);
-      setError(err.message || "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง");
+      setError(err.message || "เกิดข้อผิดพลาด");
     } finally {
       setIsLoading(false);
     }

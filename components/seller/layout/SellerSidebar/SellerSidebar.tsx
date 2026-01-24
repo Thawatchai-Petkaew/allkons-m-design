@@ -5,8 +5,10 @@ import Link from "next/link";
 import { ds } from "@/design-system";
 import { Drawer, Dropdown, MenuProps } from "antd";
 import { useIsMobile } from "@/lib/hooks/useIsMobile";
+import { useSellerSession } from "@/lib/hooks/useSellerSession";
 import { SellerSidebarProps, SidebarItem } from "./sidebar.types";
 import { getSellerSidebarConfig } from "./sidebar.config";
+import { canAccessSidebarItem } from "./sidebar.access";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 
@@ -18,8 +20,20 @@ export const SellerSidebar: React.FC<SellerSidebarProps> = ({
     currentPath,
 }) => {
     const isMobile = useIsMobile();
+    const { orgRoleCode, appRoleCode } = useSellerSession();
     const navConfig = useMemo(() => getSellerSidebarConfig(), []);
     const [openMenus, setOpenMenus] = useState<string[]>([]);
+
+    const adminPrefix = "/seller/admin";
+    const inSellerAdmin = currentPath.startsWith(adminPrefix);
+    const normalizeHref = (href: string) => {
+        if (!inSellerAdmin) return href;
+        if (href.startsWith("http://") || href.startsWith("https://")) return href;
+        if (href.startsWith(adminPrefix)) return href;
+        if (href.startsWith("/seller/")) return href;
+        if (!href.startsWith("/")) return href;
+        return `${adminPrefix}${href}`;
+    };
 
     // Internal active state for testing/demo without routing
     const [activePath, setActivePath] = useState(currentPath);
@@ -28,9 +42,38 @@ export const SellerSidebar: React.FC<SellerSidebarProps> = ({
         setActivePath(currentPath);
     }, [currentPath]);
 
+    const accessibleNavConfig = useMemo(() => {
+        const ctx = { orgRoleCode, appRoleCode };
+
+        return navConfig
+            .map(section => {
+                const accessibleItems = section.items
+                    .map(item => {
+                        if (item.children && item.children.length > 0) {
+                            const accessibleChildren = item.children.filter(child => canAccessSidebarItem(child.id, ctx));
+                            const parentAccessible = canAccessSidebarItem(item.id, ctx);
+                            if (!parentAccessible && accessibleChildren.length === 0) return null;
+                            return {
+                                ...item,
+                                children: accessibleChildren,
+                            };
+                        }
+
+                        return canAccessSidebarItem(item.id, ctx) ? item : null;
+                    })
+                    .filter(Boolean) as SidebarItem[];
+
+                return {
+                    ...section,
+                    items: accessibleItems,
+                };
+            })
+            .filter(section => section.items.length > 0);
+    }, [navConfig, orgRoleCode, appRoleCode]);
+
     // Auto-expand menus based on current path on mount
     useEffect(() => {
-        navConfig.forEach(section => {
+        accessibleNavConfig.forEach(section => {
             section.items.forEach(item => {
                 if (item.children) {
                     const hasActiveChild = item.children.some(child => activePath.startsWith(child.href));
@@ -40,7 +83,7 @@ export const SellerSidebar: React.FC<SellerSidebarProps> = ({
                 }
             });
         });
-    }, [activePath]);
+    }, [activePath, accessibleNavConfig]);
 
     const sidebarWidth = 240;
     const collapsedWidth = 88;
@@ -54,8 +97,9 @@ export const SellerSidebar: React.FC<SellerSidebarProps> = ({
     };
 
     const isItemActive = (href: string) => {
-        if (href === "/seller/dashboard" && activePath === "/seller/dashboard") return true;
-        if (href !== "/seller/dashboard" && activePath.startsWith(href)) return true;
+        const normalizedHref = normalizeHref(href);
+        if (normalizedHref === "/seller/dashboard" && activePath === "/seller/dashboard") return true;
+        if (normalizedHref !== "/seller/dashboard" && activePath.startsWith(normalizedHref)) return true;
         return false;
     };
 
@@ -123,10 +167,10 @@ export const SellerSidebar: React.FC<SellerSidebarProps> = ({
                 key: child.id,
                 label: (
                     <Link
-                        href={child.href}
+                        href={normalizeHref(child.href)}
                         style={{ textDecoration: "none", color: isItemActive(child.href) ? ds.color.text("brand-default") : ds.color.text("secondary"), fontFamily: ds.typography.fontFamily.notoSans }}
                         onClick={() => {
-                            setActivePath(child.href);
+                            setActivePath(normalizeHref(child.href));
                             if (isMobile && onMobileClose) onMobileClose();
                         }}
                     >
@@ -205,12 +249,11 @@ export const SellerSidebar: React.FC<SellerSidebarProps> = ({
             return dropdownContent;
         }
 
-        // Link Item Logic
         return (
             <Link
-                href={item.href}
-                onClick={(e) => {
-                    setActivePath(item.href);
+                href={normalizeHref(item.href)}
+                onClick={() => {
+                    setActivePath(normalizeHref(item.href));
                     if (isMobile && onMobileClose) onMobileClose();
                     if (onClick) onClick();
                 }}
@@ -218,36 +261,46 @@ export const SellerSidebar: React.FC<SellerSidebarProps> = ({
                 onMouseLeave={() => setIsHovered(false)}
                 style={commonStyles}
             >
-                {item.icon && (
+                <div
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: collapsed ? 0 : ds.spacing("3"),
+                        flex: collapsed ? "none" : 1,
+                        justifyContent: collapsed ? "center" : "flex-start",
+                        minWidth: 0,
+                        overflow: "hidden",
+                    }}
+                >
                     <span
                         style={{
+                            fontSize: ds.common.size.iconMd,
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            fontSize: ds.common.size.iconMd,
                             color: iconColor,
                         }}
                     >
                         {item.icon}
                     </span>
-                )}
 
-                {!collapsed && (
-                    <span
-                        style={{
-                            ...ds.typography.preset("paragraph-middle"),
-                            fontWeight: isActive ? ds.typography.weight("regular") : ds.typography.weight("regular"),
-                            flex: 1,
-                            minWidth: 0,
-                            whiteSpace: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            textAlign: "left",
-                        }}
-                    >
-                        {item.label}
-                    </span>
-                )}
+                    {!collapsed && (
+                        <span
+                            style={{
+                                ...ds.typography.preset("paragraph-middle"),
+                                fontWeight: isActive ? ds.typography.weight("regular") : ds.typography.weight("regular"),
+                                flex: 1,
+                                minWidth: 0,
+                                whiteSpace: "nowrap",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                textAlign: "left",
+                            }}
+                        >
+                            {item.label}
+                        </span>
+                    )}
+                </div>
             </Link>
         );
     };
@@ -405,30 +458,31 @@ export const SellerSidebar: React.FC<SellerSidebarProps> = ({
                         background-color: ${ds.color.border("secondary")};
                     }
                 `}</style>
-                {navConfig.map((section, index) => (
-                    <div key={index}>
+                {accessibleNavConfig.map((section, index) => (
+                    <div key={section.title}>
                         {/* Divider strictly BETWEEN sections (not before first) */}
                         {index > 0 && (
-                            <div style={{
-                                height: "1px",
-                                backgroundColor: ds.color.border("primary"),
-                                margin: `${ds.spacing("3")} 0`,
-                                width: "100%"
-                            }} />
+                            <div
+                                style={{
+                                    height: "1px",
+                                    backgroundColor: ds.color.border("primary"),
+                                    margin: `${ds.spacing("3")} 0 ${ds.spacing("2")} 0`,
+                                }}
+                            />
                         )}
 
-                        <div style={{
-                            padding: `0 ${ds.spacing("3")}`,
-                        }}>
-                            {section.title && !collapsed && (
-                                <div style={{
-                                    ...ds.typography.preset("paragraph-small"),
-                                    color: ds.color.text("quinary"),
-                                    padding: `${ds.spacing("1")} 0`,
-                                    textTransform: "uppercase",
-                                    fontWeight: ds.typography.weight("regular"),
-                                    letterSpacing: "0.05em",
-                                }}>
+                        <div style={{ padding: ds.spacing("3") }}>
+                            {!collapsed && (
+                                <div
+                                    style={{
+                                        ...ds.typography.preset("paragraph-xsmall"),
+                                        color: ds.color.text("quinary"),
+                                        padding: `${ds.spacing("1")} 0`,
+                                        textTransform: "uppercase",
+                                        fontWeight: ds.typography.weight("regular"),
+                                        letterSpacing: "0.05em",
+                                    }}
+                                >
                                     {section.title}
                                 </div>
                             )}
