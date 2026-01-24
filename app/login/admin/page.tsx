@@ -10,7 +10,7 @@ import { MOCK_PHONE_NUMBERS, MOCK_OTP_CODES } from "@/lib/supabase/mock-data";
 
 // Check if Supabase is configured
 const USE_SUPABASE_AUTH = !!(
-  process.env.NEXT_PUBLIC_SUPABASE_URL && 
+  process.env.NEXT_PUBLIC_SUPABASE_URL &&
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
@@ -30,15 +30,15 @@ export default function AdminLoginPage() {
 
     try {
       let result;
-      
+
       if (USE_SUPABASE_AUTH) {
         try {
           result = await sendSupabaseOTP(phoneNumber);
           if (!result.success) {
-            const errorMsg = (('error' in result ? result.error : undefined) || '').toLowerCase();
-            if (errorMsg.includes('twilio') || 
-                errorMsg.includes('sms provider') || 
-                errorMsg.includes('invalid username')) {
+            const errorMsg = String(('error' in result ? result.error : undefined) || '').toLowerCase();
+            if (errorMsg.includes('twilio') ||
+              errorMsg.includes('sms provider') ||
+              errorMsg.includes('invalid username')) {
               result = await sendMockOTP(phoneNumber);
               setUsedMockOTP(true);
             }
@@ -51,11 +51,11 @@ export default function AdminLoginPage() {
         result = await sendMockOTP(phoneNumber);
         setUsedMockOTP(true);
       }
-      
+
       if (result.success) {
         setStep('otp');
       } else {
-        setError(('error' in result ? result.error : undefined) || 'ไม่สามารถส่ง OTP ได้ กรุณาลองใหม่อีกครั้ง');
+        setError(String(('error' in result ? result.error : undefined) || 'ไม่สามารถส่ง OTP ได้ กรุณาลองใหม่อีกครั้ง'));
       }
     } catch (err: any) {
       console.error('Error sending OTP:', err);
@@ -72,7 +72,7 @@ export default function AdminLoginPage() {
 
     try {
       let result;
-      
+
       if (USE_SUPABASE_AUTH && !usedMockOTP) {
         try {
           result = await verifySupabaseOTP(phoneNumber, otpCode);

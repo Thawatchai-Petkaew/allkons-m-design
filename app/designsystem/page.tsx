@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { DesignSystemSidebar } from "@/components";
 import { Button, Input, Toggle, Checkbox, Radio, Alert, Icon, Select, Textarea, Modal, Confirmation, BottomSheet, Illustration, Badge } from "@/components";
 import { Space, Typography } from "antd";
@@ -250,10 +251,10 @@ export default function DesignSystemPage() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener("resize", checkMobile);
-    
+
     return () => {
       window.removeEventListener("resize", checkMobile);
     };
@@ -280,14 +281,14 @@ export default function DesignSystemPage() {
         width: "100%",
       }}
     >
-      <DesignSystemSidebar 
+      <DesignSystemSidebar
         isMobileOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
       />
       <main
         style={{
-          padding: isMobile 
-            ? `${ds.spacing("4")} ${ds.spacing("4")}` 
+          padding: isMobile
+            ? `${ds.spacing("4")} ${ds.spacing("4")}`
             : `${ds.spacing("12")} ${ds.spacing("16")}`,
           marginLeft: isMobile ? 0 : "220px", // Fixed sidebar width
           fontFamily: ds.typography.fontFamily.notoSans,
@@ -383,7 +384,43 @@ export default function DesignSystemPage() {
             A comprehensive collection of design tokens and reusable components
             for Allkons M platform
           </Text>
+          <div style={{ marginTop: ds.spacing("8") }}>
+            <Link
+              href="/designsystem/components"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+                padding: "16px 24px",
+                backgroundColor: "var(--brand-m-primary-00)",
+                borderRadius: ds.radius("lg"),
+                textDecoration: "none",
+                transition: "all 0.2s",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
+              }}
+              className="components-link"
+            >
+              <i className="ri-layout-grid-fill" style={{ fontSize: "24px", color: "white" }} />
+              <div>
+                <div style={{ ...ds.typography.preset("paragraph-middle"), fontWeight: ds.typography.weight("bold"), color: "white" }}>
+                  Explore Custom Components
+                </div>
+                <div style={{ ...ds.typography.preset("paragraph-xsmall"), color: "rgba(255,255,255,0.8)" }}>
+                  High-level complex components like Seller Header
+                </div>
+              </div>
+              <i className="ri-arrow-right-line" style={{ fontSize: "20px", color: "white", marginLeft: "8px" }} />
+            </Link>
+          </div>
         </div>
+
+        <style jsx>{`
+          :global(.components-link):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+            background-color: var(--brand-m-primary-dark-10) !important;
+          }
+        `}</style>
 
         {/* Foundation Section */}
         <div style={{ marginBottom: ds.spacing("16") }}>
@@ -1251,7 +1288,7 @@ export default function DesignSystemPage() {
                       whiteSpace: "pre-wrap",
                     }}
                   >
-{`public/assets/logos/
+                    {`public/assets/logos/
 ├── Logo mark/
 │   ├── Theme=Default, Size=xs, Type=Icon.svg
 │   ├── Theme=Default, Size=sm, Type=Icon.svg
@@ -1379,7 +1416,7 @@ export default function DesignSystemPage() {
                       whiteSpace: "pre-wrap",
                     }}
                   >
-{`// Using helper function getLogoPath()
+                    {`// Using helper function getLogoPath()
 <img src={getLogoPath("mark", "Default", "md", "Icon")} />
 
 // Direct path
@@ -2062,7 +2099,7 @@ export default function DesignSystemPage() {
                         fontFamily: "monospace",
                       }}
                     >
-                      {SPACING_VALUES[size] 
+                      {SPACING_VALUES[size]
                         ? formatRemValue(ds.spacing(size as any), SPACING_VALUES[size])
                         : ds.spacing(size as any)}
                     </div>
@@ -2421,7 +2458,7 @@ export default function DesignSystemPage() {
                       const maxWidth = 1536;
                       const positionPercent = Math.min((bp.pixel / maxWidth) * 100, 100);
                       const displayWidth = Math.min((bp.pixel / maxWidth) * 800, 800); // Visual width max 800px
-                      
+
                       return (
                         <div
                           key={bp.token}
@@ -3411,7 +3448,7 @@ export default function DesignSystemPage() {
                 {(["small", "middle", "large"] as const).map((size) => {
                   const stateKey1 = `circular${size.charAt(0).toUpperCase() + size.slice(1)}1` as keyof typeof toggleStates;
                   const stateKey2 = `circular${size.charAt(0).toUpperCase() + size.slice(1)}2` as keyof typeof toggleStates;
-                  
+
                   return (
                     <div key={size}>
                       <Text
@@ -3642,7 +3679,7 @@ export default function DesignSystemPage() {
                 {(["small", "middle", "large"] as const).map((size) => {
                   const stateKey1 = `${size}1` as keyof typeof checkboxStates;
                   const stateKey2 = `${size}2` as keyof typeof checkboxStates;
-                  
+
                   return (
                     <div key={size}>
                       <Text
@@ -3828,7 +3865,7 @@ export default function DesignSystemPage() {
                   const stateKey = size === "small" ? "radioValueSmall" : size === "middle" ? "radioValueMiddle" : "radioValueLarge";
                   const currentValue = size === "small" ? radioValueSmall : size === "middle" ? radioValueMiddle : radioValueLarge;
                   const setStateFn = size === "small" ? setRadioValueSmall : size === "middle" ? setRadioValueMiddle : setRadioValueLarge;
-                  
+
                   return (
                     <div key={size}>
                       <Text
@@ -4934,6 +4971,7 @@ export default function DesignSystemPage() {
                   alignItems: "center",
                 }}
               >
+                <Badge color="brand" size="2xs">2X Small</Badge>
                 <Badge color="brand" size="xs">Extra Small</Badge>
                 <Badge color="brand" size="sm">Small</Badge>
                 <Badge color="brand" size="md">Medium</Badge>
@@ -5077,6 +5115,57 @@ export default function DesignSystemPage() {
               </div>
             </ShowcaseCard>
 
+            {/* With Icons - All Sizes */}
+            <ShowcaseCard title="With Icons - All Sizes">
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: ds.spacing("6"),
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: ds.typography.size("sm"),
+                    color: ds.color.text("secondary"),
+                  }}
+                >
+                  Badge icons should use appropriate icon sizes. Recommended: 2xs→iconXs(8px), xs→iconSm(12px), sm→iconMd(16px), md→iconLg(20px)
+                </Text>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing("3") }}>
+                  <div>
+                    <Text style={{ fontSize: ds.typography.size("xs"), fontWeight: ds.typography.weight("semibold"), color: ds.color.text("primary"), marginBottom: ds.spacing("2"), display: "block" }}>2XS → iconXs (8px)</Text>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: ds.spacing("3"), alignItems: "center" }}>
+                      <Badge color="brand" size="2xs" leadingIcon={<i className="ri-checkbox-circle-fill" style={{ fontSize: ds.common.size.iconXs }} />}>Verified</Badge>
+                      <Badge color="success" size="2xs" variant="outlined" leadingIcon={<i className="ri-check-line" style={{ fontSize: ds.common.size.iconXs }} />}>Success</Badge>
+                    </div>
+                  </div>
+                  <div>
+                    <Text style={{ fontSize: ds.typography.size("xs"), fontWeight: ds.typography.weight("semibold"), color: ds.color.text("primary"), marginBottom: ds.spacing("2"), display: "block" }}>XS → iconSm (12px)</Text>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: ds.spacing("3"), alignItems: "center" }}>
+                      <Badge color="brand" size="xs" leadingIcon={<i className="ri-checkbox-circle-fill" style={{ fontSize: ds.common.size.iconSm }} />}>Verified</Badge>
+                      <Badge color="info" size="xs" variant="outlined" leadingIcon={<i className="ri-information-fill" style={{ fontSize: ds.common.size.iconSm }} />}>Info</Badge>
+                    </div>
+                  </div>
+                  <div>
+                    <Text style={{ fontSize: ds.typography.size("xs"), fontWeight: ds.typography.weight("semibold"), color: ds.color.text("primary"), marginBottom: ds.spacing("2"), display: "block" }}>SM → iconMd (16px)</Text>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: ds.spacing("3"), alignItems: "center" }}>
+                      <Badge color="brand" size="sm" leadingIcon={<i className="ri-checkbox-circle-fill" style={{ fontSize: ds.common.size.iconMd }} />}>Verified</Badge>
+                      <Badge color="success" size="sm" variant="outlined" leadingIcon={<i className="ri-check-line" style={{ fontSize: ds.common.size.iconMd }} />}>Success</Badge>
+                    </div>
+                  </div>
+                  <div>
+                    <Text style={{ fontSize: ds.typography.size("xs"), fontWeight: ds.typography.weight("semibold"), color: ds.color.text("primary"), marginBottom: ds.spacing("2"), display: "block" }}>MD → iconLg (20px)</Text>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: ds.spacing("3"), alignItems: "center" }}>
+                      <Badge color="brand" size="md" leadingIcon={<i className="ri-checkbox-circle-fill" style={{ fontSize: ds.common.size.iconLg }} />}>Verified</Badge>
+                      <Badge color="error" size="md" variant="outlined" leadingIcon={<i className="ri-error-warning-fill" style={{ fontSize: ds.common.size.iconLg }} />}>Error</Badge>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ShowcaseCard>
+
             {/* Interactive */}
             <ShowcaseCard title="Interactive">
               <div
@@ -5140,25 +5229,25 @@ export default function DesignSystemPage() {
                   type="error"
                   variant="compact"
                   title="Error Text"
-                  onClose={() => {}}
+                  onClose={() => { }}
                 />
                 <Alert
                   type="info"
                   variant="compact"
                   title="Informational Notes"
-                  onClose={() => {}}
+                  onClose={() => { }}
                 />
                 <Alert
                   type="warning"
                   variant="compact"
                   title="Warning"
-                  onClose={() => {}}
+                  onClose={() => { }}
                 />
                 <Alert
                   type="success"
                   variant="compact"
                   title="Success Tips"
-                  onClose={() => {}}
+                  onClose={() => { }}
                 />
               </div>
             </ShowcaseCard>
@@ -5176,14 +5265,14 @@ export default function DesignSystemPage() {
                   variant="expanded"
                   title="Error Text"
                   description="This is an error message about copywriting."
-                  onClose={() => {}}
+                  onClose={() => { }}
                 />
                 <Alert
                   type="success"
                   variant="expanded"
                   title="Success Tips"
                   description="Detailed description and advice about successful copywriting."
-                  onClose={() => {}}
+                  onClose={() => { }}
                 />
               </div>
             </ShowcaseCard>

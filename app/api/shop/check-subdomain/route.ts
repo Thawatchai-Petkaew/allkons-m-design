@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma/client";
 
 /**
- * GET /api/shop/check-subdomain
- * Check if subdomain is available (not already used)
+ * GET /api/shop/check-subdomain (MOCK)
+ * Check if subdomain is available
  */
 export async function GET(request: NextRequest) {
   try {
@@ -17,26 +16,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // Validate subdomain format (English letters and numbers only)
-    if (!/^[a-zA-Z0-9]+$/.test(subdomain)) {
-      return NextResponse.json(
-        { success: false, error: "ใช้ตัวอักษรภาษาอังกฤษ และตัวเลขเท่านั้น" },
-        { status: 400 }
-      );
-    }
-
-    // Check if subdomain already exists
-    const existingShop = await prisma.shop.findUnique({
-      where: { subdomain: subdomain.toLowerCase() },
-    });
-
-    if (existingShop) {
-      return NextResponse.json({
-        success: false,
-        error: "URL นี้ถูกใช้งานแล้ว",
-        available: false,
-      });
-    }
+    console.log('[Mock Check Subdomain] Checking:', subdomain);
 
     return NextResponse.json({
       success: true,

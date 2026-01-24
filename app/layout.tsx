@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ backgroundColor: ds.color.background('primary') }}>
-      <body className={inter.className} style={{ backgroundColor: ds.color.background('primary') }}>
+      <body className={inter.className} style={{ backgroundColor: ds.color.background('primary') }} suppressHydrationWarning>
         <AntdRegistry>
           <ConfigProvider theme={theme}>
             {children}

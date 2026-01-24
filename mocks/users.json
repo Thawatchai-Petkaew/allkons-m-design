@@ -1,0 +1,32 @@
+[
+    {
+        "id": "mock-seller-id",
+        "email": "seller@example.com",
+        "phone": "+66812345678",
+        "role": "SELLER",
+        "name": "Mock Seller",
+        "app_metadata": {
+            "provider": "phone"
+        },
+        "user_metadata": {
+            "full_name": "Mock Seller"
+        },
+        "aud": "authenticated",
+        "created_at": "2024-01-01T00:00:00.000Z"
+    },
+    {
+        "id": "mock-buyer-id",
+        "email": "buyer@example.com",
+        "phone": "+66912345678",
+        "role": "BUYER",
+        "name": "Mock Buyer",
+        "app_metadata": {
+            "provider": "phone"
+        },
+        "user_metadata": {
+            "full_name": "Mock Buyer"
+        },
+        "aud": "authenticated",
+        "created_at": "2024-01-01T00:00:00.000Z"
+    }
+]

@@ -49,7 +49,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input: React.FC<InputProps> = ({
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(({
   label,
   required = false,
   helperText,
@@ -64,7 +64,7 @@ export const Input: React.FC<InputProps> = ({
   onFocus,
   onBlur,
   ...props
-}) => {
+}, ref) => {
   const [isFocused, setIsFocused] = React.useState(false);
   const [isHovered, setIsHovered] = React.useState(false);
 
@@ -201,7 +201,7 @@ export const Input: React.FC<InputProps> = ({
         color: ds.component.input.text(),
       };
     }
-    
+
     // Default state - ensure border is always present
     return {
       backgroundColor: ds.component.input.bg(),
@@ -241,24 +241,24 @@ export const Input: React.FC<InputProps> = ({
   const labelColor = disabled
     ? ds.component.input.label('disabled')
     : actualState === "error"
-    ? ds.component.input.label('error')
-    : ds.component.input.label();
+      ? ds.component.input.label('error')
+      : ds.component.input.label();
 
   // Helper text styles
   const helperTextColor = disabled
     ? ds.component.input.helper('disabled')
     : actualState === "error"
-    ? ds.component.input.helper('error')
-    : ds.component.input.helper();
+      ? ds.component.input.helper('error')
+      : ds.component.input.helper();
 
   // Icon colors
   const iconColor = disabled
     ? ds.component.input.icon('disabled')
     : actualState === "error"
-    ? ds.component.input.icon('error')
-    : actualState === "success"
-    ? ds.component.input.icon('brand')
-    : ds.component.input.icon();
+      ? ds.component.input.icon('error')
+      : actualState === "success"
+        ? ds.component.input.icon('brand')
+        : ds.component.input.icon();
 
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     setIsFocused(true);
@@ -316,11 +316,11 @@ export const Input: React.FC<InputProps> = ({
           <span
             style={{
               position: "absolute",
-              left: size === "small" 
+              left: size === "small"
                 ? ds.spacing('3')   // 12px
                 : size === "middle"
-                ? ds.spacing('4')   // 16px
-                : ds.spacing('6'),  // 24px (large)
+                  ? ds.spacing('4')   // 16px
+                  : ds.spacing('6'),  // 24px (large)
               display: "flex",
               alignItems: "center",
               color: iconColor,
@@ -334,6 +334,7 @@ export const Input: React.FC<InputProps> = ({
 
         {/* Input */}
         <input
+          ref={ref}
           type="text"
           style={{
             ...inputStyles,
@@ -349,15 +350,15 @@ export const Input: React.FC<InputProps> = ({
               paddingLeft: size === "small"
                 ? `calc(${ds.spacing('3')} + ${ds.common.icon.large} + ${ds.spacing('2')})`   // 12px + 20px + 8px = 40px
                 : size === "middle"
-                ? `calc(${ds.spacing('4')} + ${ds.common.icon.large} + ${ds.spacing('2')})`   // 16px + 20px + 8px = 44px
-                : `calc(${ds.spacing('6')} + ${ds.common.icon.large} + ${ds.spacing('2')})`,  // 24px + 20px + 8px = 52px (large)
+                  ? `calc(${ds.spacing('4')} + ${ds.common.icon.large} + ${ds.spacing('2')})`   // 16px + 20px + 8px = 44px
+                  : `calc(${ds.spacing('6')} + ${ds.common.icon.large} + ${ds.spacing('2')})`,  // 24px + 20px + 8px = 52px (large)
             } : {}),
             ...(suffix ? {
               paddingRight: size === "small"
                 ? `calc(${ds.spacing('3')} + ${ds.common.icon.large} + ${ds.spacing('2')})`   // 12px + 20px + 8px = 40px
                 : size === "middle"
-                ? `calc(${ds.spacing('4')} + ${ds.common.icon.large} + ${ds.spacing('2')})`   // 16px + 20px + 8px = 44px
-                : `calc(${ds.spacing('6')} + ${ds.common.icon.large} + ${ds.spacing('2')})`,  // 24px + 20px + 8px = 52px (large)
+                  ? `calc(${ds.spacing('4')} + ${ds.common.icon.large} + ${ds.spacing('2')})`   // 16px + 20px + 8px = 44px
+                  : `calc(${ds.spacing('6')} + ${ds.common.icon.large} + ${ds.spacing('2')})`,  // 24px + 20px + 8px = 52px (large)
             } : {}),
           }}
           disabled={disabled}
@@ -375,12 +376,11 @@ export const Input: React.FC<InputProps> = ({
               right: size === "small"
                 ? ds.spacing('3')   // 12px
                 : size === "middle"
-                ? ds.spacing('4')   // 16px
-                : ds.spacing('6'),  // 24px (large)
+                  ? ds.spacing('4')   // 16px
+                  : ds.spacing('6'),  // 24px (large)
               display: "flex",
               alignItems: "center",
               color: iconColor,
-              pointerEvents: "none",
               zIndex: 1,
             }}
           >
@@ -405,4 +405,6 @@ export const Input: React.FC<InputProps> = ({
       )}
     </div>
   );
-};
+});
+
+Input.displayName = "Input";

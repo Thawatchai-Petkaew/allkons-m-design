@@ -59,13 +59,22 @@ export const Badge: React.FC<BadgeProps> = ({
 }) => {
   // Size styles
   const sizeStyles: Record<BadgeSizeToken, React.CSSProperties> = {
+    "2xs": {
+      fontSize: ds.component.badge.size.fontSize('2xs'),
+      lineHeight: ds.component.badge.size.lineHeight('2xs'),
+      paddingTop: ds.component.badge.size.paddingVertical('2xs'),
+      paddingBottom: ds.component.badge.size.paddingVertical('2xs'),
+      paddingLeft: (!leadingIcon && !trailingIcon) ? ds.spacing("2") : ds.component.badge.size.paddingLeft('2xs'),
+      paddingRight: (!leadingIcon && !trailingIcon) ? ds.spacing("2") : ds.component.badge.size.paddingRight('2xs'),
+      gap: ds.component.badge.iconGap(),
+    },
     xs: {
       fontSize: ds.component.badge.size.fontSize('xs'),
       lineHeight: ds.component.badge.size.lineHeight('xs'),
       paddingTop: ds.component.badge.size.paddingVertical('xs'),
       paddingBottom: ds.component.badge.size.paddingVertical('xs'),
-      paddingLeft: ds.component.badge.size.paddingHorizontal('xs'),
-      paddingRight: ds.component.badge.size.paddingHorizontal('xs'),
+      paddingLeft: (!leadingIcon && !trailingIcon) ? ds.spacing("2") : ds.component.badge.size.paddingLeft('xs'),
+      paddingRight: (!leadingIcon && !trailingIcon) ? ds.spacing("2") : ds.component.badge.size.paddingRight('xs'),
       gap: ds.component.badge.iconGap(),
     },
     sm: {
@@ -73,8 +82,8 @@ export const Badge: React.FC<BadgeProps> = ({
       lineHeight: ds.component.badge.size.lineHeight('sm'),
       paddingTop: ds.component.badge.size.paddingVertical('sm'),
       paddingBottom: ds.component.badge.size.paddingVertical('sm'),
-      paddingLeft: ds.component.badge.size.paddingHorizontal('sm'),
-      paddingRight: ds.component.badge.size.paddingHorizontal('sm'),
+      paddingLeft: ds.component.badge.size.paddingLeft('sm'),
+      paddingRight: ds.component.badge.size.paddingRight('sm'),
       gap: ds.component.badge.iconGap(),
     },
     md: {
@@ -82,8 +91,8 @@ export const Badge: React.FC<BadgeProps> = ({
       lineHeight: ds.component.badge.size.lineHeight('md'),
       paddingTop: ds.component.badge.size.paddingVertical('md'),
       paddingBottom: ds.component.badge.size.paddingVertical('md'),
-      paddingLeft: ds.component.badge.size.paddingHorizontal('md'),
-      paddingRight: ds.component.badge.size.paddingHorizontal('md'),
+      paddingLeft: ds.component.badge.size.paddingLeft('md'),
+      paddingRight: ds.component.badge.size.paddingRight('md'),
       gap: ds.component.badge.iconGap(),
     },
   };
@@ -91,7 +100,7 @@ export const Badge: React.FC<BadgeProps> = ({
   // Get color styles based on variant
   const getColorStyles = (): React.CSSProperties => {
     const colorMap = ds.component.badge[color];
-    
+
     if (variant === "filled") {
       return {
         backgroundColor: colorMap.filled.bg(),
@@ -100,7 +109,7 @@ export const Badge: React.FC<BadgeProps> = ({
       };
     } else if (variant === "outlined") {
       return {
-        backgroundColor: "transparent",
+        backgroundColor: colorMap.outlined.bg(),
         color: colorMap.outlined.text(),
         border: `${ds.common.borderWidth.thin} solid ${colorMap.outlined.border()}`,
       };
@@ -117,7 +126,7 @@ export const Badge: React.FC<BadgeProps> = ({
   // Get icon color based on variant
   const getIconColor = (): string => {
     const colorMap = ds.component.badge[color];
-    
+
     if (variant === "filled") {
       return colorMap.filled.icon();
     } else if (variant === "outlined") {

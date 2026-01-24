@@ -12,3 +12,5 @@ export { BottomSheet, type BottomSheetProps } from "./BottomSheet";
 export { Confirmation, type ConfirmationProps } from "./Confirmation";
 export { Illustration, type IllustrationProps } from "./Illustration";
 export { Badge, type BadgeProps } from "./Badge";
+export { Dot, type DotProps } from "./Dot";
+export { Avatar, type AvatarProps } from "./Avatar";

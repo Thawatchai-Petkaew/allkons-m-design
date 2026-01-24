@@ -8,7 +8,7 @@
 
   /* Mobile Typography Tokens (Default) */
   --font-family-noto-sans: "Noto Sans Thai Looped", sans-serif;
-  
+
   --size-2xs: 10px;
   --size-xs: 12px;
   --size-sm: 14px;
@@ -45,12 +45,18 @@
 
   /* Border Radius Tokens (From border-redius-m-desktop.css) */
   --radius-none: 0rem;
-  --radius-xs: 0.25rem;    /* extra-small */
-  --radius-sm: 0.5rem;     /* small */
-  --radius-md: 0.75rem;    /* medium */
-  --radius-lg: 1rem;       /* large */
-  --radius-xl: 1.5rem;     /* extra-large */
-  --radius-full: 9999px;   /* full (approx) */
+  --radius-xs: 0.25rem;
+  /* extra-small */
+  --radius-sm: 0.5rem;
+  /* small */
+  --radius-md: 0.75rem;
+  /* medium */
+  --radius-lg: 1rem;
+  /* large */
+  --radius-xl: 1.5rem;
+  /* extra-large */
+  --radius-full: 9999px;
+  /* full (approx) */
 
   /* Spacing Tokens (From spacing-mode-1.css) */
   --spacing-none: 0rem;
@@ -71,43 +77,46 @@
   --spacing-15: 3.75rem;
   --spacing-16: 4rem;
 
+  /* Shadow Tokens */
+  --shadow-3xl: 0px 32px 64px -12px rgba(36, 42, 52, 0.14);
+
   /* --- Typography Aliases (Semantic) --- */
-  
+
   /* Display */
   --text-display-d1-size: var(--size-11xl);
   --text-display-d1-line-height: var(--line-height-11xl);
-  
+
   --text-display-d2-size: var(--size-10xl);
   --text-display-d2-line-height: var(--line-height-10xl);
-  
+
   --text-display-d3-size: var(--size-9xl);
   --text-display-d3-line-height: var(--line-height-9xl);
-  
+
   --text-display-d4-size: var(--size-8xl);
   --text-display-d4-line-height: var(--line-height-8xl);
-  
+
   --text-display-d5-size: var(--size-7xl);
   --text-display-d5-line-height: var(--line-height-7xl);
-  
+
   --text-display-d6-size: var(--size-5xl);
   --text-display-d6-line-height: var(--line-height-5xl);
 
   /* Heading */
   --text-heading-h1-size: var(--size-6xl);
   --text-heading-h1-line-height: var(--line-height-6xl);
-  
+
   --text-heading-h2-size: var(--size-4xl);
   --text-heading-h2-line-height: var(--line-height-4xl);
-  
+
   --text-heading-h3-size: var(--size-3xl);
   --text-heading-h3-line-height: var(--line-height-3xl);
-  
+
   --text-heading-h4-size: var(--size-2xl);
   --text-heading-h4-line-height: var(--line-height-2xl);
-  
+
   --text-heading-h5-size: var(--size-xl);
   --text-heading-h5-line-height: var(--line-height-xl);
-  
+
   --text-heading-h6-size: var(--size-md);
   --text-heading-h6-line-height: var(--line-height-md);
 
@@ -118,68 +127,68 @@
   /* Paragraph */
   --text-paragraph-big-size: var(--size-lg);
   --text-paragraph-big-line-height: var(--line-height-lg);
-  
+
   --text-paragraph-middle-size: var(--size-md);
   --text-paragraph-middle-line-height: var(--line-height-md);
-  
+
   --text-paragraph-small-size: var(--size-sm);
   --text-paragraph-small-line-height: var(--line-height-sm);
-  
+
   --text-paragraph-xsmall-size: var(--size-xs);
   --text-paragraph-xsmall-line-height: var(--line-height-xs);
 
   /* Label & UI */
   --text-label-selection-size: var(--size-md);
   --text-label-selection-line-height: var(--line-height-md);
-  
+
   --text-label-list-size: var(--size-sm);
   --text-label-list-line-height: var(--line-height-sm);
-  
+
   --text-label-input-small-size: var(--size-sm);
   --text-label-input-small-line-height: var(--line-height-sm);
-  
+
   --text-label-input-middle-size: var(--size-md);
   --text-label-input-middle-line-height: var(--line-height-md);
-  
+
   --text-label-input-large-size: var(--size-lg);
   --text-label-input-large-line-height: var(--line-height-lg);
-  
+
   --text-clickable-label-size: var(--size-sm);
   --text-clickable-label-line-height: var(--line-height-sm);
-  
+
   --text-value-list-size: var(--size-sm);
   --text-value-list-line-height: var(--line-height-sm);
-  
+
   --text-placeholder-size: var(--size-md);
   --text-placeholder-line-height: var(--line-height-md);
-  
+
   --text-subtitle-size: var(--size-sm);
   --text-subtitle-line-height: var(--line-height-sm);
 
   /* Button */
   --text-button-big-size: var(--size-lg);
   --text-button-big-line-height: var(--line-height-lg);
-  
+
   --text-button-middle-size: var(--size-md);
   --text-button-middle-line-height: var(--line-height-md);
-  
+
   --text-button-small-size: var(--size-sm);
   --text-button-small-line-height: var(--line-height-sm);
 
   /* Link */
   --text-link-big-size: var(--size-lg);
   --text-link-big-line-height: var(--line-height-lg);
-  
+
   --text-link-middle-size: var(--size-md);
   --text-link-middle-line-height: var(--line-height-md);
-  
+
   --text-link-small-size: var(--size-sm);
   --text-link-small-line-height: var(--line-height-sm);
 
   /* Utility */
   --text-all-caps-size: var(--size-xs);
   --text-all-caps-line-height: var(--line-height-xs);
-  
+
   --text-error-size: var(--size-2xs);
   --text-error-line-height: var(--line-height-2xs);
 
@@ -281,7 +290,8 @@
   --special-green-sg-60: #00461b;
   --special-green-sg-50: #005822;
   --special-green-sg-40: #006928;
-  --special-green-sg-30: #006125; /* Interpolated between sg-50 and sg-40 to maintain color scale pattern */
+  --special-green-sg-30: #006125;
+  /* Interpolated between sg-50 and sg-40 to maintain color scale pattern */
   --special-green-sg-20: #008c36;
   --special-green-sg-10: #009d3c;
   --special-green-sg-00: #00af43;
@@ -317,7 +327,7 @@
   --refreshing-orange-ro90: #fff7e6;
 
   /* --- Alias Color Tokens (Semantic) --- */
-  
+
   /* System / Status */
   --system-success-00: var(--green-gn-00);
   --system-error-00: var(--red-rd-00);
@@ -337,9 +347,10 @@
   --global-neutral-light-90: var(--gray-gy90);
   --global-neutral-light-95: var(--gray-gy95);
   --global-neutral-dark-95: var(--gray-gy-95);
-  
+
   --global-white: var(--white-white);
-  --global-black: var(--gray-gy-95); /* Keep as is - using dark-95 would be confusing */
+  --global-black: var(--gray-gy-95);
+  /* Keep as is - using dark-95 would be confusing */
 
   /* Brand */
   --brand-m-primary-00: var(--special-green-sg-00);
@@ -351,39 +362,48 @@
   --brand-m-primary-light-90: var(--special-green-sg90);
 
   /* --- Mapped Component Tokens --- */
-  
+
   /* Text */
   --text-primary: var(--global-neutral-dark-80);
   --text-secondary: var(--global-neutral-dark-40);
   --text-tertiary: var(--global-neutral-dark-20);
   --text-quaternary: var(--global-neutral-00);
+  --text-quinary: var(--global-neutral-light-20);
   --text-placeholder: var(--global-neutral-light-40);
-  --text-disabled: var(--global-neutral-light-40); /* #9da6b5 - matches Figma disabled text color */
+  --text-disabled: var(--global-neutral-light-40);
+  /* #9da6b5 - matches Figma disabled text color */
   --text-white: var(--global-white);
   --text-brand-default: var(--brand-m-primary-00);
-  
+
   /* Background */
   --background-primary: var(--global-white);
   --background-secondary: var(--global-neutral-light-95);
+  --background-tertiary: var(--global-neutral-light-90);
   --background-brand-default: var(--brand-m-primary-00);
-  
+  --background-brand-subtle: var(--brand-m-primary-light-90);
+  --background-brand-subtle-hover: var(--brand-m-primary-light-80);
+
   /* Border */
   --border-primary: var(--global-neutral-light-80);
   --border-secondary: var(--global-neutral-light-60);
   --border-brand-default: var(--brand-m-primary-00);
 
   /* --- Component Color Tokens --- */
-  
+
   /* Button Colors */
   --button-primary-brand-bg: var(--brand-m-primary-00);
   --button-primary-brand-bg-hover: var(--brand-m-primary-dark-20);
-  --button-primary-brand-bg-disabled: var(--global-neutral-light-90); /* #eff0f3 - matches Figma disabled background */
+  --button-primary-brand-bg-disabled: var(--global-neutral-light-90);
+  /* #eff0f3 - matches Figma disabled background */
   --button-primary-brand-text: var(--text-white);
-  --button-primary-brand-text-hover: var(--special-green-sg90); /* Component/Button/Primary/Brand/Text_hover: #e5f7ec */
-  --button-primary-brand-text-disabled: var(--text-disabled); /* #9da6b5 - matches Figma disabled text */
+  --button-primary-brand-text-hover: var(--special-green-sg90);
+  /* Component/Button/Primary/Brand/Text_hover: #e5f7ec */
+  --button-primary-brand-text-disabled: var(--text-disabled);
+  /* #9da6b5 - matches Figma disabled text */
   --button-primary-brand-border: var(--brand-m-primary-00);
   --button-primary-brand-border-hover: var(--brand-m-primary-dark-20);
-  --button-primary-brand-border-disabled: var(--global-neutral-light-95); /* #f7f8f9 - matches Figma disabled border */
+  --button-primary-brand-border-disabled: var(--global-neutral-light-95);
+  /* #f7f8f9 - matches Figma disabled border */
 
   --button-primary-error-bg: var(--system-error-00);
   --button-primary-error-bg-hover: var(--red-rd-20);
@@ -393,7 +413,8 @@
   --button-primary-error-text-disabled: var(--text-disabled);
   --button-primary-error-border: var(--system-error-00);
   --button-primary-error-border-hover: var(--red-rd-20);
-  --button-primary-error-border-disabled: var(--global-neutral-light-95); /* #f7f8f9 - matches Figma disabled border */
+  --button-primary-error-border-disabled: var(--global-neutral-light-95);
+  /* #f7f8f9 - matches Figma disabled border */
 
   --button-secondary-brand-bg: var(--transparent);
   --button-secondary-brand-bg-hover: var(--brand-m-primary-light-90);
@@ -403,7 +424,8 @@
   --button-secondary-brand-text-disabled: var(--text-disabled);
   --button-secondary-brand-border: var(--brand-m-primary-00);
   --button-secondary-brand-border-hover: var(--brand-m-primary-dark-20);
-  --button-secondary-brand-border-disabled: var(--global-neutral-light-95); /* #f7f8f9 - matches Figma disabled border */
+  --button-secondary-brand-border-disabled: var(--global-neutral-light-95);
+  /* #f7f8f9 - matches Figma disabled border */
 
   --button-secondary-neutral-bg: var(--transparent);
   --button-secondary-neutral-bg-hover: var(--background-secondary);
@@ -413,7 +435,8 @@
   --button-secondary-neutral-text-disabled: var(--text-disabled);
   --button-secondary-neutral-border: var(--border-primary);
   --button-secondary-neutral-border-hover: var(--border-secondary);
-  --button-secondary-neutral-border-disabled: var(--global-neutral-light-95); /* #f7f8f9 - matches Figma disabled border */
+  --button-secondary-neutral-border-disabled: var(--global-neutral-light-95);
+  /* #f7f8f9 - matches Figma disabled border */
 
   --button-secondary-error-bg: var(--background-primary);
   --button-secondary-error-bg-hover: var(--red-rd90);
@@ -423,7 +446,8 @@
   --button-secondary-error-text-disabled: var(--text-disabled);
   --button-secondary-error-border: var(--system-error-00);
   --button-secondary-error-border-hover: var(--red-rd-20);
-  --button-secondary-error-border-disabled: var(--global-neutral-light-95); /* #f7f8f9 - matches Figma disabled border */
+  --button-secondary-error-border-disabled: var(--global-neutral-light-95);
+  /* #f7f8f9 - matches Figma disabled border */
 
   --button-tertiary-brand-bg: var(--transparent);
   --button-tertiary-brand-bg-hover: var(--brand-m-primary-light-90);
@@ -478,7 +502,7 @@
   --input-bg-disabled: var(--background-secondary);
   --input-bg-brand: var(--background-primary);
   --input-bg-error: var(--background-primary);
-  
+
   --input-border: var(--border-primary);
   --input-border-hover: var(--border-brand-default);
   --input-border-active: var(--border-brand-default);
@@ -489,7 +513,7 @@
   --input-border-brand: var(--border-brand-default);
   --input-border-brand-hover: var(--border-brand-default);
   --input-border-brand-active: var(--border-brand-default);
-  
+
   --input-text: var(--text-secondary);
   --input-text-disabled: var(--text-disabled);
   --input-label: var(--text-secondary);
@@ -502,7 +526,7 @@
   --input-icon-error: var(--system-error-00);
   --input-icon-brand: var(--border-brand-default);
   --input-icon-disabled: var(--text-disabled);
-  
+
   --input-focus-ring-brand: rgba(204, 239, 217, 0.5);
   --input-focus-ring-error: rgba(247, 210, 207, 0.5);
 
@@ -511,7 +535,7 @@
   --textarea-bg-disabled: var(--background-secondary);
   --textarea-bg-brand: var(--background-primary);
   --textarea-bg-error: var(--background-primary);
-  
+
   --textarea-border: var(--border-primary);
   --textarea-border-hover: var(--border-brand-default);
   --textarea-border-active: var(--border-brand-default);
@@ -522,7 +546,7 @@
   --textarea-border-brand: var(--border-brand-default);
   --textarea-border-brand-hover: var(--border-brand-default);
   --textarea-border-brand-active: var(--border-brand-default);
-  
+
   --textarea-text: var(--text-secondary);
   --textarea-text-disabled: var(--text-disabled);
   --textarea-label: var(--text-secondary);
@@ -531,7 +555,7 @@
   --textarea-helper: var(--text-secondary);
   --textarea-helper-error: var(--system-error-00);
   --textarea-helper-disabled: var(--text-disabled);
-  
+
   --textarea-focus-ring-brand: rgba(204, 239, 217, 0.5);
   --textarea-focus-ring-error: rgba(247, 210, 207, 0.5);
 
@@ -540,7 +564,7 @@
   --select-bg-disabled: var(--background-secondary);
   --select-bg-brand: var(--background-primary);
   --select-bg-error: var(--background-primary);
-  
+
   --select-border: var(--border-primary);
   --select-border-hover: var(--border-brand-default);
   --select-border-active: var(--border-brand-default);
@@ -551,7 +575,7 @@
   --select-border-brand: var(--border-brand-default);
   --select-border-brand-hover: var(--border-brand-default);
   --select-border-brand-active: var(--border-brand-default);
-  
+
   --select-text: var(--text-secondary);
   --select-text-disabled: var(--text-disabled);
   --select-text-placeholder: var(--text-placeholder);
@@ -567,10 +591,10 @@
   --select-icon-disabled: var(--text-disabled);
   --select-arrow: var(--global-neutral-light-40);
   --select-arrow-disabled: var(--text-disabled);
-  
+
   --select-focus-ring-brand: rgba(204, 239, 217, 0.5);
   --select-focus-ring-error: rgba(247, 210, 207, 0.5);
-  
+
   --select-dropdown-bg: var(--background-primary);
   --select-dropdown-border: var(--border-primary);
   --select-option-bg: var(--background-primary);
@@ -589,7 +613,7 @@
   --toggle-circular-track-bg-unchecked-hover: var(--global-neutral-light-60);
   --toggle-circular-track-bg-unchecked-disabled: var(--global-neutral-light-90);
   --toggle-circular-thumb-bg: var(--global-white);
-  
+
   /* Rectangular Toggle */
   --toggle-rectangular-bg-checked: var(--brand-m-primary-00);
   --toggle-rectangular-bg-checked-hover: var(--brand-m-primary-dark-20);
@@ -601,7 +625,7 @@
   --toggle-rectangular-text-checked-disabled: var(--text-white);
   --toggle-rectangular-text-unchecked: var(--global-neutral-dark-60);
   --toggle-rectangular-text-unchecked-disabled: var(--text-disabled);
-  
+
   /* Toggle Labels */
   --toggle-label: var(--text-secondary);
   --toggle-label-disabled: var(--text-disabled);
@@ -615,7 +639,7 @@
   --checkbox-border-unchecked: var(--brand-m-primary-light-80);
   --checkbox-border-unchecked-hover: var(--brand-m-primary-00);
   --checkbox-border-unchecked-disabled: var(--global-neutral-light-60);
-  
+
   /* Checked State */
   --checkbox-bg-checked: var(--brand-m-primary-00);
   --checkbox-bg-checked-hover: var(--brand-m-primary-dark-20);
@@ -623,7 +647,7 @@
   --checkbox-border-checked: var(--brand-m-primary-00);
   --checkbox-border-checked-hover: var(--brand-m-primary-dark-20);
   --checkbox-border-checked-disabled: var(--global-neutral-light-60);
-  
+
   /* Indeterminate State */
   --checkbox-bg-indeterminate: var(--brand-m-primary-00);
   --checkbox-bg-indeterminate-hover: var(--brand-m-primary-dark-20);
@@ -631,7 +655,7 @@
   --checkbox-border-indeterminate: var(--brand-m-primary-00);
   --checkbox-border-indeterminate-hover: var(--brand-m-primary-dark-20);
   --checkbox-border-indeterminate-disabled: var(--global-neutral-light-60);
-  
+
   /* Checkbox Icons */
   --checkbox-icon-unchecked: transparent;
   --checkbox-icon-unchecked-disabled: transparent;
@@ -639,10 +663,10 @@
   --checkbox-icon-checked-disabled: var(--text-white);
   --checkbox-icon-indeterminate: var(--text-white);
   --checkbox-icon-indeterminate-disabled: var(--text-white);
-  
+
   /* Checkbox Focus Ring */
   --checkbox-focus-ring: rgba(168, 227, 182, 0.5);
-  
+
   /* Checkbox Labels */
   --checkbox-label: var(--text-secondary);
   --checkbox-label-disabled: var(--text-disabled);
@@ -656,7 +680,7 @@
   --radio-border-unchecked: var(--global-neutral-light-80);
   --radio-border-unchecked-hover: var(--brand-m-primary-00);
   --radio-border-unchecked-disabled: var(--global-neutral-light-60);
-  
+
   /* Checked State */
   --radio-bg-checked: var(--brand-m-primary-00);
   --radio-bg-checked-hover: var(--brand-m-primary-dark-20);
@@ -664,13 +688,13 @@
   --radio-border-checked: var(--brand-m-primary-00);
   --radio-border-checked-hover: var(--brand-m-primary-dark-20);
   --radio-border-checked-disabled: var(--global-neutral-light-60);
-  
+
   /* Radio Dot (inner circle for checked state) */
   --radio-dot: var(--text-white);
-  
+
   /* Radio Focus Ring */
   --radio-focus-ring: rgba(168, 227, 182, 0.5);
-  
+
   /* Radio Labels */
   --radio-label: var(--text-secondary);
   --radio-label-disabled: var(--text-disabled);
@@ -686,7 +710,7 @@
   --alert-error-title: var(--system-error-00);
   --alert-error-description: var(--red-rd20);
   --alert-error-action: var(--system-error-00);
-  
+
   /* Info Alert */
   --alert-info-bg-compact: var(--blue-be90);
   --alert-info-bg-expanded: var(--blue-be80);
@@ -695,7 +719,7 @@
   --alert-info-title: var(--system-info-00);
   --alert-info-description: var(--blue-be-20);
   --alert-info-action: var(--system-info-00);
-  
+
   /* Warning Alert */
   --alert-warning-bg-compact: var(--refreshing-orange-ro90);
   --alert-warning-bg-expanded: var(--refreshing-orange-ro80);
@@ -704,7 +728,7 @@
   --alert-warning-title: var(--system-warning-00);
   --alert-warning-description: var(--refreshing-orange-ro-20);
   --alert-warning-action: var(--system-warning-00);
-  
+
   /* Success Alert */
   --alert-success-bg-compact: var(--special-green-sg90);
   --alert-success-bg-expanded: var(--special-green-sg80);
@@ -721,28 +745,28 @@
   --icon-brand-border: var(--brand-m-primary-00);
   --icon-brand-icon-filled: var(--text-white);
   --icon-brand-icon-outlined: var(--brand-m-primary-00);
-  
+
   /* Error Icon */
   --icon-error-bg-filled: var(--system-error-00);
   --icon-error-bg-outlined: var(--background-primary);
   --icon-error-border: var(--system-error-00);
   --icon-error-icon-filled: var(--text-white);
   --icon-error-icon-outlined: var(--system-error-00);
-  
+
   /* Info Icon */
   --icon-info-bg-filled: var(--system-info-00);
   --icon-info-bg-outlined: var(--background-primary);
   --icon-info-border: var(--system-info-00);
   --icon-info-icon-filled: var(--text-white);
   --icon-info-icon-outlined: var(--system-info-00);
-  
+
   /* Warning Icon */
   --icon-warning-bg-filled: var(--system-warning-00);
   --icon-warning-bg-outlined: var(--background-primary);
   --icon-warning-border: var(--system-warning-00);
   --icon-warning-icon-filled: var(--text-white);
   --icon-warning-icon-outlined: var(--system-warning-00);
-  
+
   /* Neutral Icon */
   --icon-neutral-bg-filled: var(--global-neutral-dark-80);
   --icon-neutral-bg-outlined: var(--background-primary);
@@ -776,7 +800,7 @@
   --toggle-height-small: 20px;
   --toggle-height-middle: 24px;
   --toggle-height-large: 28px;
-  
+
   /* Component Widths */
   --toggle-width-small: 36px;
   --toggle-width-middle: 44px;
@@ -784,7 +808,7 @@
   --toggle-width-rectangular-small: 56px;
   --toggle-width-rectangular-middle: 64px;
   --toggle-width-rectangular-large: 72px;
-  
+
   /* Component Sizes */
   --toggle-thumb-small: 16px;
   --toggle-thumb-middle: 20px;
@@ -792,7 +816,7 @@
   --toggle-thumb-offset-small: 2px;
   --toggle-thumb-offset-middle: 2px;
   --toggle-thumb-offset-large: 2px;
-  
+
   /* Checkbox Sizes */
   --checkbox-small: 16px;
   --checkbox-middle: 20px;
@@ -800,7 +824,7 @@
   --checkbox-icon-small: 12px;
   --checkbox-icon-middle: 16px;
   --checkbox-icon-large: 20px;
-  
+
   /* Radio Sizes */
   --radio-small: 16px;
   --radio-middle: 20px;
@@ -808,12 +832,12 @@
   --radio-dot-small: 8px;
   --radio-dot-middle: 10px;
   --radio-dot-large: 12px;
-  
+
   /* Alert Sizes */
   --alert-icon-size: 20px;
   --alert-close-icon-size: 20px;
   --alert-details-icon-size: 12px;
-  
+
   /* Icon Sizes */
   --icon-xs: 8px;
   --icon-sm: 12px;
@@ -827,20 +851,28 @@
   --icon-inner-lg: 12px;
   --icon-inner-xl: 14px;
   --icon-inner-2xl: 18px;
-  
+
   /* Component Padding (Vertical) - Calculated to match height with lineHeight and border */
   /* Formula: paddingV = (height - lineHeight - border*2) / 2 */
-  --input-padding-vertical-small: 5px;   /* (32 - 20 - 2) / 2 = 5px */
-  --input-padding-vertical-middle: 7px;  /* (40 - 24 - 2) / 2 = 7px */
-  --input-padding-vertical-large: 11px;  /* (48 - 24 - 2) / 2 = 11px */
-  
-  --button-padding-vertical-small: 3px;  /* (32 - 24 - 2) / 2 = 3px */
-  --button-padding-vertical-middle: 7px; /* (40 - 24 - 2) / 2 = 7px */
-  --button-padding-vertical-large: 11px; /* (48 - 24 - 2) / 2 = 11px */
-  
+  --input-padding-vertical-small: 5px;
+  /* (32 - 20 - 2) / 2 = 5px */
+  --input-padding-vertical-middle: 7px;
+  /* (40 - 24 - 2) / 2 = 7px */
+  --input-padding-vertical-large: 11px;
+  /* (48 - 24 - 2) / 2 = 11px */
+
+  --button-padding-vertical-small: 3px;
+  /* (32 - 24 - 2) / 2 = 3px */
+  --button-padding-vertical-middle: 7px;
+  /* (40 - 24 - 2) / 2 = 7px */
+  --button-padding-vertical-large: 11px;
+  /* (48 - 24 - 2) / 2 = 11px */
+
   /* Component Border Radius - Using radius-sm (0.5rem = 8px) as per Figma specifications */
-  --input-border-radius: var(--radius-sm);  /* 0.5rem (8px) */
-  --button-border-radius: var(--radius-sm); /* 0.5rem (8px) */
+  --input-border-radius: var(--radius-sm);
+  /* 0.5rem (8px) */
+  --button-border-radius: var(--radius-sm);
+  /* 0.5rem (8px) */
   --alert-border-radius: 12px;
 
   /* Modal/Dialog Colors */
@@ -875,92 +907,171 @@
 
   /* Badge Component Tokens */
   /* Badge Sizes - Padding */
-  --badge-xs-padding-horizontal: var(--spacing-1);  /* 4px */
-  --badge-xs-padding-vertical: var(--spacing-1);      /* 4px */
-  --badge-sm-padding-horizontal: var(--spacing-2);   /* 8px */
-  --badge-sm-padding-vertical: var(--spacing-1);      /* 4px */
-  --badge-md-padding-horizontal: var(--spacing-3);   /* 12px */
-  --badge-md-padding-vertical: var(--spacing-2);      /* 8px */
+  --badge-2xs-padding-left: 4px;
+  --badge-2xs-padding-right: 6px;
+  --badge-2xs-padding-vertical: 0px;
+  --badge-xs-padding-horizontal: var(--spacing-1);
+  /* 4px */
+  --badge-xs-padding-vertical: var(--spacing-1);
+  /* 4px */
+  --badge-sm-padding-horizontal: var(--spacing-2);
+  /* 8px */
+  --badge-sm-padding-vertical: var(--spacing-1);
+  /* 4px */
+  --badge-md-padding-horizontal: var(--spacing-3);
+  /* 12px */
+  --badge-md-padding-vertical: var(--spacing-2);
+  /* 8px */
 
   /* Badge Sizes - Typography */
-  --badge-xs-font-size: var(--size-xs);              /* 12px */
-  --badge-xs-line-height: var(--line-height-xs);      /* 16px */
-  --badge-sm-font-size: var(--size-sm);              /* 14px */
-  --badge-sm-line-height: var(--line-height-sm);     /* 20px */
-  --badge-md-font-size: var(--size-md);              /* 16px */
-  --badge-md-line-height: var(--line-height-md);     /* 24px */
+  --badge-2xs-font-size: var(--size-2xs);
+  --badge-2xs-line-height: 16px;
+  --badge-xs-font-size: var(--size-xs);
+  /* 12px */
+  --badge-xs-line-height: var(--line-height-xs);
+  /* 16px */
+  --badge-sm-font-size: var(--size-sm);
+  /* 14px */
+  --badge-sm-line-height: var(--line-height-sm);
+  /* 20px */
+  --badge-md-font-size: var(--size-md);
+  /* 16px */
+  --badge-md-line-height: var(--line-height-md);
+  /* 24px */
 
   /* Badge Border Radius */
-  --badge-border-radius: var(--radius-full);         /* 9999px */
+  --badge-border-radius: var(--radius-full);
+  /* 9999px */
 
   /* Badge Icon Spacing */
-  --badge-icon-gap: var(--spacing-1);                /* 4px */
+  --badge-icon-gap: var(--spacing-1);
+  /* 4px */
 
   /* Badge Colors - Brand */
-  --badge-brand-filled-bg: var(--special-green-sg90);      /* #e5f7ec */
-  --badge-brand-filled-text: var(--special-green-sg-20);    /* #008c36 */
-  --badge-brand-filled-icon: var(--special-green-sg-20);    /* #008c36 */
-  --badge-brand-outlined-border: var(--special-green-sg-00); /* #00af43 */
-  --badge-brand-outlined-text: var(--special-green-sg-20);  /* #008c36 */
-  --badge-brand-outlined-icon: var(--special-green-sg-20);   /* #008c36 */
-  --badge-brand-subtle-bg: var(--special-green-sg90);       /* #e5f7ec */
-  --badge-brand-subtle-text: var(--special-green-sg-20);    /* #008c36 */
-  --badge-brand-subtle-icon: var(--special-green-sg-20);     /* #008c36 */
+  --badge-brand-filled-bg: var(--special-green-sg90);
+  /* #e5f7ec */
+  --badge-brand-filled-text: var(--special-green-sg-20);
+  /* #008c36 */
+  --badge-brand-filled-icon: var(--special-green-sg-20);
+  /* #008c36 */
+  --badge-brand-outlined-border: var(--special-green-sg-00);
+  /* #00af43 */
+  --badge-brand-outlined-text: var(--special-green-sg-20);
+  /* #008c36 */
+  --badge-brand-outlined-icon: var(--special-green-sg-20);
+  /* #008c36 */
+  --badge-brand-outlined-bg: var(--brand-m-primary-light-90);
+  --badge-brand-subtle-bg: var(--special-green-sg90);
+  /* #e5f7ec */
+  --badge-brand-subtle-text: var(--special-green-sg-20);
+  /* #008c36 */
+  --badge-brand-subtle-icon: var(--special-green-sg-20);
+  /* #008c36 */
 
   /* Badge Colors - Error */
-  --badge-error-filled-bg: var(--red-rd90);                 /* #fbe8e7 */
-  --badge-error-filled-text: var(--red-rd-20);              /* #ae1a0c */
-  --badge-error-filled-icon: var(--red-rd-20);              /* #ae1a0c */
-  --badge-error-outlined-border: var(--red-rd-00);          /* #da2110 */
-  --badge-error-outlined-text: var(--red-rd-20);            /* #ae1a0c */
-  --badge-error-outlined-icon: var(--red-rd-20);           /* #ae1a0c */
-  --badge-error-subtle-bg: var(--red-rd90);                 /* #fbe8e7 */
-  --badge-error-subtle-text: var(--red-rd-20);              /* #ae1a0c */
-  --badge-error-subtle-icon: var(--red-rd-20);              /* #ae1a0c */
+  --badge-error-filled-bg: var(--red-rd90);
+  /* #fbe8e7 */
+  --badge-error-filled-text: var(--red-rd-20);
+  /* #ae1a0c */
+  --badge-error-filled-icon: var(--red-rd-20);
+  /* #ae1a0c */
+  --badge-error-outlined-border: var(--red-rd-00);
+  /* #da2110 */
+  --badge-error-outlined-text: var(--red-rd-20);
+  /* #ae1a0c */
+  --badge-error-outlined-icon: var(--red-rd-20);
+  /* #ae1a0c */
+  --badge-error-outlined-bg: var(--red-rd90);
+  --badge-error-subtle-bg: var(--red-rd90);
+  /* #fbe8e7 */
+  --badge-error-subtle-text: var(--red-rd-20);
+  /* #ae1a0c */
+  --badge-error-subtle-icon: var(--red-rd-20);
+  /* #ae1a0c */
 
   /* Badge Colors - Info */
-  --badge-info-filled-bg: var(--blue-be90);                 /* #eff7fc */
-  --badge-info-filled-text: var(--blue-be-20);              /* #508eb9 */
-  --badge-info-filled-icon: var(--blue-be-20);              /* #508eb9 */
-  --badge-info-outlined-border: var(--blue-be-00);          /* #65b2e8 */
-  --badge-info-outlined-text: var(--blue-be-20);           /* #508eb9 */
-  --badge-info-outlined-icon: var(--blue-be-20);           /* #508eb9 */
-  --badge-info-subtle-bg: var(--blue-be90);                 /* #eff7fc */
-  --badge-info-subtle-text: var(--blue-be-20);              /* #508eb9 */
-  --badge-info-subtle-icon: var(--blue-be-20);              /* #508eb9 */
+  --badge-info-filled-bg: var(--blue-be90);
+  /* #eff7fc */
+  --badge-info-filled-text: var(--blue-be-20);
+  /* #508eb9 */
+  --badge-info-filled-icon: var(--blue-be-20);
+  /* #508eb9 */
+  --badge-info-outlined-border: var(--blue-be-00);
+  /* #65b2e8 */
+  --badge-info-outlined-text: var(--blue-be-20);
+  /* #508eb9 */
+  --badge-info-outlined-icon: var(--blue-be-20);
+  /* #508eb9 */
+  --badge-info-outlined-bg: var(--blue-be90);
+  --badge-info-subtle-bg: var(--blue-be90);
+  /* #eff7fc */
+  --badge-info-subtle-text: var(--blue-be-20);
+  /* #508eb9 */
+  --badge-info-subtle-icon: var(--blue-be-20);
+  /* #508eb9 */
 
   /* Badge Colors - Success */
-  --badge-success-filled-bg: var(--green-gn90);            /* #e8f8ed */
-  --badge-success-filled-text: var(--green-gn-20);         /* #16873a */
-  --badge-success-filled-icon: var(--green-gn-20);         /* #16873a */
-  --badge-success-outlined-border: var(--green-gn-00);      /* #1eb950 */
-  --badge-success-outlined-text: var(--green-gn-20);       /* #16873a */
-  --badge-success-outlined-icon: var(--green-gn-20);       /* #16873a */
-  --badge-success-subtle-bg: var(--green-gn90);            /* #e8f8ed */
-  --badge-success-subtle-text: var(--green-gn-20);         /* #16873a */
-  --badge-success-subtle-icon: var(--green-gn-20);         /* #16873a */
+  --badge-success-filled-bg: var(--green-gn90);
+  /* #e8f8ed */
+  --badge-success-filled-text: var(--green-gn-20);
+  /* #16873a */
+  --badge-success-filled-icon: var(--green-gn-20);
+  /* #16873a */
+  --badge-success-outlined-border: var(--green-gn-00);
+  /* #1eb950 */
+  --badge-success-outlined-text: var(--green-gn-20);
+  /* #16873a */
+  --badge-success-outlined-icon: var(--green-gn-20);
+  /* #16873a */
+  --badge-success-outlined-bg: var(--green-gn90);
+  --badge-success-subtle-bg: var(--green-gn90);
+  /* #e8f8ed */
+  --badge-success-subtle-text: var(--green-gn-20);
+  /* #16873a */
+  --badge-success-subtle-icon: var(--green-gn-20);
+  /* #16873a */
 
   /* Badge Colors - Warning */
-  --badge-warning-filled-bg: var(--refreshing-orange-ro90); /* #fff7e6 */
-  --badge-warning-filled-text: var(--refreshing-orange-ro-20); /* #cc8906 */
-  --badge-warning-filled-icon: var(--refreshing-orange-ro-20); /* #cc8906 */
-  --badge-warning-outlined-border: var(--refreshing-orange-ro-00); /* #ffab08 */
-  --badge-warning-outlined-text: var(--refreshing-orange-ro-20); /* #cc8906 */
-  --badge-warning-outlined-icon: var(--refreshing-orange-ro-20); /* #cc8906 */
-  --badge-warning-subtle-bg: var(--refreshing-orange-ro90); /* #fff7e6 */
-  --badge-warning-subtle-text: var(--refreshing-orange-ro-20); /* #cc8906 */
-  --badge-warning-subtle-icon: var(--refreshing-orange-ro-20); /* #cc8906 */
+  --badge-warning-filled-bg: var(--refreshing-orange-ro90);
+  /* #fff7e6 */
+  --badge-warning-filled-text: var(--refreshing-orange-ro-20);
+  /* #cc8906 */
+  --badge-warning-filled-icon: var(--refreshing-orange-ro-20);
+  /* #cc8906 */
+  --badge-warning-outlined-border: var(--refreshing-orange-ro-00);
+  /* #ffab08 */
+  --badge-warning-outlined-text: var(--refreshing-orange-ro-20);
+  /* #cc8906 */
+  --badge-warning-outlined-icon: var(--refreshing-orange-ro-20);
+  /* #cc8906 */
+  --badge-warning-outlined-bg: var(--refreshing-orange-ro90);
+  --badge-warning-subtle-bg: var(--refreshing-orange-ro90);
+  /* #fff7e6 */
+  --badge-warning-subtle-text: var(--refreshing-orange-ro-20);
+  /* #cc8906 */
+  --badge-warning-subtle-icon: var(--refreshing-orange-ro-20);
+  /* #cc8906 */
 
   /* Badge Colors - Neutral */
-  --badge-neutral-filled-bg: var(--gray-gy95);             /* #f7f8f9 */
-  --badge-neutral-filled-text: var(--gray-gy-40);          /* #37404f */
-  --badge-neutral-filled-icon: var(--gray-gy-40);          /* #37404f */
-  --badge-neutral-outlined-border: var(--gray-gy-00);      /* #5b6a83 */
-  --badge-neutral-outlined-text: var(--gray-gy-40);       /* #37404f */
-  --badge-neutral-outlined-icon: var(--gray-gy-40);        /* #37404f */
-  --badge-neutral-subtle-bg: var(--gray-gy95);              /* #f7f8f9 */
-  --badge-neutral-subtle-text: var(--gray-gy-40);          /* #37404f */
-  --badge-neutral-subtle-icon: var(--gray-gy-40);           /* #37404f */
+  --badge-neutral-filled-bg: var(--gray-gy95);
+  /* #f7f8f9 */
+  --badge-neutral-filled-text: var(--gray-gy-40);
+  /* #37404f */
+  --badge-neutral-filled-icon: var(--gray-gy-40);
+  /* #37404f */
+  --badge-neutral-outlined-border: var(--gray-gy-00);
+  /* #5b6a83 */
+  --badge-neutral-outlined-text: var(--gray-gy-40);
+  /* #37404f */
+  --badge-neutral-outlined-icon: var(--gray-gy-40);
+  /* #37404f */
+  --badge-neutral-outlined-bg: var(--neutral-gray-light-97);
+  --badge-neutral-subtle-bg: var(--gray-gy95);
+  /* #f7f8f9 */
+  --badge-neutral-subtle-text: var(--gray-gy-40);
+  /* #37404f */
+  --badge-neutral-subtle-icon: var(--gray-gy-40);
+  /* #37404f */
 
   /* Badge Colors - Lavender Purple */
   --badge-lavender-filled-bg: #f6f6fc;
@@ -969,6 +1080,7 @@
   --badge-lavender-outlined-border: #a3a2dd;
   --badge-lavender-outlined-text: #8282b1;
   --badge-lavender-outlined-icon: #8282b1;
+  --badge-lavender-outlined-bg: #f6f6fc;
   --badge-lavender-subtle-bg: #f6f6fc;
   --badge-lavender-subtle-text: #8282b1;
   --badge-lavender-subtle-icon: #8282b1;
@@ -978,11 +1090,16 @@
   --input-container-width: 400px;
 
   /* Breakpoints (based on Tailwind CSS defaults) */
-  --breakpoint-sm: 640px;   /* 40rem */
-  --breakpoint-md: 768px;  /* 48rem */
-  --breakpoint-lg: 1024px; /* 64rem */
-  --breakpoint-xl: 1280px; /* 80rem */
-  --breakpoint-2xl: 1536px; /* 96rem */
+  --breakpoint-sm: 640px;
+  /* 40rem */
+  --breakpoint-md: 768px;
+  /* 48rem */
+  --breakpoint-lg: 1024px;
+  /* 64rem */
+  --breakpoint-xl: 1280px;
+  /* 80rem */
+  --breakpoint-2xl: 1536px;
+  /* 96rem */
 
   --font-weight-thin: 100;
   --font-weight-extralight: 200;
@@ -996,77 +1113,257 @@
 }
 
 /* Typography Utility Classes */
-.text-display-d1 { font-size: var(--text-display-d1-size); line-height: var(--text-display-d1-line-height); font-weight: var(--font-weight-bold); }
-  .text-display-d2 { font-size: var(--text-display-d2-size); line-height: var(--text-display-d2-line-height); font-weight: var(--font-weight-bold); }
-  .text-display-d3 { font-size: var(--text-display-d3-size); line-height: var(--text-display-d3-line-height); font-weight: var(--font-weight-bold); }
-  .text-display-d4 { font-size: var(--text-display-d4-size); line-height: var(--text-display-d4-line-height); font-weight: var(--font-weight-bold); }
-  .text-display-d5 { font-size: var(--text-display-d5-size); line-height: var(--text-display-d5-line-height); font-weight: var(--font-weight-bold); }
-  .text-display-d6 { font-size: var(--text-display-d6-size); line-height: var(--text-display-d6-line-height); font-weight: var(--font-weight-bold); }
+.text-display-d1 {
+  font-size: var(--text-display-d1-size);
+  line-height: var(--text-display-d1-line-height);
+  font-weight: var(--font-weight-bold);
+}
 
-  .text-heading-h1 { font-size: var(--text-heading-h1-size); line-height: var(--text-heading-h1-line-height); font-weight: var(--font-weight-bold); }
-  .text-heading-h2 { font-size: var(--text-heading-h2-size); line-height: var(--text-heading-h2-line-height); font-weight: var(--font-weight-bold); }
-  .text-heading-h3 { font-size: var(--text-heading-h3-size); line-height: var(--text-heading-h3-line-height); font-weight: var(--font-weight-bold); }
-  .text-heading-h4 { font-size: var(--text-heading-h4-size); line-height: var(--text-heading-h4-line-height); font-weight: var(--font-weight-bold); }
-  .text-heading-h5 { font-size: var(--text-heading-h5-size); line-height: var(--text-heading-h5-line-height); font-weight: var(--font-weight-bold); }
-  .text-heading-h6 { font-size: var(--text-heading-h6-size); line-height: var(--text-heading-h6-line-height); font-weight: var(--font-weight-bold); }
+.text-display-d2 {
+  font-size: var(--text-display-d2-size);
+  line-height: var(--text-display-d2-line-height);
+  font-weight: var(--font-weight-bold);
+}
 
-  .text-page-title { font-size: var(--text-page-title-size); line-height: var(--text-page-title-line-height); font-weight: var(--font-weight-bold); }
+.text-display-d3 {
+  font-size: var(--text-display-d3-size);
+  line-height: var(--text-display-d3-line-height);
+  font-weight: var(--font-weight-bold);
+}
 
-  .text-paragraph-big { font-size: var(--text-paragraph-big-size); line-height: var(--text-paragraph-big-line-height); font-weight: var(--font-weight-regular); }
-  .text-paragraph-middle { font-size: var(--text-paragraph-middle-size); line-height: var(--text-paragraph-middle-line-height); font-weight: var(--font-weight-regular); }
-  .text-paragraph-small { font-size: var(--text-paragraph-small-size); line-height: var(--text-paragraph-small-line-height); font-weight: var(--font-weight-regular); }
-  .text-paragraph-xsmall { font-size: var(--text-paragraph-xsmall-size); line-height: var(--text-paragraph-xsmall-line-height); font-weight: var(--font-weight-regular); }
+.text-display-d4 {
+  font-size: var(--text-display-d4-size);
+  line-height: var(--text-display-d4-line-height);
+  font-weight: var(--font-weight-bold);
+}
 
-  .text-label-selection { font-size: var(--text-label-selection-size); line-height: var(--text-label-selection-line-height); font-weight: var(--font-weight-regular); }
-  .text-label-list { font-size: var(--text-label-list-size); line-height: var(--text-label-list-line-height); font-weight: var(--font-weight-regular); }
-  .text-label-input-small { font-size: var(--text-label-input-small-size); line-height: var(--text-label-input-small-line-height); font-weight: var(--font-weight-regular); }
-  .text-label-input-middle { font-size: var(--text-label-input-middle-size); line-height: var(--text-label-input-middle-line-height); font-weight: var(--font-weight-regular); }
-  .text-label-input-large { font-size: var(--text-label-input-large-size); line-height: var(--text-label-input-large-line-height); font-weight: var(--font-weight-regular); }
-  .text-clickable-label { font-size: var(--text-clickable-label-size); line-height: var(--text-clickable-label-line-height); font-weight: var(--font-weight-bold); }
-  .text-value-list { font-size: var(--text-value-list-size); line-height: var(--text-value-list-line-height); font-weight: var(--font-weight-bold); }
-  .text-placeholder { font-size: var(--text-placeholder-size); line-height: var(--text-placeholder-line-height); font-weight: var(--font-weight-regular); }
+.text-display-d5 {
+  font-size: var(--text-display-d5-size);
+  line-height: var(--text-display-d5-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-display-d6 {
+  font-size: var(--text-display-d6-size);
+  line-height: var(--text-display-d6-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-heading-h1 {
+  font-size: var(--text-heading-h1-size);
+  line-height: var(--text-heading-h1-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-heading-h2 {
+  font-size: var(--text-heading-h2-size);
+  line-height: var(--text-heading-h2-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-heading-h3 {
+  font-size: var(--text-heading-h3-size);
+  line-height: var(--text-heading-h3-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-heading-h4 {
+  font-size: var(--text-heading-h4-size);
+  line-height: var(--text-heading-h4-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-heading-h5 {
+  font-size: var(--text-heading-h5-size);
+  line-height: var(--text-heading-h5-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-heading-h6 {
+  font-size: var(--text-heading-h6-size);
+  line-height: var(--text-heading-h6-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-page-title {
+  font-size: var(--text-page-title-size);
+  line-height: var(--text-page-title-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-paragraph-big {
+  font-size: var(--text-paragraph-big-size);
+  line-height: var(--text-paragraph-big-line-height);
+  font-weight: var(--font-weight-regular);
+}
+
+.text-paragraph-middle {
+  font-size: var(--text-paragraph-middle-size);
+  line-height: var(--text-paragraph-middle-line-height);
+  font-weight: var(--font-weight-regular);
+}
+
+.text-paragraph-small {
+  font-size: var(--text-paragraph-small-size);
+  line-height: var(--text-paragraph-small-line-height);
+  font-weight: var(--font-weight-regular);
+}
+
+.text-paragraph-xsmall {
+  font-size: var(--text-paragraph-xsmall-size);
+  line-height: var(--text-paragraph-xsmall-line-height);
+  font-weight: var(--font-weight-regular);
+}
+
+.text-label-selection {
+  font-size: var(--text-label-selection-size);
+  line-height: var(--text-label-selection-line-height);
+  font-weight: var(--font-weight-regular);
+}
+
+.text-label-list {
+  font-size: var(--text-label-list-size);
+  line-height: var(--text-label-list-line-height);
+  font-weight: var(--font-weight-regular);
+}
+
+.text-label-input-small {
+  font-size: var(--text-label-input-small-size);
+  line-height: var(--text-label-input-small-line-height);
+  font-weight: var(--font-weight-regular);
+}
+
+.text-label-input-middle {
+  font-size: var(--text-label-input-middle-size);
+  line-height: var(--text-label-input-middle-line-height);
+  font-weight: var(--font-weight-regular);
+}
+
+.text-label-input-large {
+  font-size: var(--text-label-input-large-size);
+  line-height: var(--text-label-input-large-line-height);
+  font-weight: var(--font-weight-regular);
+}
+
+.text-clickable-label {
+  font-size: var(--text-clickable-label-size);
+  line-height: var(--text-clickable-label-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-value-list {
+  font-size: var(--text-value-list-size);
+  line-height: var(--text-value-list-line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.text-placeholder {
+  font-size: var(--text-placeholder-size);
+  line-height: var(--text-placeholder-line-height);
+  font-weight: var(--font-weight-regular);
+}
 
 /* Input Component Styles */
 input::placeholder {
   color: var(--text-placeholder);
-  opacity: 1; /* Ensure full opacity */
+  opacity: 1;
+  /* Ensure full opacity */
 }
 
 input:disabled::placeholder {
   color: var(--text-disabled);
 }
-  .text-subtitle { font-size: var(--text-subtitle-size); line-height: var(--text-subtitle-line-height); font-weight: var(--font-weight-regular); }
 
-  .text-button-big { font-size: var(--text-button-big-size); line-height: var(--text-button-big-line-height); font-weight: var(--font-weight-semibold); }
-  .text-button-middle { font-size: var(--text-button-middle-size); line-height: var(--text-button-middle-line-height); font-weight: var(--font-weight-semibold); }
-  .text-button-small { font-size: var(--text-button-small-size); line-height: var(--text-button-small-line-height); font-weight: var(--font-weight-semibold); }
+.text-subtitle {
+  font-size: var(--text-subtitle-size);
+  line-height: var(--text-subtitle-line-height);
+  font-weight: var(--font-weight-regular);
+}
 
-  .text-link-big { font-size: var(--text-link-big-size); line-height: var(--text-link-big-line-height); font-weight: var(--font-weight-light); }
-  .text-link-middle { font-size: var(--text-link-middle-size); line-height: var(--text-link-middle-line-height); font-weight: var(--font-weight-light); }
-  .text-link-small { font-size: var(--text-link-small-size); line-height: var(--text-link-small-line-height); font-weight: var(--font-weight-light); }
+.text-button-big {
+  font-size: var(--text-button-big-size);
+  line-height: var(--text-button-big-line-height);
+  font-weight: var(--font-weight-semibold);
+}
 
-.text-all-caps { font-size: var(--text-all-caps-size); line-height: var(--text-all-caps-line-height); text-transform: uppercase; font-weight: var(--font-weight-regular); }
-.text-error { font-size: var(--text-error-size); line-height: var(--text-error-line-height); font-weight: var(--font-weight-regular); }
+.text-button-middle {
+  font-size: var(--text-button-middle-size);
+  line-height: var(--text-button-middle-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-button-small {
+  font-size: var(--text-button-small-size);
+  line-height: var(--text-button-small-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-link-big {
+  font-size: var(--text-link-big-size);
+  line-height: var(--text-link-big-line-height);
+  font-weight: var(--font-weight-light);
+}
+
+.text-link-middle {
+  font-size: var(--text-link-middle-size);
+  line-height: var(--text-link-middle-line-height);
+  font-weight: var(--font-weight-light);
+}
+
+.text-link-small {
+  font-size: var(--text-link-small-size);
+  line-height: var(--text-link-small-line-height);
+  font-weight: var(--font-weight-light);
+}
+
+.text-all-caps {
+  font-size: var(--text-all-caps-size);
+  line-height: var(--text-all-caps-line-height);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-regular);
+}
+
+.text-error {
+  font-size: var(--text-error-size);
+  line-height: var(--text-error-line-height);
+  font-weight: var(--font-weight-regular);
+}
 
 @media (min-width: 1024px) {
   :root {
     /* Desktop Typography Tokens */
-    --size-2xs: 0.625rem;    /* 10px */
-    --size-xs: 0.75rem;      /* 12px */
-    --size-sm: 0.875rem;     /* 14px */
-    --size-md: 1rem;         /* 16px */
-    --size-lg: 1.125rem;     /* 18px */
-    --size-xl: 1.25rem;      /* 20px */
-    --size-2xl: 1.5rem;      /* 24px */
-    --size-3xl: 1.75rem;     /* 28px */
-    --size-4xl: 2rem;        /* 32px */
-    --size-5xl: 2.25rem;     /* 36px */
-    --size-6xl: 2.5rem;      /* 40px */
-    --size-7xl: 2.75rem;     /* 44px */
-    --size-8xl: 3rem;        /* 48px */
-    --size-9xl: 3.5rem;      /* 56px */
-    --size-10xl: 4rem;       /* 64px */
-    --size-11xl: 4.5rem;     /* 72px */
+    --size-2xs: 0.625rem;
+    /* 10px */
+    --size-xs: 0.75rem;
+    /* 12px */
+    --size-sm: 0.875rem;
+    /* 14px */
+    --size-md: 1rem;
+    /* 16px */
+    --size-lg: 1.125rem;
+    /* 18px */
+    --size-xl: 1.25rem;
+    /* 20px */
+    --size-2xl: 1.5rem;
+    /* 24px */
+    --size-3xl: 1.75rem;
+    /* 28px */
+    --size-4xl: 2rem;
+    /* 32px */
+    --size-5xl: 2.25rem;
+    /* 36px */
+    --size-6xl: 2.5rem;
+    /* 40px */
+    --size-7xl: 2.75rem;
+    /* 44px */
+    --size-8xl: 3rem;
+    /* 48px */
+    --size-9xl: 3.5rem;
+    /* 56px */
+    --size-10xl: 4rem;
+    /* 64px */
+    --size-11xl: 4.5rem;
+    /* 72px */
 
     --line-height-2xs: 0.625rem;
     --line-height-xs: 1rem;
@@ -1092,7 +1389,7 @@ html {
 }
 
 body {
-  color: var(--text-primary);
+  color: var(--text-secondary);
   background: #ffffff !important;
   font-family: var(--font-family-noto-sans);
   margin: 0;
@@ -1108,6 +1405,15 @@ body {
 }
 
 /* Ant Design Typography Component Overrides - Use Design System Font Family */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-primary);
+}
+
 .ant-typography,
 .ant-typography h1,
 .ant-typography h2,
@@ -1131,6 +1437,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -1166,4 +1473,8 @@ body {
 .illustration-neutral {
   --illustration-ring-color: var(--illustration-ring-color-neutral);
   --illustration-bg-color: var(--illustration-bg-color-neutral);
+}
+
+.shadow-3xl {
+  box-shadow: var(--shadow-3xl) !important;
 }

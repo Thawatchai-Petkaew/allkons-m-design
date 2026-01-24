@@ -1,0 +1,26 @@
+[
+    {
+        "id": "prod-1",
+        "name": "Cement Bag 50kg",
+        "price": 150,
+        "category": "Construction Materials",
+        "image": "https://placehold.co/400x400?text=Cement",
+        "stock": 100
+    },
+    {
+        "id": "prod-2",
+        "name": "Steel Rod 10mm",
+        "price": 250,
+        "category": "Steel",
+        "image": "https://placehold.co/400x400?text=Steel",
+        "stock": 500
+    },
+    {
+        "id": "prod-3",
+        "name": "Red Brick",
+        "price": 5,
+        "category": "Bricks",
+        "image": "https://placehold.co/400x400?text=Brick",
+        "stock": 10000
+    }
+]

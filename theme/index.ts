@@ -5,7 +5,8 @@ const theme: ThemeConfig = {
   token: {
     // Map Core Tokens
     colorPrimary: "#00af43", // brand-m-primary-00 (special-green-sg-00)
-    colorText: "var(--text-primary)",
+    colorText: "var(--text-secondary)",
+    colorTextHeading: "var(--text-primary)",
     colorTextSecondary: "var(--text-secondary)",
     colorTextTertiary: "var(--text-tertiary)",
     colorBgBase: "#ffffff", // Force white background
@@ -15,7 +16,7 @@ const theme: ThemeConfig = {
     colorError: "#da2110", // system-error-00
     colorWarning: "#ffab08", // system-warning-00
     colorInfo: "#65b2e8", // system-info-00
-    
+
     // Border Radius (Mapping Medium as default)
     borderRadius: 6, // AntD uses px number for calculation usually. 
     // Using explicit number for safety in JS calculations, but we want to respect tokens.
@@ -25,35 +26,35 @@ const theme: ThemeConfig = {
     // Let's assume AntD default 6px is close to --radius-sm (0.5rem=8px)
     borderRadiusSM: 4, // xs
     borderRadiusLG: 8, // sm?
-    
+
     // Spacing
     // Ant Design uses specific keys for spacing customization in some components, 
     // but globally it's less direct than Tailwind.
-    
+
     fontFamily: typography.fontFamily,
-    
+
     // Map Typography to Ant Design
     // Mapping Figma "Header/H1" -> Size/6xl -> fontSizeHeading1
     // Using CSS variables with cssVar mode enabled in ConfigProvider
     fontSizeHeading1: `var(--size-6xl)` as any,
     lineHeightHeading1: `var(--line-height-6xl)` as any,
-    
+
     fontSizeHeading2: `var(--size-4xl)` as any, // Header/H2
     lineHeightHeading2: `var(--line-height-4xl)` as any,
-    
+
     fontSizeHeading3: `var(--size-3xl)` as any, // Header/H3
     lineHeightHeading3: `var(--line-height-3xl)` as any,
-    
+
     fontSizeHeading4: `var(--size-2xl)` as any, // Header/H4
     lineHeightHeading4: `var(--line-height-2xl)` as any,
-    
+
     fontSizeHeading5: `var(--size-xl)` as any, // Header/H5
     lineHeightHeading5: `var(--line-height-xl)` as any,
-    
+
     fontSize: 16, // Base size (Middle/Regular = Size/md = 16px)
     fontSizeLG: 18, // Large
     fontSizeSM: 14, // Small
-    fontSizeXL: 20, 
+    fontSizeXL: 20,
   },
   components: {
     Typography: {

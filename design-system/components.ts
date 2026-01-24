@@ -27,7 +27,7 @@ export function componentToken(
   if (color) parts.push(color);
   if (property) parts.push(property);
   if (state) parts.push(state);
-  
+
   return `var(--${parts.join('-')})`;
 }
 
@@ -41,128 +41,128 @@ export const button = {
    */
   token: (variant: string, color: string, property: string, state?: string) =>
     componentToken('button', variant, color, property, state),
-  
+
   /**
    * Primary Brand Button
    */
   primaryBrand: {
-    bg: (state?: 'hover' | 'disabled') => 
+    bg: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'primary', 'brand', 'bg', state),
-    text: (state?: 'hover' | 'disabled') => 
+    text: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'primary', 'brand', 'text', state),
-    border: (state?: 'hover' | 'disabled') => 
+    border: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'primary', 'brand', 'border', state),
   },
-  
+
   /**
    * Primary Error Button
    */
   primaryError: {
-    bg: (state?: 'hover' | 'disabled') => 
+    bg: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'primary', 'error', 'bg', state),
-    text: (state?: 'hover' | 'disabled') => 
+    text: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'primary', 'error', 'text', state),
-    border: (state?: 'hover' | 'disabled') => 
+    border: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'primary', 'error', 'border', state),
   },
-  
+
   /**
    * Primary Warning Button
    */
   primaryWarning: {
-    bg: (state?: 'hover' | 'disabled') => 
+    bg: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'primary', 'warning', 'bg', state),
-    text: (state?: 'hover' | 'disabled') => 
+    text: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'primary', 'warning', 'text', state),
-    border: (state?: 'hover' | 'disabled') => 
+    border: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'primary', 'warning', 'border', state),
   },
-  
+
   /**
    * Secondary Brand Button
    */
   secondaryBrand: {
-    bg: (state?: 'hover' | 'disabled') => 
+    bg: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'secondary', 'brand', 'bg', state),
-    text: (state?: 'hover' | 'disabled') => 
+    text: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'secondary', 'brand', 'text', state),
-    border: (state?: 'hover' | 'disabled') => 
+    border: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'secondary', 'brand', 'border', state),
   },
-  
+
   /**
    * Secondary Neutral Button
    */
   secondaryNeutral: {
-    bg: (state?: 'hover' | 'disabled') => 
+    bg: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'secondary', 'neutral', 'bg', state),
-    text: (state?: 'hover' | 'disabled') => 
+    text: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'secondary', 'neutral', 'text', state),
-    border: (state?: 'hover' | 'disabled') => 
+    border: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'secondary', 'neutral', 'border', state),
   },
-  
+
   /**
    * Secondary Error Button
    */
   secondaryError: {
-    bg: (state?: 'hover' | 'disabled') => 
+    bg: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'secondary', 'error', 'bg', state),
-    text: (state?: 'hover' | 'disabled') => 
+    text: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'secondary', 'error', 'text', state),
-    border: (state?: 'hover' | 'disabled') => 
+    border: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'secondary', 'error', 'border', state),
   },
-  
+
   /**
    * Secondary Warning Button
    */
   secondaryWarning: {
-    bg: (state?: 'hover' | 'disabled') => 
+    bg: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'secondary', 'warning', 'bg', state),
-    text: (state?: 'hover' | 'disabled') => 
+    text: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'secondary', 'warning', 'text', state),
-    border: (state?: 'hover' | 'disabled') => 
+    border: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'secondary', 'warning', 'border', state),
   },
-  
+
   /**
    * Tertiary Brand Button
    */
   tertiaryBrand: {
-    bg: (state?: 'hover' | 'disabled') => 
+    bg: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'tertiary', 'brand', 'bg', state),
-    text: (state?: 'hover' | 'disabled') => 
+    text: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'tertiary', 'brand', 'text', state),
   },
-  
+
   /**
    * Tertiary Neutral Button
    */
   tertiaryNeutral: {
-    bg: (state?: 'hover' | 'disabled') => 
+    bg: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'tertiary', 'neutral', 'bg', state),
-    text: (state?: 'hover' | 'disabled') => 
+    text: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'tertiary', 'neutral', 'text', state),
   },
-  
+
   /**
    * Tertiary Error Button
    */
   tertiaryError: {
-    bg: (state?: 'hover' | 'disabled') => 
+    bg: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'tertiary', 'error', 'bg', state),
-    text: (state?: 'hover' | 'disabled') => 
+    text: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'tertiary', 'error', 'text', state),
   },
-  
+
   /**
    * Tertiary Warning Button
    */
   tertiaryWarning: {
-    bg: (state?: 'hover' | 'disabled') => 
+    bg: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'tertiary', 'warning', 'bg', state),
-    text: (state?: 'hover' | 'disabled') => 
+    text: (state?: 'hover' | 'disabled') =>
       componentToken('button', 'tertiary', 'warning', 'text', state),
   },
 } as const;
@@ -176,13 +176,13 @@ export const input = {
    */
   token: (property: string, state?: string) =>
     componentToken('input', undefined, undefined, property, state),
-  
+
   /**
    * Background
    */
   bg: (state?: 'disabled' | 'brand' | 'error') =>
     componentToken('input', undefined, undefined, 'bg', state),
-  
+
   /**
    * Border
    */
@@ -193,31 +193,31 @@ export const input = {
     if (state === 'brand-active') return componentToken('input', undefined, undefined, 'border', 'brand-active');
     return componentToken('input', undefined, undefined, 'border', state);
   },
-  
+
   /**
    * Text
    */
   text: (state?: 'disabled') =>
     componentToken('input', undefined, undefined, 'text', state),
-  
+
   /**
    * Label
    */
   label: (state?: 'error' | 'disabled') =>
     componentToken('input', undefined, undefined, 'label', state),
-  
+
   /**
    * Helper text
    */
   helper: (state?: 'error' | 'disabled') =>
     componentToken('input', undefined, undefined, 'helper', state),
-  
+
   /**
    * Icon
    */
   icon: (state?: 'error' | 'brand' | 'disabled') =>
     componentToken('input', undefined, undefined, 'icon', state),
-  
+
   /**
    * Focus ring
    */
@@ -234,7 +234,7 @@ export const toggle = {
    */
   token: (variant: string, property: string, state?: string, subState?: string) =>
     componentToken('toggle', variant, undefined, property, state ? `${state}${subState ? `-${subState}` : ''}` : undefined),
-  
+
   /**
    * Circular Toggle
    */
@@ -244,7 +244,7 @@ export const toggle = {
     thumbBg: () =>
       componentToken('toggle', 'circular', undefined, 'thumb-bg', undefined),
   },
-  
+
   /**
    * Rectangular Toggle
    */
@@ -254,13 +254,13 @@ export const toggle = {
     text: (state: 'checked' | 'unchecked', subState?: 'disabled') =>
       componentToken('toggle', 'rectangular', undefined, 'text', subState ? `${state}-${subState}` : state),
   },
-  
+
   /**
    * Toggle Labels
    */
   label: (state?: 'disabled') =>
     componentToken('toggle', undefined, undefined, 'label', state),
-  
+
   /**
    * Toggle Description
    */
@@ -277,37 +277,37 @@ export const checkbox = {
    */
   token: (property: string, state?: string, subState?: string) =>
     componentToken('checkbox', undefined, undefined, property, state ? `${state}${subState ? `-${subState}` : ''}` : undefined),
-  
+
   /**
    * Background
    */
   bg: (state: 'unchecked' | 'checked' | 'indeterminate', subState?: 'hover' | 'disabled') =>
     componentToken('checkbox', undefined, undefined, 'bg', subState ? `${state}-${subState}` : state),
-  
+
   /**
    * Border
    */
   border: (state: 'unchecked' | 'checked' | 'indeterminate', subState?: 'hover' | 'disabled') =>
     componentToken('checkbox', undefined, undefined, 'border', subState ? `${state}-${subState}` : state),
-  
+
   /**
    * Icon color
    */
   icon: (state: 'unchecked' | 'checked' | 'indeterminate', subState?: 'disabled') =>
     componentToken('checkbox', undefined, undefined, 'icon', subState ? `${state}-${subState}` : state),
-  
+
   /**
    * Focus ring
    */
   focusRing: () =>
     componentToken('checkbox', undefined, undefined, 'focus-ring', undefined),
-  
+
   /**
    * Label
    */
   label: (state?: 'disabled') =>
     componentToken('checkbox', undefined, undefined, 'label', state),
-  
+
   /**
    * Description
    */
@@ -324,37 +324,37 @@ export const radio = {
    */
   token: (property: string, state?: string, subState?: string) =>
     componentToken('radio', undefined, undefined, property, state ? `${state}${subState ? `-${subState}` : ''}` : undefined),
-  
+
   /**
    * Background
    */
   bg: (state: 'unchecked' | 'checked', subState?: 'hover' | 'disabled') =>
     componentToken('radio', undefined, undefined, 'bg', subState ? `${state}-${subState}` : state),
-  
+
   /**
    * Border
    */
   border: (state: 'unchecked' | 'checked', subState?: 'hover' | 'disabled') =>
     componentToken('radio', undefined, undefined, 'border', subState ? `${state}-${subState}` : state),
-  
+
   /**
    * Dot color (inner circle for checked state)
    */
   dot: () =>
     componentToken('radio', undefined, undefined, 'dot', undefined),
-  
+
   /**
    * Focus ring
    */
   focusRing: () =>
     componentToken('radio', undefined, undefined, 'focus-ring', undefined),
-  
+
   /**
    * Label
    */
   label: (state?: 'disabled') =>
     componentToken('radio', undefined, undefined, 'label', state),
-  
+
   /**
    * Description
    */
@@ -371,37 +371,37 @@ export const alert = {
    */
   token: (type: string, property: string, variant?: string) =>
     componentToken('alert', type, undefined, property, variant),
-  
+
   /**
    * Background
    */
   bg: (type: 'error' | 'info' | 'warning' | 'success', variant: 'compact' | 'expanded') =>
     componentToken('alert', type, undefined, 'bg', variant),
-  
+
   /**
    * Border
    */
   border: (type: 'error' | 'info' | 'warning' | 'success') =>
     componentToken('alert', type, undefined, 'border', undefined),
-  
+
   /**
    * Icon color
    */
   icon: (type: 'error' | 'info' | 'warning' | 'success') =>
     componentToken('alert', type, undefined, 'icon', undefined),
-  
+
   /**
    * Title color
    */
   title: (type: 'error' | 'info' | 'warning' | 'success') =>
     componentToken('alert', type, undefined, 'title', undefined),
-  
+
   /**
    * Description color
    */
   description: (type: 'error' | 'info' | 'warning' | 'success') =>
     componentToken('alert', type, undefined, 'description', undefined),
-  
+
   /**
    * Action color (Undo, View details)
    */
@@ -418,19 +418,19 @@ export const icon = {
    */
   token: (color: string, property: string, variant?: string) =>
     componentToken('icon', color, undefined, property, variant),
-  
+
   /**
    * Background
    */
   bg: (color: 'brand' | 'error' | 'info' | 'warning' | 'neutral', variant: 'filled' | 'outlined') =>
     componentToken('icon', color, undefined, 'bg', variant),
-  
+
   /**
    * Border
    */
   border: (color: 'brand' | 'error' | 'info' | 'warning' | 'neutral') =>
     componentToken('icon', color, undefined, 'border', undefined),
-  
+
   /**
    * Icon color
    */
@@ -447,13 +447,13 @@ export const textarea = {
    */
   token: (property: string, state?: string) =>
     componentToken('textarea', undefined, undefined, property, state),
-  
+
   /**
    * Background
    */
   bg: (state?: 'disabled' | 'brand' | 'error') =>
     componentToken('textarea', undefined, undefined, 'bg', state),
-  
+
   /**
    * Border
    */
@@ -464,25 +464,25 @@ export const textarea = {
     if (state === 'brand-active') return componentToken('textarea', undefined, undefined, 'border', 'brand-active');
     return componentToken('textarea', undefined, undefined, 'border', state);
   },
-  
+
   /**
    * Text
    */
   text: (state?: 'disabled') =>
     componentToken('textarea', undefined, undefined, 'text', state),
-  
+
   /**
    * Label
    */
   label: (state?: 'error' | 'disabled') =>
     componentToken('textarea', undefined, undefined, 'label', state),
-  
+
   /**
    * Helper text
    */
   helper: (state?: 'error' | 'disabled') =>
     componentToken('textarea', undefined, undefined, 'helper', state),
-  
+
   /**
    * Focus ring
    */
@@ -499,13 +499,13 @@ export const select = {
    */
   token: (property: string, state?: string) =>
     componentToken('select', undefined, undefined, property, state),
-  
+
   /**
    * Background
    */
   bg: (state?: 'disabled' | 'brand' | 'error') =>
     componentToken('select', undefined, undefined, 'bg', state),
-  
+
   /**
    * Border
    */
@@ -516,43 +516,43 @@ export const select = {
     if (state === 'brand-active') return componentToken('select', undefined, undefined, 'border', 'brand-active');
     return componentToken('select', undefined, undefined, 'border', state);
   },
-  
+
   /**
    * Text
    */
   text: (state?: 'disabled' | 'placeholder') =>
     componentToken('select', undefined, undefined, 'text', state),
-  
+
   /**
    * Label
    */
   label: (state?: 'error' | 'disabled') =>
     componentToken('select', undefined, undefined, 'label', state),
-  
+
   /**
    * Helper text
    */
   helper: (state?: 'error' | 'disabled') =>
     componentToken('select', undefined, undefined, 'helper', state),
-  
+
   /**
    * Icon
    */
   icon: (state?: 'error' | 'brand' | 'disabled') =>
     componentToken('select', undefined, undefined, 'icon', state),
-  
+
   /**
    * Arrow icon
    */
   arrow: (state?: 'disabled') =>
     componentToken('select', undefined, undefined, 'arrow', state),
-  
+
   /**
    * Focus ring
    */
   focusRing: (type: 'brand' | 'error') =>
     componentToken('select', undefined, undefined, 'focus-ring', type),
-  
+
   /**
    * Dropdown menu
    */
@@ -560,7 +560,7 @@ export const select = {
     bg: () => componentToken('select', undefined, undefined, 'dropdown-bg', undefined),
     border: () => componentToken('select', undefined, undefined, 'dropdown-border', undefined),
   },
-  
+
   /**
    * Option
    */
@@ -581,37 +581,37 @@ export const modal = {
    */
   token: (property: string) =>
     componentToken('modal', undefined, undefined, property, undefined),
-  
+
   /**
    * Overlay background
    */
   overlayBg: () => componentToken('modal', undefined, undefined, 'overlay-bg', undefined),
-  
+
   /**
    * Modal background
    */
   bg: () => componentToken('modal', undefined, undefined, 'bg', undefined),
-  
+
   /**
    * Modal border
    */
   border: () => componentToken('modal', undefined, undefined, 'border', undefined),
-  
+
   /**
    * Modal border radius
    */
   borderRadius: () => componentToken('modal', undefined, undefined, 'border-radius', undefined),
-  
+
   /**
    * Title color
    */
   title: () => componentToken('modal', undefined, undefined, 'title', undefined),
-  
+
   /**
    * Text color
    */
   text: () => componentToken('modal', undefined, undefined, 'text', undefined),
-  
+
   /**
    * Shadow
    */
@@ -627,32 +627,32 @@ export const illustration = {
    */
   token: (property: string) =>
     componentToken('illustration', undefined, undefined, property, undefined),
-  
+
   /**
    * Background
    */
   bg: () => componentToken('illustration', undefined, undefined, 'bg', undefined),
-  
+
   /**
    * Border radius
    */
   borderRadius: () => componentToken('illustration', undefined, undefined, 'border-radius', undefined),
-  
+
   /**
    * Icon color
    */
   iconColor: () => componentToken('illustration', undefined, undefined, 'icon-color', undefined),
-  
+
   /**
    * Title color
    */
   title: () => componentToken('illustration', undefined, undefined, 'title', undefined),
-  
+
   /**
    * Text color
    */
   text: () => componentToken('illustration', undefined, undefined, 'text', undefined),
-  
+
   /**
    * Ring color
    */
@@ -669,31 +669,37 @@ export const badge = {
    */
   token: (color: string, variant: string, property: string) =>
     componentToken('badge', color, variant, property, undefined),
-  
+
   /**
    * Get badge size token
    */
   size: {
-    paddingHorizontal: (size: 'xs' | 'sm' | 'md') => 
-      `var(--badge-${size}-padding-horizontal)`,
-    paddingVertical: (size: 'xs' | 'sm' | 'md') => 
+    paddingLeft: (size: '2xs' | 'xs' | 'sm' | 'md') => {
+      if (size === '2xs') return 'var(--badge-2xs-padding-left)';
+      return `var(--badge-${size}-padding-horizontal)`;
+    },
+    paddingRight: (size: '2xs' | 'xs' | 'sm' | 'md') => {
+      if (size === '2xs') return 'var(--badge-2xs-padding-right)';
+      return `var(--badge-${size}-padding-horizontal)`;
+    },
+    paddingVertical: (size: '2xs' | 'xs' | 'sm' | 'md') =>
       `var(--badge-${size}-padding-vertical)`,
-    fontSize: (size: 'xs' | 'sm' | 'md') => 
+    fontSize: (size: '2xs' | 'xs' | 'sm' | 'md') =>
       `var(--badge-${size}-font-size)`,
-    lineHeight: (size: 'xs' | 'sm' | 'md') => 
+    lineHeight: (size: '2xs' | 'xs' | 'sm' | 'md') =>
       `var(--badge-${size}-line-height)`,
   },
-  
+
   /**
    * Get badge border radius
    */
   borderRadius: () => 'var(--badge-border-radius)',
-  
+
   /**
    * Get badge icon gap
    */
   iconGap: () => 'var(--badge-icon-gap)',
-  
+
   /**
    * Brand Badge
    */
@@ -704,6 +710,7 @@ export const badge = {
       icon: () => 'var(--badge-brand-filled-icon)',
     },
     outlined: {
+      bg: () => 'var(--badge-brand-outlined-bg)',
       border: () => 'var(--badge-brand-outlined-border)',
       text: () => 'var(--badge-brand-outlined-text)',
       icon: () => 'var(--badge-brand-outlined-icon)',
@@ -714,7 +721,7 @@ export const badge = {
       icon: () => 'var(--badge-brand-subtle-icon)',
     },
   },
-  
+
   /**
    * Error Badge
    */
@@ -725,6 +732,7 @@ export const badge = {
       icon: () => 'var(--badge-error-filled-icon)',
     },
     outlined: {
+      bg: () => 'var(--badge-error-outlined-bg)',
       border: () => 'var(--badge-error-outlined-border)',
       text: () => 'var(--badge-error-outlined-text)',
       icon: () => 'var(--badge-error-outlined-icon)',
@@ -735,7 +743,7 @@ export const badge = {
       icon: () => 'var(--badge-error-subtle-icon)',
     },
   },
-  
+
   /**
    * Info Badge
    */
@@ -746,6 +754,7 @@ export const badge = {
       icon: () => 'var(--badge-info-filled-icon)',
     },
     outlined: {
+      bg: () => 'var(--badge-info-outlined-bg)',
       border: () => 'var(--badge-info-outlined-border)',
       text: () => 'var(--badge-info-outlined-text)',
       icon: () => 'var(--badge-info-outlined-icon)',
@@ -756,7 +765,7 @@ export const badge = {
       icon: () => 'var(--badge-info-subtle-icon)',
     },
   },
-  
+
   /**
    * Success Badge
    */
@@ -767,6 +776,7 @@ export const badge = {
       icon: () => 'var(--badge-success-filled-icon)',
     },
     outlined: {
+      bg: () => 'var(--badge-success-outlined-bg)',
       border: () => 'var(--badge-success-outlined-border)',
       text: () => 'var(--badge-success-outlined-text)',
       icon: () => 'var(--badge-success-outlined-icon)',
@@ -777,7 +787,7 @@ export const badge = {
       icon: () => 'var(--badge-success-subtle-icon)',
     },
   },
-  
+
   /**
    * Warning Badge
    */
@@ -788,6 +798,7 @@ export const badge = {
       icon: () => 'var(--badge-warning-filled-icon)',
     },
     outlined: {
+      bg: () => 'var(--badge-warning-outlined-bg)',
       border: () => 'var(--badge-warning-outlined-border)',
       text: () => 'var(--badge-warning-outlined-text)',
       icon: () => 'var(--badge-warning-outlined-icon)',
@@ -798,7 +809,7 @@ export const badge = {
       icon: () => 'var(--badge-warning-subtle-icon)',
     },
   },
-  
+
   /**
    * Neutral Badge
    */
@@ -809,6 +820,7 @@ export const badge = {
       icon: () => 'var(--badge-neutral-filled-icon)',
     },
     outlined: {
+      bg: () => 'var(--badge-neutral-outlined-bg)',
       border: () => 'var(--badge-neutral-outlined-border)',
       text: () => 'var(--badge-neutral-outlined-text)',
       icon: () => 'var(--badge-neutral-outlined-icon)',
@@ -819,7 +831,7 @@ export const badge = {
       icon: () => 'var(--badge-neutral-subtle-icon)',
     },
   },
-  
+
   /**
    * Lavender Badge
    */
@@ -830,6 +842,7 @@ export const badge = {
       icon: () => 'var(--badge-lavender-filled-icon)',
     },
     outlined: {
+      bg: () => 'var(--badge-lavender-outlined-bg)',
       border: () => 'var(--badge-lavender-outlined-border)',
       text: () => 'var(--badge-lavender-outlined-text)',
       icon: () => 'var(--badge-lavender-outlined-icon)',

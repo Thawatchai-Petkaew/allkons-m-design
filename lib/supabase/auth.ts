@@ -1,9 +1,26 @@
 /**
- * Supabase Authentication Utilities
- * Helper functions for authentication flows
+ * Supabase Authentication Utilities (MOCK VERSION)
+ * Pure mock implementation for Designer/Frontend-only mode.
  */
 
-import { getBrowserClient } from './browserClient';
+const MOCK_USER = {
+  id: 'mock-seller-id',
+  aud: 'authenticated',
+  role: 'authenticated',
+  email: 'seller@example.com',
+  phone: '+66812345678',
+  app_metadata: { provider: 'phone' },
+  user_metadata: { full_name: 'Mock Seller' },
+  created_at: new Date().toISOString(),
+};
+
+const MOCK_SESSION = {
+  access_token: 'mock-access-token',
+  refresh_token: 'mock-refresh-token',
+  expires_in: 3600,
+  token_type: 'bearer',
+  user: MOCK_USER,
+};
 
 /**
  * Format phone number to E.164 format (required by Supabase)
@@ -12,152 +29,93 @@ import { getBrowserClient } from './browserClient';
 export function formatPhoneNumber(phone: string): string {
   // Remove all non-digit characters
   const digits = phone.replace(/\D/g, '');
-  
+
   // If starts with 0, replace with +66 (Thailand country code)
   if (digits.startsWith('0')) {
     return `+66${digits.slice(1)}`;
   }
-  
+
   // If doesn't start with +, add +66
   if (!digits.startsWith('66')) {
     return `+66${digits}`;
   }
-  
+
   // If starts with 66, add +
   return `+${digits}`;
 }
 
 /**
- * Send OTP to phone number using Supabase Auth
+ * Send OTP to phone number (MOCK)
  */
 export async function sendOTP(phoneNumber: string) {
-  const supabase = getBrowserClient();
-  const formattedPhone = formatPhoneNumber(phoneNumber);
-
-  const { data, error } = await supabase.auth.signInWithOtp({
-    phone: formattedPhone,
-    options: {
-      // Optional: Set channel to 'sms'
-      channel: 'sms',
-    },
-  });
-
-  if (error) {
-    // Don't log error to console.error if it's a SMS provider configuration issue
-    // (will be handled by fallback in calling code)
-    if (!error.message?.includes('Twilio') && 
-        !error.message?.includes('SMS provider') &&
-        !error.message?.includes('invalid username')) {
-      console.error('[Supabase Auth] Error sending OTP:', error.message);
-    }
-    return {
-      success: false,
-      error: error.message,
-    };
-  }
-
-  return {
-    success: true,
-    data,
-  };
+  console.log('[Mock Auth] sending OTP to:', phoneNumber);
+  return { success: true, data: { messageId: 'mock-message-id' } };
 }
 
 /**
- * Verify OTP code using Supabase Auth
+ * Verify OTP code (MOCK)
  */
 export async function verifyOTP(phoneNumber: string, token: string) {
-  const supabase = getBrowserClient();
-  const formattedPhone = formatPhoneNumber(phoneNumber);
+  console.log('[Mock Auth] verifying OTP for:', phoneNumber, 'Token:', token);
 
-  const { data, error } = await supabase.auth.verifyOtp({
-    phone: formattedPhone,
-    token: token,
-    type: 'sms',
-  });
-
-  if (error) {
-    // Don't log error to console.error if it's a token-related issue
-    // (will be handled by fallback in calling code)
-    const errorMsg = (error.message || '').toLowerCase();
-    if (!errorMsg.includes('token has expired') && 
-        !errorMsg.includes('invalid') &&
-        !errorMsg.includes('token')) {
-      console.error('[Supabase Auth] Error verifying OTP:', error.message);
-    }
-    return {
-      success: false,
-      error: error.message,
-      session: null,
-    };
+  // Determine user based on phone number for better mock experience
+  let user = { ...MOCK_USER };
+  if (phoneNumber.includes('834567890')) { // Admin mock phone
+    user.id = 'mock-admin-id';
+    user.email = 'admin@example.com';
+    user.user_metadata.full_name = 'Mock Admin';
+  } else if (phoneNumber.includes('912345678')) { // Buyer mock phone
+    user.id = 'mock-buyer-id';
+    user.email = 'buyer@example.com';
+    user.user_metadata.full_name = 'Mock Buyer';
   }
+
+  // Also update phone number in mock user to match input
+  user.phone = formatPhoneNumber(phoneNumber);
+
+  const session = { ...MOCK_SESSION, user };
 
   return {
     success: true,
-    session: data.session,
-    user: data.user,
+    session: session,
+    user: user,
   };
 }
 
 /**
- * Get current user session
+ * Get current user session (MOCK)
+ * Returns a session by default to simulate logged-in state.
+ * In a real app we'd check cookies/localstorage, but for design mode 
+ * we can assume logged in or implement a simple client-side toggle if needed.
  */
 export async function getSession() {
-  const supabase = getBrowserClient();
-  const { data: { session }, error } = await supabase.auth.getSession();
-
-  if (error) {
-    console.error('[Supabase Auth] Error getting session:', error.message);
-    return {
-      session: null,
-      user: null,
-    };
-  }
-
+  // Return session to simulate logged in state
   return {
-    session,
-    user: session?.user ?? null,
+    session: MOCK_SESSION,
+    user: MOCK_USER,
   };
 }
 
 /**
- * Get current user
+ * Get current user (MOCK)
  */
 export async function getUser() {
-  const supabase = getBrowserClient();
-  const { data: { user }, error } = await supabase.auth.getUser();
-
-  if (error) {
-    console.error('[Supabase Auth] Error getting user:', error.message);
-    return null;
-  }
-
-  return user;
+  return MOCK_USER;
 }
 
 /**
- * Sign out current user
+ * Sign out current user (MOCK)
  */
 export async function signOut() {
-  const supabase = getBrowserClient();
-  const { error } = await supabase.auth.signOut();
-
-  if (error) {
-    console.error('[Supabase Auth] Error signing out:', error.message);
-    return {
-      success: false,
-      error: error.message,
-    };
-  }
-
-  return {
-    success: true,
-  };
+  console.log('[Mock Auth] User signed out');
+  return { success: true };
 }
 
 /**
- * Check if user is authenticated
+ * Check if user is authenticated (MOCK)
  */
 export async function isAuthenticated(): Promise<boolean> {
-  const user = await getUser();
-  return user !== null;
+  return true;
 }
+
+

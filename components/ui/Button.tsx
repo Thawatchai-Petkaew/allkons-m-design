@@ -108,7 +108,7 @@ export const Button: React.FC<ButtonProps> = ({
   // Base styles (without custom style prop to avoid override issues)
   const baseStyles: React.CSSProperties = {
     fontFamily: ds.typography.fontFamily.notoSans,
-    fontWeight: ds.typography.weight('semibold'),
+    fontWeight: ds.typography.weight('medium'),
     letterSpacing: "0",
     borderRadius: ds.common.borderRadius.button,
     cursor: disabled || loading ? ds.common.cursor.notAllowed : ds.common.cursor.pointer,
@@ -133,7 +133,7 @@ export const Button: React.FC<ButtonProps> = ({
    */
   const getColorStyles = (): React.CSSProperties => {
     const state = disabled || loading ? "disabled" : isHovered ? "hover" : "default";
-    
+
     // Primary variant - Solid buttons with border
     if (variant === "primary") {
       if (color === "brand") {
@@ -463,14 +463,14 @@ export const Button: React.FC<ButtonProps> = ({
     // Apply custom style last, but preserve critical properties from colorStyles (especially for disabled state)
     ...(style && Object.keys(style).length > 0 ? {
       ...Object.fromEntries(
-        Object.entries(style).filter(([key]) => 
+        Object.entries(style).filter(([key]) =>
           !['border', 'borderStyle', 'borderWidth', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'backgroundColor', 'color'].includes(key)
         )
       ),
       // Explicitly preserve border properties from colorStyles (disabled state must have light grey border)
       ...(colorStyles.borderStyle ? { borderStyle: colorStyles.borderStyle } : {}),
       ...(colorStyles.borderWidth ? { borderWidth: colorStyles.borderWidth } : {}),
-      ...(colorStyles.borderColor ? { 
+      ...(colorStyles.borderColor ? {
         borderColor: colorStyles.borderColor,
         borderTopColor: colorStyles.borderTopColor || colorStyles.borderColor,
         borderRightColor: colorStyles.borderRightColor || colorStyles.borderColor,

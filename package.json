@@ -4,29 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "db:generate": "prisma generate",
-    "db:push": "prisma db push",
-    "db:migrate": "prisma migrate dev",
-    "db:studio": "prisma studio",
-    "db:seed": "tsx prisma/seed.ts",
-    "db:test": "node prisma/test-connection.js",
-    "postinstall": "prisma generate || true"
-  },
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
+    "lint": "next lint"
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.22.1",
     "@ant-design/nextjs-registry": "^1.0.2",
-    "@prisma/client": "^6.0.0",
-    "@supabase/ssr": "^0.1.0",
     "@supabase/supabase-js": "^2.90.1",
     "antd": "^5.23.0",
     "next": "^15.1.6",
-    "prisma": "^6.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remixicon": "^4.6.0",
