@@ -10,7 +10,7 @@ import { sendOTP as sendSupabaseOTP, verifyOTP as verifySupabaseOTP } from "@/li
 
 // Check if Supabase is configured
 const USE_SUPABASE_AUTH = !!(
-  process.env.NEXT_PUBLIC_SUPABASE_URL && 
+  process.env.NEXT_PUBLIC_SUPABASE_URL &&
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
@@ -18,7 +18,7 @@ function SellerRegisterVerifyPhonePageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const phoneNumber = searchParams.get("phone") || "";
-  
+
   const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -56,7 +56,7 @@ function SellerRegisterVerifyPhonePageContent() {
   const handleOtpChange = (index: number, value: string) => {
     // Only allow numbers
     const numValue = value.replace(/\D/g, "");
-    
+
     if (numValue.length > 1) {
       // Handle paste: fill multiple inputs
       const pastedDigits = numValue.slice(0, 6).split("");
@@ -67,7 +67,7 @@ function SellerRegisterVerifyPhonePageContent() {
         }
       });
       setOtp(newOtp);
-      
+
       // Focus next empty input or last input
       const nextIndex = Math.min(index + pastedDigits.length, 5);
       inputRefs.current[nextIndex]?.focus();
@@ -109,7 +109,7 @@ function SellerRegisterVerifyPhonePageContent() {
 
   const handleVerify = async () => {
     const otpCode = otp.join("");
-    
+
     if (otpCode.length !== 6) {
       setError("กรุณากรอกรหัส OTP ให้ครบ 6 หลัก");
       return;
@@ -120,7 +120,7 @@ function SellerRegisterVerifyPhonePageContent() {
 
     try {
       let result;
-      
+
       if (USE_SUPABASE_AUTH) {
         try {
           result = await verifySupabaseOTP(phoneNumber, otpCode);
@@ -173,7 +173,7 @@ function SellerRegisterVerifyPhonePageContent() {
 
     try {
       let result;
-      
+
       if (USE_SUPABASE_AUTH) {
         try {
           result = await sendSupabaseOTP(phoneNumber);
@@ -220,8 +220,8 @@ function SellerRegisterVerifyPhonePageContent() {
     >
       <div
         style={{
-          width: "100%",
-          maxWidth: "1200px",
+          maxWidth: ds.breakpoint.pixel('xl'),
+          margin: "0 auto",
           backgroundColor: ds.color.background("primary"),
           borderRadius: ds.radius("lg"),
           overflow: "hidden",

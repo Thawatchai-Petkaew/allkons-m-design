@@ -4,6 +4,8 @@ import React, { useRef, useEffect } from "react";
 import { ds } from "@/design-system";
 import { Avatar } from "@/components/ui/Avatar";
 import { Badge } from "@/components/ui/Badge";
+import { BottomSheet } from "@/components/ui/BottomSheet";
+import { useIsMobile } from "@/lib/hooks/useIsMobile";
 import type { UserInfo } from "@/types/seller-types";
 
 export interface AccountDropdownProps {
@@ -15,23 +17,14 @@ export interface AccountDropdownProps {
     onLanguage?: () => void;
     onLogout?: () => void;
     style?: React.CSSProperties;
+    disableMobileBottomSheet?: boolean;
 }
 
 /**
  * AccountDropdown Component
  * 
  * Dropdown menu for user account actions.
- * Displays user avatar, name, email, and account menu options.
- * 
- * @example
- * ```tsx
- * <AccountDropdown
- *   user={currentUser}
- *   isOpen={isOpen}
- *   onClose={() => setIsOpen(false)}
- *   onLogout={() => handleLogout()}
- * />
- * ```
+ * Automatically switches between floating menu (Desktop) and BottomSheet (Mobile).
  */
 export function AccountDropdown({
     user,
@@ -42,12 +35,14 @@ export function AccountDropdown({
     onLanguage,
     onLogout,
     style,
+    disableMobileBottomSheet,
 }: AccountDropdownProps) {
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const isMobile = useIsMobile();
 
-    // Close dropdown when clicking outside
+    // Close dropdown when clicking outside (Desktop only)
     useEffect(() => {
-        if (!isOpen) return;
+        if (!isOpen || isMobile) return;
 
         const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -57,13 +52,13 @@ export function AccountDropdown({
 
         document.addEventListener("click", handleClickOutside);
         return () => document.removeEventListener("click", handleClickOutside);
-    }, [isOpen, onClose]);
+    }, [isOpen, onClose, isMobile]);
 
     if (!isOpen || !user) return null;
 
     const menuItems = [
         {
-            icon: "ri-user-line",
+            icon: "ri-user-settings-line",
             label: "ข้อมูลโปรไฟล์",
             badge: user.isVerified ? (
                 <Badge color="brand" size="2xs" variant="outlined">
@@ -92,22 +87,8 @@ export function AccountDropdown({
         },
     ];
 
-    return (
-        <div
-            ref={dropdownRef}
-            style={{
-                position: "absolute",
-                top: "calc(100% + 8px)",
-                right: 0,
-                minWidth: "280px",
-                backgroundColor: "white",
-                borderRadius: ds.radius("lg"),
-                boxShadow: "0px 12px 36px rgba(36, 42, 52, 0.12)",
-                padding: ds.spacing("4"),
-                zIndex: 1000,
-                ...style,
-            }}
-        >
+    const Content = () => (
+        <>
             {/* User Info Header */}
             <div
                 style={{
@@ -115,13 +96,12 @@ export function AccountDropdown({
                     alignItems: "center",
                     gap: ds.spacing("3"),
                     paddingBottom: ds.spacing("3"),
-                    marginBottom: ds.spacing("3"),
                 }}
             >
                 <Avatar
                     src={user.avatar}
                     alt={user.name}
-                    size="lg"
+                    size="md"
                     fallbackType="user-icon"
                     customBgColor="var(--brand-m-primary-light-90)"
                     customTextColor="var(--brand-m-primary-00)"
@@ -130,7 +110,7 @@ export function AccountDropdown({
                     <div
                         style={{
                             ...ds.typography.preset("paragraph-small"),
-                            fontWeight: ds.typography.weight("medium"),
+                            fontWeight: ds.typography.weight("regular"),
                             color: ds.color.text("secondary"),
                             overflow: "hidden",
                             textOverflow: "ellipsis",
@@ -143,7 +123,7 @@ export function AccountDropdown({
                     <div
                         style={{
                             ...ds.typography.preset("paragraph-xsmall"),
-                            color: ds.color.text("secondary"),
+                            color: ds.color.text("quinary"),
                             overflow: "hidden",
                             textOverflow: "ellipsis",
                             whiteSpace: "nowrap",
@@ -155,7 +135,7 @@ export function AccountDropdown({
             </div>
 
             {/* Menu Items */}
-            <div style={{ display: "flex", color: ds.color.text("secondary"), flexDirection: "column", gap: ds.spacing("1") }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing("1") }}>
                 {menuItems.map((item, index) => (
                     <button
                         key={index}
@@ -171,26 +151,26 @@ export function AccountDropdown({
                             gap: ds.spacing("2"),
                             padding: ds.spacing("3"),
                             border: "none",
-                            backgroundColor: "transparent",
-                            borderRadius: ds.radius("md"),
-                            cursor: "pointer",
+                            backgroundColor: ds.color.common.transparent,
+                            borderRadius: ds.radius("sm"),
+                            cursor: ds.common.cursor.pointer,
                             textAlign: "left",
-                            transition: "background-color 0.2s",
+                            transition: `background-color ${ds.common.animation.fast}`,
                             width: "100%",
                         }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.backgroundColor = ds.color.background("secondary");
                         }}
                         onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = "transparent";
+                            e.currentTarget.style.backgroundColor = ds.color.common.transparent;
                         }}
                     >
                         {/* Icon */}
                         <i
                             className={item.icon}
                             style={{
-                                fontSize: "20px",
-                                color: item.isDanger ? ds.color.system("error") : ds.color.text("primary"),
+                                fontSize: ds.common.size.iconLg,
+                                color: item.isDanger ? ds.color.system("error") : ds.color.text("secondary"),
                                 flexShrink: 0,
                             }}
                         />
@@ -199,7 +179,7 @@ export function AccountDropdown({
                         <span
                             style={{
                                 ...ds.typography.preset("paragraph-small"),
-                                color: item.isDanger ? ds.color.system("error") : ds.color.text("primary"),
+                                color: item.isDanger ? ds.color.system("error") : ds.color.text("secondary"),
                                 flex: 1,
                             }}
                         >
@@ -222,6 +202,40 @@ export function AccountDropdown({
                     </button>
                 ))}
             </div>
+        </>
+    );
+
+    if (isMobile && !disableMobileBottomSheet) {
+        return (
+            <BottomSheet
+                open={isOpen}
+                onClose={onClose}
+                title="บัญชีผู้ใช้"
+            >
+                <div style={{ paddingBottom: ds.spacing("6") }}>
+                    <Content />
+                </div>
+            </BottomSheet>
+        );
+    }
+
+    return (
+        <div
+            ref={dropdownRef}
+            style={{
+                position: "absolute",
+                top: `calc(100% + ${ds.spacing("2")})`,
+                right: 0,
+                minWidth: "256px",
+                backgroundColor: ds.color.background("primary"),
+                borderRadius: ds.radius("md"),
+                boxShadow: "var(--shadow-3xl)",
+                padding: ds.spacing("3"),
+                zIndex: 1000,
+                ...style,
+            }}
+        >
+            <Content />
         </div>
     );
 }

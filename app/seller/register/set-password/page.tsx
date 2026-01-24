@@ -50,7 +50,7 @@ function SellerRegisterSetPasswordPageContent() {
   // Calculate password strength
   const getPasswordStrength = (pwd: string): { level: number; label: string } => {
     if (pwd.length === 0) return { level: 0, label: "" };
-    
+
     let strength = 0;
     if (pwd.length >= 8) strength++;
     if (/\d/.test(pwd)) strength++;
@@ -81,7 +81,7 @@ function SellerRegisterSetPasswordPageContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!allRulesMet) {
       setError("กรุณาตรวจสอบให้แน่ใจว่ารหัสผ่านตรงตามข้อกำหนดทั้งหมด");
       return;
@@ -120,8 +120,8 @@ function SellerRegisterSetPasswordPageContent() {
     >
       <div
         style={{
-          width: "100%",
-          maxWidth: "1200px",
+          maxWidth: ds.breakpoint.pixel('xl'),
+          margin: "0 auto",
           backgroundColor: ds.color.background("primary"),
           borderRadius: ds.radius("lg"),
           overflow: "hidden",

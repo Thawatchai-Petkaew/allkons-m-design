@@ -74,6 +74,8 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
 }) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [startY, setStartY] = useState<number | null>(null);
+  const [dragY, setDragY] = useState(0);
 
   // Set mounted flag after component mounts (client-side only)
   useEffect(() => {
@@ -91,6 +93,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
     } else {
       document.body.style.overflow = "";
       setIsAnimating(false);
+      setDragY(0);
     }
     return () => {
       document.body.style.overflow = "";
@@ -118,6 +121,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
 
   const handleClose = () => {
     setIsAnimating(false);
+    setDragY(0);
     // Wait for animation to complete before closing
     setTimeout(() => {
       if (onClose) {
@@ -132,6 +136,29 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
     }
   };
 
+  const handleDragStart = (e: React.TouchEvent | React.MouseEvent) => {
+    const clientY = 'touches' in e ? e.touches[0].clientY : (e as React.MouseEvent).clientY;
+    setStartY(clientY);
+  };
+
+  const handleDragMove = (e: React.TouchEvent | React.MouseEvent) => {
+    if (startY === null) return;
+    const clientY = 'touches' in e ? e.touches[0].clientY : (e as React.MouseEvent).clientY;
+    const deltaY = clientY - startY;
+    if (deltaY > 0) {
+      setDragY(deltaY);
+    }
+  };
+
+  const handleDragEnd = () => {
+    if (dragY > 100) {
+      handleClose();
+    } else {
+      setDragY(0);
+    }
+    setStartY(null);
+  };
+
   const bottomSheetContent = (
     <div
       style={{
@@ -144,8 +171,14 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
         display: "flex",
         alignItems: "flex-end",
         justifyContent: "center",
+        touchAction: "none",
       }}
       onClick={handleOverlayClick}
+      onMouseMove={handleDragMove}
+      onMouseUp={handleDragEnd}
+      onMouseLeave={handleDragEnd}
+      onTouchMove={handleDragMove}
+      onTouchEnd={handleDragEnd}
     >
       {/* Overlay */}
       <div
@@ -158,6 +191,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
           backgroundColor: ds.component.modal.overlayBg(),
           opacity: isAnimating ? 1 : 0,
           transition: `opacity ${ds.common.animation.normal} ease`,
+          pointerEvents: "none",
         }}
       />
 
@@ -167,17 +201,19 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
         style={{
           position: "relative",
           width: "100%",
-          maxWidth: "100vw",
+          maxWidth: "100%",
           maxHeight: "90vh",
           backgroundColor: ds.component.modal.bg(),
-          borderTopLeftRadius: ds.radius("xl"),
-          borderTopRightRadius: ds.radius("xl"),
+          borderTopLeftRadius: ds.radius("lg"),
+          borderTopRightRadius: ds.radius("lg"),
           boxShadow: ds.component.modal.shadow(),
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
-          transform: isAnimating ? "translateY(0)" : "translateY(100%)",
-          transition: `transform ${ds.common.animation.normal} ease`,
+          transform: isAnimating
+            ? `translateY(${dragY}px)`
+            : "translateY(100%)",
+          transition: startY === null ? `transform ${ds.common.animation.normal} ease` : "none",
           ...style,
         }}
         onClick={(e) => e.stopPropagation()}
@@ -210,6 +246,8 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
 
         {/* Drag Handle */}
         <div
+          onMouseDown={handleDragStart}
+          onTouchStart={handleDragStart}
           style={{
             width: "40px",
             height: "4px",
@@ -217,6 +255,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
             borderRadius: ds.radius("full"),
             margin: `${ds.spacing("3")} auto`,
             flexShrink: 0,
+            cursor: "ns-resize",
           }}
         />
 
@@ -227,10 +266,9 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
               display: "flex",
               alignItems: "flex-start",
               justifyContent: "space-between",
-              paddingTop: ds.spacing("5"),
-              paddingRight: closable ? `calc(${ds.spacing('5')} + ${ds.common.height.buttonMiddle} + ${ds.spacing('4')})` : ds.spacing("5"),
-              paddingBottom: ds.spacing("4"),
-              paddingLeft: ds.spacing("6"),
+              paddingRight: closable ? `calc(${ds.spacing('4')} + ${ds.common.height.buttonMiddle} + ${ds.spacing('4')})` : ds.spacing("4"),
+              paddingBottom: ds.spacing("1"),
+              paddingLeft: ds.spacing("4"),
               flexShrink: 0,
             }}
           >
@@ -269,21 +307,21 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
         <div
           style={{
             flex: 1,
-            ...(!illustration && title 
-              ? { padding: ds.spacing('6') }
-              : illustration 
-                ? { 
-                    paddingTop: ds.spacing('6'),
-                    paddingRight: 0,
-                    paddingBottom: ds.spacing('1'),
-                    paddingLeft: 0,
-                  }
-                : { 
-                    paddingTop: ds.spacing('6'),
-                    paddingRight: ds.spacing('6'),
-                    paddingBottom: ds.spacing('4'),
-                    paddingLeft: ds.spacing('6'),
-                  }
+            ...(!illustration && title
+              ? { padding: ds.spacing('4') }
+              : illustration
+                ? {
+                  paddingTop: ds.spacing('6'),
+                  paddingRight: 0,
+                  paddingBottom: ds.spacing('1'),
+                  paddingLeft: 0,
+                }
+                : {
+                  paddingTop: ds.spacing('6'),
+                  paddingRight: ds.spacing('6'),
+                  paddingBottom: ds.spacing('4'),
+                  paddingLeft: ds.spacing('6'),
+                }
             ),
             overflowY: "auto",
             color: ds.component.modal.text(),

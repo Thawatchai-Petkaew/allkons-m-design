@@ -1,51 +1,33 @@
 /**
- * Supabase Authentication Utilities (MOCK VERSION)
- * Pure mock implementation for Designer/Frontend-only mode.
+ * Supabase Authentication Utilities (DYNAMIC MOCK VERSION)
+ * Persists session in localStorage for prototype consistency.
  */
 
-const MOCK_USER = {
-  id: 'mock-seller-id',
+const SESSION_KEY = 'allkons_mock_session';
+
+const DEFAULT_MOCK_USER = {
+  id: '550e8400-e29b-41d4-a716-446655440000', // Dechwit's ID from mockUsers
   aud: 'authenticated',
   role: 'authenticated',
-  email: 'seller@example.com',
-  phone: '+66812345678',
+  email: 'dechwit@gmail.com',
+  phone: '+66938311673',
   app_metadata: { provider: 'phone' },
-  user_metadata: { full_name: 'Mock Seller' },
-  created_at: new Date().toISOString(),
-};
-
-const MOCK_SESSION = {
-  access_token: 'mock-access-token',
-  refresh_token: 'mock-refresh-token',
-  expires_in: 3600,
-  token_type: 'bearer',
-  user: MOCK_USER,
+  user_metadata: { full_name: 'เดชวิทย์ มงคลจิต' },
+  created_at: new Date('2025-10-15T09:00:00Z').toISOString(),
 };
 
 /**
- * Format phone number to E.164 format (required by Supabase)
- * @example +66812345678
+ * Format phone number to E.164 format
  */
 export function formatPhoneNumber(phone: string): string {
-  // Remove all non-digit characters
   const digits = phone.replace(/\D/g, '');
-
-  // If starts with 0, replace with +66 (Thailand country code)
-  if (digits.startsWith('0')) {
-    return `+66${digits.slice(1)}`;
-  }
-
-  // If doesn't start with +, add +66
-  if (!digits.startsWith('66')) {
-    return `+66${digits}`;
-  }
-
-  // If starts with 66, add +
+  if (digits.startsWith('0')) return `+66${digits.slice(1)}`;
+  if (!digits.startsWith('66')) return `+66${digits}`;
   return `+${digits}`;
 }
 
 /**
- * Send OTP to phone number (MOCK)
+ * Send OTP (MOCK)
  */
 export async function sendOTP(phoneNumber: string) {
   console.log('[Mock Auth] sending OTP to:', phoneNumber);
@@ -53,69 +35,89 @@ export async function sendOTP(phoneNumber: string) {
 }
 
 /**
- * Verify OTP code (MOCK)
+ * Verify OTP code (MOCK) - Now stores session
  */
 export async function verifyOTP(phoneNumber: string, token: string) {
   console.log('[Mock Auth] verifying OTP for:', phoneNumber, 'Token:', token);
 
-  // Determine user based on phone number for better mock experience
-  let user = { ...MOCK_USER };
-  if (phoneNumber.includes('834567890')) { // Admin mock phone
-    user.id = 'mock-admin-id';
-    user.email = 'admin@example.com';
-    user.user_metadata.full_name = 'Mock Admin';
-  } else if (phoneNumber.includes('912345678')) { // Buyer mock phone
-    user.id = 'mock-buyer-id';
-    user.email = 'buyer@example.com';
-    user.user_metadata.full_name = 'Mock Buyer';
+  // In a real mock, we'd lookup the user in mockUsers here
+  // For now, let's just create a session based on the phone
+  const formattedPhone = formatPhoneNumber(phoneNumber);
+
+  // Mapping phone numbers to mock user IDs
+  // Dechwit (Owner of Dechwit Con & Thammasorn): +66938311673 OR +66834567890
+  // Somchai (Seller 1): +66812345678
+  // Somsri (Seller 2): +66823456789
+
+  let userId = '550e8400-e29b-41d4-a716-446655440000'; // Default to Dechwit
+  if (formattedPhone === '+66812345678') userId = '550e8400-e29b-41d4-a716-446655440001';
+  if (formattedPhone === '+66823456789') userId = '550e8400-e29b-41d4-a716-446655440002';
+  if (formattedPhone === '+66834567890') userId = '550e8400-e29b-41d4-a716-446655440000';
+
+  const user = {
+    ...DEFAULT_MOCK_USER,
+    id: userId,
+    phone: formattedPhone,
+  };
+
+  const session = {
+    access_token: 'mock-access-token-' + Date.now(),
+    refresh_token: 'mock-refresh-token',
+    expires_in: 3600,
+    token_type: 'bearer',
+    user,
+  };
+
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(SESSION_KEY, JSON.stringify(session));
   }
-
-  // Also update phone number in mock user to match input
-  user.phone = formatPhoneNumber(phoneNumber);
-
-  const session = { ...MOCK_SESSION, user };
 
   return {
     success: true,
-    session: session,
-    user: user,
+    session,
+    user,
   };
 }
 
 /**
- * Get current user session (MOCK)
- * Returns a session by default to simulate logged-in state.
- * In a real app we'd check cookies/localstorage, but for design mode 
- * we can assume logged in or implement a simple client-side toggle if needed.
+ * Get current user session
  */
 export async function getSession() {
-  // Return session to simulate logged in state
-  return {
-    session: MOCK_SESSION,
-    user: MOCK_USER,
-  };
+  if (typeof window === 'undefined') return { session: null, user: null };
+
+  const stored = localStorage.getItem(SESSION_KEY);
+  if (!stored) return { session: null, user: null };
+
+  try {
+    const session = JSON.parse(stored);
+    return { session, user: session.user };
+  } catch (e) {
+    return { session: null, user: null };
+  }
 }
 
 /**
- * Get current user (MOCK)
+ * Get current user
  */
 export async function getUser() {
-  return MOCK_USER;
+  const { user } = await getSession();
+  return user;
 }
 
 /**
- * Sign out current user (MOCK)
+ * Sign out
  */
 export async function signOut() {
-  console.log('[Mock Auth] User signed out');
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem(SESSION_KEY);
+  }
   return { success: true };
 }
 
 /**
- * Check if user is authenticated (MOCK)
+ * Check if user is authenticated
  */
 export async function isAuthenticated(): Promise<boolean> {
-  return true;
+  const user = await getUser();
+  return !!user;
 }
-
-

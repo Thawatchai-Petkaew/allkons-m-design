@@ -1,9 +1,12 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
+import { Tag } from "antd";
 import { ds } from "@/design-system";
 import { Avatar } from "@/components/ui/Avatar";
 import { Dot } from "@/components/ui/Dot";
+import { BottomSheet } from "@/components/ui/BottomSheet";
+import { useIsMobile } from "@/lib/hooks/useIsMobile";
 import type { ShopInfo } from "@/types/seller-types";
 
 export interface ShopDropdownProps {
@@ -15,24 +18,14 @@ export interface ShopDropdownProps {
     onAddBranch?: () => void;
     onManageShops?: () => void;
     style?: React.CSSProperties;
+    disableMobileBottomSheet?: boolean;
 }
 
 /**
  * ShopDropdown Component
  * 
  * Dropdown menu for selecting shops and branches.
- * Displays shop logo, name, and active status.
- * 
- * @example
- * ```tsx
- * <ShopDropdown
- *   currentShop={currentShop}
- *   shops={shopList}
- *   isOpen={isOpen}
- *   onClose={() => setIsOpen(false)}
- *   onShopChange={(id) => handleShopChange(id)}
- * />
- * ```
+ * Automatically switches between floating menu (Desktop) and BottomSheet (Mobile).
  */
 export function ShopDropdown({
     currentShop,
@@ -43,12 +36,14 @@ export function ShopDropdown({
     onAddBranch,
     onManageShops,
     style,
+    disableMobileBottomSheet,
 }: ShopDropdownProps) {
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const isMobile = useIsMobile();
 
-    // Close dropdown when clicking outside
+    // Close dropdown when clicking outside (Desktop only)
     useEffect(() => {
-        if (!isOpen) return;
+        if (!isOpen || isMobile) return;
 
         const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -58,7 +53,7 @@ export function ShopDropdown({
 
         document.addEventListener("click", handleClickOutside);
         return () => document.removeEventListener("click", handleClickOutside);
-    }, [isOpen, onClose]);
+    }, [isOpen, onClose, isMobile]);
 
     if (!isOpen) return null;
 
@@ -67,39 +62,10 @@ export function ShopDropdown({
         onClose();
     };
 
-    return (
-        <div
-            ref={dropdownRef}
-            style={{
-                position: "absolute",
-                top: "calc(100% + 8px)",
-                left: 0,
-                minWidth: "264px",
-                backgroundColor: ds.color.background("primary"),
-                borderRadius: ds.radius("md"),
-                boxShadow: "var(--shadow-3xl)",
-                paddingTop: ds.spacing("3"),
-                paddingBottom: ds.spacing("3"),
-                paddingLeft: ds.spacing("3"),
-                paddingRight: ds.spacing("3"),
-                zIndex: 1000,
-                ...style,
-            }}
-        >
-            {/* Section Header */}
-            <div
-                style={{
-                    ...ds.typography.preset("paragraph-small"),
-                    fontWeight: ds.typography.weight("medium"),
-                    color: ds.color.text("secondary"),
-                    marginBottom: ds.spacing("3"),
-                }}
-            >
-                เลือกร้านค้า/สาขา
-            </div>
-
+    const Content = () => (
+        <>
             {/* Shop List */}
-            <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing("1") }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing("1"), marginBottom: ds.spacing("3") }}>
                 {shops.map((shop) => (
                     <button
                         key={shop.id}
@@ -112,9 +78,9 @@ export function ShopDropdown({
                             border: "none",
                             backgroundColor: ds.color.common.transparent,
                             borderRadius: ds.radius("md"),
-                            cursor: "pointer",
+                            cursor: ds.common.cursor.pointer,
                             textAlign: "left",
-                            transition: "background-color 0.2s",
+                            transition: `background-color ${ds.common.animation.fast}`,
                             width: "100%",
                         }}
                         onMouseEnter={(e) => {
@@ -138,7 +104,7 @@ export function ShopDropdown({
                             >
                                 <span
                                     style={{
-                                        ...ds.typography.preset("paragraph-xsmall"),
+                                        ...ds.typography.preset("paragraph-small"),
                                         fontWeight: ds.typography.weight("regular"),
                                         color: ds.color.text("secondary"),
                                         overflow: "hidden",
@@ -148,27 +114,22 @@ export function ShopDropdown({
                                 >
                                     {shop.name}
                                 </span>
-                                {shop.type === "branch" && (
-                                    <span
-                                        style={{
-                                            ...ds.typography.preset("paragraph-xsmall"),
-                                            color: ds.color.text("tertiary"),
-                                        }}
-                                    >
-                                        (สาขา)
-                                    </span>
-                                )}
                             </div>
                             <div style={{ display: "flex", alignItems: "center", gap: ds.spacing("2") }}>
                                 <Dot size="sm" active={shop.isActive} />
                                 <span
                                     style={{
                                         ...ds.typography.preset("paragraph-xsmall"),
-                                        color: ds.color.text("quaternary"),
+                                        color: ds.color.text("quinary"),
                                     }}
                                 >
                                     {shop.isActive ? "เปิดขาย" : "ปิดขาย"}
                                 </span>
+                                {shop.type === "branch" && (
+                                    <Tag color="default" style={{ fontSize: '10px', height: '16px', lineHeight: '14px', margin: 0 }}>
+                                        สาขา
+                                    </Tag>
+                                )}
                             </div>
                         </div>
 
@@ -202,10 +163,8 @@ export function ShopDropdown({
                                 </svg>
                             )}
                         </div>
-
                     </button>
                 ))}
-
             </div>
 
             {/* Action Buttons */}
@@ -223,9 +182,9 @@ export function ShopDropdown({
                         border: "none",
                         backgroundColor: ds.color.common.transparent,
                         borderRadius: ds.radius("sm"),
-                        cursor: "pointer",
+                        cursor: ds.common.cursor.pointer,
                         textAlign: "left",
-                        transition: "background-color 0.2s",
+                        transition: `background-color ${ds.common.animation.fast}`,
                         width: "100%",
                     }}
                     onMouseEnter={(e) => {
@@ -266,9 +225,9 @@ export function ShopDropdown({
                         border: "none",
                         backgroundColor: ds.color.common.transparent,
                         borderRadius: ds.radius("sm"),
-                        cursor: "pointer",
+                        cursor: ds.common.cursor.pointer,
                         textAlign: "left",
-                        transition: "background-color 0.2s",
+                        transition: `background-color ${ds.common.animation.fast}`,
                         width: "100%",
                     }}
                     onMouseEnter={(e) => {
@@ -296,7 +255,53 @@ export function ShopDropdown({
                     </span>
                 </button>
             </div>
-        </div >
+        </>
+    );
+
+    if (isMobile && !disableMobileBottomSheet) {
+        return (
+            <BottomSheet
+                open={isOpen}
+                onClose={onClose}
+                title="เลือกร้านค้า/สาขา"
+            >
+                <div style={{ paddingBottom: ds.spacing("6") }}>
+                    <Content />
+                </div>
+            </BottomSheet>
+        );
+    }
+
+    return (
+        <div
+            ref={dropdownRef}
+            style={{
+                position: "absolute",
+                top: `calc(100% + ${ds.spacing("2")})`,
+                left: 0,
+                minWidth: "264px",
+                backgroundColor: ds.color.background("primary"),
+                borderRadius: ds.radius("md"),
+                boxShadow: "var(--shadow-3xl)",
+                padding: ds.spacing("3"),
+                zIndex: 1000,
+                ...style,
+            }}
+        >
+            {/* Section Header */}
+            <div
+                style={{
+                    ...ds.typography.preset("paragraph-small"),
+                    fontWeight: ds.typography.weight("medium"),
+                    color: ds.color.text("secondary"),
+                    marginBottom: ds.spacing("3"),
+                }}
+            >
+                เลือกร้านค้า/สาขา
+            </div>
+
+            <Content />
+        </div>
     );
 }
 

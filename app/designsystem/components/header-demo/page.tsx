@@ -45,8 +45,18 @@ export default function SellerHeaderDemo() {
         const org = mockOrgs.find((o) => o.id === orgId);
         if (org) {
             setCurrentOrg(org);
+            // Sync Shop: Switch to the first shop of the new organization
             const newFilteredShops = mockShops.filter(shop => shop.orgId === org.id);
-            if (newFilteredShops.length > 0) setCurrentShop(newFilteredShops[0]);
+            if (newFilteredShops.length > 0) {
+                setCurrentShop(newFilteredShops[0]);
+            }
+        }
+    };
+
+    const handleShopChange = (shopId: string) => {
+        const shop = mockShops.find(s => s.id === shopId);
+        if (shop) {
+            setCurrentShop(shop);
         }
     };
 
@@ -59,7 +69,7 @@ export default function SellerHeaderDemo() {
                 orgs={mockOrgs}
                 user={mockUser}
                 notificationCount={notificationCount}
-                onShopChange={(id) => setCurrentShop(mockShops.find(s => s.id === id)!)}
+                onShopChange={handleShopChange}
                 onOrgChange={handleOrgChange}
             />
 
@@ -201,6 +211,7 @@ export default function SellerHeaderDemo() {
                                         onClose={() => { }}
                                         currentShop={mockShops[0]}
                                         shops={mockShops.slice(0, 3)}
+                                        disableMobileBottomSheet={true}
                                         style={{
                                             position: "relative",
                                             top: 0,
@@ -217,15 +228,14 @@ export default function SellerHeaderDemo() {
 
             <style jsx global>{`
                 .demo-container {
-                    max-width: 1280px;
                     margin: 0 auto;
-                    padding: 60px 24px;
+                    max-width: ${ds.breakpoint.value('xl')};
+                    padding: 40px 32px;
                 }
                 .demo-section {
                     padding: 40px;
                     margin-bottom: 48px;
                     border-radius: ${ds.radius("xl")};
-                    background-color: ${ds.color.background("secondary")};
                 }
                 .state-grid {
                     display: grid;
@@ -280,21 +290,28 @@ export default function SellerHeaderDemo() {
                     width: 320px;
                 }
 
-                @media (max-width: 1024px) {
+                @media (max-width: ${ds.breakpoint.value('lg')}) {
                     .split-layout, .anatomy-section {
                         grid-template-columns: 1fr;
                     }
                 }
 
-                @media (max-width: 768px) {
+                @media (max-width: ${ds.breakpoint.value('md')}) {
                     .demo-container {
                         padding: 40px 16px;
                     }
                     .demo-section {
-                        padding: 24px;
+                        padding: 24px 16px;
                     }
                     .logic-grid {
                         grid-template-columns: 1fr;
+                    }
+                    .inspection-container {
+                        padding: 24px 12px;
+                    }
+                    .inspection-inner {
+                        width: 100%;
+                        max-width: 320px;
                     }
                 }
 
@@ -383,7 +400,7 @@ function StateCard({ label, value, status, color }: { label: string, value: stri
                 {label}
             </span>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
-                <span style={{ ...ds.typography.preset("paragraph-medium"), fontWeight: ds.typography.weight("semibold"), color: ds.color.text("primary") }}>
+                <span style={{ ...ds.typography.preset("paragraph-small"), fontWeight: ds.typography.weight("semibold"), color: ds.color.text("primary") }}>
                     {value}
                 </span>
                 <div style={{ display: "flex", gap: "4px" }}>

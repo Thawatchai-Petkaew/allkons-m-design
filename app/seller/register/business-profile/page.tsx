@@ -46,7 +46,7 @@ function SellerRegisterBusinessProfilePageContent() {
 
   const [profileType, setProfileType] = useState<BusinessProfileType>("individual");
   const [selectedBusinessTypes, setSelectedBusinessTypes] = useState<string[]>(["AGENT"]);
-  
+
   // Type 1: Individual
   const [commercialRegNumber, setCommercialRegNumber] = useState("");
   const [businessName, setBusinessName] = useState("");
@@ -226,7 +226,7 @@ function SellerRegisterBusinessProfilePageContent() {
   const handleConsentAgree = (marketingConsentValue: boolean) => {
     setMarketingConsent(marketingConsentValue);
     setShowConsentModal(false);
-    
+
     // Navigate to create shop page after consent
     const params = new URLSearchParams({
       phone: phoneNumber,
@@ -274,8 +274,8 @@ function SellerRegisterBusinessProfilePageContent() {
     >
       <div
         style={{
-          width: "100%",
-          maxWidth: "1200px",
+          maxWidth: ds.breakpoint.pixel('xl'),
+          margin: "0 auto",
           backgroundColor: ds.color.background("primary"),
           borderRadius: ds.radius("lg"),
           overflow: "hidden",
@@ -668,8 +668,8 @@ function SellerRegisterBusinessProfilePageContent() {
                             regNumberStatus === "success"
                               ? ds.color.text("brand-default")
                               : errors.commercialRegNumber || regNumberError
-                              ? ds.color.system("error")
-                              : ds.color.border("primary"),
+                                ? ds.color.system("error")
+                                : ds.color.border("primary"),
                           padding: `${ds.common.padding.inputVerticalMiddle} ${ds.spacing("4")}`,
                         },
                       }}
@@ -816,8 +816,8 @@ function SellerRegisterBusinessProfilePageContent() {
                             juristicIdStatus === "success"
                               ? ds.color.text("brand-default")
                               : errors.juristicPersonId || juristicIdError
-                              ? ds.color.system("error")
-                              : ds.color.border("primary"),
+                                ? ds.color.system("error")
+                                : ds.color.border("primary"),
                           padding: `${ds.common.padding.inputVerticalMiddle} ${ds.spacing("4")}`,
                         },
                       }}

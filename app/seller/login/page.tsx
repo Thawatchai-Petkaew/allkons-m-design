@@ -181,13 +181,13 @@ export default function SellerLoginPage() {
       }
 
       if (isValid) {
-        // Mock Redirection Logic
+        // Redirection Logic
         const phone = phoneNumber.replace(/\D/g, '');
-        if (phone === '0834567890') { // Admin
-          router.push('/dashboard/admin');
+        if (phone === '0834567890') { // Preecha (Admin)
+          router.push('/analytics'); // For now, all go to analytics in the seller group
         } else {
-          // Seller (Default)
-          router.push('/dashboard/seller');
+          // All other mock sellers (Dechwit, Somchai, Somsri)
+          router.push('/analytics');
         }
       } else {
         setError('รหัส OTP ไม่ถูกต้อง');

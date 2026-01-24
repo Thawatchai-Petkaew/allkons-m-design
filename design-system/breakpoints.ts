@@ -78,22 +78,22 @@ export const breakpointUtils = {
    * Get breakpoint CSS variable
    */
   get: breakpoint,
-  
+
   /**
    * Get breakpoint pixel value
    */
   pixel: breakpointPixel,
-  
+
   /**
    * Get breakpoint value as CSS string
    */
   value: breakpointValue,
-  
+
   /**
    * Get breakpoint value in rem
    */
   rem: breakpointRem,
-  
+
   /**
    * All breakpoint values
    */

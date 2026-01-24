@@ -1,9 +1,9 @@
-"use client";
-
 import React, { useRef, useEffect } from "react";
 import { ds } from "@/design-system";
 import { Avatar } from "@/components/ui/Avatar";
 import { Badge } from "@/components/ui/Badge";
+import { BottomSheet } from "@/components/ui/BottomSheet";
+import { useIsMobile } from "@/lib/hooks/useIsMobile";
 import type { OrgInfo } from "@/types/seller-types";
 import { getThaiOrgFallback } from "@/lib/thai-utils";
 import "remixicon/fonts/remixicon.css";
@@ -18,24 +18,14 @@ export interface OrgDropdownProps {
     onAddOrg?: () => void;
     onManageOrgs?: () => void;
     style?: React.CSSProperties;
+    disableMobileBottomSheet?: boolean;
 }
 
 /**
  * OrgDropdown Component
  * 
  * Dropdown menu for selecting organizations.
- * Displays org logo, name, role, and KYB verification status.
- * 
- * @example
- * ```tsx
- * <OrgDropdown
- *   currentOrg={currentOrg}
- *   orgs={orgList}
- *   isOpen={isOpen}
- *   onClose={() => setIsOpen(false)}
- *   onOrgChange={(id) => handleOrgChange(id)}
- * />
- * ```
+ * Automatically switches between floating menu (Desktop) and BottomSheet (Mobile).
  */
 export function OrgDropdown({
     currentOrg,
@@ -47,12 +37,14 @@ export function OrgDropdown({
     onAddOrg,
     onManageOrgs,
     style,
+    disableMobileBottomSheet,
 }: OrgDropdownProps) {
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const isMobile = useIsMobile();
 
-    // Close dropdown when clicking outside
+    // Close dropdown when clicking outside (Desktop only)
     useEffect(() => {
-        if (!isOpen) return;
+        if (!isOpen || isMobile) return;
 
         const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -62,7 +54,7 @@ export function OrgDropdown({
 
         document.addEventListener("click", handleClickOutside);
         return () => document.removeEventListener("click", handleClickOutside);
-    }, [isOpen, onClose]);
+    }, [isOpen, onClose, isMobile]);
 
     if (!isOpen) return null;
 
@@ -117,33 +109,6 @@ export function OrgDropdown({
         );
     };
 
-
-    // Verified badge component for verified organizations
-    const VerifiedBadge = () => (
-        <div
-            style={{
-                width: ds.spacing("5"),
-                height: ds.spacing("5"),
-                borderRadius: ds.radius("full"),
-                backgroundColor: ds.color.system("success"),
-                border: `${ds.common.borderWidth.thin} solid ${ds.color.text("white")}`,
-                boxShadow: "var(--shadow-xs)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0,
-            }}
-        >
-            <i
-                className="ri-check-line"
-                style={{
-                    fontSize: ds.common.size.iconXs,
-                    color: ds.color.text("white"),
-                }}
-            />
-        </div>
-    );
-
     // Selection indicator component (Circle on the right)
     const SelectionIndicator = ({ selected }: { selected: boolean }) => {
         if (selected) {
@@ -178,7 +143,7 @@ export function OrgDropdown({
                     width: ds.spacing("5"),
                     height: ds.spacing("5"),
                     borderRadius: ds.radius("full"),
-                    border: `${ds.common.borderWidth.medium} solid ${ds.color.border("secondary")}`,
+                    border: `${selected ? "none" : "1.5px solid " + ds.color.border("secondary")}`,
                     backgroundColor: ds.color.common.transparent,
                     flexShrink: 0,
                 }}
@@ -186,34 +151,8 @@ export function OrgDropdown({
         );
     };
 
-    return (
-        <div
-            ref={dropdownRef}
-            style={{
-                position: "absolute",
-                top: `calc(100% + ${ds.spacing("2")})`,
-                right: 0,
-                minWidth: "280px",
-                backgroundColor: ds.color.background("primary"),
-                borderRadius: ds.radius("md"),
-                boxShadow: "var(--shadow-3xl)",
-                padding: ds.spacing("3"),
-                zIndex: 1000,
-                ...style,
-            }}
-        >
-            {/* Section Header */}
-            <div
-                style={{
-                    ...ds.typography.preset("paragraph-small"),
-                    fontWeight: ds.typography.weight("medium"),
-                    color: ds.color.text("secondary"),
-                    marginBottom: ds.spacing("3"),
-                }}
-            >
-                เลือกองค์กร
-            </div>
-
+    const Content = () => (
+        <>
             {/* Legal Entity Section */}
             {legalOrgs.length > 0 && (
                 <div
@@ -221,7 +160,7 @@ export function OrgDropdown({
                         backgroundColor: ds.color.background("secondary"),
                         borderRadius: ds.radius("md"),
                         padding: ds.spacing("1"),
-                        marginBottom: ds.spacing("2"),
+                        marginBottom: ds.spacing("4"),
                     }}
                 >
                     <div
@@ -290,13 +229,36 @@ export function OrgDropdown({
                                         >
                                             {org.name}
                                         </div>
-                                        <div
-                                            style={{
-                                                ...ds.typography.preset("paragraph-xsmall"),
-                                                color: ds.color.text("quinary"),
-                                            }}
-                                        >
-                                            {org.role}
+                                        <div style={{ display: "flex", alignItems: "center", gap: ds.spacing("2") }}>
+                                            <div
+                                                style={{
+                                                    ...ds.typography.preset("paragraph-xsmall"),
+                                                    color: ds.color.text("quinary"),
+                                                }}
+                                            >
+                                                {org.role}
+                                            </div>
+                                            {currentOrg?.id === org.id && (
+                                                org.kybVerified ? (
+                                                    <Badge
+                                                        color="brand"
+                                                        variant="outlined"
+                                                        size="2xs"
+                                                        leadingIcon={<i className="ri-checkbox-circle-fill" style={{ fontSize: ds.typography.size('2xs') }} />}
+                                                    >
+                                                        ยืนยันแล้ว
+                                                    </Badge>
+                                                ) : (
+                                                    <Badge
+                                                        color="error"
+                                                        variant="outlined"
+                                                        size="2xs"
+                                                        leadingIcon={<i className="ri-information-fill" style={{ fontSize: ds.typography.size('2xs') }} />}
+                                                    >
+                                                        ยังไม่ยืนยันองค์กร
+                                                    </Badge>
+                                                )
+                                            )}
                                         </div>
                                     </div>
 
@@ -321,6 +283,7 @@ export function OrgDropdown({
                                             backgroundColor: ds.color.common.transparent,
                                             borderRadius: ds.radius("sm"),
                                             cursor: ds.common.cursor.pointer,
+                                            textAlign: "center",
                                             transition: `background-color ${ds.common.animation.fast}`,
                                             width: `calc(100% - ${ds.spacing("4")})`,
                                         }}
@@ -432,13 +395,36 @@ export function OrgDropdown({
                                         >
                                             {org.name}
                                         </div>
-                                        <div
-                                            style={{
-                                                ...ds.typography.preset("paragraph-xsmall"),
-                                                color: ds.color.text("quinary"),
-                                            }}
-                                        >
-                                            {org.role}
+                                        <div style={{ display: "flex", alignItems: "center", gap: ds.spacing("2") }}>
+                                            <div
+                                                style={{
+                                                    ...ds.typography.preset("paragraph-xsmall"),
+                                                    color: ds.color.text("quinary"),
+                                                }}
+                                            >
+                                                {org.role}
+                                            </div>
+                                            {currentOrg?.id === org.id && (
+                                                org.kybVerified ? (
+                                                    <Badge
+                                                        color="brand"
+                                                        variant="outlined"
+                                                        size="2xs"
+                                                        leadingIcon={<i className="ri-checkbox-circle-fill" style={{ fontSize: ds.typography.size('2xs') }} />}
+                                                    >
+                                                        ยืนยันแล้ว
+                                                    </Badge>
+                                                ) : (
+                                                    <Badge
+                                                        color="error"
+                                                        variant="outlined"
+                                                        size="2xs"
+                                                        leadingIcon={<i className="ri-information-fill" style={{ fontSize: ds.typography.size('2xs') }} />}
+                                                    >
+                                                        ยังไม่ยืนยันตัวตน
+                                                    </Badge>
+                                                )
+                                            )}
                                         </div>
                                     </div>
 
@@ -458,11 +444,12 @@ export function OrgDropdown({
                                             justifyContent: "center",
                                             gap: ds.spacing("2"),
                                             padding: ds.spacing("2"),
-                                            margin: `0 ${ds.spacing("2")} ${ds.spacing("1")} ${ds.spacing("2")}`,
+                                            margin: `0 ${ds.spacing("2")} ${ds.spacing("4")} ${ds.spacing("2")}`,
                                             border: `${ds.common.borderWidth.thin} solid ${ds.color.border("secondary")}`,
                                             backgroundColor: ds.color.common.transparent,
                                             borderRadius: ds.radius("sm"),
                                             cursor: ds.common.cursor.pointer,
+                                            textAlign: "center",
                                             transition: `background-color ${ds.common.animation.fast}`,
                                             width: `calc(100% - ${ds.spacing("4")})`,
                                         }}
@@ -583,6 +570,52 @@ export function OrgDropdown({
                     </span>
                 </button>
             </div>
+        </>
+    );
+
+    if (isMobile && !disableMobileBottomSheet) {
+        return (
+            <BottomSheet
+                open={isOpen}
+                onClose={onClose}
+                title="เลือกองค์กร"
+            >
+                <div style={{ paddingBottom: ds.spacing("6") }}>
+                    <Content />
+                </div>
+            </BottomSheet>
+        );
+    }
+
+    return (
+        <div
+            ref={dropdownRef}
+            style={{
+                position: "absolute",
+                top: `calc(100% + ${ds.spacing("2")})`,
+                right: 0,
+                minWidth: "280px",
+                backgroundColor: ds.color.background("primary"),
+                borderRadius: ds.radius("md"),
+                boxShadow: "var(--shadow-3xl)",
+                padding: ds.spacing("3"),
+                zIndex: 1000,
+                ...style,
+            }}
+        >
+            {/* Section Header */}
+            <div
+                style={{
+                    ...ds.typography.preset("paragraph-small"),
+                    fontWeight: ds.typography.weight("medium"),
+                    color: ds.color.text("secondary"),
+                    marginBottom: ds.spacing("3"),
+                }}
+            >
+                เลือกองค์กร
+            </div>
+
+            <Content />
         </div>
     );
 }

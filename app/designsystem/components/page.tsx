@@ -13,6 +13,13 @@ import { ds } from "@/design-system";
 export default function ComponentsOverview() {
     const customComponents = [
         {
+            name: "Seller Sidebar",
+            path: "/designsystem/components/sidebar-seller",
+            description: "Responsive navigation sidebar for Seller Center with collapsible state and mobile drawer.",
+            features: ["Collapsible", "Persisted State", "Mobile Drawer"],
+            status: "New",
+        },
+        {
             name: "Seller Header",
             path: "/designsystem/components/header-demo",
             description: "Advanced navigation header with shop, organization, and account selectors.",
@@ -24,8 +31,8 @@ export default function ComponentsOverview() {
 
     return (
         <div style={{ minHeight: "100vh", backgroundColor: ds.color.background("secondary") }}>
-            <main style={{ maxWidth: "1280px", margin: "0 auto", padding: "60px 24px" }}>
-                <div style={{ marginBottom: "48px" }}>
+            <main style={{ maxWidth: "1280px", margin: "0 auto", padding: "32px 24px" }}>
+                <div style={{ marginBottom: "32px" }}>
                     <Link
                         href="/designsystem"
                         style={{

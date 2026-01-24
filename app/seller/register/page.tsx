@@ -39,8 +39,8 @@ export default function SellerRegisterWelcomePage() {
     >
       <div
         style={{
-          width: "100%",
-          maxWidth: "1200px",
+          maxWidth: ds.breakpoint.pixel('xl'),
+          margin: "0 auto",
           backgroundColor: ds.color.background("primary"),
           borderRadius: ds.radius("lg"),
           overflow: "hidden",
