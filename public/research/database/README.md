@@ -198,22 +198,6 @@ ORDER BY category;
 
 ---
 
-## Next Steps
-
-### Immediate Actions
-1. ✅ Review `/database/sql/account-org-schema.sql`
-2. ⚠️ Run schema in Supabase
-3. ⚠️ Verify tables and seed data
-4. ⚠️ Test basic queries
-
-### Future Enhancements
-1. ⚠️ Add more RLS policies (if needed)
-2. ⚠️ Add validation constraints
-3. ⚠️ Create additional seed data (if needed)
-4. ⚠️ Add more tables (Product, Order, Payment, etc.) - Phase 2+
-
----
-
 ## Quick Start
 
 1. **Setup**: ดู [SETUP.md](./SETUP.md) สำหรับคู่มือการ setup

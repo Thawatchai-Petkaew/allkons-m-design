@@ -467,20 +467,20 @@ generateCouponCodes(couponId: string, count: number): Promise<CouponCode[]>
 
 ## 8. Implementation Priority
 
-### Phase 1 (MVP)
+### Current scope
 - ✅ Basic discount promotions
 - ✅ Customer group promotions
 - ✅ Special price promotions
 - ✅ Coupon codes
 - ✅ Basic promotion rules
 
-### Phase 2
+### Designed to support
 - ✅ Bulk pricing promotions
 - ✅ Promotion scheduling
 - ✅ Promotion analytics
 - ✅ Advanced rules
 
-### Phase 3
+### Designed to support (advanced)
 - ✅ Recurring promotions
 - ✅ A/B testing
 - ✅ Advanced analytics

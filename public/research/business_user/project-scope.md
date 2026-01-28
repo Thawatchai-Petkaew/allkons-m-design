@@ -5,7 +5,7 @@
 ### 1.1 Project Overview
 **Allkons M** - Marketplace วัสดุก่อสร้างที่เน้น B2B เป็นหลัก โดยมี Master SKU เป็นจุดแข็งให้ผู้ขายหลายรายสามารถดึงข้อมูลสินค้าไปขายได้ แต่ควบคุมคุณภาพข้อมูลจากจุดกลาง
 
-**Key Differentiator**: ผู้ขายสามารถสร้างร้านของตัวเองด้วย Subdomain ภายใต้ Allkons (เช่น `seller1.allkons.com`) และยังแสดงสินค้าใน Marketplace หลักด้วย (Dual Presence: Storefront + Marketplace)
+**Key Differentiator**: Master SKU เป็นจุดเริ่มต้นของสินค้า และ Seller สามารถสร้าง “สินค้าในร้าน” ได้โดยการอ้างอิง Master SKU เท่านั้น (พร้อมปรับแต่ง Unique content บางส่วนตามกติกา)
 
 ### 1.2 Project Goals
 1. สร้าง Marketplace ที่เน้น B2B เป็นหลัก
@@ -23,11 +23,11 @@
 - **Flexible Content**: ผู้ขายสามารถปรับแต่งเนื้อหาบางส่วนได้ (เช่น ราคา, คำอธิบาย)
 - **Data Quality**: บริษัทควบคุมคุณภาพข้อมูลหลัก (รูปภาพ, ข้อมูลเทคนิค, หมวดหมู่)
 
-### 2.2 Multi-Store Model (Allkons M Concept)
-- **Seller Storefront**: ผู้ขายสามารถสร้างร้านของตัวเองด้วย Subdomain (เช่น `seller1.allkons.com`)
-- **Dual Presence**: สินค้าจะแสดงทั้งในร้านของตัวเอง (Storefront) และใน Marketplace หลัก
-- **Store Customization**: ผู้ขายสามารถปรับแต่งร้านของตัวเองได้ (ชื่อร้าน, โลโก้, ธีมสี, คำอธิบายร้าน)
-- **Unified Product Management**: จัดการสินค้าจาก Seller Dashboard เดียว สินค้าจะแสดงทั้ง 2 ที่อัตโนมัติ
+### 2.2 Marketplace-Only Model
+- **Marketplace Only**: ไม่มี concept ของช่องทางแยกนอก Marketplace
+- **Single Source of Discovery**: ผู้ซื้อค้นหา/เลือกซื้อผ่าน Marketplace เป็นหลัก
+- **Seller Product Listings**: ผู้ขายจัดการ “สินค้าในร้าน” จาก Seller Dashboard และสินค้าแสดงใน Marketplace ตามสถานะ/กติกา
+- **Branch-aware Operations**: ราคา/สต็อก/การเปิดขาย เป็นข้อมูลระดับ Branch และต้องทำงานโดยมีบริบท ORG + Branch เสมอ
 
 ### 2.2 Revenue Model (Potential)
 - Commission from sellers (transaction fee)
@@ -50,7 +50,7 @@
   4. เลือกประเภทโปรไฟล์ธุรกิจ (เช่น บุคคลธรรมดา) และกรอก Tax ID/ID Number
   5. ยอมรับข้อกำหนดเพิ่มเติม (สำหรับนิติบุคคล/ร้านค้า)
 - **KYC**: ต้องทำการ KYC ถึงจะสามารถซื้อสินค้าได้
-- **Login Methods**: Username + Password, Phone Number + OTP, OAuth (Google, Facebook, Line - Phase 2)
+- **Login Methods**: Username + Password, Phone Number + OTP, OAuth (Google, Facebook, Line)
 - **Permissions**: 
   - ซื้อสินค้าได้
   - ดูราคาแบบ B2C
@@ -63,7 +63,7 @@
 
 #### 3.1.2 บุคคลธรรมดาจดทะเบียนพาณิชย์ (Registered Individual Merchant)
 - **Registration Flow**: เช่นเดียวกับ Individual Consumer แต่ต้องยืนยันเอกสารเพิ่มเติม
-- **Login Methods**: Username + Password, Phone Number + OTP, OAuth (Google, Facebook, Line - Phase 2)
+- **Login Methods**: Username + Password, Phone Number + OTP, OAuth (Google, Facebook, Line)
 - **Permissions**:
   - ซื้อสินค้าได้
   - ดูราคาแบบ B2B (ถ้าได้รับการอนุมัติ)
@@ -77,9 +77,8 @@
 
 #### 3.1.3 นิติบุคคล (Legal Entity / Company)
 - **Registration Flow**: เช่นเดียวกับ Individual Consumer แต่ต้องยืนยันเอกสารนิติบุคคล และต้องทำการ KYC/KYB
-- **Login Methods**: Username + Password, Phone Number + OTP, OAuth (Google, Facebook, Line - Phase 2)
-- **Structure**: Account → ORG (KYB) → Team Members
-  - **Note**: Buyer ไม่มี Shop และ Branch
+- **Login Methods**: Username + Password, Phone Number + OTP, OAuth (Google, Facebook, Line)
+- **Structure**: Account → ORG (KYB) → Shop → Branch → Team Members
 - **Permissions**:
   - สร้างหลาย ORG ได้ (1 Account → หลาย ORG)
   - ซื้อสินค้าได้
@@ -118,19 +117,16 @@ Account (KYC)
   - **KYB Required for Selling**: ต้องผ่านการยืนยัน KYB (ORG Verified) ก่อนถึงจะสามารถเริ่มขายสินค้าได้
   - เมื่อ ORG ผ่าน KYB → ร้านค้าสามารถเริ่มขายและทำธุรกรรมได้เต็มรูปแบบ
 - **Shop**: ร้านของผู้ขาย
-  - มี Subdomain (เช่น `company.allkons.com`)
   - สามารถสร้างสาขาได้มากกว่า 1 สาขา
 - **Branch**: สาขาของร้าน
   - ร้านหลักนับเป็น 1 สาขา (level เดียวกัน)
   - Branch สามารถตั้งราคา, สต็อก, shelf แยกกันได้
 
 #### 3.2.2 บุคคลธรรมดาจดทะเบียนพาณิชย์ (Registered Individual Merchant)
-- **Registration Flow**: ทำตามขั้นตอนเดียวกับ Buyer แต่เพิ่มส่วนการตั้งค่าร้านค้า
-  - ระบุชื่อร้านและ subdomain (เช่น `shopname.allkons.com`)
-  - ยืนยันว่า Shop Name และ Subdomain ไม่ซ้ำกัน
+- **Registration Flow**: ทำตามขั้นตอนเดียวกับ Buyer แต่เพิ่มการสร้าง ORG/Shop และระบุ Branch (อย่างน้อย 1 Branch: Main)
   - ยอมรับ Business Layer Terms & Conditions
 - **Structure**: Account → ORG (KYB) → Shop → Branch
-- **Login Methods**: Username + Password, Phone Number + OTP, OAuth (Google, Facebook, Line - Phase 2)
+- **Login Methods**: Username + Password, Phone Number + OTP, OAuth (Google, Facebook, Line)
 - **Permissions**:
   - สร้าง ORG (สร้างได้ทันทีโดยไม่ต้องรอผล KYB)
   - จัดการ KYB (ต้องผ่านการอนุมัติก่อนถึงจะสามารถขายสินค้าได้)
@@ -138,8 +134,8 @@ Account (KYC)
   - สร้าง Branch (หลายสาขา)
   - ดึง Master SKU ไปใช้ได้
   - ปรับแต่งเนื้อหาสินค้าบางส่วนได้ (ราคา, คำอธิบาย)
-  - จัดการสินค้าของตัวเอง (สินค้าจะแสดงทั้งในร้านและ Marketplace)
-  - ปรับแต่งร้านของตัวเอง (ชื่อร้าน, โลโก้, ธีมสี)
+  - จัดการสินค้าของตัวเอง (สินค้าแสดงใน Marketplace ตามสถานะ/กติกา)
+  - จัดการข้อมูล Shop/Branch (เช่น ข้อมูลติดต่อ, ที่อยู่, ข้อมูลจัดส่ง)
   - จัดการออเดอร์
   - ดูรายงานการขาย
   - **Organization Management**: จัดการ ORG, Team Members, Role & Permissions
@@ -148,7 +144,7 @@ Account (KYC)
 #### 3.2.3 นิติบุคคล (Legal Entity / Company)
 - **Registration Flow**: ทำตามขั้นตอนเดียวกับ Seller ปกติ (KYC + ORG Creation + Shop Setup)
   - หมายเหตุ: สามารถสร้าง ORG ได้เลย ส่วน KYB สามารถดำเนินการภายหลังได้ แต่จะยังขายของไม่ได้จนกว่าจะได้รับการอนุมัติ
-- **Login Methods**: Username + Password, Phone Number + OTP, OAuth (Google, Facebook, Line - Phase 2)
+- **Login Methods**: Username + Password, Phone Number + OTP, OAuth (Google, Facebook, Line)
 - **Structure**: Account → ORG (KYB) → Shop → Branch
 - **Permissions**:
   - สร้างหลาย ORG ได้ (1 Account → หลาย ORG)
@@ -156,8 +152,8 @@ Account (KYC)
   - แต่ละ Shop สร้าง Branch ได้หลายสาขา
   - ดึง Master SKU ไปใช้ได้
   - ปรับแต่งเนื้อหาสินค้าบางส่วนได้ (ราคา, คำอธิบาย)
-  - จัดการสินค้าของตัวเอง (สินค้าจะแสดงทั้งในร้านและ Marketplace)
-  - ปรับแต่งร้านของตัวเอง (ชื่อร้าน, โลโก้, ธีมสี, คำอธิบายร้าน)
+  - จัดการสินค้าของตัวเอง (สินค้าแสดงใน Marketplace ตามสถานะ/กติกา)
+  - จัดการข้อมูล Shop/Branch (เช่น ข้อมูลติดต่อ, ที่อยู่, ข้อมูลจัดส่ง)
   - จัดการออเดอร์ B2B และ B2C
   - ดูรายงานการขาย
   - ใช้ฟีเจอร์ B2B เต็มรูปแบบ
@@ -215,7 +211,7 @@ Account (KYC)
 - Handle product status:
   - In system (Master SKU): สินค้าที่มีในระบบ
   - Matching: สินค้าที่ match กับ Master SKU
-  - Not in system: สินค้าที่ไม่มีในระบบ (ต้องสร้าง Master SKU ใหม่)
+  - Not in system: สินค้าที่ไม่มีในระบบ (ส่งคำขอเพิ่ม Master SKU ให้ Admin ตรวจสอบ)
 
 **4.2.3.3 Manage Import Product**
 - View import product (Export Excel)
@@ -412,8 +408,7 @@ Account (KYC)
   - Discount (Promotion Center)
 
 **4.8.2.6 Stock Management**
-- **Note**: Full Inventory Management System เป็น Future Feature (Phase 2+)
-- **Current (MVP)**: Manual Stock Status Management
+- **Current scope**: Manual Stock Status Management
   - Seller manually sets stock status for each product
   - No automatic stock tracking or quantity management
   - Simple status-based system
@@ -422,7 +417,7 @@ Account (KYC)
   - Out of Stock (Can Sale) - หมดสต็อก แต่ยังขายได้ (pre-order)
   - Out of Stock (Can Not Sale) - หมดสต็อก และไม่สามารถขายได้
 - **Branch-Level Stock**: จัดการสต็อกแยกตามสาขา (Manual status per branch)
-- **Future (Phase 2+)**: Full Inventory System
+- **Designed to support**: Full Inventory System
   - Automatic stock tracking
   - Stock quantity management
   - Stock alerts
@@ -476,63 +471,26 @@ Account (KYC)
 3. อัปโหลดเอกสาร KYB
 4. รอการอนุมัติจาก Allkons Admin
 5. เมื่อผ่าน KYB → ORD Verified
-6. ไม่มี Shop (ต่างจาก Seller)
+6. สร้าง Shop (1 Shop ต่อ 1 ORD)
+7. สร้าง Branch (อย่างน้อย 1 Branch: Main)
 
 ---
 
 #### 4.9.2 Shop Creation & Setup (Seller Only)
 
-**Shop Creation**:
+**Shop Setup**:
 - 1 ORD = 1 Shop
-- **Subdomain Selection**: เลือก subdomain สำหรับร้าน (เช่น `company.allkons.com`)
-- **Subdomain Validation**: ตรวจสอบว่า subdomain ใช้ได้หรือไม่ (unique, ไม่มี special characters)
-
-**Store Profile Setup**:
-- ชื่อร้าน
-- โลโก้ร้าน
-- คำอธิบายร้าน
-- ข้อมูลติดต่อ (ที่อยู่, เบอร์โทร, อีเมล)
-- ธีมสี (optional)
-- Banner/Header image (optional)
+- Shop เป็นบริบทการทำงานของ Seller ใน Marketplace (ไม่ใช่หน้าเว็บร้านแยก)
+- Shop ใช้เก็บข้อมูลโปรไฟล์ร้านเพื่อการแสดงผลใน Marketplace และเอกสาร/ธุรกรรม
+  - ชื่อร้าน
+  - โลโก้ร้าน
+  - คำอธิบายร้าน
+  - ข้อมูลติดต่อ (ที่อยู่, เบอร์โทร, อีเมล)
 
 **Branch Creation**:
 - สร้าง Branch (หลายสาขา)
 - ร้านหลัก = Branch แรก (is_main = true)
 - Branch สามารถตั้งราคา, สต็อก, shelf แยกกันได้
-
-#### 4.9.3 Store Customization
-- ปรับแต่งหน้าแรก (Homepage)
-- ปรับแต่งหน้า About
-- ปรับแต่งหน้า Contact
-- จัดการหมวดหมู่สินค้าในร้าน
-- Custom pages (optional)
-
-#### 4.9.4 Store Display
-- **Storefront View**: สินค้าแสดงในร้านของผู้ขาย (`seller.allkons.com`)
-- **Marketplace View**: สินค้าแสดงใน Marketplace หลัก (`allkons.com/marketplace`)
-- **Unified Management**: จัดการสินค้าจาก Seller Dashboard เดียว สินค้าจะแสดงทั้ง 2 ที่อัตโนมัติ
-- **Product Sync**: เมื่ออัปเดตสินค้าใน Dashboard จะอัปเดตทั้งร้านและ Marketplace ทันที
-
-#### 4.9.5 Store Features
-- **Product Catalog**: แสดงสินค้าทั้งหมดในร้าน
-- **Product Search**: ค้นหาสินค้าในร้าน
-- **Category Navigation**: หมวดหมู่สินค้าในร้าน
-- **Shopping Cart**: ตะกร้าสินค้าในร้าน
-- **Checkout**: Checkout ในร้าน (ใช้ระบบเดียวกันกับ Marketplace)
-- **Store Analytics**: รายงานผู้เยี่ยมชมร้าน, ยอดขายจากร้าน
-
-#### 4.9.6 Store Management
-- **Store Settings**: จัดการตั้งค่าร้าน
-- **Store Preview**: ดูตัวอย่างร้านก่อน publish
-- **Store Publish/Unpublish**: เปิด/ปิดร้าน
-- **Store Domain**: จัดการ subdomain
-
-#### 4.9.7 Multi-Store Benefits
-- **Brand Presence**: ผู้ขายมีร้านของตัวเอง สร้าง brand identity
-- **Direct Traffic**: ผู้ซื้อสามารถเข้าไปที่ร้านโดยตรง (`seller.allkons.com`)
-- **Marketplace Visibility**: สินค้ายังแสดงใน Marketplace เพื่อหาลูกค้าใหม่
-- **SEO Benefits**: ร้านแต่ละร้านมี URL ของตัวเอง ช่วย SEO
-- **Trust Building**: ผู้ขายมีร้านของตัวเองสร้างความน่าเชื่อถือ
 
 #### 4.9.8 Requirements for Selling (Seller Readiness)
 
@@ -929,12 +887,6 @@ Account (KYC)
 - จัดการ dispute
 - Refund management
 
-#### 4.17.5 Store Management
-- จัดการ subdomain
-- Approve/Reject store creation
-- Manage store settings
-- Store analytics
-
 #### 4.17.6 Analytics & Reports
 - Dashboard analytics
 - Sales reports
@@ -961,8 +913,7 @@ Account (KYC)
 ### 5.1 Platform
 - Web application (responsive)
 - Mobile web (PWA)
-- Mobile app (iOS, Android) - Phase 2
-- **Multi-Store Support**: Subdomain-based storefronts (e.g., `seller.allkons.com`)
+- Mobile app (iOS, Android)
 
 ### 5.2 Technology Stack (Suggestion)
 
@@ -970,20 +921,19 @@ Account (KYC)
 - **Frontend**: Next.js, React, TypeScript
 - **Backend**: Node.js / Python / Java
 - **Database**: PostgreSQL / MySQL
-- **Search**: Database query (MVP) / Elasticsearch (Post-MVP)
+- **Search**: Database query / Elasticsearch
 - **Personalization**: Shopdit (Personalization Engine)
 - **Caching**: Redis
 - **Storage**: S3 / Cloud Storage
 - **Payment**: Payment Gateway Integration
 - **Shipping**: Shipping API Integration
-- **Multi-Tenant**: Subdomain routing / Multi-tenant architecture
 - **Multi-Branch**: Branch management system
 
 **Allkons Admin System** (Separate System):
 - **Frontend**: Admin Dashboard (React, Vue, หรือ Admin template)
 - **Backend**: Node.js / Python / Java
 - **Database**: PostgreSQL / MySQL (shared หรือ separate)
-- **Search**: Database query (ไม่ใช้ Elasticsearch ใน MVP)
+- **Search**: Database query (ไม่ใช้ Elasticsearch ใน current scope)
 - **File Storage**: S3 / Cloud Storage (for KYC/KYB documents)
 
 ### 5.3 Integrations
@@ -994,7 +944,6 @@ Account (KYC)
 - Tax calculation
 - Invoice generation
 - Email/SMS notifications
-- **DNS/Subdomain Management**: Auto subdomain provisioning
 - **Shopdit Integration**: Personalization engine สำหรับจัดหมวดหมู่สินค้าตามความสนใจ
 - **Allkons Admin System**: Integration สำหรับ Master SKU, KYC/KYB, User Management
 
@@ -1002,26 +951,6 @@ Account (KYC)
 - **Marketplace System**: Integration สำหรับ sync Master SKU, KYC/KYB status, User status
 - **File Storage**: สำหรับเก็บ KYC/KYB documents
 - Email/SMS notifications (for approval notifications)
-
-### 5.4 Multi-Store Technical Requirements
-
-#### 5.4.1 Subdomain Management
-- **Dynamic Subdomain Routing**: Support subdomain-based routing (`*.allkons.com`)
-- **Subdomain Registration**: Allow sellers to register subdomain during store creation
-- **Subdomain Validation**: Validate subdomain uniqueness and format
-- **DNS Configuration**: Auto-configure DNS for subdomains
-
-#### 5.4.2 Multi-Tenant Architecture
-- **Tenant Isolation**: Data isolation between stores
-- **Shared Infrastructure**: Shared codebase, database, and infrastructure
-- **Custom Domain Support**: Future support for custom domains (optional)
-
-#### 5.4.3 Store Rendering
-- **Dynamic Theme**: Support custom themes per store
-- **Product Sync**: Sync products between storefront and marketplace
-- **Unified Cart/Checkout**: Shared cart and checkout system across stores
-
----
 
 ## 6. Non-Functional Requirements
 
@@ -1050,21 +979,21 @@ Account (KYC)
 
 ---
 
-## 7. Out of Scope (Phase 1)
+## 7. Out of Current Scope
 
-### 7.1 Features Not Included in Phase 1
-- Mobile app (iOS, Android) - Phase 2
-- Live chat support - Phase 2
-- Video product reviews - Phase 2
-- Augmented Reality (AR) preview - Phase 3
-- Blockchain-based supply chain tracking - Future
-- AI-powered recommendations - Phase 2
+### 7.1 Features Not Included
+- Mobile app (iOS, Android)
+- Live chat support
+- Video product reviews
+- Augmented Reality (AR) preview
+- Blockchain-based supply chain tracking
+- AI-powered recommendations
 
 ### 7.2 Services Not Included
 - Physical warehouse management
 - Delivery service (using 3rd party only)
-- Installation service marketplace - Phase 2
-- Consultation service - Phase 2
+- Installation service marketplace
+- Consultation service
 
 ---
 
@@ -1098,46 +1027,6 @@ Account (KYC)
 - Dispute rate
 - Customer satisfaction (CSAT)
 
----
-
-## 9. Project Phases
-
-### Phase 1: MVP (Minimum Viable Product)
-**Duration**: 3-6 months
-
-**Core Features:**
-- User registration & authentication
-- Master SKU management (basic)
-- Product listing (seller)
-- Product search & discovery
-- Shopping cart & checkout
-- Order management (basic)
-- Payment integration
-- Basic B2B features (bulk pricing, PO)
-
-### Phase 2: Enhanced Features
-**Duration**: 3-4 months
-
-**Features:**
-- Advanced B2B features (credit terms, invoice)
-- Seller dashboard (advanced)
-- Buyer dashboard (advanced)
-- Reviews & ratings
-- Mobile app
-- Live chat
-
-### Phase 3: Advanced Features
-**Duration**: 2-3 months
-
-**Features:**
-- AI recommendations
-- Advanced analytics
-- Service marketplace integration
-- AR preview
-- Advanced search & filtering
-
----
-
 ## 10. Assumptions & Constraints
 
 ### 10.1 Assumptions
@@ -1147,7 +1036,7 @@ Account (KYC)
 
 ### 10.2 Constraints
 - งบประมาณ
-- Timeline
+- Schedule constraints
 - Technical limitations
 - Regulatory requirements (PDPA, Tax)
 - Market competition

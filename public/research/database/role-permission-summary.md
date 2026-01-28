@@ -26,7 +26,7 @@
 - **Roles**: 
   - **Buyer**: BUYER_PURCHASER, BUYER_ADMIN, BUYER_VIEWER (default) + Custom roles
   - **Seller**: SELLER_PRODUCT_MANAGER, SELLER_ORDER_MANAGER, SELLER_VIEWER (default) + Custom roles
-- **Permissions**: จัดการสินค้า, ออเดอร์, PO, Invoice, Reports (Phase 2+)
+- **Permissions**: จัดการสินค้า, ออเดอร์, PO, Invoice, Reports
 
 ---
 
@@ -142,8 +142,8 @@
 - **PRODUCT_IMPORT**: 15 permissions (VIEW_SESSIONS, CREATE_SESSION, CANCEL_MATCHING, DOWNLOAD_ORIGINAL, DELETE_SESSION, VIEW_REPORT, MANAGE_RESULT, EDIT_TEMPLATE_FIELDS, CONFIRM_NEAR_MATCH, SET_NOT_MATCH_REASON, SUBMIT_FOR_ADMIN_REVIEW, MARK_DONE_MATCHING, IMPORT_EXECUTE, IMPORT_FINISH, VIEW_IMPORTED_IN_STORE)
 - **Total**: 24 Product Module permissions
 
-### ⚠️ Application Level Permissions (Other Modules - Phase 2+)
-- ORDER, PO, INVOICE, REPORT permissions จะเพิ่มใน Phase 2+
+### ⚠️ Application Level Permissions (Other Modules)
+- ORDER, PO, INVOICE, REPORT permissions จะเพิ่มเมื่อมีการ implement features ที่เกี่ยวข้อง
 
 ---
 
@@ -261,12 +261,6 @@ WHERE code IN ('ORG_VIEW_LIST', 'MEMBER_VIEW_LIST', 'ROLE_VIEW_LIST');
 ### Completed
 1. ✅ Add Product Module Permissions (24 permissions)
 2. ✅ Assign permissions to default app roles (SELLER_PRODUCT_MANAGER, SELLER_ORDER_MANAGER, SELLER_VIEWER)
-
-### Future (Phase 2+)
-1. ⚠️ Add more Application Level Permissions (ORDER, PO, INVOICE, REPORT)
-2. ⚠️ Create permission checking functions
-3. ⚠️ Add more RLS policies
-4. ⚠️ Add Buyer permissions
 
 ---
 

@@ -162,7 +162,7 @@
 - ✅ จัดการออเดอร์ (ยืนยัน, จัดการสถานะ, ส่งสินค้า)
 - ✅ ดูรายงาน
 - ❌ ไม่สามารถจัดการทีม
-- ❌ ไม่สามารถจัดการร้าน settings (customization, subdomain)
+- ❌ ไม่สามารถจัดการร้าน settings
 
 **Use Case**: ผู้จัดการร้าน, ผู้ช่วยผู้จัดการ
 
@@ -481,24 +481,6 @@
 
 ---
 
-## 8. Future Enhancements
-
-### 8.1 Phase 2 Enhancements
-
-1. **Custom Roles**: สร้าง role เองได้
-2. **Custom Permissions**: กำหนด permissions เองได้
-3. **Team Chat**: แชทภายในทีม
-4. **Task Assignment**: มอบหมายงานให้สมาชิกทีม
-
-### 8.2 Phase 3 Enhancements
-
-1. **Approval Workflows**: Workflow สำหรับอนุมัติออเดอร์
-2. **Team Analytics**: Analytics สำหรับทีม
-3. **Team Templates**: Template สำหรับทีม
-4. **Integration**: Integrate กับ tools อื่นๆ (Slack, Teams)
-
----
-
 ## 9. Risks & Mitigation
 
 ### 9.1 Risks
@@ -528,10 +510,6 @@ Team Management เป็นฟีเจอร์สำคัญของ Allkon
 - **สร้างความปลอดภัย**: Role-based access control
 - **สร้างความแตกต่าง**: ฟีเจอร์ที่ B2B ต้องการ
 
-**Recommendation**: 
-- ควร implement ใน Phase 1 (MVP) เพื่อสร้าง competitive advantage
-- เริ่มจาก basic roles แล้วค่อยเพิ่ม custom roles ใน Phase 2
-
 ---
 
 ## Appendix
@@ -540,7 +518,6 @@ Team Management เป็นฟีเจอร์สำคัญของ Allkon
 
 | Feature | Owner | Admin | Purchaser/Order Manager | Viewer |
 |---------|-------|-------|------------------------|--------|
-| Manage Team | ✅ | ❌ | ❌ | ❌ |
 | Manage Account/Store | ✅ | ❌ | ❌ | ❌ |
 | Create Orders/Products | ✅ | ✅ | ✅ | ❌ |
 | View Reports | ✅ | ✅ | Limited | ✅ |

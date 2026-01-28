@@ -3,6 +3,11 @@
 ## Executive Summary
 Module สำหรับการจัดการ PDPA (Personal Data Protection Act) ในระบบ Allkons M โดยแบ่งเป็น 2 Layer: Account (User) level และ ORG level
 
+**Key Notes**:
+- Consent มี 2 Layer: **Account** และ **ORG**
+- Consent ระดับ **ORG** ครอบคลุมการทำงานของ **Shop/Branch** ภายใต้ ORG นั้น
+- มี **Consent Center** เพื่อเป็นศูนย์กลางในการเก็บ/จัดการ/ตรวจสอบ/ส่งออกข้อมูล consent
+
 ---
 
 ## 1. Module Overview
@@ -221,6 +226,25 @@ Module สำหรับการจัดการ PDPA (Personal Data Protect
 - Consent IP address
 - Consent record
 
+**Consent Center (What to store)**:
+- Subject layer (Account/ORG)
+- Subject identifier (account_id / org_id)
+- Consent type / purpose
+- Consent status (given/withdrawn)
+- Consent given_at / withdrawn_at
+- Effective date range (effective_from / expires_at)
+- Policy version / consent version
+- Channel (web/mobile/admin)
+- Method (checkbox, toggle, API)
+- Evidence metadata (ip_address, user_agent, locale)
+- Source platform/app context (เช่น buyer app / seller app)
+
+**Time rule**:
+- รองรับการตั้งกติกา re-consent ตามช่วงเวลา
+
+**Default time rule**:
+- ค่า default สำหรับ re-consent คือ **ทุก 6 เดือน** (สำหรับ consent ที่ต้องให้ความยินยอมต่อเนื่อง เช่น marketing/data sharing/analytics/third-party)
+
 ---
 
 #### 3.1.2 Consent Withdrawal
@@ -260,6 +284,18 @@ Module สำหรับการจัดการ PDPA (Personal Data Protect
 - Filter by consent type
 - Filter by date
 - Export consent history
+
+---
+
+### 3.1.4 Consent Lifecycle Cases
+
+**Cases**:
+- New register: เก็บ consent ณ จุดลงทะเบียน (Account level) และยืนยัน policy version
+- Cross platform (Seller-Buyer): เมื่อ Account เดิมเริ่มใช้งานอีก context ต้องตรวจ consent ที่เกี่ยวข้องและเก็บ record แยกตาม layer
+- Change version: เมื่อ policy/consent version เปลี่ยน ต้องบังคับ re-consent (กรณี major changes)
+- Time rule (6 months default): เมื่อครบกำหนดต้องแจ้งเตือนและบันทึกการ re-consent
+- Profile upgrade: Individual Consumer → Registered Individual Merchant/Legal Entity
+  - ต้องเก็บ consent เพิ่มเติมที่เกี่ยวข้องกับ KYC/KYB/การประมวลผลเอกสาร และอัปเดต record ตาม layer
 
 ---
 
@@ -614,19 +650,19 @@ handleDataBreach(breachId: string, actions: BreachActions): Promise<void>
 
 ## 8. Implementation Priority
 
-### Phase 1 (MVP)
+### Current scope
 - ✅ Basic consent management (Account & ORG)
 - ✅ Privacy policy management
 - ✅ Data access request
 - ✅ Data rectification request
 
-### Phase 2
+### Designed to support
 - ✅ Data erasure request
 - ✅ Data portability request
 - ✅ Data processing records
 - ✅ Consent history
 
-### Phase 3
+### Designed to support (advanced)
 - ✅ Data breach management
 - ✅ Privacy Impact Assessment (PIA)
 - ✅ Advanced consent management

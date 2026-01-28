@@ -278,7 +278,7 @@ Module สำหรับการจัดการการคืนสิน�
 - Return status
 - Refund amount
 - Refund status
-- Timeline
+- Status history
 - Communication history
 
 ---
@@ -394,19 +394,19 @@ resolveDispute(id: string, adminId: string, decision: string): Promise<void>
 
 ## 7. Implementation Priority
 
-### Phase 1 (MVP)
+### Current scope
 - ✅ Basic return request
 - ✅ Return authorization
 - ✅ Basic refund processing
 - ✅ Return history
 
-### Phase 2
+### Designed to support
 - ✅ Return policies
 - ✅ Dispute management
 - ✅ Advanced refund options
 - ✅ Return analytics
 
-### Phase 3
+### Designed to support (advanced)
 - ✅ Automated return processing
 - ✅ Return prediction
 - ✅ Advanced dispute resolution

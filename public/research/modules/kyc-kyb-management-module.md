@@ -190,6 +190,10 @@ Not Started → Pending → Under Review → Approved/Rejected
 - Enable ORG features (Shop creation, B2B features)
 - Compliance with regulations
 
+**KYB Scope Note**:
+- KYB เป็นการยืนยันระดับ **ORG**
+- เมื่อ **ORG Verified** แล้ว ถือว่า **Shop/Branch ภายใต้ ORG นั้น** สามารถทำงานตามสิทธิ์ได้เลย (ไม่มีการ verify แยกระดับ Shop/Branch)
+
 ---
 
 #### 3.1.2 KYB Documents Required
@@ -252,9 +256,10 @@ Not Started → Pending → Under Review → Approved/Rejected
 
 **Step 5: ORG Full Activation**
 1. If KYB approved → ORG Verified
-2. Seller can start selling and processing transactions
-3. Buyer can use all B2B features (PO, Credit Terms)
-4. If KYB rejected → User notified and must resubmit correct documents
+2. Shop/Branch ภายใต้ ORG ที่ Verified ถือว่าเปิดใช้งานได้ตามสิทธิ์
+3. Seller can start selling and processing transactions
+4. Buyer can use all B2B features (PO, Credit Terms)
+5. If KYB rejected → User notified and must resubmit correct documents
 
 ---
 
@@ -270,7 +275,7 @@ Not Started → Pending → Under Review → Approved/Rejected
 - **Suspended**: ถูกระงับ (ต้อง re-verify)
 
 **Status Effects**:
-- **Approved**: ORG Verified → Can use all features, including selling and B2B transactions
+- **Approved**: ORG Verified → Shop/Branch ภายใต้ ORG ทำงานได้ตามสิทธิ์ และใช้ฟีเจอร์ที่ต้องอาศัย KYB ได้ทั้งหมด (เช่น selling, B2B)
 - **Rejected**: Cannot sell or use B2B features; restricted to basic ORG management
 - **Expired**: Must re-verify to continue
 - **Suspended**: ORG temporarily disabled
@@ -531,9 +536,9 @@ Not Started → Pending → Under Review → Approved/Rejected
 - Account activation after KYC/KYB approval
 
 **Organization Management**:
-- KYB required for ORG creation
+- ORG creation can be done immediately; KYB is required for ORG verification
 - ORG Verified status after KYB approval
-- Shop creation requires KYB approval
+- Shop/Branch setup can be done before KYB approval, but selling/B2B transactions require ORG Verified
 
 **Notification Module**:
 - KYC/KYB status change notifications
@@ -642,20 +647,20 @@ downloadDocument(documentId: string): Promise<File>
 
 ## 11. Implementation Priority
 
-### Phase 1 (MVP)
+### Current scope
 - ✅ Basic KYC/KYB process
 - ✅ Document upload
 - ✅ Manual approval workflow
 - ✅ Status management
 - ✅ Basic notifications
 
-### Phase 2
+### Designed to support
 - ✅ OCR integration
 - ✅ Automated checks
 - ✅ Re-verification process
 - ✅ Advanced document management
 
-### Phase 3
+### Designed to support (advanced)
 - ✅ Database cross-reference
 - ✅ Advanced fraud detection
 - ✅ Automated approval (low-risk cases)

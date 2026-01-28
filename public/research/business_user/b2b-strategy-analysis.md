@@ -19,7 +19,7 @@
 
 ## 3. Recommendation: Hybrid Model (Separated Flows, Unified Platform)
 
-ไม่จำเป็นต้องแยก Platform (แยกเว็บ) แต่ควร **"แยก Flow การซื้อขาย"** ตามประเภทสินค้าและประเภทผู้ซื้อ
+**"แยก Flow การซื้อขาย"** ตามประเภทสินค้าและประเภทผู้ซื้อ
 
 ### 3.1 Why Hybrid?
 - **Unified Inventory**: โรงงานบางแห่งอาจขายปลีก (Direct to Consumer) ในบางสินค้า

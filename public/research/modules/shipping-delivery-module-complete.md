@@ -55,7 +55,7 @@ Module สำหรับการจัดการการจัดส่ง�
 - **Local Zone**: ในเมือง/จังหวัดเดียวกัน
 - **Regional Zone**: ในภูมิภาคเดียวกัน
 - **National Zone**: ทั่วประเทศ
-- **International Zone**: ต่างประเทศ (Phase 2)
+- **International Zone**: ต่างประเทศ (Designed to support)
 
 **Zone-based Pricing**:
 - Different rates for different zones
@@ -182,7 +182,7 @@ Module สำหรับการจัดการการจัดส่ง�
 - Notification on status change
 
 **Tracking Display**:
-- Tracking timeline
+- Tracking status history
 - Current status
 - Estimated delivery
 - Map view (if available)
@@ -306,19 +306,19 @@ updateShippingSettings(sellerId: string, settings: ShippingSettings): Promise<vo
 
 ## 7. Implementation Priority
 
-### Phase 1 (MVP)
+### Current scope
 - ✅ Basic shipping options
 - ✅ Shipping rate calculation (basic)
 - ✅ Shipping label generation
 - ✅ Basic tracking
 
-### Phase 2
+### Designed to support
 - ✅ Shipping provider integration
 - ✅ Real-time tracking
 - ✅ Advanced rate calculation
 - ✅ Delivery confirmation
 
-### Phase 3
+### Designed to support (advanced)
 - ✅ Advanced tracking features
 - ✅ Shipping analytics
 - ✅ Shipping optimization

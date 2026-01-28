@@ -361,18 +361,18 @@ compareBranchPrices(productId: string, branches: string[]): Promise<PriceCompari
 
 ## 7. Implementation Priority
 
-### Phase 1 (MVP)
+### Current scope
 - ✅ Base price management
 - ✅ Basic promotion price
 - ✅ Customer group pricing (basic)
 
-### Phase 2
+### Designed to support
 - ✅ Bulk pricing
 - ✅ Branch-level pricing
 - ✅ Price history
 - ✅ Price comparison
 
-### Phase 3
+### Designed to support (advanced)
 - ✅ Advanced pricing rules
 - ✅ Price optimization
 - ✅ Dynamic pricing

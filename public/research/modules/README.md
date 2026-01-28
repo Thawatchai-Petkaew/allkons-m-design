@@ -7,7 +7,7 @@
 
 ## Module Documentation List
 
-### 🔴 Critical Modules (Phase 1 - MVP)
+### 🔴 Critical Modules
 
 1. **[Authentication & Authorization Module](./authentication-authorization-module.md)** ✅
    - User Registration, Login, 2FA
@@ -77,10 +77,10 @@
    - Delivery Tracking (Complete)
    - Delivery Confirmation
 
-11. **[Inventory Management Module (Complete)](./inventory-management-module-complete.md)** ⚠️ Future Feature
-    - **Status**: Future Feature (Phase 2+)
-    - **Current (MVP)**: Manual Stock Status Management
-    - **Future**: Full Inventory System
+11. **[Inventory Management Module (Complete)](./inventory-management-module-complete.md)** ⚠️ Out of current scope
+    - **Status**: Out of current scope (Full Inventory System)
+    - **Current scope**: No Inventory Management (ใช้ Manual Stock Status)
+    - **Designed to support**: Full Inventory System
     - Stock Tracking (Complete)
     - Stock Alerts (Low stock, Out of stock)
     - Stock History
@@ -101,7 +101,24 @@
     - PO Management (Complete)
     - Document Templates
     - Document Storage & Sharing
-    - Document History
+
+14. **[RFQ Management Module](./rfq-management-module.md)** ✅
+    - RFQ Creation & Management
+    - Seller Invitation & Selection
+    - Quotation Management & Comparison
+    - Negotiation Workflow
+    - PO Generation
+    - Mango Integration
+
+15. **[Inventory Management Module (Complete)](./inventory-management-module-complete.md)** ⚠️ Out of current scope
+    - **Status**: Out of current scope (Full Inventory System)
+    - **Current scope**: No Inventory Management (ใช้ Manual Stock Status)
+    - **Designed to support**: Full Inventory System
+    - Stock Tracking (Complete)
+    - Stock Alerts (Low stock, Out of stock)
+    - Stock History
+    - Stock Adjustment
+    - Multi-location Inventory
 
 ---
 
@@ -109,7 +126,7 @@
 
 | Status | Count | Modules |
 |--------|-------|---------|
-| ✅ Fully Documented | 13 | All Critical + Completed Modules |
+| ✅ Fully Documented | 16 | All Critical + Completed Modules + RFQ |
 | ⚠️ Partially Documented | 0 | - |
 | ❌ Missing | 0 | - |
 
@@ -175,12 +192,8 @@
 - Multi-delivery Support
 
 ### Inventory
-- Stock Tracking (Complete)
-- Stock Alerts
-- Stock History
-- Stock Adjustment
-- Multi-location Inventory
-- Stock Synchronization
+- **Current scope**: Manual Stock Status (Stocked, Out of stock)
+- **Designed to support**: Inventory Management (quantity, alerts, history, adjustment, multi-location, synchronization)
 
 ### Pricing
 - Base Price Management
@@ -201,6 +214,7 @@
 ### PDPA Compliance
 - Two-Layer PDPA (Account & ORG)
 - Consent Management
+- Consent Center (central consent record storage)
 - Data Subject Rights
 - Privacy Policy Management
 - Data Processing Records
@@ -235,7 +249,7 @@ Order Management
   ├── Shipping & Delivery
   ├── Tax Management
   ├── Refund & Return
-  └── Inventory Management (Future - Manual Stock Status for MVP)
+  └── Inventory Management (Designed to support; current scope uses manual stock status)
 
 Promotion/Campaign
   ├── Product Module
@@ -258,7 +272,7 @@ Payment & Invoicing
 
 Shipping & Delivery
   ├── Order Management
-  └── Inventory Management (Future)
+  └── Inventory Management (Designed to support)
 ```
 
 ---
@@ -268,7 +282,7 @@ Shipping & Delivery
 1. **Review Module Documentation**: ตรวจสอบ Module Documentation ทั้งหมด
 2. **Validate Requirements**: Validate requirements กับ stakeholders
 3. **Technical Design**: ออกแบบระบบตาม Module Documentation
-4. **Development**: พัฒนาตาม phases
+4. **Implementation**: พัฒนาตามลำดับความสำคัญของความต้องการ
 
 ---
 

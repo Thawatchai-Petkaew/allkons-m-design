@@ -50,20 +50,6 @@
 
 ---
 
-### 1.3 ✅ Technical Stack (Decided)
-
-| Component | Decision | Status |
-|-----------|----------|--------|
-| **Frontend** | Next.js, React, TypeScript | ✅ Decided |
-| **Hosting** | Vercel | ✅ Decided |
-| **Database** | Supabase (PostgreSQL) | ✅ Decided |
-| **Auth** | Supabase Auth | ✅ Decided |
-| **Storage** | Supabase Storage | ✅ Decided |
-| **OTP** | Mock OTP | ✅ Decided |
-| **CI/CD** | GitHub Actions | ✅ Decided |
-| **Code Repository** | GitHub | ✅ Using |
-
----
 
 ## 2. Current Scope Features Readiness
 
@@ -213,17 +199,12 @@
 - All core documentation complete
 - Module documentation complete
 - User structure defined
-- Technical stack decided
 
 **Database Schema**: ✅ 100% (Core)
 - Account & ORG schema complete
 - Role & Permission schema complete
 - Master data ready
 - Setup guide available
-
-**Technical Decisions**: ✅ 100%
-- All core stack decisions made
-- No blocking decisions
 
 ---
 
@@ -252,7 +233,6 @@
 **What's Ready**:
 - ✅ Complete documentation
 - ✅ Core database schema (Account, ORG, Roles, Permissions)
-- ✅ Technical stack decided
 - ✅ Setup guides available
 
 **What's Missing (Non-Blocking)**:
@@ -288,7 +268,6 @@
 - [x] Stakeholder & Supply Chain ✅
 - [x] User Structure ✅
 - [x] Module Documentation ✅
-- [x] Technical Stack Decision ✅
 - [x] Database Schema (Core) ✅
 - [ ] API Documentation (Consolidated) ⚠️
 - [ ] Project Structure ⚠️

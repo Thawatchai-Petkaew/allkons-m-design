@@ -407,19 +407,19 @@ downloadInvoice(invoiceId: string): Promise<File>
 
 ## 7. Implementation Priority
 
-### Phase 1 (MVP)
+### Current scope
 - ✅ Basic payment methods (Card, Bank Transfer)
 - ✅ Payment gateway integration (PromptPay, TrueMoney)
 - ✅ Basic invoice generation
 - ✅ Payment history
 
-### Phase 2
+### Designed to support
 - ✅ Credit terms (B2B)
 - ✅ Refund management
 - ✅ Payment reconciliation
 - ✅ Advanced invoice features
 
-### Phase 3
+### Designed to support (advanced)
 - ✅ Installment
 - ✅ Advanced fraud detection
 - ✅ Payment analytics

@@ -188,7 +188,7 @@
 **Bulk Template (Add Product)**:
 - **In System (Master SKU)**: สินค้าที่มีในระบบ (Master SKU)
 - **Matching**: สินค้าที่ match กับ Master SKU
-- **Not in System (API) [change to kat]**: สินค้าที่ไม่มีในระบบ (ต้องเปลี่ยนเป็น kat - อาจหมายถึงต้องสร้าง Master SKU ใหม่)
+- **Not in System (API) [change to kat]**: สินค้าที่ไม่มีในระบบ (ส่งคำขอให้ Master SKU Admin ตรวจสอบ/เพิ่ม Master SKU; ร้านค้าไม่สามารถสร้าง Master SKU เอง)
 
 ---
 
@@ -256,16 +256,27 @@
 
 ### 4.3 Master SKU Integration
 
+**Model**:
+- **Master SKU**: ข้อมูลหลักของสินค้า (single source of truth)
+- **Store Product (Listing)**: สินค้าที่ “อยู่ในร้าน” โดยอ้างอิง Master SKU (ร้านค้าดึงได้จาก Master SKU เท่านั้น)
+- **Branch Context**: ราคา/สต็อก/การเปิดขาย เป็นข้อมูลระดับ Branch และต้องทำงานโดยมีบริบท ORG + Branch เสมอ
+
+**Unique Content (Store Product editable fields)**:
+- Product name
+- Description
+- Product thumbnail
+- Discount price + time period
+
 **Features**:
 - **Search Import Product**: ค้นหาสินค้าจาก Master SKU เพื่อ import
 - **In System (Master SKU)**: สินค้าที่มีในระบบ Master SKU
 - **Matching**: สินค้าที่ match กับ Master SKU
-- **Not in System**: สินค้าที่ไม่มีในระบบ (ต้องสร้าง Master SKU ใหม่)
+- **Not in System**: สินค้าที่ไม่มีในระบบ (ส่งคำขอให้ Master SKU Admin ตรวจสอบ/เพิ่ม Master SKU)
 
 **Workflow**:
 1. Seller ค้นหาสินค้าจาก Master SKU
 2. Import สินค้าไปใช้
-3. ถ้าไม่มีในระบบ → สร้าง Master SKU ใหม่
+3. ถ้าไม่มีในระบบ → ส่งคำขอให้ Master SKU Admin ตรวจสอบ/เพิ่ม Master SKU
 
 ---
 
@@ -364,7 +375,7 @@
 - Search Master SKU
 - Import from Master SKU
 - Match products with Master SKU
-- Create new Master SKU if not found
+- Submit request to Master SKU Admin if not found (seller cannot create Master SKU)
 
 ---
 
@@ -438,59 +449,10 @@
 
 ---
 
-## 8. Implementation Priority
-
-### 8.1 Phase 1 (MVP)
-
-**Buyer**:
-- ✅ Basic Search (Product name, Brand)
-- ✅ Cart (Add, Delete, Update quantity)
-- ✅ Buy Product (Base price)
-- ✅ Basic Delivery (Single)
-
-**Seller**:
-- ✅ View Product (All, Detail)
-- ✅ Add Product (On web - Search import from Master SKU)
-- ✅ Edit Product (Name, Description, Price)
-- ✅ Set Stock (Stocked, Out of stock)
-
----
-
-### 8.2 Phase 2
-
-**Buyer**:
-- ✅ Advanced Search (Merchant name, All product)
-- ✅ Sort (Price, Name)
-- ✅ Personalized Catalog (shopdit integration)
-- ✅ Multiple Delivery
-- ✅ Export (Invoice, BOQ)
-
-**Seller**:
-- ✅ Import Excel
-- ✅ Manage Import Product
-- ✅ Multi-branch support
-- ✅ Promotion Price (Customer group, Special price)
-- ✅ Set On Shelf Product
-
----
-
-### 8.3 Phase 3
-
-**Buyer**:
-- ✅ Custom Category
-- ✅ Location-based (Near user, Regular shop)
-
-**Seller**:
-- ✅ Advanced Stock Management (Out of stock can sale)
-- ✅ Picture Management (Add new, not edit old)
-- ✅ Advanced Export features
-
----
-
 ## 9. Open Questions / Clarifications Needed
 
 1. **"change to kat"**: ใน Import Excel → Not in system (api) [change to kat] - หมายถึงอะไร?
-   - อาจหมายถึงต้องสร้าง Master SKU ใหม่?
+   - อาจหมายถึงส่งคำขอให้ Master SKU Admin ตรวจสอบ/เพิ่ม Master SKU?
    - หรือต้องใช้ระบบอื่น?
 
 2. **Shopdit Integration**: 
@@ -505,16 +467,6 @@
    - "Out of stock (can sale)" หมายถึง pre-order หรือ backorder?
    - มีระบบแจ้งเตือนเมื่อสต็อกต่ำหรือไม่?
 
----
-
-## 10. Next Steps
-
-1. **Clarify Open Questions**: ตอบคำถามที่ยังไม่ชัดเจน
-2. **Update Project Scope**: อัปเดต Project Scope ตาม Module นี้
-3. **Create User Stories**: สร้าง User Stories ที่ละเอียดขึ้น
-4. **Technical Design**: ออกแบบระบบตาม Module นี้
-
----
 
 ## Appendix
 

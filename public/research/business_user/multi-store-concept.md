@@ -1,21 +1,21 @@
-# Multi-Store Concept: Allkons M
+# Marketplace-only Concept (Archived): Allkons M
 
 ## Executive Summary
-เอกสารนี้อธิบาย Concept ของ Multi-Store (Seller Storefront) สำหรับ Allkons M ซึ่งเป็นหนึ่งในฟีเจอร์หลักที่แตกต่างจาก Marketplace ทั่วไป
+เอกสารนี้เป็นบันทึกแนวคิดเดิมเพื่ออ้างอิง (Archived) โดย **แนวทางปัจจุบันคือ Marketplace-only**
 
 ---
 
 ## 1. Concept Overview
 
-### 1.1 Allkons M Multi-Store Concept
+### 1.1 Marketplace-only
 
-**Core Concept**: 
-ผู้ขายสามารถสร้างร้านของตัวเองด้วย Subdomain ภายใต้ Allkons (เช่น `seller.allkons.com`) และยังแสดงสินค้าใน Marketplace หลักด้วย
+**Core Concept**:
+ผู้ขายจัดการสินค้าในบริบท Shop/Branch และสินค้าแสดงผลใน Marketplace เท่านั้น
 
 **Key Features**:
-- **Dual Presence**: สินค้าจะแสดงทั้งในร้านของผู้ขาย (`seller.allkons.com`) และใน Marketplace หลัก (`allkons.com/marketplace`)
-- **Unified Management**: จัดการสินค้าจาก Seller Dashboard เดียว สินค้าจะแสดงทั้ง 2 ที่อัตโนมัติ
-- **Store Customization**: ผู้ขายสามารถปรับแต่งร้านของตัวเองได้ (ชื่อร้าน, ล็อกโก้, ธีมสี, คำอธิบายร้าน)
+- **Marketplace Only**: สินค้าแสดงใน Marketplace เป็นหลัก
+- **Unified Management**: จัดการสินค้าจาก Seller Dashboard (Shop/Branch context)
+- **Shop Profile**: ผู้ขายจัดการข้อมูลโปรไฟล์ร้านเพื่อใช้ใน Marketplace และเอกสาร/ธุรกรรม
 
 ---
 
@@ -23,16 +23,14 @@
 
 ### 2.1 Seller Use Cases
 
-#### Use Case 1: สร้างร้านของตัวเอง
+#### Use Case 1: ตั้งค่า Shop/Branch เพื่อเริ่มขาย
 - **Actor**: Seller (สมชาย - ช่างรับเหมา)
 - **Scenario**: 
   1. Seller สมัครสมาชิกและได้รับการอนุมัติ
   2. Seller เข้าไปที่ Seller Dashboard
-  3. Seller เลือก "สร้างร้านของตัวเอง"
-  4. Seller กรอก subdomain (เช่น `somchai.allkons.com`)
-  5. Seller ปรับแต่งร้าน (ชื่อร้าน, ล็อกโก้, คำอธิบาย)
-  6. Seller publish ร้าน
-  7. ร้านพร้อมใช้งานที่ `somchai.allkons.com`
+  3. Seller สร้าง/เลือก ORG
+  4. Seller ตั้งค่า Shop และ Branch (อย่างน้อย 1 Branch: Main)
+  5. Seller พร้อมใช้งาน Seller Dashboard
 
 #### Use Case 2: จัดการสินค้าจาก Dashboard เดียว
 - **Actor**: Seller (สมเกียรติ - บริษัทวัสดุก่อสร้าง)
@@ -41,27 +39,26 @@
   2. Seller ดึง Master SKU มาขาย
   3. Seller ตั้งราคาและสต็อก
   4. Seller publish สินค้า
-  5. สินค้าจะแสดงทั้งในร้านของผู้ขาย (`company.allkons.com`) และใน Marketplace (`allkons.com/marketplace`) อัตโนมัติ
+  5. สินค้าจะแสดงใน Marketplace ตามสถานะ/กติกา
 
-#### Use Case 3: ปรับแต่งร้าน
+#### Use Case 3: จัดการข้อมูล Shop
 - **Actor**: Seller
 - **Scenario**:
   1. Seller เข้าไปที่ Seller Dashboard
   2. Seller เลือก "จัดการร้าน"
-  3. Seller ปรับแต่งชื่อร้าน, ล็อกโก้, ธีมสี
+  3. Seller ปรับแต่งชื่อร้าน, ล็อกโก้, ข้อมูลติดต่อ
   4. Seller บันทึก
-  5. การเปลี่ยนแปลงแสดงผลในร้านทันที
+  5. การเปลี่ยนแปลงแสดงผลใน Marketplace และเอกสาร/ธุรกรรม
 
 ---
 
 ### 2.2 Buyer Use Cases
 
-#### Use Case 1: เข้าไปที่ร้านของผู้ขายโดยตรง
+#### Use Case 1: ดูข้อมูลผู้ขาย/Shop ใน Marketplace
 - **Actor**: Buyer (ประยงค์ - ช่างรับเหมา)
 - **Scenario**:
-  1. Buyer ได้รับ link ไปที่ `somchai.allkons.com`
-  2. Buyer เข้าไปที่ร้านของผู้ขาย
-  3. Buyer ดูสินค้าในร้าน
+  1. Buyer เข้าไปที่ Marketplace
+  2. Buyer ดูข้อมูลผู้ขาย/Shop และรายการสินค้า
   4. Buyer เพิ่มสินค้าลงตะกร้า
   5. Buyer checkout
 
@@ -113,14 +110,10 @@
 ### 3.2 For Buyers
 
 **1. Multiple Channels**
-- สามารถซื้อจากร้านของผู้ขายโดยตรง
-- หรือซื้อผ่าน Marketplace
-- มีทางเลือกหลากหลาย
+ - ผู้ซื้อซื้อผ่าน Marketplace
 
 **2. Brand Trust**
-- เห็นร้านของผู้ขายแยกต่างหาก
-- สร้างความเชื่อมั่นในร้าน
-- รู้ว่าเป็นร้านไหน
+ - เห็นข้อมูลผู้ขาย/Shop ใน Marketplace
 
 **3. Price Comparison**
 - เปรียบเทียบราคาจากผู้ขายหลายรายได้
@@ -132,19 +125,17 @@
 ### 3.3 For Platform (Allkons M)
 
 **1. Competitive Advantage**
-- ฟีเจอร์ที่ไม่มีใครทำได้ (Multi-store + Marketplace)
+- ฟีเจอร์ที่แข่งขันได้: Master SKU + Marketplace + Branch-aware operations
 - เป็นจุดขายที่แตกต่าง
 - ดึงดูดผู้ขายได้มากขึ้น
 
 **2. Seller Retention**
-- ผู้ขายมีร้านของตัวเองจะไม่ย้ายไปที่อื่นง่าย
+- ผู้ขายมีบริบทการทำงานชัดเจน (ORG/Shop/Branch) และ tooling ที่ครบ
 - สร้างความผูกพันกับแพลตฟอร์ม
 - ลด churn rate
 
 **3. SEO Benefits**
-- แต่ละร้านมี URL ของตัวเอง
-- ช่วย SEO ของแพลตฟอร์ม
-- เพิ่ม organic traffic
+ - เพิ่ม organic traffic จากการจัดโครงสร้างข้อมูลสินค้าและข้อมูลผู้ขายใน Marketplace
 
 **4. Network Effects**
 - ยิ่งมีร้านมากขึ้น ยิ่งมี traffic มากขึ้น
@@ -154,33 +145,27 @@
 
 ## 4. Technical Architecture
 
-### 4.1 Subdomain Routing
+### 4.1 Routing
 
 ```
-Main Domain:
-- allkons.com → Main marketplace
-- allkons.com/marketplace → Marketplace view
-- allkons.com/admin → Admin panel
-
-Seller Subdomains:
-- seller1.allkons.com → Seller 1's storefront
-- seller2.allkons.com → Seller 2's storefront
-- company.allkons.com → Company's storefront
+allkons.com → Marketplace
+allkons.com/seller → Seller dashboard
+allkons.com/admin → Admin panel
 ```
 
-### 4.2 Multi-Tenant Architecture
+### 4.2 Multi-ORG / Multi-Branch Architecture
 
-**Approach**: Multi-tenant with shared infrastructure
+**Approach**: Multi-ORG + Shop + Branch context with shared infrastructure
 
 - **Shared Codebase**: ใช้ codebase เดียวกัน
-- **Tenant Isolation**: Data isolation ระหว่าง stores
-- **Shared Database**: ใช้ database เดียว แต่แยก tenant
+- **Data Isolation**: Data isolation ระหว่าง ORG/Shop/Branch
+- **Shared Database**: ใช้ database เดียว แต่มี foreign keys/tenant scoping
 - **Shared Infrastructure**: Server, CDN, etc.
 
 ### 4.3 Data Flow
 
 ```
-Seller Dashboard → Product Management
+Seller Dashboard → Product Management (Shop/Branch)
          ↓
     Update Product
          ↓
@@ -190,39 +175,34 @@ Seller Dashboard → Product Management
          ↓
     ┌─────────────┬─────────────┐
     │             │             │
-Seller Store    Marketplace   Search
-(seller.com)   (allkons.com)  Index
+ Marketplace     Search        Admin
+ (allkons.com)   Index         (review)
 ```
 
 ---
 
 ## 5. Implementation Considerations
 
-### 5.1 Subdomain Management
+### 5.1 Context Management (ORG/Shop/Branch)
 
 **Challenges**:
-- DNS configuration
-- SSL certificate for subdomains (wildcard SSL)
-- Subdomain validation and uniqueness
+- User ต้องเลือกบริบท ORG + Branch ก่อนทำงาน
+- การกันข้อมูลไม่ให้ข้าม ORG/Branch
 
 **Solutions**:
-- Use wildcard DNS: `*.allkons.com`
-- Use wildcard SSL certificate
-- Validate subdomain format (alphanumeric, hyphen only)
-- Check subdomain availability before registration
+- Organization/Branch switcher
+- RLS/tenant scoping
 
-### 5.2 Product Sync
+### 5.2 Product Visibility
 
 **Challenges**:
-- Sync products between storefront and marketplace
+- แสดงสินค้าใน Marketplace ตามสถานะ/กติกา
 - Handle product updates
 - Manage product visibility
 
 **Solutions**:
-- Real-time sync when product is updated
-- Use event-driven architecture
 - Single source of truth (Seller Dashboard)
-- Cache invalidation for both stores
+- Cache invalidation
 
 ### 5.3 Store Customization
 
@@ -240,7 +220,7 @@ Seller Store    Marketplace   Search
 ### 5.4 Cart & Checkout
 
 **Challenges**:
-- Unified cart across storefront and marketplace
+- Unified cart and checkout within marketplace
 - Checkout process consistency
 
 **Solutions**:
@@ -252,7 +232,7 @@ Seller Store    Marketplace   Search
 
 ## 6. User Interface Considerations
 
-### 6.1 Storefront UI
+### 6.1 Seller/Shop Context UI
 
 **Design Principles**:
 - **Seller Branding**: ใช้ล็อกโก้และสีของร้าน
@@ -260,10 +240,8 @@ Seller Store    Marketplace   Search
 - **Flexibility**: ให้ผู้ขายปรับแต่งได้แต่ไม่มาก
 
 **Elements**:
-- Store header with logo
-- Store name
-- Store description
-- Product catalog
+- Seller info / Shop profile
+- Product listings
 - Shopping cart
 - Checkout
 
@@ -287,16 +265,16 @@ Seller Store    Marketplace   Search
 
 ### 7.1 Unique Value Proposition
 
-**Allkons M is the ONLY marketplace that offers**:
-1. **Master SKU** + **Marketplace** + **Multi-Store**
-2. **Dual Presence**: ร้านของตัวเอง + Marketplace visibility
-3. **B2B-First** design with Multi-Store
+**Allkons M differentiators**:
+1. **Master SKU** + **Marketplace**
+2. **Branch-aware operations** (ราคา/สต็อก/การเปิดขายระดับ Branch)
+3. **B2B-First** design
 
 **No one else does this**:
-- Alibaba: Marketplace only, no individual storefronts
-- nocnoc: Marketplace only, no individual storefronts
+- Alibaba: Marketplace only, no individual seller sites
+- nocnoc: Marketplace only, no individual seller sites
 - SCG Home: Single vendor, no marketplace
-- Thaiwatsadu, HomePro: Single vendor, no marketplace, no individual storefronts
+- Thaiwatsadu, HomePro: Single vendor, no marketplace, no individual seller sites
 
 ---
 
@@ -311,9 +289,9 @@ Seller Store    Marketplace   Search
 
 ### 8.2 Product Metrics
 
-- **Products in Stores**: จำนวนสินค้าในร้าน
+- **Products by Shop/Branch**: จำนวนสินค้าในร้าน (ตาม Shop/Branch)
 - **Products in Marketplace**: จำนวนสินค้าใน Marketplace
-- **Sync Rate**: อัตราการ sync ระหว่างร้านและ Marketplace
+-- **Visibility Rate**: อัตราการแสดงผลสินค้าใน Marketplace ตามสถานะ
 
 ### 8.3 Business Metrics
 
@@ -325,14 +303,14 @@ Seller Store    Marketplace   Search
 
 ## 9. Future Enhancements
 
-### 9.1 Phase 2 Enhancements
+### 9.1 Designed to support
 
 1. **Custom Domain**: รองรับ custom domain (เช่น `store.com`)
 2. **Advanced Customization**: ปรับแต่ง UI มากขึ้น
 3. **Store Analytics**: Analytics dashboard สำหรับแต่ละร้าน
 4. **Store Marketing Tools**: Marketing tools สำหรับผู้ขาย
 
-### 9.2 Phase 3 Enhancements
+### 9.2 Designed to support (advanced)
 
 1. **Store Apps/Plugins**: แอป/ปลั๊กอินสำหรับร้าน
 2. **Multi-Language Stores**: ร้านหลายภาษา
@@ -348,8 +326,8 @@ Seller Store    Marketplace   Search
 1. **Technical Complexity**: Multi-tenant architecture ซับซ้อน
    - **Mitigation**: ใช้ proven architecture patterns, thorough testing
 
-2. **DNS/SSL Management**: ต้องจัดการ DNS และ SSL หลาย domain
-   - **Mitigation**: ใช้ wildcard DNS และ SSL, automation
+2. **Environment/Infra Management**: ต้องจัดการ environment และการ deploy ให้เสถียร
+   - **Mitigation**: automation + monitoring
 
 3. **Product Sync Issues**: อาจมีปัญหา sync ระหว่างร้านและ Marketplace
    - **Mitigation**: Event-driven architecture, monitoring, alerts
@@ -368,30 +346,27 @@ Seller Store    Marketplace   Search
 
 ## 11. Conclusion
 
-Multi-Store Concept เป็นฟีเจอร์สำคัญของ Allkons M ที่:
-- **สร้างความแตกต่าง**: ไม่มีใครทำได้เหมือน
-- **ดึงดูดผู้ขาย**: ให้ผู้ขายมีร้านของตัวเอง
-- **Best of Both Worlds**: ร้านของตัวเอง + Marketplace visibility
-- **Technical Challenges**: ต้องใช้ multi-tenant architecture
+Marketplace-only model ของ Allkons M โฟกัสที่:
+- Master SKU เป็นจุดเริ่มต้นของสินค้า
+- การทำงานแบบ ORG/Shop/Branch context
+- การแสดงผลและการซื้อขายผ่าน Marketplace
 
 **Recommendation**: 
-- ควร implement ใน Phase 1 (MVP) เพื่อสร้าง competitive advantage
-- ควรเริ่มจาก basic features แล้วค่อยเพิ่ม advanced features ใน Phase 2-3
+- เริ่มจากความต้องการหลักที่จำเป็นต่อ Marketplace-only model
+- ออกแบบโครงสร้างให้รองรับการขยายความสามารถในอนาคต โดยไม่ผูกกับแผนการพัฒนา
 
 ---
 
 ## Appendix
 
-### A. Subdomain Examples
+### A. Examples
 
 ```
-Main:
+Marketplace:
 - allkons.com
 
-Sellers:
-- somchai.allkons.com (ช่างสมชาย)
-- company.allkons.com (บริษัทวัสดุก่อสร้าง)
-- builder123.allkons.com (บริษัทก่อสร้าง)
+Contexts:
+- ORG → Shop → Branch
 ```
 
 ### B. References

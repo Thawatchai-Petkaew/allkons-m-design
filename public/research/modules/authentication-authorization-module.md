@@ -38,7 +38,11 @@ Module สำหรับการยืนยันตัวตน (Authenticat
    - เลขบัตรประชาชน / เลขทะเบียนพาณิชย์ / ชื่อบริษัท
    - หากเป็นประเภทนิติบุคคล ให้เลือกประเภทนิติบุคคลเพิ่มเติม
 5. **ยอมรับข้อกำหนดเพิ่มเติม** – บุคคลธรรมดาจดทะเบียนพาณิชย์ / นิติบุคคล ยอมรับ Terms & Conditions ประจำ Layer นั้นๆ
-6. **Registration Complete**
+6. **Consent (PDPA) / Consent Center**
+   - เก็บ consent ระดับ **Account** (เช่น registration consent, marketing/data sharing/analytics ตามที่เลือก)
+   - ถ้ามีการสร้าง/ใช้งาน ORG ให้เก็บ consent ระดับ **ORG** เพิ่มเติม (ครอบคลุม Shop/Branch ภายใต้ ORG)
+   - ระบบบันทึก consent ลง **Consent Center** พร้อม policy/consent version และหลักฐาน (timestamp, method, channel)
+7. **Registration Complete**
 
 - **Seller Registration Flow**:
 1. **ยืนยันหมายเลขโทรศัพท์** – รับหมายเลขโทรศัพท์และส่ง OTP ผู้ใช้กรอกรหัสเพื่อเข้าสู่ขั้นตอนถัดไป
@@ -48,8 +52,12 @@ Module สำหรับการยืนยันตัวตน (Authenticat
    - เลขบัตรประชาชน / เลขทะเบียนพาณิชย์ / ชื่อบริษัท
    - หากเป็นประเภทนิติบุคคล ให้เลือกประเภทนิติบุคคลเพิ่มเติม
 5. **ยอมรับข้อกำหนดเพิ่มเติม** – บุคคลธรรมดาจดทะเบียนพาณิชย์ / นิติบุคคล ยอมรับ Terms & Conditions ประจำ Layer นั้นๆ
-6. **ระบุข้อมูลร้านค้า** – ตั้งชื่อร้านค้า (Shop Name) และกำหนด URL เพื่อสร้าง subdomain ภายใต้ allkons (e.g., `shopname.allkons.com`)
-7. **Registration Complete**
+6. **ระบุข้อมูลบริบทการทำงาน** – เลือก/สร้าง ORG และระบุข้อมูล Shop และ Branch (อย่างน้อย 1 Branch: Main)
+7. **Consent (PDPA) / Consent Center**
+   - เก็บ consent ระดับ **Account**
+   - เก็บ consent ระดับ **ORG** (ครอบคลุม Shop/Branch)
+   - ระบบบันทึก consent ลง **Consent Center** พร้อม policy/consent version และหลักฐาน (timestamp, method, channel)
+8. **Registration Complete**
 
 #### 2.1.2 Registration Fields
 
@@ -75,7 +83,7 @@ Module สำหรับการยืนยันตัวตน (Authenticat
 
 **Seller Additional Fields**:
 - Shop Name (required, unique)
-- Shop URL / Subdomain (required, unique, format: `[subdomain].allkons.com`)
+- Branch Name (required, default: Main Branch)
 - Job Role (required)
 - Business Type (required)
 - Business Registration Number (if applicable)
@@ -112,9 +120,7 @@ Module สำหรับการยืนยันตัวตน (Authenticat
 - Verify with 6-digit OTP
 - Secure one-time access
 
-**--- Next Phase ---**
-
-**3. OAuth Integration**
+**3. OAuth Integration (Designed to support)**
 - Google Login (Gmail)
 - Line Login (Thailand)
 - Facebook Login
@@ -359,8 +365,8 @@ Module สำหรับการยืนยันตัวตน (Authenticat
     - **When** I select "Legal Entity" as my business profile type
     - **And** I provide the Tax ID and Company Name
     - **Then** the system requires me to accept "Business Layer Terms & Conditions"
-    - **When** I enter a unique Shop Name and a unique Subdomain URL (e.g., `myshop.allkons.com`)
-    - **Then** the system validates that the Shop Name and Subdomain are not already taken
+    - **When** I enter a unique Shop Name and a Branch Name (default: Main)
+    - **Then** the system validates that the Shop Name is not already taken (ภายใต้ ORG)
     - **When** I click "Complete Registration"
     - **Then** the system creates my shop context and redirects me to the Seller Dashboard
 
@@ -393,9 +399,7 @@ Module สำหรับการยืนยันตัวตน (Authenticat
     - **Then** the system validates the OTP and starts my secure session
     - **And** I am redirected to my dashboard
 
-**--- Next Phase ---**
-
-**US-AUTH-005: Login with OAuth (Next Phase)**
+**US-AUTH-005: Login with OAuth (Designed to support)**
 - **As a** user
 - **I want to** login with Google/Line
 - **So that** I can login quickly
@@ -600,7 +604,7 @@ getCurrentContext(userId: string): Promise<Context>
 
 ## 9. Implementation Priority
 
-### Phase 1 (MVP)
+### Current scope
 - ✅ Phone number registration
 - ✅ Login with Username/Password
 - ✅ Login with Phone/OTP
@@ -608,12 +612,12 @@ getCurrentContext(userId: string): Promise<Context>
 - ✅ Basic RBAC
 - ✅ Organization switching
 
-### Phase 2
+### Designed to support
 - ✅ OAuth (Google, Facebook)
 - ✅ Advanced session management
 - ✅ Permission caching
 
-### Phase 3
+### Designed to support (advanced)
 - ✅ Biometric authentication
 - ✅ Advanced security features
 

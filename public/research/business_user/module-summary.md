@@ -88,37 +88,7 @@
 - Search Master SKU
 - Import from Master SKU
 - Match products with Master SKU
-- Create new Master SKU if not found
-
----
-
-## 4. Implementation Priority
-
-### Phase 1 (MVP)
-- ✅ Basic Search
-- ✅ Cart (Add, Delete, Update)
-- ✅ Buy Product (Base price)
-- ✅ View Product
-- ✅ Add Product (On web - Search import)
-- ✅ Edit Product (Basic)
-- ✅ Set Stock (Basic)
-
-### Phase 2
-- ✅ Advanced Search (Merchant, All product)
-- ✅ Sort (Price, Name)
-- ✅ Personalized Catalog (shopdit)
-- ✅ Multiple Delivery
-- ✅ Export (Invoice, BOQ)
-- ✅ Import Excel
-- ✅ Multi-branch support
-- ✅ Promotion Price
-
-### Phase 3
-- ✅ Custom Category
-- ✅ Location-based
-- ✅ Advanced Stock Management
-- ✅ Picture Management
-- ✅ Advanced Export
+- Submit request to Master SKU Admin if not found (seller cannot create Master SKU)
 
 ---
 
@@ -143,7 +113,7 @@
 ## 6. Open Questions
 
 1. **"change to kat"**: ใน Import Excel → Not in system (api) [change to kat]
-   - หมายถึงอะไร? ต้องสร้าง Master SKU ใหม่?
+   - หมายถึงอะไร? ต้องส่งคำขอให้ Master SKU Admin ตรวจสอบ/เพิ่ม Master SKU?
 
 2. **Shopdit Integration**: 
    - Shopdit คือ personalization engine ภายในหรือ external?

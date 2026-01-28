@@ -52,13 +52,12 @@ Account (KYC)
 
 **Characteristics**:
 - 1 ORG = 1 Shop
-- Shop มี Subdomain (เช่น `company.allkons.com`)
 - Shop สามารถสร้างสาขาได้มากกว่า 1 สาขา
 - ร้านหลัก (Main Shop) = สาขาแรก (Branch)
 
 **Example**:
-- ORD1 → Shop1 (`company1.allkons.com`)
-- ORD2 → Shop2 (`company2.allkons.com`)
+- ORD1 → Shop1
+- ORD2 → Shop2
 
 ---
 
@@ -106,8 +105,9 @@ Account (KYC)
 ```
 Account (KYC)
   └── ORG (KYB / Organization Verified)
-        └── (ไม่มี Shop)
-              └── Team Members
+        └── Shop (1 ร้านต่อ 1 ORG)
+              └── Branch (อย่างน้อย 1 สาขา)
+                    └── Team Members
 ```
 
 ### 2.2 Components
@@ -130,7 +130,6 @@ Account (KYC)
 
 **Characteristics**:
 - ต้องผ่าน KYB
-- ไม่มี Shop (ต่างจาก Seller)
 - สามารถเพิ่มสมาชิกทีมเพื่อช่วยจัดการคำสั่งซื้อได้
 
 **Example**:
@@ -157,11 +156,15 @@ Account (KYC)
 วิมล (Account - KYC)
   │
   ├── ORD1: บริษัทก่อสร้าง จำกัด (KYB)
+  │     ├── Shop1
+  │     │     └── Branch1: สำนักงานใหญ่ (Main)
   │     ├── Team Member 1: Admin
   │     ├── Team Member 2: Purchaser
   │     └── Team Member 3: Viewer
   │
   └── ORD2: บริษัทพัฒนาอสังหาริมทรัพย์ จำกัด (KYB)
+        ├── Shop2
+        │     └── Branch1: สำนักงานใหญ่ (Main)
         ├── Team Member 1: Admin
         └── Team Member 2: Purchaser
 ```
@@ -406,7 +409,6 @@ ORG (KYB)
 Shop (Seller only)
   - id
   - ord_id
-  - subdomain
   - name
 
 Branch
@@ -458,7 +460,6 @@ Role (Application Level)
 
 **1. Multiple Organizations**
 - สามารถมีหลายองค์กร (หลาย Shop)
-- แต่ละ Shop มี Subdomain ของตัวเอง
 - จัดการแยกกันได้
 
 **2. Multi-Branch Support**
@@ -566,22 +567,6 @@ Role (Application Level)
 
 ---
 
-## 10. Future Enhancements
-
-### 10.1 Phase 2 Enhancements
-
-1. **Advanced Permission System**: Custom permissions ที่ละเอียดขึ้น
-2. **Organization Templates**: Template สำหรับสร้างองค์กร
-3. **Bulk Team Management**: จัดการทีมหลายคนพร้อมกัน
-
-### 10.2 Phase 3 Enhancements
-
-1. **Organization Analytics**: Analytics สำหรับแต่ละองค์กร
-2. **Cross-Organization Features**: Features ที่ทำงานข้ามองค์กร
-3. **Organization Marketplace**: Marketplace สำหรับองค์กร
-
----
-
 ## 11. Open Questions
 
 1. **Branch for Buyer**: Buyer มี Branch หรือไม่? (จากโครงสร้างดูเหมือนไม่มี)
@@ -598,10 +583,6 @@ User Structure และ Organization Management เป็นส่วนสำ�
 - **Multi-Branch Support**: Shop สามารถมีหลายสาขา
 - **Flexible Team Management**: Two-layer permission system
 - **KYB/KYC Integration**: ระบบยืนยันตัวตนและองค์กร
-
-**Recommendation**: 
-- ควร implement ใน Phase 1 (MVP) เพื่อสร้างโครงสร้างพื้นฐาน
-- เริ่มจาก basic roles แล้วค่อยเพิ่ม custom roles ใน Phase 2
 
 ---
 
@@ -631,4 +612,3 @@ User Structure และ Organization Management เป็นส่วนสำ�
 ### C. References
 - Project Scope Document
 - Team Management Document
-- Multi-Store Concept Document

@@ -4,6 +4,9 @@
 
 ## สารบัญเอกสาร
 
+### 0. [Glossary (Source of Truth)](./glossary.md)
+คำศัพท์กลางและนิยามหลักของระบบ (Master SKU, Store Product, ORG/Shop/Branch, Context ORG+Branch, KYC/KYB)
+
 ### 1. [Business & User Research](./business_user/README.md)
 ข้อมูลวิจัยด้านธุรกิจ, Personas, ขอบเขตโครงการ (Scope), และโครงสร้างผู้ใช้งาน (User Structure)
 

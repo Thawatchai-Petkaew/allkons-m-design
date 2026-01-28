@@ -13,8 +13,8 @@
 
 #### 1. บุคคลธรรมดา (Individual Consumer)
 - **Registration**: ต้องลงทะเบียน + ระบุข้อมูลส่วนตัว (อาชีพ, ความสนใจ - optional)
-- **KYC**: ไม่ต้อง KYC (สำหรับ MVP)
-- **Structure**: Account (KYC) → ไม่มี ORG
+- **KYC**: ต้องทำการ KYC ถึงจะสามารถซื้อสินค้าได้
+- **Structure**: Account (KYC) → ORG → Shop → Branch
 - **Permissions**: 
   - ซื้อสินค้าได้
   - ดูราคาแบบ B2C
@@ -30,7 +30,7 @@
 #### 2. บุคคลธรรมดาจดทะเบียนพาณิชย์ (Registered Individual Merchant)
 - **Registration**: ต้องลงทะเบียน + ยืนยันเอกสารพาณิชย์ + ระบุอาชีพ/กลุ่มธุรกิจ
 - **KYC**: ต้อง KYC
-- **Structure**: Account (KYC) → ไม่มี ORG (หรือมี ORG ถ้าต้องการ)
+- **Structure**: Account (KYC) → ORG → Shop → Branch
 - **Permissions**:
   - ซื้อสินค้าได้
   - ดูราคาแบบ B2B (ถ้าได้รับการอนุมัติ)
@@ -47,8 +47,7 @@
 #### 3. นิติบุคคล (Legal Entity / Company)
 - **Registration**: ต้องลงทะเบียน + ยืนยันเอกสารบริษัท + ระบุกลุ่มธุรกิจ/ประเภทบริษัท + KYC
 - **KYC**: ต้อง KYC
-- **Structure**: Account (KYC) → ORG (KYB) → Team Members
-  - **Note**: Buyer ไม่มี Shop และ Branch
+- **Structure**: Account (KYC) → ORG (KYB) → Shop → Branch → Team Members
 - **Permissions**:
   - สร้างหลาย ORG ได้ (1 Account → หลาย ORG)
   - ซื้อสินค้าได้
@@ -80,8 +79,7 @@
   - สร้าง Branch (หลายสาขา)
   - ดึง Master SKU ไปใช้ได้
   - ปรับแต่งเนื้อหาสินค้าบางส่วนได้ (ราคา, คำอธิบาย)
-  - จัดการสินค้าของตัวเอง (สินค้าจะแสดงทั้งในร้านและ Marketplace)
-  - ปรับแต่งร้านของตัวเอง (ชื่อร้าน, ล็อกโก้, ธีมสี)
+  - จัดการสินค้าของตัวเอง (สินค้าแสดงใน Marketplace ตามสถานะ/กติกา)
   - จัดการออเดอร์
   - ดูรายงานการขาย
   - **Organization Management**: จัดการ ORG, Team Members, Role & Permissions
@@ -102,8 +100,7 @@
   - แต่ละ Shop สร้าง Branch ได้หลายสาขา
   - ดึง Master SKU ไปใช้ได้
   - ปรับแต่งเนื้อหาสินค้าบางส่วนได้ (ราคา, คำอธิบาย)
-  - จัดการสินค้าของตัวเอง (สินค้าจะแสดงทั้งในร้านและ Marketplace)
-  - ปรับแต่งร้านของตัวเอง (ชื่อร้าน, ล็อกโก้, ธีมสี, คำอธิบายร้าน)
+  - จัดการสินค้าของตัวเอง (สินค้าแสดงใน Marketplace ตามสถานะ/กติกา)
   - จัดการออเดอร์ B2B และ B2C
   - ดูรายงานการขาย
   - ใช้ฟีเจอร์ B2B เต็มรูปแบบ
@@ -117,9 +114,9 @@
 
 | Context | User Type | KYC Required | ORG Required | Shop Required | Branch Required |
 |---------|-----------|--------------|--------------|---------------|-----------------|
-| **Buyer** | บุคคลธรรมดา | ❌ | ❌ | ❌ | ❌ |
-| **Buyer** | บุคคลธรรมดาจดทะเบียนพาณิชย์ | ✅ | ⚠️ (Optional) | ❌ | ❌ |
-| **Buyer** | นิติบุคคล | ✅ | ✅ | ❌ | ❌ |
+| **Buyer** | บุคคลธรรมดา | ❌ | ✅ | ✅ | ✅ |
+| **Buyer** | บุคคลธรรมดาจดทะเบียนพาณิชย์ | ✅ | ✅ | ✅ | ✅ |
+| **Buyer** | นิติบุคคล | ✅ | ✅ | ✅ | ✅ |
 | **Seller** | บุคคลธรรมดาจดทะเบียนพาณิชย์ | ✅ | ✅ | ✅ | ✅ (Optional) |
 | **Seller** | นิติบุคคล | ✅ | ✅ | ✅ | ✅ (Optional) |
 
@@ -131,8 +128,8 @@
 
 | Feature | Buyer | Seller |
 |---------|-------|--------|
-| **Shop** | ❌ ไม่มี | ✅ มี (1 ORG = 1 Shop) |
-| **Branch** | ❌ ไม่มี | ✅ มี (หลายสาขา) |
+| **Shop** | ✅ มี (1 ORG = 1 Shop) | ✅ มี (1 ORG = 1 Shop) |
+| **Branch** | ✅ มี (อย่างน้อย 1) | ✅ มี (หลายสาขา) |
 | **Master SKU** | ❌ ไม่สามารถดึง | ✅ ดึงไปใช้ได้ |
 | **Product Management** | ❌ ไม่มี | ✅ จัดการสินค้าได้ |
 | **Order Management** | ✅ สร้างออเดอร์ | ✅ จัดการออเดอร์ |
@@ -146,13 +143,13 @@
 
 ```
 บุคคลธรรมดา:
-Account (KYC) → (ไม่มี ORG)
+Account (KYC) → ORG → Shop → Branch
 
 บุคคลธรรมดาจดทะเบียนพาณิชย์:
-Account (KYC) → (ORG Optional)
+Account (KYC) → ORG → Shop → Branch
 
 นิติบุคคล:
-Account (KYC) → ORG (KYB) → Team Members
+Account (KYC) → ORG (KYB) → Shop → Branch → Team Members
 ```
 
 ### Seller Structure

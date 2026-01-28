@@ -13,7 +13,7 @@
 **Role**: กำหนดทิศทางผลิตภัณฑ์ วิเคราะห์ความต้องการ กำหนดขอบเขต
 
 **Involvement**:
-- กำหนด Product Roadmap
+- กำหนดทิศทางผลิตภัณฑ์
 - กำหนด Features และ Priorities
 - วิเคราะห์ User Requirements
 - ตัดสินใจทางธุรกิจ

@@ -16,7 +16,7 @@ Module สำหรับการส่งการแจ้งเตือน 
 - In-app Notifications
 - Email Notifications
 - SMS Notifications (optional)
-- Push Notifications (Mobile - Phase 2)
+- Push Notifications (Designed to support)
 - Notification Preferences
 - Notification Templates
 - Notification History
@@ -103,7 +103,7 @@ Module สำหรับการส่งการแจ้งเตือน 
 
 ---
 
-#### 2.1.4 Push Notifications (Phase 2)
+#### 2.1.4 Push Notifications (Designed to support)
 
 **Features**:
 - Mobile push notifications
@@ -285,7 +285,7 @@ Module สำหรับการส่งการแจ้งเตือน 
 **Template Versioning**:
 - Save template versions
 - Rollback to previous version
-- A/B testing (Phase 2)
+- A/B testing (Designed to support)
 
 ---
 
@@ -453,7 +453,7 @@ Update Notification History
 - AWS SNS API
 - Local SMS gateway
 
-**Push Providers** (Phase 2):
+**Push Providers**:
 - Firebase Cloud Messaging (FCM)
 - Apple Push Notification Service (APNs)
 
@@ -540,7 +540,7 @@ renderTemplate(templateId: string, data: object): Promise<string>
 
 ## 9. Implementation Priority
 
-### Phase 1 (MVP)
+### Current scope
 - ✅ In-app notifications
 - ✅ Email notifications (basic)
 - ✅ Notification preferences (basic)
@@ -548,14 +548,14 @@ renderTemplate(templateId: string, data: object): Promise<string>
 - ✅ Order notifications
 - ✅ Account notifications
 
-### Phase 2
+### Designed to support
 - ✅ SMS notifications
 - ✅ Advanced preferences
 - ✅ Notification history
 - ✅ Push notifications (Mobile)
 - ✅ Notification analytics
 
-### Phase 3
+### Designed to support (advanced)
 - ✅ Advanced templates
 - ✅ A/B testing
 - ✅ Advanced analytics
@@ -568,7 +568,7 @@ renderTemplate(templateId: string, data: object): Promise<string>
 ### 10.1 External Dependencies
 - Email service (SendGrid, AWS SES)
 - SMS service (Twilio, AWS SNS)
-- Push service (FCM, APNs - Phase 2)
+- Push service (FCM, APNs)
 - Message queue (RabbitMQ, Kafka, AWS SQS)
 
 ### 10.2 Internal Dependencies

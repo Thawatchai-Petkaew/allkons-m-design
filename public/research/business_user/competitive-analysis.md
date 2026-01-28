@@ -109,6 +109,42 @@
 
 ---
 
+### 1.4 Rakmao
+**URL:** https://rakmao.com/
+
+#### จุดแข็ง (Strengths)
+- **B2B Purchasing Focus**: เน้นการซื้อในรูปแบบ B2B (RFT/BOQ/QT) โดยเฉพาะ
+- **RFT/BOQ/QT Workflow**: รองรับการสอบถามราคา บิลวัสดุ และใบเสนอราคา
+- **Project-based Purchasing**: รองรับการซื้อตามโครงการ
+- **Multi-vendor Quotations**: ให้ผู้ขายหลายรายส่งข้อเสนอราคาได้
+- **Professional Procurement**: ออกแบบมาสำหรับฝ่ายจัดซื้อและผู้รับเหมา
+- **Local Market Understanding**: เข้าใจตลาด B2B ไทยและการทำงานของผู้รับเหมา
+
+#### จุดอ่อน (Weaknesses)
+- **Limited Brand Recognition**: ยังไม่เป็นที่รู้จักในตลาดกว้าง
+- **Product Range**: อาจจำกัดเฉพาะหมวดหมู่ที่ทำงานได้ดี
+- **Seller Network**: จำเวนผู้ขายอาจยังไม่กว้างขวาง
+- **Master Data**: ไม่มีการเน้น Master SKU ที่เป็นมาตรฐานเดียว
+
+#### Key Features
+- RFT (Request for Tender) management
+- BOQ (Bill of Quantities) creation
+- QT (Quotation) comparison
+- Multi-vendor bidding
+- Project-based procurement
+- Professional buyer dashboard
+- Seller quotation management
+- PO generation from quotations
+
+#### Target Users
+- Construction contractors
+- Property developers
+- Procurement managers
+- Project managers
+- Government agencies
+
+---
+
 ## 2. B2C / Mixed B2B-B2C Marketplace Analysis
 
 ### 2.1 Thaiwatsadu
@@ -274,18 +310,19 @@
 
 ## 3. Competitive Matrix
 
-| Feature | Alibaba | SCG Home | nocnoc | Thaiwatsadu | HomePro | Global House |
-|---------|---------|----------|--------|-------------|---------|--------------|
-| **B2B Focus** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐⭐ |
-| **B2C Focus** | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
-| **Master SKU** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
-| **Multi-vendor** | ⭐⭐⭐⭐⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐ | ⭐ | ⭐ |
-| **UI/UX** | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
-| **B2B Features** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐ |
-| **Local Market** | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| **Data Quality** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
-| **Price Transparency** | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |
-| **Service Integration** | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ |
+| Feature | Alibaba | SCG Home | Rakmao | nocnoc | Thaiwatsadu | HomePro | Global House |
+|---------|---------|----------|--------|--------|-------------|---------|--------------|
+| **B2B Focus** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐⭐ |
+| **B2C Focus** | ⭐⭐ | ⭐⭐⭐ | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| **Master SKU** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| **Multi-vendor** | ⭐⭐⭐⭐⭐ | ⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐ | ⭐ | ⭐ |
+| **RFT/BOQ/QT** | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐ | ⭐ | ⭐ | ⭐⭐ |
+| **UI/UX** | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| **B2B Features** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐ |
+| **Local Market** | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **Data Quality** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| **Price Transparency** | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |
+| **Service Integration** | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ |
 
 ---
 
@@ -335,16 +372,18 @@
 
 ## 5. Key Learnings
 
-### 5.1 From B2B Marketplaces (Alibaba, SCG Home)
+### 5.1 From B2B Marketplaces (Alibaba, SCG Home, Rakmao)
 
 **ควรเอามาใช้:**
-- RFQ (Request for Quotation) สำหรับ B2B
+- RFQ/RFT/BOQ/QT workflow สำหรับ B2B (จาก Alibaba, Rakmao)
 - Bulk pricing tiers
 - Supplier verification
 - Professional product descriptions
 - Technical specifications
 - B2B account management
 - Trade assurance / order protection
+- Project-based purchasing (จาก Rakmao)
+- Multi-vendor quotation comparison (จาก Rakmao)
 
 ### 5.2 From B2C Marketplaces (nocnoc, Thaiwatsadu, HomePro)
 
@@ -381,6 +420,9 @@
    - Credit terms / payment terms
    - Invoice generation
    - B2B account dashboard
+   - RFT/BOQ/QT workflow (จาก Rakmao)
+   - Project-based purchasing
+   - Multi-vendor quotation comparison
 
 3. **Marketplace Features**
    - Multi-seller support

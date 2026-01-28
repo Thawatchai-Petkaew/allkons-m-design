@@ -28,16 +28,15 @@
 **วัตถุประสงค์**: กำหนดขอบเขตและคุณสมบัติของโครงการ
 
 **เนื้อหาหลัก**:
-- Business Model (Marketplace + Master SKU + Multi-Store)
+- Business Model (Marketplace + Master SKU)
 - User Types & Permissions (Buyers และ Sellers)
-- Core Features (Master SKU, Product Management, Search, Order, B2B Features, Seller Storefront, ฯลฯ)
-- Technical Requirements (Multi-tenant, Subdomain management)
-- Project Phases (MVP, Enhanced, Advanced)
+- Core Features (Master SKU, Product Management, Search, Order, B2B Features, ฯลฯ)
+- Technical Requirements (Multi-branch, scalability)
+- Scope boundaries (In scope / Out of current scope)
 - Success Metrics
 
 **Key Features**:
 - Master SKU Management
-- **Multi-Store (Seller Storefront)**: ร้านของตัวเองด้วย Subdomain (`seller.allkons.com`)
 - B2B Features (PO, Credit Terms, Invoice, Bulk Pricing)
 - Marketplace Features (Multi-vendor, Price Comparison)
 - Order Management
@@ -92,27 +91,6 @@
 
 ---
 
-### 5. [Multi-Store Concept](./multi-store-concept.md) ⭐ NEW
-**วัตถุประสงค์**: อธิบาย Concept ของ Multi-Store (Seller Storefront) สำหรับ Allkons M
-
-**เนื้อหาหลัก**:
-- Concept Overview (Dual Presence: Storefront + Marketplace)
-- Use Cases (Sellers และ Buyers)
-- Benefits (For Sellers, Buyers, Platform)
-- Technical Architecture (Subdomain routing, Multi-tenant)
-- Implementation Considerations
-- UI/UX Considerations
-- Competitive Advantages
-- Success Metrics
-- Future Enhancements
-
-**Key Concept**:
-- ผู้ขายสามารถสร้างร้านของตัวเองด้วย Subdomain (`seller.allkons.com`)
-- สินค้าจะแสดงทั้งในร้านและ Marketplace อัตโนมัติ
-- จัดการสินค้าจาก Dashboard เดียว
-
----
-
 ### 6. [Personalization Strategy](./personalization-strategy.md) ⭐ NEW
 **วัตถุประสงค์**: อธิบาย Personalization Strategy สำหรับ Allkons M
 
@@ -161,7 +139,7 @@
 - **Key Features**: Personalization (shopdit), Multi-Branch Support, Master SKU Integration, Price Management, Stock Management
 - **Technical Requirements**: Elasticsearch, Shopdit Integration, Multi-Branch Architecture
 - **User Stories**: Buyer และ Seller user stories
-- **Implementation Priority**: Phase 1, 2, 3
+- **Implementation Considerations**: Current scope และ designed-to-support
 
 **Key Features from Module**:
 - **Search (Elastic1/2)**: Product name, Merchant name, Brand, Barcode
@@ -279,25 +257,20 @@
 - Two-Layer Permission System
 - Auto-creation of default roles
 
-**Next Steps**:
-- Add Product/Order tables (Phase 2)
-- Add Payment/Shipping tables (Phase 2)
-
 ---
 
-### 13. [MVP Readiness Checklist](./mvp-readiness-checklist.md) ⭐ NEW
-**วัตถุประสงค์**: ตรวจสอบความพร้อมสำหรับการพัฒนา MVP
+### 13. [Readiness Checklist](./readiness-checklist.md) ⭐ NEW
+**วัตถุประสงค์**: ตรวจสอบความพร้อมสำหรับการเริ่มต้น implementation
 
-**Status**: ✅ **Ready for MVP Development (90%)**
+**Status**: ✅ **Ready for implementation (90%)**
 
 **Key Findings**:
 - ✅ Documentation: ครบถ้วน (100%)
 - ✅ Database Schema (Core): ครบถ้วน (Account, ORG, Roles, Permissions)
-- ✅ Technical Stack: ตัดสินใจแล้ว (Vercel, Supabase, Mock OTP, GitHub Actions)
-- ⚠️ API Documentation: Partial (can create during development)
-- ⚠️ Project Structure: Not defined (should define before starting code)
+- ⚠️ API Documentation: Partial (can create during implementation)
+- ⚠️ Project Structure: Not defined (should define before starting implementation)
 
-**Recommendation**: ✅ **Can Start MVP Development**
+**Recommendation**: ✅ **Can Start implementation**
 
 ---
 
@@ -321,13 +294,7 @@
    - Master SKU ช่วยทั้งผู้ซื้อและผู้ขาย
    - ควรลงทุนในการสร้างและจัดการ Master SKU
 
-2. **Multi-Store Concept (Allkons M Unique Feature)** ⭐
-   - ผู้ขายสามารถสร้างร้านของตัวเองด้วย Subdomain (`seller.allkons.com`)
-   - สินค้าจะแสดงทั้งในร้านและ Marketplace อัตโนมัติ
-   - Dual Presence: ร้านของตัวเอง + Marketplace visibility
-   - **ไม่มีใครทำได้เหมือน** - เป็น competitive advantage
-
-3. **Personalization Strategy** ⭐
+2. **Personalization Strategy** ⭐
    - แสดงข้อมูลสินค้าที่เกี่ยวข้องกับผู้ซื้อตามอาชีพ/กลุ่มธุรกิจ
    - เพิ่มโอกาสการขายโดยแสดงสินค้าที่เกี่ยวข้องที่สุด
    - Personalization ตาม Job Role (ช่างประปา → สินค้าประปา) และ Business Type (ก่อสร้าง → วัสดุก่อสร้าง)
@@ -339,8 +306,7 @@
    - ฟีเจอร์ที่ B2B ต้องการ
 
 5. **User Structure & Organization Management** ⭐
-   - Account → ORG → Shop → Branch (Seller)
-   - Account → ORG → Team Members (Buyer)
+   - Account → ORG → Shop → Branch (Buyer & Seller)
    - Two-Layer Permission System (ORG level + App level)
    - Custom Roles & Permissions
    - KYB/KYC Integration
@@ -376,20 +342,13 @@
    - ควรลงทุนในการสร้างและจัดการ Master SKU
    - ควรทำให้ Master SKU มีคุณภาพสูง
 
-2. **Focus on Multi-Store (Allkons M Differentiator)** ⭐
-   - Multi-Store เป็นฟีเจอร์ที่แตกต่างและไม่มีใครทำได้
-   - ควร implement ใน Phase 1 (MVP) เพื่อสร้าง competitive advantage
-   - ควรสื่อสารจุดแข็งนี้ในการทำ marketing
-
-3. **Focus on Personalization** ⭐
+2. **Focus on Personalization** ⭐
    - Personalization ตามอาชีพ/กลุ่มธุรกิจเพิ่มโอกาสการขาย
-   - ควร implement ใน Phase 1 (MVP) เพื่อสร้าง competitive advantage
-   - เริ่มจาก rule-based recommendations แล้วค่อยเพิ่ม ML ใน Phase 2
+   - เริ่มจาก rule-based recommendations และออกแบบให้รองรับ ML-based recommendations
 
-4. **Focus on Team Management** ⭐
+3. **Focus on Team Management** ⭐
    - Team Management เป็นฟีเจอร์ที่ B2B ต้องการ
-   - ควร implement ใน Phase 1 (MVP) เพื่อสร้าง competitive advantage
-   - เริ่มจาก basic roles แล้วค่อยเพิ่ม custom roles ใน Phase 2
+   - เริ่มจาก basic roles และออกแบบให้รองรับ custom roles
 
 5. **Focus on B2B**
    - เน้น B2B เป็นหลัก (ตาม strategy)
@@ -420,7 +379,7 @@
 2. **User Stories**: สร้าง user stories จาก personas
 3. **Wireframes**: สร้าง wireframes จาก user journeys
 4. **Technical Design**: ออกแบบระบบจาก requirements
-5. **Development**: พัฒนาตาม phases (MVP → Enhanced → Advanced)
+5. **Implementation**: พัฒนาตามลำดับความสำคัญของความต้องการ
 
 ---
 

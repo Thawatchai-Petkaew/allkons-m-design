@@ -344,17 +344,17 @@ getTaxInvoices(filters: InvoiceFilters): Promise<TaxInvoice[]>
 
 ## 7. Implementation Priority
 
-### Phase 1 (MVP)
+### Current scope
 - ✅ Basic VAT calculation
 - ✅ Tax invoice generation
 - ✅ Basic tax reports
 
-### Phase 2
+### Designed to support
 - ✅ Withholding Tax
 - ✅ Advanced tax rules
 - ✅ Tax compliance checks
 
-### Phase 3
+### Designed to support (advanced)
 - ✅ Advanced tax reports
 - ✅ Tax filing assistance
 - ✅ Tax optimization

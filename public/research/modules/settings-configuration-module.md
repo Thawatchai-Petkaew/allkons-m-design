@@ -124,6 +124,8 @@ Module สำหรับการจัดการ Settings และ Configur
 - Analytics consent (Enable/Disable)
 - Third-party consent (Enable/Disable)
 - Consent history
+- Consent version display (policy/consent version)
+- Re-consent prompts (when version changes or default time rule 6 months applies)
 
 **Data Subject Rights**:
 - Request data access
@@ -236,6 +238,7 @@ Module สำหรับการจัดการ Settings และ Configur
 - View customer consents (for Sellers)
 - Manage consent records
 - Consent withdrawal handling
+- Consent Center integration (central record storage/export)
 
 **Data Subject Rights Management**:
 - View data subject requests
@@ -551,21 +554,21 @@ updateSystemSettings(settings: SystemSettings): Promise<void>
 
 ## 7. Implementation Priority
 
-### Phase 1 (MVP)
+### Current scope
 - ✅ Basic profile settings
 - ✅ Basic notification preferences
 - ✅ Basic security settings
 - ✅ Organization profile settings
 - ✅ Shop profile settings
 
-### Phase 2
+### Designed to support
 - ✅ Advanced notification preferences
 - ✅ Privacy settings
 - ✅ Advanced security settings
 - ✅ Financial settings
 - ✅ System settings (Admin)
 
-### Phase 3
+### Designed to support (advanced)
 - ✅ Advanced customization
 - ✅ Settings import/export
 - ✅ Settings templates

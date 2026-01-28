@@ -3,10 +3,13 @@
 ## Executive Summary
 Module สำหรับการจัดการสต็อกสินค้า (Inventory Management) ในระบบ Allkons M โดยรองรับ Multi-Branch และ Stock Alerts
 
-**⚠️ Status: Future Feature (Phase 2+)**
-- Module นี้ถูกออกแบบไว้สำหรับอนาคต
-- ระบบ Inventory Management จะถูกพัฒนาหลังจาก MVP
-- ตอนนี้ระบบจะใช้ Stock Status แบบ Manual (Stocked, Out of Stock) โดย Seller จัดการเอง
+**⚠️ Status: Out of current scope (Full Inventory System)**
+- Module นี้ถูกออกแบบให้รองรับการทำ Inventory Management แบบเต็มรูปแบบ
+- **Current scope**: ระบบยังไม่มี Inventory Management (เช่น stock quantity, stock movement, stock alerts, stock history)
+- ระบบจะใช้ **Stock Status แบบ Manual** (Stocked, Out of Stock) โดย Seller จัดการเอง
+
+**Architecture Note**:
+- วางโครงสร้างแยกเป็น Inventory Module/Service ไว้ล่วงหน้า เพื่อรองรับการพัฒนาในอนาคต โดยไม่กระทบ Product/Order core
 
 ---
 
@@ -346,7 +349,7 @@ transferStock(fromBranch: string, toBranch: string, items: TransferItem[]): Prom
 
 ## 7. Implementation Priority
 
-### Phase 1 (MVP) - Current Status
+### Current scope
 - ⚠️ **Manual Stock Management Only**
   - Seller manually sets stock status (Stocked, Out of Stock)
   - No automatic stock tracking
@@ -354,7 +357,7 @@ transferStock(fromBranch: string, toBranch: string, items: TransferItem[]): Prom
   - No stock alerts
   - Simple stock status display
 
-### Phase 2 (Future) - Inventory System Implementation
+### Designed to support
 - 🔮 **Full Inventory Management System**
   - ✅ Basic stock management
   - ✅ Stock status (Stocked, Out of stock)
@@ -365,7 +368,7 @@ transferStock(fromBranch: string, toBranch: string, items: TransferItem[]): Prom
   - ✅ Multi-location inventory
   - ✅ Stock transfer
 
-### Phase 3 (Future Enhancement)
+### Designed to support (advanced)
 - 🔮 **Advanced Features**
   - ✅ Advanced stock analytics
   - ✅ Stock optimization
@@ -373,7 +376,7 @@ transferStock(fromBranch: string, toBranch: string, items: TransferItem[]): Prom
   - ✅ Automated reordering
   - ✅ Stock forecasting
 
-**Note**: ตอนนี้ระบบจะใช้ Stock Status แบบ Manual โดย Seller จัดการเอง เมื่อระบบ Inventory Management พร้อม จะอัปเกรดจาก Manual เป็น Automated System
+**Note**: ตอนนี้ระบบจะใช้ Stock Status แบบ Manual โดย Seller จัดการเอง เมื่อมีการเปิดใช้งาน Inventory Management จะอัปเกรดจาก Manual เป็น Automated System
 
 ---
 
@@ -390,7 +393,7 @@ transferStock(fromBranch: string, toBranch: string, items: TransferItem[]): Prom
 
 ---
 
-## 9. Current Implementation (MVP - Manual Stock Management)
+## 9. Current Implementation (Manual Stock Management)
 
 ### 9.1 Manual Stock Status
 
@@ -410,7 +413,7 @@ transferStock(fromBranch: string, toBranch: string, items: TransferItem[]): Prom
 - No automatic deduction when order placed
 - No stock alerts
 - No stock history tracking
-- Simple and straightforward for MVP
+- Simple and straightforward for current scope
 
 ### 9.2 Migration Path to Full Inventory System
 

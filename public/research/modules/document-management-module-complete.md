@@ -449,19 +449,19 @@ previewTemplate(templateId: string, data: object): Promise<string>
 
 ## 7. Implementation Priority
 
-### Phase 1 (MVP)
+### Current scope
 - ✅ Basic invoice generation
 - ✅ Basic BOQ export
 - ✅ Basic PO generation
 - ✅ Document download
 
-### Phase 2
+### Designed to support
 - ✅ Document templates
 - ✅ Document sharing
 - ✅ Document history
 - ✅ Advanced document features
 
-### Phase 3
+### Designed to support (advanced)
 - ✅ Document versioning
 - ✅ Advanced templates
 - ✅ Document analytics
