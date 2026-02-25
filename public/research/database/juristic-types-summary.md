@@ -3,21 +3,6 @@
 ## Executive Summary
 สรุปการปรับปรุง Juristic Types ให้เข้ากับ Master SKU System และตัดส่วนที่ไม่เหมาะสม
 
-**Status**: ✅ **Complete**
-
----
-
-## การเปลี่ยนแปลง
-
-### ✅ ตัดออก
-- **PERSONAL** (บุคคลทั่วไป) - **ตัดออก** เพราะ:
-  - Account = บุคคลธรรมดา (ไม่ใช่ juristic person)
-  - Organization = นิติบุคคล (ต้องเป็น juristic person)
-  - PERSONAL ไม่เหมาะสมสำหรับ organizations table
-
----
-
-### ✅ เก็บไว้ (Master Data)
 
 #### 1. REGISTERED_INDIVIDUAL
 - **Code**: `REGISTERED_INDIVIDUAL`

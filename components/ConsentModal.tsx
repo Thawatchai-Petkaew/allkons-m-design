@@ -116,7 +116,7 @@ export const ConsentModal: React.FC<ConsentModalProps> = ({
               >
                 ข้อกำหนดและเงื่อนไขการใช้บริการ
               </a>{" "}
-              ของ SCG
+              ของ Allkons M
             </label>
           </div>
         </div>
@@ -185,7 +185,7 @@ export const ConsentModal: React.FC<ConsentModalProps> = ({
               }}
             >
               <span style={{ color: ds.color.text("tertiary") }}>(ไม่บังคับ)</span>{" "}
-              ข้าพเจ้ายินยอมรับข้อมูลข่าวสาร โปรโมชั่น และกิจกรรมพิเศษจาก SCG
+              ข้าพเจ้ายินยอมรับข้อมูลข่าวสาร โปรโมชั่น และกิจกรรมพิเศษจาก Allkons M
             </label>
           </div>
         </div>

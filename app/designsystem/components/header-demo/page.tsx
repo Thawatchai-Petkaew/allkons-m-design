@@ -61,7 +61,7 @@ export default function SellerHeaderDemo() {
     };
 
     return (
-        <div style={{ minHeight: "100vh", backgroundColor: ds.color.background("primary") }}>
+        <div style={{ minHeight: "100vh", backgroundColor: ds.color.background("secondary") }}>
             <SellerHeader
                 currentShop={currentShop}
                 shops={filteredShops}
@@ -75,18 +75,18 @@ export default function SellerHeaderDemo() {
 
             <main className="demo-container">
                 {/* Header Section */}
-                <div style={{ marginBottom: "64px" }}>
-                    <h1 style={{ ...ds.typography.preset("heading-h1"), color: ds.color.text("primary"), marginBottom: "12px" }}>
+                <div style={{ marginBottom: ds.spacing("8") }}>
+                    <h1 style={{ ...ds.typography.preset("heading-h2"), color: ds.color.text("primary"), marginBottom: ds.spacing("3") }}>
                         Seller Header Documentation
                     </h1>
-                    <p style={{ ...ds.typography.preset("paragraph-middle"), color: ds.color.text("secondary"), maxWidth: "800px" }}>
+                    <p style={{ ...ds.typography.preset("paragraph-middle"), color: ds.color.text("secondary"), maxWidth: "50rem" }}>
                         Detailed breakdown of business logic, UI patterns, and state synchronization for the Seller Navigation system.
                     </p>
                 </div>
 
                 {/* State Monitoring Section - Grouped with subtle brand background */}
                 <section className="demo-section monitoring-section">
-                    <h2 style={{ ...ds.typography.preset("heading-h3"), marginBottom: "32px", color: "var(--brand-m-primary-00)" }}>
+                    <h2 style={{ ...ds.typography.preset("heading-h3"), marginBottom: ds.spacing("8"), color: "var(--brand-m-primary-00)" }}>
                         Live Synchronization State
                     </h2>
                     <div className="state-grid">
@@ -126,15 +126,15 @@ export default function SellerHeaderDemo() {
 
                 {/* Shop Dropdown Specialized Documentation */}
                 <section className="demo-section white-card">
-                    <h2 style={{ ...ds.typography.preset("heading-h3"), marginBottom: "40px", color: ds.color.text("primary") }}>
+                    <h2 style={{ ...ds.typography.preset("heading-h3"), marginBottom: ds.spacing("10"), color: ds.color.text("primary") }}>
                         Shop Dropdown Technical Breakdown
                     </h2>
 
                     <div className="split-layout">
                         {/* UI Matrix */}
                         <div>
-                            <h3 style={{ ...ds.typography.preset("heading-h5"), marginBottom: "24px", color: ds.color.text("secondary") }}>UI Matrix: Shop Variations</h3>
-                            <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                            <h3 style={{ ...ds.typography.preset("heading-h5"), marginBottom: ds.spacing("6"), color: ds.color.text("secondary") }}>UI Matrix: Shop Variations</h3>
+                            <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing("4") }}>
                                 <ShopMatrixItem
                                     label="Primary Shop (With Logo)"
                                     name="Allkons Main Store"
@@ -159,11 +159,11 @@ export default function SellerHeaderDemo() {
 
                         {/* Toggle Logic Breakdown */}
                         <div className="logic-breakdown">
-                            <h3 style={{ ...ds.typography.preset("heading-h5"), marginBottom: "24px", color: "var(--brand-m-primary-00)" }}>Current Shop Toggle UI Logic</h3>
-                            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+                            <h3 style={{ ...ds.typography.preset("heading-h5"), marginBottom: ds.spacing("6"), color: "var(--brand-m-primary-00)" }}>Current Shop Toggle UI Logic</h3>
+                            <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing("6") }}>
                                 <div>
-                                    <div style={{ ...ds.typography.preset("paragraph-xsmall"), color: ds.color.text("tertiary"), marginBottom: "8px", fontWeight: "bold" }}>PREFIX LOGIC</div>
-                                    <div style={{ display: "flex", gap: "12px" }}>
+                                    <div style={{ ...ds.typography.preset("paragraph-xsmall"), color: ds.color.text("tertiary"), marginBottom: ds.spacing("2"), fontWeight: ds.typography.weight("bold") }}>PREFIX LOGIC</div>
+                                    <div style={{ display: "flex", gap: ds.spacing("3") }}>
                                         <Badge variant="subtle" color="brand">ร้าน + [Name]</Badge>
                                         <Badge variant="subtle" color="neutral">สาขา + [Name]</Badge>
                                     </div>
@@ -172,14 +172,14 @@ export default function SellerHeaderDemo() {
                                     The header toggle dynamically prepends "ร้าน" for entities of type `shop` and "สาขา" for `branch`.
                                     This provides immediate organizational context without opening the dropdown.
                                 </div>
-                                <div style={{ paddingTop: "24px", borderTop: `1px solid rgba(0,0,0,0.05)` }}>
-                                    <div style={{ ...ds.typography.preset("paragraph-xsmall"), color: ds.color.text("tertiary"), marginBottom: "8px", fontWeight: "bold" }}>ACTIVITY INDICATOR</div>
-                                    <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-                                        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                <div style={{ paddingTop: ds.spacing("6"), borderTop: `1px solid ${ds.color.border("secondary")}` }}>
+                                    <div style={{ ...ds.typography.preset("paragraph-xsmall"), color: ds.color.text("tertiary"), marginBottom: ds.spacing("2"), fontWeight: ds.typography.weight("bold") }}>ACTIVITY INDICATOR</div>
+                                    <div style={{ display: "flex", alignItems: "center", gap: ds.spacing("5") }}>
+                                        <div style={{ display: "flex", alignItems: "center", gap: ds.spacing("2") }}>
                                             <Dot active={true} size="sm" />
                                             <span style={{ ...ds.typography.preset("paragraph-small") }}>เปิดขาย</span>
                                         </div>
-                                        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                        <div style={{ display: "flex", alignItems: "center", gap: ds.spacing("2") }}>
                                             <Dot active={false} size="sm" />
                                             <span style={{ ...ds.typography.preset("paragraph-small") }}>ปิดขาย</span>
                                         </div>
@@ -192,7 +192,7 @@ export default function SellerHeaderDemo() {
                     {/* Component Anatomy & Showcase */}
                     <div className="anatomy-section">
                         <div className="anatomy-card">
-                            <h3 style={{ ...ds.typography.preset("heading-h5"), marginBottom: "24px" }}>Component Anatomy</h3>
+                            <h3 style={{ ...ds.typography.preset("heading-h5"), marginBottom: ds.spacing("6") }}>Component Anatomy</h3>
                             <ul className="doc-list">
                                 <li><strong>Header:</strong> Thai label "เลือกร้านค้า/สาขา" uses `paragraph-small` secondary text.</li>
                                 <li><strong>Scroll Area:</strong> Supports long lists of branches with unified item styling.</li>
@@ -202,7 +202,7 @@ export default function SellerHeaderDemo() {
                         </div>
 
                         {/* Inline Component Showcase */}
-                        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                        <div style={{ display: "flex", flexDirection: "column", gap: ds.spacing("5") }}>
                             <h3 style={{ ...ds.typography.preset("heading-h5") }}>Component UI Inspection</h3>
                             <div className="inspection-container">
                                 <div className="inspection-inner">
@@ -229,51 +229,51 @@ export default function SellerHeaderDemo() {
             <style jsx global>{`
                 .demo-container {
                     margin: 0 auto;
-                    max-width: ${ds.breakpoint.value('xl')};
-                    padding: 40px 32px;
+                    max-width: var(--breakpoint-xl);
+                    padding: ${ds.spacing("10")} ${ds.spacing("8")};
                 }
                 .demo-section {
-                    padding: 40px;
-                    margin-bottom: 48px;
+                    padding: ${ds.spacing("10")};
+                    margin-bottom: ${ds.spacing("12")};
                     border-radius: ${ds.radius("xl")};
                 }
                 .state-grid {
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-                    gap: 20px;
+                    grid-template-columns: repeat(auto-fit, minmax(16.25rem, 1fr));
+                    gap: ${ds.spacing("5")};
                 }
                 .logic-grid {
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-                    gap: 24px;
-                    margin-bottom: 64px;
+                    grid-template-columns: repeat(auto-fit, minmax(23.75rem, 1fr));
+                    gap: ${ds.spacing("6")};
+                    margin-bottom: ${ds.spacing("16")};
                 }
                 .white-card {
                     background-color: white;
-                    box-shadow: 0 4px 24px rgba(0,0,0,0.04);
-                    margin-top: 64px;
+                    box-shadow: var(--shadow-lg);
+                    margin-top: ${ds.spacing("16")};
                 }
                 .split-layout {
                     display: grid;
                     grid-template-columns: 1fr 1fr;
-                    gap: 48px;
+                    gap: ${ds.spacing("12")};
                 }
                 .logic-breakdown {
                     background-color: ${ds.color.background("secondary")};
-                    padding: 32px;
+                    padding: ${ds.spacing("8")};
                     border-radius: ${ds.radius("xl")};
                 }
                 .anatomy-section {
-                    margin-top: 48px;
+                    margin-top: ${ds.spacing("12")};
                     display: grid;
                     grid-template-columns: 1fr 1fr;
-                    gap: 48px;
-                    padding-top: 48px;
+                    gap: ${ds.spacing("12")};
+                    padding-top: ${ds.spacing("12")};
                     border-top: 1px solid ${ds.color.border("secondary")};
                 }
                 .anatomy-card {
                     background-color: ${ds.color.background("secondary")};
-                    padding: 32px;
+                    padding: ${ds.spacing("8")};
                     border-radius: ${ds.radius("xl")};
                 }
                 .inspection-container {
@@ -281,37 +281,37 @@ export default function SellerHeaderDemo() {
                     height: auto;
                     background-color: ${ds.color.background("secondary")};
                     border-radius: ${ds.radius("xl")};
-                    padding: 32px;
+                    padding: ${ds.spacing("8")};
                     overflow: visible;
                     display: flex;
                     justify-content: center;
                 }
                 .inspection-inner {
-                    width: 320px;
+                    width: 20rem;
                 }
 
-                @media (max-width: ${ds.breakpoint.value('lg')}) {
+                @media (max-width: var(--breakpoint-lg)) {
                     .split-layout, .anatomy-section {
                         grid-template-columns: 1fr;
                     }
                 }
 
-                @media (max-width: ${ds.breakpoint.value('md')}) {
+                @media (max-width: var(--breakpoint-md)) {
                     .demo-container {
-                        padding: 40px 16px;
+                        padding: ${ds.spacing("10")} ${ds.spacing("4")};
                     }
                     .demo-section {
-                        padding: 24px 16px;
+                        padding: ${ds.spacing("6")} ${ds.spacing("4")};
                     }
                     .logic-grid {
                         grid-template-columns: 1fr;
                     }
                     .inspection-container {
-                        padding: 24px 12px;
+                        padding: ${ds.spacing("6")} ${ds.spacing("3")};
                     }
                     .inspection-inner {
                         width: 100%;
-                        max-width: 320px;
+                        max-width: 20rem;
                     }
                 }
 
@@ -322,8 +322,8 @@ export default function SellerHeaderDemo() {
                 }
                 .doc-list li {
                     position: relative;
-                    padding-left: 20px;
-                    margin-bottom: 16px;
+                    padding-left: ${ds.spacing("5")};
+                    margin-bottom: ${ds.spacing("4")};
                     ${ds.typography.preset("paragraph-small")};
                     color: ${ds.color.text("secondary")};
                     line-height: 1.6;
@@ -344,13 +344,13 @@ export default function SellerHeaderDemo() {
 function ShopMatrixItem({ label, name, logo, isActive, type }: { label: string, name: string, logo?: string, isActive: boolean, type: "shop" | "branch" }) {
     return (
         <div style={{
-            padding: "16px",
+            padding: ds.spacing("4"),
             borderRadius: ds.radius("lg"),
             backgroundColor: ds.color.background("secondary"),
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            gap: "16px"
+            gap: ds.spacing("4")
         }}>
             <div style={{ display: "flex", alignItems: "center", gap: ds.spacing("3"), flex: 1 }}>
                 <Avatar
@@ -364,7 +364,7 @@ function ShopMatrixItem({ label, name, logo, isActive, type }: { label: string, 
                     <div style={{ ...ds.typography.preset("paragraph-small"), fontWeight: ds.typography.weight("medium") }}>
                         {(type === "shop" ? "ร้าน" : "สาขา") + name}
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: ds.spacing("1") }}>
                         <Dot active={isActive} size="sm" />
                         <span style={{ ...ds.typography.preset("paragraph-xsmall"), color: ds.color.text("secondary") }}>
                             {isActive ? "เปิดขาย" : "ปิดขาย"}
@@ -378,7 +378,7 @@ function ShopMatrixItem({ label, name, logo, isActive, type }: { label: string, 
                 backgroundColor: "white",
                 padding: "2px 8px",
                 borderRadius: ds.radius("sm"),
-                fontWeight: "bold",
+                fontWeight: ds.typography.weight("bold"),
                 whiteSpace: "nowrap"
             }}>
                 {label.split('(')[0].trim()}
@@ -391,19 +391,19 @@ function ShopMatrixItem({ label, name, logo, isActive, type }: { label: string, 
 function StateCard({ label, value, status, color }: { label: string, value: string, status?: string, color?: "brand" | "error" }) {
     return (
         <div style={{
-            padding: "20px",
+            padding: ds.spacing("5"),
             borderRadius: ds.radius("lg"),
             backgroundColor: "white",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.02)"
+            boxShadow: "var(--shadow-sm)"
         }}>
-            <span style={{ ...ds.typography.preset("paragraph-xsmall"), color: ds.color.text("tertiary"), display: "block", marginBottom: "8px", fontWeight: "bold" }}>
+            <span style={{ ...ds.typography.preset("paragraph-xsmall"), color: ds.color.text("tertiary"), display: "block", marginBottom: ds.spacing("2"), fontWeight: ds.typography.weight("bold") }}>
                 {label}
             </span>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: ds.spacing("3"), flexWrap: "wrap" }}>
                 <span style={{ ...ds.typography.preset("paragraph-small"), fontWeight: ds.typography.weight("semibold"), color: ds.color.text("primary") }}>
                     {value}
                 </span>
-                <div style={{ display: "flex", gap: "4px" }}>
+                <div style={{ display: "flex", gap: ds.spacing("1") }}>
                     {status && <Badge variant="subtle" size="xs" color="neutral">{status}</Badge>}
                     {color && <Badge variant="filled" size="xs" color={color}>{value === "ปิดขาย" || value === "ยังไม่ยืนยัน" ? "Alert" : "Verified"}</Badge>}
                 </div>
@@ -415,12 +415,12 @@ function StateCard({ label, value, status, color }: { label: string, value: stri
 function DocCard({ title, children, transparent }: { title: string, children: React.ReactNode, transparent?: boolean }) {
     return (
         <div style={{
-            padding: "32px",
+            padding: ds.spacing("8"),
             borderRadius: ds.radius("xl"),
             backgroundColor: transparent ? "transparent" : "white",
             height: "100%"
         }}>
-            <h3 style={{ ...ds.typography.preset("heading-h5"), marginBottom: "24px", color: ds.color.text("primary") }}>
+            <h3 style={{ ...ds.typography.preset("heading-h5"), marginBottom: ds.spacing("6"), color: ds.color.text("primary") }}>
                 {title}
             </h3>
             {children}

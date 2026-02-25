@@ -756,8 +756,235 @@ Module นี้จะใช้ tables จาก `b2b-purchasing-schema.md`:
 - AI-powered recommendations
 - Multi-language support
 
-### 13.4 Phase 4: Scale & Expand (Months 10-12)
-- International markets
-- Advanced supplier management
-- Predictive analytics
-- Marketplace expansion
+---
+
+## 14. Buyer RFQ Creation Flow Analysis
+
+### 14.1 Flowchart Analysis
+
+Based on the provided flowchart, here's the comprehensive analysis of the Buyer RFQ creation process:
+
+#### Entry Points & Authentication
+**Multiple Entry Points:**
+- **Buyer Portal RFQ** - Direct access from buyer dashboard
+- **Marketplace RFQ CTA** - Call-to-action from marketplace browsing
+- **Product: Add to RFQ** - Add specific products to RFQ from product pages
+
+**Authentication Flow:**
+- **Authentication Check**: Verify user login status
+- **Login Options**: OTP/SSO authentication methods
+- **Organization Resolution**: Auto-resolve active ORG with header dropdown
+- **First-time Users**: Auto-create Personal ORG (Individual) for new users
+
+#### Persona-Based Creation Paths
+**Quick RFQ (Field Users):**
+- Minimal required fields first
+- Streamlined for rapid entry
+- Focus on speed and simplicity
+
+**Structured RFQ (Procurement Teams):**
+- Show project + commercial fields early
+- Comprehensive data collection
+- Detailed specifications and requirements
+
+#### Step-by-Step Process Flow
+
+**Step 1: Project + RFQ Header**
+- Set Project (select/create)
+- Set Due date (required before send)
+- Optional: Title/Notes/Attachments
+
+**Step 2: Add Items (Multi-Source)**
+- **Manual Entry** (item_source=MANUAL)
+- **Marketplace Add** (item_source=MARKETPLACE)
+- **Import BOQ Excel** (item_source=BOQ_EXCEL)
+- **Import BOQ Image to AI Extract** (item_source=BOQ_IMAGE_AI)
+- **Verification Steps**: For imported data (Excel/AI)
+- **Draft Management**: Edit/remove/bulk edit capabilities
+- **Validation**: At least 1 line item required
+
+**Step 3: Delivery + Contact + Commercial**
+- **Delivery Type**: Seller delivery vs Pickup
+- **Address Management**: Required for delivery, optional for pickup
+- **Delivery Date**: Required field
+- **Contact Information**: Name + phone required
+- **Advanced Options** (Optional):
+  - Payment intent (transfer/credit terms)
+  - Tax requirement (invoice/VAT info)
+  - Delivery split intent
+  - Payment split intent
+
+**Step 4: Recipient Selection**
+- **Suggested Mode** (Default): System suggests eligible branches by distance
+- **Manual Mode**: Choose from favorites + eligible suppliers
+- **Search Functionality**: Find specific suppliers
+- **Preselection**: Auto-select top N recipients (editable)
+- **Validation**: Minimum 1 recipient required
+
+#### RFQ Issuance & Tracking
+**Dispatch Management:**
+- Create dispatch per recipient
+- Status tracking: SENDING → SENT/PARTIALLY_SENT
+- Delivery status: DELIVERED/DELIVERY_FAILED
+- Retry mechanism for failed deliveries
+
+**Post-Send Tracking:**
+- Recipient status monitoring
+- Quotation waiting period
+- Real-time status updates
+
+### 14.2 Technical Implementation Details
+
+#### State Management
+```typescript
+interface RFQState {
+  status: 'DRAFT' | 'SENDING' | 'SENT' | 'PARTIALLY_SENT';
+  autoSave: boolean;
+  orgScope: string;
+  currentStep: number;
+  validationErrors: ValidationError[];
+}
+
+interface RFQItem {
+  id: string;
+  source: 'MANUAL' | 'MARKETPLACE' | 'BOQ_EXCEL' | 'BOQ_IMAGE_AI';
+  data: ItemData;
+  verified: boolean;
+  confidence?: number; // For AI extraction
+}
+```
+
+#### Validation Rules
+**Required Fields:**
+- Project selection
+- Due date
+- At least 1 line item
+- Delivery address (if seller delivery)
+- Delivery date
+- Contact person (name + phone)
+- At least 1 recipient
+
+**Conditional Validations:**
+- Address required for seller delivery
+- Confidence threshold for AI extraction
+- File format validation for BOQ import
+
+#### Auto-Save Strategy
+- **Trigger**: On every field change
+- **Scope**: ORG-specific drafts
+- **Recovery**: Restore last draft on session resume
+- **Cleanup**: Remove old drafts after defined period
+
+### 14.3 User Experience Considerations
+
+#### Progressive Disclosure
+- **Quick Path**: Minimal fields, expandable details
+- **Structured Path**: All fields visible, organized by sections
+- **Smart Defaults**: Pre-fill based on user history and context
+
+#### Error Handling
+- **Inline Validation**: Real-time error feedback
+- **Contextual Messages**: Clear error descriptions
+- **Recovery Options**: Save progress despite errors
+
+#### Mobile Optimization
+- **Touch-Friendly**: Large tap targets
+- **Progressive Loading**: Load data as needed
+- **Offline Support**: Draft saving without connection
+
+### 14.4 Integration Points
+
+#### Organization Management
+- **Header Dropdown**: Always visible ORG switcher
+- **Scope Isolation**: Data separated by ORG
+- **Auto-Switch**: Change ORG context with draft save
+
+#### Marketplace Integration
+- **Product Sync**: Add marketplace items to RFQ
+- **Inventory Check**: Real-time stock availability
+- **Pricing Data**: Current price information
+
+#### AI Services Integration
+- **Image Recognition**: Extract items from BOQ images
+- **Confidence Scoring**: Quality assessment of extraction
+- **Manual Override**: User can edit AI results
+
+### 14.5 Performance Optimization
+
+#### Data Loading Strategy
+- **Lazy Loading**: Load sections as needed
+- **Caching**: Cache supplier data and product info
+- **Pagination**: Large item lists with pagination
+
+#### Network Optimization
+- **Batch Operations**: Group API calls
+- **Compression**: Compress large file uploads
+- **Retry Logic**: Handle network failures gracefully
+
+### 14.6 Security & Compliance
+
+#### Data Protection
+- **Encryption**: Sensitive data encryption
+- **Access Control**: ORG-based access restrictions
+- **Audit Trail**: Track all RFQ modifications
+
+#### Compliance Requirements
+- **Data Privacy**: GDPR/CCPA compliance
+- **Electronic Signatures**: Legal validity
+- **Record Retention**: Document storage policies
+
+---
+
+## 15. Implementation Guidelines
+
+### 15.1 Development Phases
+
+**Phase 1: Core Flow (Weeks 1-4)**
+- Basic authentication and ORG resolution
+- Simple RFQ creation (manual items only)
+- Basic recipient selection
+- Draft management
+
+**Phase 2: Advanced Features (Weeks 5-8)**
+- BOQ import (Excel)
+- AI image extraction
+- Advanced delivery options
+- Multi-recipient management
+
+**Phase 3: Optimization (Weeks 9-12)**
+- Performance optimization
+- Mobile responsiveness
+- Advanced search and filtering
+- Integration testing
+
+### 15.2 Testing Strategy
+
+**Unit Testing**
+- RFQ state management
+- Validation logic
+- Data parsing functions
+
+**Integration Testing**
+- API endpoints
+- Third-party integrations
+- Cross-browser compatibility
+
+**User Acceptance Testing**
+- End-to-end flow testing
+- Usability testing
+- Performance testing
+
+### 15.3 Monitoring & Analytics
+
+**Key Metrics to Track**
+- RFQ creation completion rate
+- Time to create RFQ
+- Drop-off points in the flow
+- Error rates and types
+- Feature usage patterns
+
+**Alerting**
+- Failed RFQ deliveries
+- High error rates
+- Performance degradation
+- Integration failures
