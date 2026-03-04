@@ -1,0 +1,197 @@
+{
+  "meta": {
+    "featureKey": "startup-partner-center",
+    "version": "v0.2",
+    "lastUpdated": "2026-03-04",
+    "scenarioSwitch": {
+      "method": "query",
+      "param": "scenario",
+      "default": "sc_success",
+      "options": ["sc_success", "sc_pending", "sc_rejected", "sc_empty"]
+    }
+  },
+  "routing": {
+    "routes": {
+      "/seller/partner/dashboard": "SCR-001",
+      "/seller/partner/register": "SCR-002",
+      "/seller/partner/sourcing": "SCR-003",
+      "/seller/partner/product/:id": "SCR-004",
+      "/seller/partner/quotations": "SCR-005",
+      "/seller/partner/quotations/:id": "SCR-006",
+      "/q/:token": "SCR-007"
+    },
+    "defaultRoute": "/seller/partner/dashboard"
+  },
+  "screens": {
+    "SCR-001": {
+      "id": "SCR-001",
+      "name": "Partner Dashboard",
+      "components": [
+        { "type": "StatCard", "props": { "label": "Total Quotations", "value": "{quotations.length}" } },
+        { "type": "StatCard", "props": { "label": "Commission Earned", "value": "฿ {commission.total}" } },
+        { "type": "ActionList", "items": ["Create New Quotation", "Search Products"] },
+        { "type": "Alert", "props": { "type": "warning", "text": "Application Pending" }, "visibleIf": "partner.status == 'PENDING_ADMIN'" }
+      ],
+      "actions": [
+        { "name": "register", "target": "SCR-002" },
+        { "name": "create_quote", "target": "SCR-003", "guard": "partner.status == 'ACTIVE'" },
+        { "name": "view_quotations", "target": "SCR-005" }
+      ]
+    },
+    "SCR-002": {
+      "id": "SCR-002",
+      "name": "Partner Registration",
+      "components": [
+        { "type": "Wizard", "steps": ["Territory", "Shop Selection", "Consent"] },
+        { "type": "Select", "label": "Province", "options": "provinces" },
+        { "type": "MultiSelect", "label": "Select Shops", "options": "shops" }
+      ],
+      "actions": [
+        { "name": "submit", "effect": "navigate", "target": "SCR-001", "params": { "scenario": "sc_pending" } }
+      ]
+    },
+    "SCR-003": {
+      "id": "SCR-003",
+      "name": "Product Sourcing",
+      "components": [
+        { "type": "SearchInput", "placeholder": "Search SKU, Name..." },
+        { "type": "FilterBar", "filters": ["Category", "Shop", "Price Range"] },
+        { "type": "ProductGrid", "data": "products" }
+      ],
+      "actions": [
+        { "name": "add_to_quote", "effect": "addToCart" },
+        { "name": "create_draft", "target": "SCR-006", "effect": "createQuotation" },
+        { "name": "view_product", "target": "SCR-004" }
+      ]
+    },
+    "SCR-004": {
+      "id": "SCR-004",
+      "name": "Product Detail",
+      "components": [
+        { "type": "ProductInfo", "data": "product" },
+        { "type": "PriceInfo", "regular": "{product.price}", "promo": "{product.promoPrice}" }
+      ],
+      "actions": [
+        { "name": "add_to_quote", "effect": "addToCart" }
+      ]
+    },
+    "SCR-005": {
+      "id": "SCR-005",
+      "name": "Quotation List",
+      "components": [
+        { "type": "Tabs", "items": ["All", "Draft", "Pending", "Approved"] },
+        { "type": "Table", "columns": ["ID", "Buyer", "Total", "Status"], "data": "quotations" }
+      ],
+      "actions": [
+        { "name": "view_detail", "target": "SCR-006" }
+      ]
+    },
+    "SCR-006": {
+      "id": "SCR-006",
+      "name": "Quotation Detail",
+      "components": [
+        { "type": "Header", "title": "Quotation {quotation.id}", "status": "{quotation.status}" },
+        { "type": "ItemList", "data": "quotation.items" },
+        { "type": "Summary", "fields": ["Subtotal", "Tax", "Total"] }
+      ],
+      "actions": [
+        { "name": "submit_approval", "effect": "updateStatus", "params": { "status": "PENDING_SHOP_APPROVAL" } },
+        { "name": "send_to_buyer", "effect": "openModal", "modalId": "share_link" }
+      ]
+    },
+    "SCR-007": {
+      "id": "SCR-007",
+      "name": "Buyer Quotation View",
+      "components": [
+        { "type": "BrandedHeader", "shopInfo": "{quotation.shops}" },
+        { "type": "ItemList", "data": "quotation.items", "readonly": true },
+        { "type": "PaymentSelector", "options": ["Platform Payment", "Direct Transfer"] }
+      ],
+      "actions": [
+        { "name": "pay_platform", "target": "PAYMENT_GATEWAY" },
+        { "name": "pay_direct", "target": "SLIP_UPLOAD" }
+      ]
+    }
+  },
+  "entities": {
+    "PartnerProfile": {
+      "fields": {
+        "status": "enum: ACTIVE, PENDING_ADMIN, REJECTED",
+        "territory": "string",
+        "shops": "string[]"
+      }
+    },
+    "Product": {
+      "fields": {
+        "id": "string",
+        "name": "string",
+        "sku": "string",
+        "price": "number",
+        "shop": "string",
+        "stock": "number",
+        "category": "string"
+      }
+    },
+    "Quotation": {
+      "fields": {
+        "id": "string",
+        "status": "enum: DRAFT, PENDING, APPROVED, SENT",
+        "buyerName": "string",
+        "total": "number",
+        "items": "object[]"
+      }
+    }
+  },
+  "scenarios": {
+    "sc_success": {
+      "description": "Active partner with products and approved quotations",
+      "state": {
+        "partner": "ds_partner_active",
+        "products": "ds_products_full",
+        "quotations": "ds_quotations_mixed"
+      }
+    },
+    "sc_pending": {
+      "description": "New partner waiting for admin approval",
+      "state": {
+        "partner": "ds_partner_pending",
+        "products": "ds_products_empty",
+        "quotations": "ds_quotations_empty"
+      }
+    },
+    "sc_rejected": {
+      "description": "Partner application rejected",
+      "state": {
+        "partner": "ds_partner_rejected",
+        "products": "ds_products_empty",
+        "quotations": "ds_quotations_empty"
+      }
+    },
+    "sc_empty": {
+      "description": "Active partner but no products found or history",
+      "state": {
+        "partner": "ds_partner_active",
+        "products": "ds_products_empty",
+        "quotations": "ds_quotations_empty"
+      }
+    }
+  },
+  "mockData": {
+    "datasets": {
+      "ds_partner_active": { "status": "ACTIVE", "territory": "Bangkok", "shops": ["Shop A", "Shop B"] },
+      "ds_partner_pending": { "status": "PENDING_ADMIN", "territory": "Bangkok", "shops": ["Shop A"] },
+      "ds_partner_rejected": { "status": "REJECTED", "territory": "Bangkok", "rejectionReason": "Invalid KYC" },
+      "ds_products_full": [
+        { "id": "P001", "name": "Portland Cement Type 1", "sku": "CM-001", "price": 150, "shop": "Shop A", "stock": 500, "category": "Cement" },
+        { "id": "P002", "name": "Steel Bar 10mm", "sku": "ST-010", "price": 220, "shop": "Shop B", "stock": 200, "category": "Steel" },
+        { "id": "P003", "name": "Red Brick", "sku": "BR-001", "price": 5, "shop": "Shop A", "stock": 5000, "category": "Brick" }
+      ],
+      "ds_products_empty": [],
+      "ds_quotations_mixed": [
+        { "id": "QT-001", "status": "DRAFT", "buyerName": "John Doe", "total": 5000, "items": [{ "productId": "P001", "qty": 20 }] },
+        { "id": "QT-002", "status": "APPROVED", "buyerName": "Project X", "total": 15000, "items": [{ "productId": "P002", "qty": 50 }] }
+      ],
+      "ds_quotations_empty": []
+    }
+  }
+}
